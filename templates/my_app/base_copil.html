@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <!-- reference your copy Font Awesome here (from our CDN or by hosting yourself) -->
+    <script src="https://kit.fontawesome.com/0945a95cb6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static '/css/main.css' %}">
+    <title>Maglo</title>
+    {% block head_block %}
+    {% endblock %}
+    <style>
+        #nav_5:hover{
+            background-color:#fff;
+        }
+        #nav_4:hover{
+            background-color:#fff;
+        }
+        #text1:hover{
+            color: #A683E3;
+        }
+    </style>
+</head>
+<body style="background-color: aliceblue;" data-spy="scroll" data-target="my_card1" data-offset="50">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #A683E3;">
+        <div class="container">
+            <a href="{% url 'acasa_copil' %}" class="navbar-brand" id="nav_1"><h3>Maglo</h3></a>
+            <button type="button" data-target="#navbarMenu" data-toggle="collapse" class="navbar-toggler">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item" style="margin-top: 7px;margin-bottom: 7px;">
+                        <a class="navbar-link" href="{% url 'acasa' %}" style="font-family: 'Montserrat', sans-serif;color: #fff;padding-right: 30px;text-decoration: none;font-size: 23px;" id="nav_1">
+                            <strong><i class="fas fa-home" style='padding-right: 10px;'></i>Acasa</strong>
+                        </a>
+                    </li>
+                    <li class="nav-item" style="margin-top: 7px;margin-bottom: 7px;">
+                        <a class="navbar-link" href="{% url 'anunturi_postate_copil' %}" style="font-family: 'Montserrat', sans-serif;color: #fff;padding-right: 30px;text-decoration: none;font-size: 23px;" id="nav_2">
+                            <strong><i class="fas fa-search-plus" style='padding-right: 10px;'></i>Anunturi postate</strong>
+                        </a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item" style="margin-top: 7px;margin-bottom: 7px;">
+                        <a class="navbar-link" href="{% url 'my_app:contul_meu_copil' %}" style="font-family: 'Montserrat', sans-serif;color: #fff;padding-right: 30px;text-decoration: none;font-size: 23px;border: 3px solid #fff;padding: 7px;border-radius: 4px;" id="nav_4">
+                            <strong id="text1">Contul meu</strong>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item" style="margin-top: 7px;margin-bottom: 7px;">
+                        <a class="navbar-link" href="{% url 'my_app:inregistrare_copil' %}" style="font-family: 'Montserrat', sans-serif;color: #fff;padding-right: 30px;text-decoration: none;font-size: 23px;border: 3px solid #fff;padding: 7px;border-radius: 4px;" id="nav_4">
+                            <strong id="text1">Inregistrare</strong>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% block body_block %}
+    <div class="logo"
+    style="width: 100%;height: 100vh;background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),url(https://images.unsplash.com/photo-1500995617113-cf789362a3e1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dG95c3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);
+    background-position: center;background-size: cover;">
+        <h1 style="text-align: center;color: aliceblue;padding-top: 18rem;font-family:'Montserrat', sans-serif">Maglo</h1>
+        <h2 style="text-align: center;color: aliceblue;font-family: 'Montserrat', sans-serif;padding-top: 10px;">Ai posibilitatea sa schimbi gratis in sectiunea troc</h2>
+        <h2 style="text-align: center;color: aliceblue;font-family: 'Montserrat', sans-serif;">sau sa vinzi in celalalte categorii</h2>
+    </div>
+    <div class="jumbotron" style="background-color: #334257;margin-bottom: 0px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <h3 style="color: #BBBFCA;">Informatii</h3>
+                    <br>
+                    <a href="{% url 'ajutor_si_contact' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Ajutor si Contact</a>
+                    <a href="{% url 'politica_confi' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de confidentialitate</a>
+                    <a href="{% url 'politica_cookie' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de Cookie-uri</a>
+                    <a href="{% url 'termeni_si_conditii' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Termeni si Conditii</a>
+                    <a href="{% url 'securitate' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Protejeaza-te pe Maglo</a>
+                    <a href="https://anpc.ro/" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">ANPC</a>
+                </div>
+                <br>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <h3 style="color: #BBBFCA;">Date de contact</h3>
+                    <br>
+                    <p style="display:block;text-decoration: none;color: aliceblue;">Email: </p>
+                    <p style="display:block;text-decoration: none;color: aliceblue;">Date firma: </p>
+                    <p style="display:block;text-decoration: none;color: aliceblue;">CUI: </p>
+                    <p style="display:block;text-decoration: none;color: aliceblue;">Registrul comertului: </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron" style="background-color: #151515;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;">
+        <div class="container">
+            <p style="font-size: 20px;font-family: Arial, Helvetica, sans-serif;color: aliceblue;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+        </div>
+    </div>
+    {% endblock %}
+    <script>
+        const nav_1 = document.getElementById('nav_1');
+        const nav_2 = document.getElementById('nav_2');
+        nav_1.addEventListener('click', function(){
+            nav_1.style.color = '#71DFE7';
+        });
+        nav_2.addEventListener('click', function(){
+            nav_2.style.color = '#71DFE7';
+        });
+    </script>
+</body>
+</html>

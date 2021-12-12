@@ -1,0 +1,386 @@
+{% extends 'my_app/base_adult.html' %}
+
+{% block head_block %}
+<style>
+    .banner{
+        background-color: white;
+        max-width: 300px;
+        height: 100%;
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+    }
+    .jumbotron{
+        padding-top: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        margin-bottom: 0px;
+        background-color: aliceblue;
+    }
+    .banner h2{
+        font-family: 'Montserrat', sans-serif;
+        padding: 30px 0px 20px 20px;
+    }
+    .banner hr{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    #param1{
+        font-family: 'Montserrat', sans-serif;
+        padding: 10px 0px 10px 20px;
+        font-size: 20px;
+    }
+    #param1:hover{
+        background-color: #A683E3;
+        color: white;
+    }
+    .banner ul{
+        font-family: 'Montserrat', sans-serif;
+        padding-left: 60px;
+    }
+    .banner ul li{
+        padding-top: 10px;
+        font-size: 18px;
+    }
+    .banner ul li a:hover{
+        border-bottom: 2px solid #A683E3;
+        margin-right: 60px;
+    }
+    #param2{
+        font-family: 'Montserrat', sans-serif;
+        padding: 10px 0px 10px 20px;
+        font-size: 20px;
+    }
+    #param2:hover{
+        background-color: #A683E3;
+        color: white;
+    }
+    #param3{
+        font-family: 'Montserrat', sans-serif;
+        padding: 10px 0px 10px 20px;
+        font-size: 20px;
+    }
+    #param3:hover{
+        background-color: #A683E3;
+        color: white;
+    }
+    .banner ul li a{
+        text-decoration: none;
+    }
+    #a1{
+        text-decoration: none;
+        color: black;
+    }
+    #a2{
+        text-decoration: none;
+        color: black;
+    }
+    #a3{
+        text-decoration: none;
+        color: black;
+    }
+    .banner ul li a{
+        color: black;
+    }
+    #header1{
+        font-family: 'Montserrat', sans-serif;
+        padding-top: 30px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+    }
+    .text{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+    }
+    #header2{
+        font-family: 'Montserrat', sans-serif;
+        padding-left: 20px;
+    }
+    #header3{
+        padding-top: 50px;
+        font-family: 'Montserrat', sans-serif;
+        padding-left: 20px;
+    }
+    #header4{
+        padding-top: 30px;
+        padding-bottom: 30px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .form-group{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+    }
+    .form-group label{
+        padding-top: 10px;
+    }
+    .bg{
+        background-color: #E8E1D9;
+        background-image: url('');
+        width: 100%;
+        height: 120px;
+        border: 2px dashed grey;
+        border-radius: 10px;
+        color: #8ac4f3;
+    }
+    .bg:hover{
+        animation: FadeIn 2s;
+    }
+    #imagine{
+        width: 150px;
+        height: 100px;
+        padding-top: 20px;
+        margin-left: 40px;
+        margin-top: 20px;
+        opacity: 0;
+        z-index: -6;
+    }
+    .bg i{
+        position: absolute;
+        top: 40%;
+        right: 20%;
+        left: 45%;
+        font-size: 30px;
+    }
+    @keyframes FadeIn{
+        from{
+            color: #8ac4f3;
+            border: 2px dashed grey;
+        }
+        to{
+            color: #8df3c5;
+            border: 2px dashed #94D0CC;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="banner">
+                <h2>Maglo</h2>
+                <hr>
+                <a href="{% url 'my_app:contul_meu_adult' %}" id="a1"><p id="param1"><i class="fas fa-user"></i> Contul meu</p></a>
+                <ul>
+                    <li><a href="{% url 'my_app:contul_meu_adult' %}">Informatii personale</a></li>
+                    <li><a href="{% url 'my_app:deconectare_adult1' %}">Deconectare</a></li>
+                    <li><a href="{% url 'my_app:posteaza_anunt_adult' %}">Posteaza un anunt</a></li>
+                </ul>
+                <a href="{% url 'my_app:anunturi_totale_adult' %}" id="a2"><p id="param2"><i class="fas fa-calendar-check"></i> Anunturi postate</p></a>
+                <ul>
+                    <li><a href="{% url 'my_app:anunturi_totale_adult' %}">Anunturile tale</a></li>
+                    <li><a href="{% url 'my_app:pag_update_adult' %}">Actualizeaza un anunt</a></li>
+                    <li><a href="{% url 'my_app:anunturi_favorite_d' %}">Anunturi favorite</a></li>
+                    <li><a href="{% url 'my_app:pag_delete_adult' %}">Sterge un anunt</a></li>
+                </ul>
+                <a href="{% url 'my_app:promoveazati_afacerea_serviciul' %}" id="a3"><p id="param3"><i class="fas fa-briefcase"></i> Afacere/Serviciu</p></a>
+                <ul>
+                    <li><a href="{% url 'my_app:promoveazati_afacerea' %}">Scaleaza-ti afacerea</a></li>
+                    <li><a href="{% url 'my_app:promoveazati_serviciul' %}">Promoveaza-ti serviciul</a></li>
+                </ul>
+                <br>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-4 col-sm-6">
+            <h1 id="header4"><strong>Scaleaza-ti afacerea</strong></h1>
+            <form class="was-validated" action="" enctype="multipart/form-data" method="POST" id="form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="Titlul">Numele firmei:</label>
+                    <input type="text" class="form-control" placeholder="Numele firmei" name="numele_firmei" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                </div>
+                <div class="form-group">
+                    <label for="descriere">Descriere:</label>
+                    <textarea placeholder="Descrierea afacerii" class="form-control" name="descriere" rows="10" required></textarea>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                </div>
+                <div class="form-group">
+                    <label for="categorie">Tipul afacerii:</label>
+                    <select class="form-control" name="tipul_afacerii" id="select" required>
+                        <option selected disabled>----------</option>
+                        <option>Cabinet medical</option>
+                        <option>Cabinet psihologic</option>
+                        <option>Cafenea</option>
+                        <option>Cofetarie</option>
+                        <option>Constructii</option>
+                        <option>Fast-Food-uri</option>
+                        <option>Hotel</option>
+                        <option>Pensiune</option>
+                        <option>Restaurant</option>
+                        <option>Service Auto</option>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Email">Email:</label>
+                    <input type="email" name="email" placeholder="Email" class="form-control" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                </div>
+                <div class="form-group">
+                    <label for="localizare">Judet:</label>
+                    <select name="judet" class="form-control" required>
+                        <option selected disabled>----------</option>
+                        <option>Alba</option>
+                        <option>Arad</option>
+                        <option>Arges</option>
+                        <option>Bacau</option>
+                        <option>Bihor</option>
+                        <option>Bistrita-Nasaud</option>
+                        <option>Botosani</option>
+                        <option>Braila</option>
+                        <option>Brasov</option>
+                        <option>Buzau</option>
+                        <option>Calarasi</option>
+                        <option>Caras-Severin</option>
+                        <option>Cluj</option>
+                        <option>Constanta</option>
+                        <option>Covasna</option>
+                        <option>Dambovita</option>
+                        <option>Dolj</option>
+                        <option>Galati</option>
+                        <option>Giurgiu</option>
+                        <option>Gorj</option>
+                        <option>Harghita</option>
+                        <option>Hunedoara</option>
+                        <option>Ialomita</option>
+                        <option>Iasi</option>
+                        <option>Ilfov</option>
+                        <option>Maramures</option>
+                        <option>Mehedinti</option>
+                        <option>Mures</option>
+                        <option>Neamt</option>
+                        <option>Olt</option>
+                        <option>Prahova</option>
+                        <option>Salaj</option>
+                        <option>Satu Mare</option>
+                        <option>Sibiu</option>
+                        <option>Suceava</option>
+                        <option>Teleorman</option>
+                        <option>Timis</option>
+                        <option>Tulcea</option>
+                        <option>Valcea</option>
+                        <option>Vaslui</option>
+                        <option>Vrancea</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="adresa">Adresa:</label>
+                    <input type="text" name="adresa" placeholder="Adresa" class="form-control" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                </div>
+                <div class="form-group">
+                    <label for="imagine">Imagini:</label>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="bg">
+                                <input type="file"id="imagine" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine" required>
+                                <i class="fas fa-camera"></i>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="bg">
+                                <input type="file"id="imagine" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine2" required>
+                                <i class="fas fa-camera"></i>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="bg">
+                                <input type="file"id="imagine" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine3" required>
+                                <i class="fas fa-camera"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="bg">
+                                <input type="file"id="imagine" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine4" required>
+                                <i class="fas fa-camera"></i>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="bg">
+                                <input type="file"id="imagine" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine5" required>
+                                <i class="fas fa-camera"></i>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="bg">
+                                <input type="file" id="imagine" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine6" required>
+                                <i class="fas fa-camera"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <input type="submit" class="btn btn-outline-info btn-block btn-lg" value="Posteaza">
+                <br>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #334257;margin-bottom: 0px;padding-top: 20px;padding-bottom: 20px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Informatii</h3>
+                <br>
+                <a href="{% url 'ajutor_si_contact' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Ajutor si Contact</a>
+                <a href="{% url 'politica_confi' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de confidentialitate</a>
+                <a href="{% url 'politica_cookie' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de Cookie-uri</a>
+                <a href="{% url 'termeni_si_conditii' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Termeni si Conditii</a>
+                <a href="{% url 'securitate' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Protejeaza-te pe Maglo</a>
+                <a href="https://anpc.ro/" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">ANPC</a>
+            </div>
+            <br>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Date de contact</h3>
+                <br>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Email: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Date firma: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">CUI: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Registrul comertului: </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #151515;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;">
+    <div class="container">
+        <p style="font-size: 20px;font-family: Arial, Helvetica, sans-serif;color: aliceblue;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $("#select").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("value");
+            if(optionValue){
+                $(".box").not("." + optionValue).hide();
+                $("." + optionValue).show();
+            } else{
+                $(".box").hide();
+            }
+        });
+    }).change();
+    })
+    $(document).ready(function(){
+        $("#selectare").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("value");
+            if(optionValue){
+                $(".newbox").not("." + optionValue).hide();
+                $("." + optionValue).show();
+            } else{
+                $(".newbox").hide();
+            }
+        });
+    }).change();
+    })
+</script>
+{% endblock %}

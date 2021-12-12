@@ -1,0 +1,193 @@
+{% extends 'my_app/base_copil.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head_block %}
+<style>
+    body{
+        height: 1300px;
+        background-color: #E4E9FD;
+        background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%);
+    }
+    .box{
+        max-width: 500px;
+        background-color: white;
+        border-radius: 5px;
+        margin: 140px auto;
+        padding: 25px 25px 25px 25px;
+        box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+    }
+    .media a{
+        position: relative;
+        margin: auto;
+        display: block;
+        font-size: 27px;
+        border-radius: 100%;
+        background: white;
+        height: 60px;
+        width: 60px;
+        padding: 9px 0px 0px 15px;
+    }
+    #a1{
+        color: blue;
+        border: 2px solid blue;
+    }
+    #a1:hover{
+        color: white;
+        background-color: blue;
+    }
+    #a2{
+        color: crimson;
+        border: 2px solid crimson;
+    }
+    #a2:hover{
+        color: white;
+        background-color: crimson;
+    }
+    #a3{
+        color: cornflowerblue;
+        border: 2px solid cornflowerblue;
+    }
+    #a3:hover{
+        color: white;
+        background-color: cornflowerblue;
+    }
+    .box span{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+    }
+    .box span label{
+        padding-bottom: 20px;
+    }
+    .bg{
+        font-family: 'Montserrat', sans-serif;
+    }
+    #id_password1{
+        display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    #id_password2{
+        display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    .param2{
+        text-align: center;
+        font-size: 22px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .hr1{
+        width: 100%;
+        height: 0.4vh;
+        background-color: #ddd1d1;
+    }
+    .param3{
+        text-align: center;
+        font-size: 22px;
+        font-family: 'Montserrat', sans-serif;
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="new_box">
+    <div class="box">
+        <form class="form-group" action="" method="POST" style="font-family: 'Montserrat', sans-serif;">
+            <div class="row">
+                <div class="col-lg-6 col-md-4 col-sm-6">
+                    <p class="param2"><a href="{% url 'my_app:inregistrare_copil' %}" style="text-decoration: none;color: black;">Inregistrare</a></p>
+                    <hr class="hr1">
+                </div>
+                <div class="col-lg-6 col-md-4 col-sm-6">
+                    <p class="param3"><a href="{% url 'my_app:autentificate_copil' %}" style="text-decoration: none;color: black;">Intra in cont</a></p>
+                    <hr class="hr1">
+                </div>
+            </div>
+            <br>
+            <div class="media">
+                <a href="{% url 'social:begin' 'facebook' %}" id="a1">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="{% url 'social:begin' 'google-oauth2' %}" id="a2">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="{% url 'social:begin' 'linkedin-oauth2' %}" id="a3">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+            <br>
+            {% csrf_token %}
+            <label for="username">Nume:</label>
+            {{form.username}}
+            <label for="email" style="margin-top: 20px;">Email:</label>
+            {{form.email}}
+            <label for="password" style="margin-top: 20px;">Parola:</label>
+            {{form.password1}}
+            <label for="password2" style="margin-top: 20px;">Verifica-ti parola: </label>
+            {{ form.password2 }}
+            <br>
+            {% for message in messages %}
+                <p style="font-size: 18px;padding-top: 15px;padding-bottom:8px;text-align: center;color: rgb(214, 163, 95);font-weight: bold;">{{message}}</p>
+                <br>
+            {% endfor %}
+            <span id="span1">
+                <input type="checkbox" required>
+                <label for="Acord">Sunt de acord cu <a href="{% url 'termeni_si_conditii' %}">Termenii si Conditiile</a></label>
+            </span>
+            <input type="submit" value="Inregistrare" class="btn btn-outline-info btn-lg btn-block" id="inp1">
+        </form>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #334257;margin-bottom: 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Informatii</h3>
+                <br>
+                <a href="{% url 'ajutor_si_contact' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Ajutor si Contact</a>
+                <a href="{% url 'politica_confi' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de confidentialitate</a>
+                <a href="{% url 'politica_cookie' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de Cookie-uri</a>
+                <a href="{% url 'termeni_si_conditii' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Termeni si Conditii</a>
+                <a href="{% url 'securitate' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Protejeaza-te pe Maglo</a>
+                <a href="https://anpc.ro/" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">ANPC</a>
+            </div>
+            <br>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Date de contact</h3>
+                <br>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Email: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Date firma: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">CUI: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Registrul comertului: </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #151515;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;">
+    <div class="container">
+        <p style="font-size: 20px;font-family: Arial, Helvetica, sans-serif;color: aliceblue;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+    </div>
+</div>
+
+{% endblock %}

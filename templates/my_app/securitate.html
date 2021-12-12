@@ -1,0 +1,135 @@
+{% extends 'my_app/base.html' %}
+
+{% block head_block %}
+<style>
+    #jb1{
+        text-align: center;
+        background-image: linear-gradient(-120deg, #b4d5ee, #A683E3);
+        font-family: 'Montserrat', sans-serif;
+    }
+    #jb1 h1{
+        animation: Fade-In 2s;
+    }
+    @keyframes Fade-In{
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
+    #mytext h2{
+        font-family: 'Montserrat', sans-serif;
+    }
+    #mytext h5{
+        font-family: 'Montserrat', sans-serif;
+    }
+    #mytext p{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 19px;
+    }
+    .text{
+        animation: FadeIn 2s;
+    }
+    @keyframes FadeIn{
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="jumbotron" id="jb1">
+    <h1>Protejeaza-te pe Maglo</h1>
+</div>
+<div class="text">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <nav id="navbar-example3" class="navbar navbar-light bg-light flex-column align-items-stretch p-3">
+                      <a href="{% url 'ajutor_si_contact' %}" style="display: block;color: black;font-family: 'Montserrat', sans-serif;padding-top: 25px;font-size: 23px;">Ajutor si Contact</a> 
+                      <a href="{% url 'politica_confi' %}" style="display: block;color: black;font-family: 'Montserrat', sans-serif;padding-top: 15px;font-size: 23px;">Politica de confidentialitate</a>
+                      <a href="{% url 'politica_cookie' %}" style="display: block;color: black;font-family: 'Montserrat', sans-serif;padding-top: 15px;font-size: 23px;">Politica de Cookie-uri</a>
+                      <a href="{% url 'termeni_si_conditii' %}" style="display: block;color: black;font-family: 'Montserrat', sans-serif;padding-top: 15px;font-size: 23px;">Termeni si Conditii</a>
+                      <a href="{% url 'securitate' %}" style="display: block;color: black;font-family: 'Montserrat', sans-serif;padding-top: 15px;font-size: 23px;">Protejeaza-te pe Maglo</a>
+                </nav>
+            </div>
+            <div class="col-lg-8 col-md-4 col-sm-6" id="mytext">
+                <h2 style="padding-top: 40px;">Atacuri de tip Phishing</h2>
+                <br>
+                <p>
+                    Phishingul este un tip de inginerie socială în care un atacator trimite un mesaj fraudulos („falsificat”) conceput pentru a păcăli o victimă umană să dezvăluie atacatorului informații sensibile sau să implementeze software rău intenționat pe infrastructura victimei, cum ar fi ransomware. Atacurile de phishing au devenit din ce în ce mai sofisticate și adesea reflectă în mod transparent site-ul vizat, permițându-i atacatorului să observe totul în timp ce victima navighează pe site și să traverseze orice frontieră de securitate suplimentară cu victima
+                </p>
+                <h5>Tipuri de atac Phishing</h5>
+                <br>
+                <p>1.Email phishing</p>
+                <p>
+                    Majoritatea mesajelor de phishing sunt livrate prin e-mail și nu sunt personalizate sau direcționate către o anumită persoană sau companie - acest lucru se numește phishing „în bloc”. Conținutul unui mesaj de phishing în bloc variază foarte mult în funcție de obiectivul atacatorului - țintele comune pentru uzurparea identității includ bănci și servicii financiare, furnizori de e-mail și cloud de productivitate și servicii de streaming.
+                </p>
+                <p>2.Spear phishing</p>
+                <p>
+                    Spear phishing implică un atacator care vizează direct o anumită organizație sau persoană cu e-mailuri de phishing adaptate. Aceasta este în esență crearea și trimiterea de e-mailuri către o anumită persoană pentru a face persoana să creadă că e-mailul este legitim. Spre deosebire de phishing-ul în vrac, atacatorii de phishing de tip spear adună și folosesc informații personale despre ținta lor pentru a-și crește probabilitatea de a reuși atacul.
+                </p>
+                <p>3.Clone phishing</p>
+                <p>
+                    Clone phishing este un tip de atac de phishing prin care un e-mail legitim și livrat anterior care conține un atașament sau un link a primit conținutul și adresele destinatarului și utilizate pentru a crea un e-mail aproape identic sau clonat.
+                </p>
+                <p>4.SMS phishing</p>
+                <p>
+                    SMS phishing este similar din punct de vedere conceptual cu phishingul prin e-mail, cu excepția faptului că atacatorii folosesc mesaje text pe telefonul mobil pentru a livra „momeala”. Atacurile înfricoșătoare invită de obicei utilizatorul să facă clic pe un link, să apeleze un număr de telefon sau să contacteze o adresă de e-mail furnizată de atacator prin mesaj SMS. Victima este apoi invitată să furnizeze datele sale private; adesea, acreditări către alte site-uri web sau servicii. Mai mult, datorită naturii browserelor mobile, este posibil ca adresele URL să nu fie complet afișate; acest lucru poate face mai dificilă identificarea unei pagini de logare nelegitime. [30] Deoarece piața telefoanelor mobile este acum saturată de smartphone-uri care au toate conectivitate rapidă la internet, un link rău intenționat trimis prin SMS poate produce același rezultat ca și dacă ar fi trimis prin e-mail. Mesajele de fum pot proveni de la numere de telefon care sunt într-un format ciudat sau neașteptat.
+                </p>
+                <p>5.Page hijacking</p>
+                <p>
+                    Page hijacking implică compromiterea paginilor web legitime pentru a redirecționa utilizatorii către un site web rău intenționat sau un kit de exploatare prin intermediul scripturilor cross site. Un hacker poate compromite un site web și introduce un kit de exploatare, cum ar fi MPack, pentru a compromite utilizatorii legitimi care vizitează serverul web acum compromis. Una dintre cele mai simple forme de deturnare a paginilor implică modificarea unei pagini web pentru a conține un cadru inline rău intenționat care poate permite încărcarea unui kit de exploatare.
+                </p>
+                <h5>Cum ne protejam de aceste atacuri?</h5>
+                <p>
+                    Puteti lua măsuri pentru a evita încercările de phishing modificând ușor obiceiurile de navigare. Când sunteți contactat cu privire la un cont care trebuie „verificat” (sau orice alt subiect utilizat de phishers), este o măsură de precauție sensibilă să contactați compania din care aparent e-mailul pentru a verifica dacă e-mailul este legitim. Alternativ, adresa pe care o știe persoana respectivă este site-ul web original al companiei și poate fi introdusă în bara de adrese a browserului, mai degrabă decât să aibă încredere în orice hyperlink din mesajul suspect de phishing.
+                </p>
+                <br>
+                <h2>Atacuri de tip MITM(Man-in-the-middle)</h2>
+                <br>
+                <p>
+                    MITM(Man-in-the-middle) este un atac cibernetic în care atacatorul transmite în secret și, eventual, modifică comunicările dintre două părți care cred că comunică direct între ele.
+                </p>
+                <h5>Cum ne protejam de acest atac?</h5>
+                <p>Atacurile MITM pot fi prevenite sau detectate prin două mijloace: autentificare și detectare manipulare. Autentificarea oferă un anumit grad de certitudine că un anumit mesaj a venit dintr-o sursă legitimă. Detectarea falsificării arată doar dovezi că un mesaj ar fi putut fi modificat.</p>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #334257;margin-bottom: 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Informatii</h3>
+                <br>
+                <a href="{% url 'ajutor_si_contact' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Ajutor si Contact</a>
+                <a href="{% url 'politica_confi' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de confidentialitate</a>
+                <a href="{% url 'politica_cookie' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de Cookie-uri</a>
+                <a href="{% url 'termeni_si_conditii' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Termeni si Conditii</a>
+                <a href="https://anpc.ro/" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">ANPC</a>
+            </div>
+            <br>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Date de contact</h3>
+                <br>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Email: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Date firma: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">CUI: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Registrul comertului: </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #151515;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;">
+    <div class="container">
+        <p style="font-size: 20px;font-family: Arial, Helvetica, sans-serif;color: aliceblue;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+    </div>
+</div>
+{% endblock %}

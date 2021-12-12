@@ -1,0 +1,156 @@
+{% extends 'my_app/base_adult.html' %}
+
+{% block head_block %}
+<style>
+    .block::before{
+        content: '';
+        width: 100%;
+        height: 760px;
+        background-image: linear-gradient(150deg, #53f 15%, #05d5ff 70%, #a6ffcb 94%);
+        transform: skewY(-12deg);
+        transform-origin: 0;
+        position: absolute;
+        top: 0;
+        z-index: -6;
+        margin-bottom: 0px;
+    }
+    .text{
+        color: aliceblue;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 50px;
+        position: relative;
+        padding-top: 15rem;
+        display: block;
+    }
+    #my_container{
+        margin-top: 22rem;
+    }
+    #my_jumbotron_2{
+        background-color: #F9E0AE;
+        padding: 0px 0px 30px 0px;
+        margin-top: 40px;
+    }
+    #my_jumbotron_1{
+        padding: 0px 0px 30px 0px;
+        margin-top: 40px;
+    }
+    #my_jumbotron_1 h1{
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        color: #0F52BA;
+    }
+    #jb1{
+        margin: 0px 0px 0px 0px;
+        background-color: #38c5c7;
+    }
+    #jb2{
+        margin: 0px 0px 0px 0px;
+        background-color: #FFC93C;
+    }
+    #my_jumbotron_2 h1{
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        color: #0F52BA;
+    }
+    .header_2{
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        font-size: 40px;
+    }
+    .param_1{
+        font-size: 23px;
+        font-family: 'Montserrat', sans-serif;
+        padding-top: 40px;
+        padding-left: 20px;
+    }
+    #btn1{
+        margin: 20px auto 30px;
+    }
+    #btn2{
+        margin: 20px auto 30px;
+    }
+    #image1{
+        width: 450px;
+        height: 370px;
+        position: absolute;
+        transform: skewY(-10deg);
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="block">
+    <div class="text">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-4 col-sm-6">
+                    <h1>Posteaza anuntul tau</h1>
+                    <h1>dorit</h1>
+                </div>
+                <div class="col-lg-6 col-md-4 col-sm-6">
+                    <img src="https://stripe.com/img/v3/home/app-illustrations/salesforce.svg" id="image1">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" id="my_container">
+    <div class="row">
+        <div class="col-lg-6 col-md-4 col-sm-6">
+            <div class="jumbotron" id="my_jumbotron_1">
+                <div class="jumbotron" id="jb1">
+                    <h1>Basic</h1>
+                </div>
+                <h2 class="header_2">4.99€</h2>
+                <hr>
+                <p class="param_1">❌  Nu aveti dreptul sa postati anunturi nelimitate</p>
+                <br>
+                <a href="" class="btn btn-outline-success btn-block btn-lg" id="btn1">Plateste</a>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-4 col-sm-6">
+            <div class="jumbotron" id="my_jumbotron_2">
+                <div class="jumbotron" id="jb2">
+                    <h1>Abonament</h1>
+                </div>
+                <h2 class="header_2">14.99€</h2>
+                <hr>
+                <p class="param_1">✅   Aveti dreptul sa postati anunturi nelimitate</p>
+                <br>
+                <a href="" class="btn btn-outline-success btn-block btn-lg" id="btn2">Plateste</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #334257;margin-bottom: 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Informatii</h3>
+                <br>
+                <a href="{% url 'ajutor_si_contact' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Ajutor si Contact</a>
+                <a href="{% url 'politica_confi' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de confidentialitate</a>
+                <a href="{% url 'politica_cookie' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de Cookie-uri</a>
+                <a href="{% url 'termeni_si_conditii' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Termeni si Conditii</a>
+                <a href="{% url 'securitate' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Protejeaza-te pe Maglo</a>
+                <a href="https://anpc.ro/" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">ANPC</a>
+            </div>
+            <br>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Date de contact</h3>
+                <br>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Email: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Date firma: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">CUI: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Registrul comertului: </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #151515;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;">
+    <div class="container">
+        <p style="font-size: 20px;font-family: Arial, Helvetica, sans-serif;color: aliceblue;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+    </div>
+</div>
+{% endblock %}

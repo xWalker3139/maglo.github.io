@@ -1,0 +1,951 @@
+{% extends 'my_app/base_copil.html' %}
+
+{% block head_block %}
+<style>
+    .card{
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+    }
+    .card:hover{
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+    }
+    .card-text{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+    }
+    .card-title{
+        font-family: 'Montserrat', sans-serif;
+    }
+    #hd1{
+        font-family: 'Montserrat', sans-serif;
+    }
+    #param1{
+        font-family: 'Montserrat', sans-serif;
+        padding-bottom: 10px;
+    }
+    #param2{
+        font-family: 'Montserrat', sans-serif;
+        padding-top: 10px;
+    }
+    #jb1{
+        background-color: white;
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+    }
+    #jb1:hover{
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+    }
+    .jumbotron ul li a{
+        font-family: 'Montserrat', sans-serif;
+        text-decoration: none;
+        color: #3E00FF;
+    }
+    .form-control{
+        height: 60px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .input-group{
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    }
+    .input-group-text{
+        background-color: white;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        padding-left: 18px;
+    }
+    .input-group-text i{
+        padding-left: 13px;
+        font-size: 20px;
+        padding-right: 10px;
+    }
+    .input-group-text:hover{
+        background-color: #A683E3;
+        color: white;
+    }
+    #jb2{
+        font-family: 'Montserrat', sans-serif;
+    }
+    .row a{
+        text-decoration: none;
+        color: black;
+    }
+    .row a p{
+        padding-left: 45px;
+        font-size: 23px;
+        padding-top: 10px;
+    }
+    .row a:hover{
+        color: #A683E3;
+    }
+    #img1:hover{
+        animation: FadeIn 3s;
+    }
+    #img2:hover{
+        animation: FadeIn 3s;
+    }
+    #img3:hover{
+        animation: FadeIn 3s;
+    }
+    #img4:hover{
+        animation: FadeIn 3s;
+    }
+    #img5:hover{
+        animation: FadeIn 3s;
+    }
+    #img6:hover{
+        animation: FadeIn 3s;
+    }
+    #img7{
+        width: 100%;
+        height: 250px;
+    }
+    .new_form{
+        font-family: 'Montserrat', sans-serif;
+    }
+    .new_form a{
+        font-size: 18px;
+    }
+    .new_form a:hover{
+        border-bottom: 2px solid #A683E3;
+    }
+    .new_bg a i{
+        padding-top: 10px;
+    }
+    @keyframes FadeIn{
+        from{
+            transform: rotateY(0deg);
+        }to{
+            transform: rotateY(180deg);
+        }
+    }
+    .wrapper{
+  max-width: 100%;
+}
+.wrapper .search-input{
+  background: #fff;
+  width: 100%;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  font-family: 'Montserrat', sans-serif;
+}
+.search-input input{
+  height: 70px;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 0 60px 0 130px;
+  font-size: 18px;
+  box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+}
+.search-input.active input{
+  border-radius: 5px 5px 0 0;
+}
+.search-input .autocom-box{
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  max-height: 280px;
+  overflow-y: auto;
+}
+.search-input.active .autocom-box{
+  padding: 10px 8px;
+  opacity: 1;
+  pointer-events: auto;
+}
+.autocom-box li{
+  list-style: none;
+  padding: 8px 12px;
+  display: none;
+  width: 100%;
+  cursor: default;
+  border-radius: 3px;
+}
+.search-input.active .autocom-box li{
+  display: block;
+}
+.autocom-box li:hover{
+  background: #efefef;
+}
+.search-input .icon{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 70px;
+  width: 120px;
+  text-align: center;
+  line-height: 55px;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: white;
+  padding-left: 13px;
+  padding-right: 10px;
+  padding-top: 7px;
+  border-right: 0.6px solid rgb(173, 169, 169);
+}
+.search-input .icon:hover{
+  background-color: #A683E3;
+  color: white;
+}
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="jumbotron" style="margin-bottom: 0px;background-color: aliceblue;">
+    <div class="container">
+        <form method="POST" class="form-group" action="">
+            {% csrf_token %}
+            <div class="wrapper">
+                <div class="search-input">
+                  <a href="" target="_blank" hidden></a>
+                  <input type="search" placeholder="Cauta anuntul dorit" name="cautat_copil">
+                  <div class="autocom-box">
+                    <!-- here list are inserted from javascript -->
+                  </div>
+                  <div class="icon"><strong>Cauta </strong> <i class="fas fa-search-dollar"></i> </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="jumbotron" style="margin-top: 0px;" id="jb2">
+    <div class="container">
+        <h1 style="text-align: center;margin: auto auto 40px auto;font-family: 'Montserrat', sans-serif;"><strong>Categorii</strong></h1>
+        <br>
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <a href="">
+                    <img src="https://images.unsplash.com/photo-1476275466078-4007374efbbe?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGJvb2tzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" style="border-radius: 100%;width: 150px;height: 120px;" id="img1">
+                    <p>Carti</p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <a href="">
+                    <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHRveXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" style="border-radius: 100%;width: 150px;height: 120px;" id="img2">
+                    <p>Jucării</p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <a href="">
+                    <img src="https://images.unsplash.com/photo-1620799139652-715e4d5b232d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTY0fHxjbG90aGVzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" style="border-radius: 100%;width: 150px;height: 120px;" id="img3">
+                    <p>Haine</p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <a href="">
+                    <img src="https://images.unsplash.com/photo-1508772382388-0b8fc7f7edb5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzh8fGJpa2VzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" style="border-radius: 100%;width: 150px;height: 120px;" id="img4">
+                    <p style="padding-left: 0px;">Arcticole sportive</p>
+                </a>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <a href="">
+                    <img src="https://images.unsplash.com/photo-1626245550585-0b8d640da77f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Y2hhbmdlc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" style="border-radius: 100%;width: 150px;height: 120px;" id="img5">
+                    <p style="padding-left: 20px;">Schimburi</p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <a href="">
+                    <img src="https://images.unsplash.com/photo-1635528047872-06f167fd5d8f?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzNHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" style="border-radius: 100%;width: 150px;height: 120px;" id="img6">
+                    <p style="padding-left: 5px;">Mama si copil</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <br>
+    <h1 style="font-family: 'Montserrat', sans-serif; text-align: center;"><strong>Anunturi promovate</strong></h1>
+    <br>
+    {% if cautat_copil %}
+    <h2 style="font-family: 'Montserrat', sans-serif;">Ai cautat pentru '{{cautat_copil}}'</h2>
+    <br>
+    {% endif %}
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="jumbotron" id="jb1">
+                <h3 id="hd1"><strong>Filtreaza</strong></h3>
+                <hr>
+                <br>
+                <h4 id="param1">Categorie: </h4>
+                <form method="POST" class="new_form">
+                    {% csrf_token %}
+                    <a href="{% url 'my_app:carti_copil' %}">
+                        <i class="fas fa-chevron-right" id="fas"></i>
+                        <label for="carti">Carti</label>
+                    </a>
+                    <br>
+                    <a href="{% url 'my_app:jucarii_copil' %}">
+                        <i class="fas fa-chevron-right" id="fas"></i>
+                        <label for="jucarii">Jucării</label>
+                    </a>
+                    <br>
+                    <a href="">
+                        <i class="fas fa-chevron-right" id="fas"></i>
+                        <label for="haine">Haine</label>
+                    </a>
+                    <br>
+                    <a href="">
+                        <i class="fas fa-chevron-right" id="fas"></i>
+                        <label for="articole sportive">Articole sportive</label>
+                    </a>
+                    <br>
+                    <a href="">
+                        <i class="fas fa-chevron-right" id="fas"></i>
+                        <label for="schimburi">Schimburi</label>
+                    </a>
+                    <br>
+                    <a href="">
+                        <i class="fas fa-chevron-right" id="fas"></i>
+                        <label for="mama si copil">Mama si copil</label>
+                    </a>
+                    <br>
+                    <h4 id="param2">Judete: </h4>
+                    <div class="new_bg">
+                        <a href="#demo" data-toggle="collapse"><i class="fas fa-chevron-right" id="fas"></i> <a href="{% url 'judet_alba_copil' %}">Alba</a></a>
+                        <div id="demo" class="collapse">
+                            <ul>
+                                <li>Abrud</li>
+                                <li>Aiud</li>
+                                <li>Alba Iulia</li>
+                                <li>Baia de Aries</li>
+                                <li>Blaj</li>
+                                <li>Campeni</li>
+                                <li>Cugir</li>
+                                <li>Ocna Mures</li>
+                                <li>Sebes</li>
+                                <li>Teius</li>
+                                <li>Zlatna</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo2" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="{% url 'judet_arad_copil' %}">Arad</a></a>
+                        <div id="demo2" class="collapse">
+                            <ul>
+                                <li>Arad</li>
+                                <li>Chisineu Cris</li>
+                                <li>Curtici</li>
+                                <li>Ineu</li>
+                                <li>Lipova</li>
+                                <li>Nadlac</li>
+                                <li>Pancota</li>
+                                <li>Pecica</li>
+                                <li>Santana</li>
+                                <li>Sebes</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo3" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="{% url 'judet_arges_copil' %}">Arges</a></a>
+                        <div id="demo3" class="collapse">
+                            <ul>
+                                <li>Campulung</li>
+                                <li>Costesti</li>
+                                <li>Curtea de Arges</li>
+                                <li>Mioveni</li>
+                                <li>Pitesti</li>
+                                <li>Stefanesti</li>
+                                <li>Topoloveni</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo4" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="{% url 'judet_bacau_copil' %}">Bacau</a></a>
+                        <div id="demo4" class="collapse">
+                            <ul>
+                                <li>Bacau</li>
+                                <li>Buhusi</li>
+                                <li>Comanesti</li>
+                                <li>Darmanesti</li>
+                                <li>Moinesti</li>
+                                <li>Onesti</li>
+                                <li>Slanic-Moldova</li>
+                                <li>Targu Ocna</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo5" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="{% url 'judet_bihor_copil' %}">Bihor</a></a>
+                        <div id="demo5" class="collapse">
+                            <ul>
+                                <li>Alesd</li>
+                                <li>Beius</li>
+                                <li>Marghita</li>
+                                <li>Nucet</li>
+                                <li>Oradea</li>
+                                <li>Sacueni</li>
+                                <li>Salonta</li>
+                                <li>Stei</li>
+                                <li>Valea lui Mihai</li>
+                                <li>Vascau</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo6" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="{% url 'judet_bistrita_copil' %}">Bistrita-Nasaud</a></a>
+                        <div id="demo6" class="collapse">
+                            <ul>
+                                <li>Beclean</li>
+                                <li>Bistrita</li>
+                                <li>Nasaud</li>
+                                <li>Sangeorz-Bai</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo7" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="{% url 'judet_botosani_copil' %}">Botosani</a></a>
+                        <div id="demo7" class="collapse">
+                            <ul>
+                                <li>Botosani</li>
+                                <li>Bucecea</li>
+                                <li>Darabani</li>
+                                <li>Dorohoi</li>
+                                <li>Flamanzi</li>
+                                <li>Slaveni</li>
+                                <li>Stefanesti</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo8" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="{% url 'judet_braila_copil' %}">Braila</a></a>
+                        <div id="demo8" class="collapse">
+                            <ul>
+                                <li>Braila</li>
+                                <li>Faurei</li>
+                                <li>Ianca</li>
+                                <li>Insuratei</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo9" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="{% url 'judet_brasov_copil' %}">Brasov</a></a>
+                        <div id="demo9" class="collapse">
+                            <ul>
+                                <li>Bran</li>
+                                <li>Brasov</li>
+                                <li>Codlea</li>
+                                <li>Fagaras</li>
+                                <li>Ghimbav</li>
+                                <li>Predeal</li>
+                                <li>Rasnov</li>
+                                <li>Rupea</li>
+                                <li>Sacele</li>
+                                <li>Victoria</li>
+                                <li>Zarnesti</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo10" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="{% url 'judet_bucuresti_copil' %}">Bucuresti-Ilfov</a></a>
+                        <br>
+                        <a href="#demo11" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="{% url 'judet_buzau_copil' %}">Buzau</a></a>
+                        <div id="demo11" class="collapse">
+                            <ul>
+                                <li>Buzau</li>
+                                <li>Nehoiu</li>
+                                <li>Patarlagele</li>
+                                <li>Pogoanele</li>
+                                <li>Ramnicu Sarat</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo12" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="{% url 'judet_calarasi_copil' %}">Calarasi</a></a>
+                        <div id="demo12" class="collapse">
+                            <ul>
+                                <li>Budesti</li>
+                                <li>Calarasi</li>
+                                <li>Fundulea</li>
+                                <li>Lehliu-Gara</li>
+                                <li>Oltenita</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo13" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="{% url 'judet_caras_copil' %}">Caras-Severin</a></a>
+                        <div id="demo13" class="collapse">
+                            <ul>
+                                <li>Anina</li>
+                                <li>Baile Herculane</li>
+                                <li>Bocsa</li>
+                                <li>Caransebes</li>
+                                <li>Moldova Noua</li>
+                                <li>Oravita</li>
+                                <li>Otelu Rosu</li>
+                                <li>Resita</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo14" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="{% url 'judet_cluj_copil' }">Cluj</a></a>
+                        <div id="demo14" class="collapse">
+                            <ul>
+                                <li>Campia Turzii</li>
+                                <li>Cluj-Napoca</li>
+                                <li>Dej</li>
+                                <li>Gherla</li>
+                                <li>Huedin</li>
+                                <li>Turda</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo15" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="{% url 'judet_constanta_copil' %}">Constanta</a></a>
+                        <div id="demo15" class="collapse">
+                            <ul>
+                                <li>Baneasa</li>
+                                <li>Cernavoda</li>
+                                <li>Constanta</li>
+                                <li>Eforie</li>
+                                <li>Harsova</li>
+                                <li>Mangalia</li>
+                                <li>Medgidia</li>
+                                <li>Murfatlar</li>
+                                <li>Navodari</li>
+                                <li>Negru Voda</li>
+                                <li>Ovidiu</li>
+                                <li>Techirghiol</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo16" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="{% url 'judet_covasna_copil' %}">Covasna</a></a>
+                        <div id="demo16" class="collapse">
+                            <ul>
+                                <li>Baraolt</li>
+                                <li>Covasna</li>
+                                <li>Intorsura Buzaului</li>
+                                <li>Sfantu Gheorghe</li>
+                                <li>Targu Secuiesc</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo17" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="{% url 'judet_dambovita_copil' %}">Dambovita</a></a>
+                        <div id="demo17" class="collapse">
+                            <ul>
+                                <li>Fieni</li>
+                                <li>Gaesti</li>
+                                <li>Moreni</li>
+                                <li>Pucioasa</li>
+                                <li>Racari</li>
+                                <li>Targoviste</li>
+                                <li>Titu</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo18" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Dolj</a></a>
+                        <div id="demo18" class="collapse">
+                            <ul>
+                                <li>Bailesti</li>
+                                <li>Bechet</li>
+                                <li>Calafat</li>
+                                <li>Craiova</li>
+                                <li>Dabuleni</li>
+                                <li>Filiasi</li>
+                                <li>Segarcea</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo19" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Galati</a></a>
+                        <div id="demo19" class="collapse">
+                            <ul>
+                                <li>Beresti</li>
+                                <li>Galati</li>
+                                <li>Targu Bujor</li>
+                                <li>Tecuci</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo20" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Giurgiu</a></a>
+                        <div id="demo20" class="collapse">
+                            <ul>
+                                <li>Bolintin Vale</li>
+                                <li>Giurgiu</li>
+                                <li>Mihailesti</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo21" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Gorj</a></a>
+                        <div id="demo21" class="collapse">
+                            <ul>
+                                <li>Bumbesti Jiu</li>
+                                <li>Motru</li>
+                                <li>Novaci</li>
+                                <li>Rovinari</li>
+                                <li>Targu Carbunesti</li>
+                                <li>Targu Jiu</li>
+                                <li>Ticleni</li>
+                                <li>Tismana</li>
+                                <li>Turceni</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo22" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Harghita</a></a>
+                        <div id="demo22" class="collapse">
+                            <ul>
+                                <li>Baile Tusnad</li>
+                                <li>Balan</li>
+                                <li>Borsec</li>
+                                <li>Cristuru Secuiesc</li>
+                                <li>Gheorgheni</li>
+                                <li>Miercurea-Ciuc</li>
+                                <li>Odorheiu Secuiesc</li>
+                                <li>Toplita</li>
+                                <li>Vlahita</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo23" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Hunedoara</a></a>
+                        <div id="demo23" class="collapse">
+                            <ul>
+                                <li>Aninoasa</li>
+                                <li>Brad</li>
+                                <li>Calan</li>
+                                <li>Deva</li>
+                                <li>Geoagiu</li>
+                                <li>Hateg</li>
+                                <li>Hunedoara</li>
+                                <li>Lupeni</li>
+                                <li>Orastie</li>
+                                <li>Petrila</li>
+                                <li>Petrosani</li>
+                                <li>Simeria</li>
+                                <li>Uricani</li>
+                                <li>Vulcan</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo24" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Ialomita</a></a>
+                        <div id="demo24" class="collapse">
+                            <ul>
+                                <li>Amara</li>
+                                <li>Cazanesti</li>
+                                <li>Fetesti</li>
+                                <li>Fierbinti-Targ</li>
+                                <li>Slobozia</li>
+                                <li>Tandariei</li>
+                                <li>Urziceni</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo25" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Iasi</a></a>
+                        <div id="demo25" class="collapse">
+                            <ul>
+                                <li>Harlau</li>
+                                <li>Iasi</li>
+                                <li>Pascani</li>
+                                <li>Podul Iloaiei</li>
+                                <li>Targu Frumos</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo26" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Maramures</a></a>
+                        <div id="demo26" class="collapse">
+                            <ul>
+                                <li>Baia Mare</li>
+                                <li>Baia Sprie</li>
+                                <li>Borsa</li>
+                                <li>Cavnic</li>
+                                <li>Dragomiresti</li>
+                                <li>Salistea de Sus</li>
+                                <li>Seini</li>
+                                <li>Sighetu Marmatiei</li>
+                                <li>Somcuta Mare</li>
+                                <li>Targu Lapus</li>
+                                <li>Ulmeni</li>
+                                <li>Viseu de Sus</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo27" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Mehedinti</a></a>
+                        <div id="demo27" class="collapse">
+                            <ul>
+                                <li>Baia de Arama</li>
+                                <li>Drobeta-Turnu Severin</li>
+                                <li>Orsova</li>
+                                <li>Strehaia</li>
+                                <li>Vanju Mare</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo28" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Mures</a></a>
+                        <div id="demo28" class="collapse">
+                            <ul>
+                                <li>Iernut</li>
+                                <li>Ludus</li>
+                                <li>Miercurea Nirajului</li>
+                                <li>Reghin</li>
+                                <li>Sangeorgiu de Padure</li>
+                                <li>Sarmasu</li>
+                                <li>Sighisoara</li>
+                                <li>Sovata</li>
+                                <li>Targu Mures</li>
+                                <li>Ungheni</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo29" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Neamt</a></a>
+                        <div id="demo29" class="collapse">
+                            <ul>
+                                <li>Bicaz</li>
+                                <li>Piatra Neamt</li>
+                                <li>Roman</li>
+                                <li>Roznov</li>
+                                <li>Targu Neamt</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo30" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Olt</a></a>
+                        <div id="demo30" class="collapse">
+                            <ul>
+                                <li>Bals</li>
+                                <li>Caracal</li>
+                                <li>Corabia</li>
+                                <li>Draganesti-Olt</li>
+                                <li>Piatra-Olt</li>
+                                <li>Potcoava</li>
+                                <li>Scornicesti</li>
+                                <li>Slatina</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo31" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Prahova</a></a>
+                        <div id="demo31" class="collapse">
+                            <ul>
+                                <li>Azuga</li>
+                                <li>Baicoi</li>
+                                <li>Boldesti-Scaeni</li>
+                                <li>Breaza</li>
+                                <li>Busteni</li>
+                                <li>Campina</li>
+                                <li>Comarnic</li>
+                                <li>Ploiesti</li>
+                                <li>Plopeni</li>
+                                <li>Sinaia</li>
+                                <li>Slanic</li>
+                                <li>Valenii de Munte</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo32" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Salaj</a></a>
+                        <div id="demo32" class="collapse">
+                            <ul>
+                                <li>Cehu Silvaniei</li>
+                                <li>Jibou</li>
+                                <li>Simleu Silvaniei</li>
+                                <li>Zalau</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo33" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Satu Mare</a></a>
+                        <div id="demo33" class="collapse">
+                            <ul>
+                                <li>Ardud</li>
+                                <li>Carei</li>
+                                <li>Livada</li>
+                                <li>Negresti-Oas</li>
+                                <li>Satu Mare</li>
+                                <li>Tasnad</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo34" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Sibiu</a></a>
+                        <div id="demo34" class="collapse">
+                            <ul>
+                                <li>Agnita</li>
+                                <li>Avrig</li>
+                                <li>Cisnadie</li>
+                                <li>Dumbraveni</li>
+                                <li>Medias</li>
+                                <li>Miercurea Sibiului</li>
+                                <li>Ocna Sibiului</li>
+                                <li>Saliste</li>
+                                <li>Sibiu</li>
+                                <li>Talmaciu</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo35" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Suceava</a></a>
+                        <div id="demo35" class="collapse">
+                            <ul>
+                                <li>Brosteni</li>
+                                <li>Campulung Moldovenesc</li>
+                                <li>Falticeni</li>
+                                <li>Gura Homorului</li>
+                                <li>Radauti</li>
+                                <li>Salcea</li>
+                                <li>Siret</li>
+                                <li>Suceava</li>
+                                <li>Vatra Dornei</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo36" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Teleorman</a></a>
+                        <div id="demo36" class="collapse">
+                            <ul>
+                                <li>Alexandria</li>
+                                <li>Rosiorii de Vede</li>
+                                <li>Turnu Magurele</li>
+                                <li>Videle</li>
+                                <li>Zimnicea</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo37" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Timis</a></a>
+                        <div id="demo37" class="collapse">
+                            <ul>
+                                <li>Buzias</li>
+                                <li>Deta</li>
+                                <li>Gataia</li>
+                                <li>Jimbolia</li>
+                                <li>Lugoj</li>
+                                <li>Recas</li>
+                                <li>Timisoara</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo38" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Valcea</a></a>
+                        <div id="demo38" class="collapse">
+                            <ul>
+                                <li>Babeni</li>
+                                <li>Balcesti</li>
+                                <li>Brezoi</li>
+                                <li>Calimanesti</li>
+                                <li>Dragasani</li>
+                                <li>Ramnicu Valcea</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo39" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Vaslui</a></a>
+                        <div id="demo39" class="collapse">
+                            <ul>
+                                <li>Barlad</li>
+                                <li>Husi</li>
+                                <li>Murgeni</li>
+                                <li>Negresti</li>
+                                <li>Vaslui</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo40" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="">Vrancea</a></a>
+                        <div id="demo40" data-toggle="collapse">
+                            <ul>
+                                <li>Adjud</li>
+                                <li>Focsani</li>
+                                <li>Marasesti</li>
+                                <li>Odobesti</li>
+                                <li>Panciu</li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-4 col-sm-6">
+        {% for anunt in model %}
+                <div class="card">
+                    <img class="card-img-top" src="{{ anunt.imagine.url }}" id="img7">
+                    <br>
+                    <div class="card-body">
+                        <h3 class="card-title">Titlul: {{anunt.titlul}}</h3>
+                        <hr>
+                        <p class="card-text">Judet: {{anunt.localizare}}</p>
+                        <p class="card-text">Categorie: {{anunt.categorie_copil}}</p>
+                        <br>
+                        <a href="{% url 'my_app:pag_anunturi_postate' pk=anunt.pk %}" class="btn btn-outline-primary btn-block" style="font-family: 'Montserrat', sans-serif;">Vezi anuntul</a>
+                        <br>
+                    </div>
+                </div>
+                <br>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #334257;margin-bottom: 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Informatii</h3>
+                <br>
+                <a href="{% url 'ajutor_si_contact' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Ajutor si Contact</a>
+                <a href="{% url 'politica_confi' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de confidentialitate</a>
+                <a href="{% url 'politica_cookie' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de Cookie-uri</a>
+                <a href="{% url 'termeni_si_conditii' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Termeni si Conditii</a>
+                <a href="{% url 'securitate' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Protejeaza-te pe Maglo</a>
+                <a href="https://anpc.ro/" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">ANPC</a>
+            </div>
+            <br>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Date de contact</h3>
+                <br>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Email: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Date firma: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">CUI: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Registrul comertului: </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #151515;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;">
+    <div class="container">
+        <p style="font-size: 20px;font-family: Arial, Helvetica, sans-serif;color: aliceblue;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+    </div>
+</div>
+<script>
+    const searchWrapper = document.querySelector(".search-input");
+const inputBox = searchWrapper.querySelector("input");
+const suggBox = searchWrapper.querySelector(".autocom-box");
+const icon = searchWrapper.querySelector(".icon");
+let linkTag = searchWrapper.querySelector("a");
+let webLink;
+// if user press any key and release
+inputBox.onkeyup = (e)=>{
+    let userData = e.target.value; //user enetered data
+    let emptyArray = [];
+    if(userData){
+        icon.onclick = ()=>{
+            webLink = ``;
+            linkTag.setAttribute("href", webLink);
+            linkTag.click();
+        }
+        emptyArray = suggestions.filter((data)=>{
+            //filtering array value and user characters to lowercase and return only those words which are start with user enetered chars
+            return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
+        });
+        emptyArray = emptyArray.map((data)=>{
+            // passing return data inside li tag
+            return data = `<li>${data}</li>`;
+        });
+        searchWrapper.classList.add("active"); //show autocomplete box
+        showSuggestions(emptyArray);
+        let allList = suggBox.querySelectorAll("li");
+        for (let i = 0; i < allList.length; i++) {
+            //adding onclick attribute in all li tag
+            allList[i].setAttribute("onclick", "select(this)");
+        }
+    }else{
+        searchWrapper.classList.remove("active"); //hide autocomplete box
+    }
+}
+function select(element){
+    let selectData = element.textContent;
+    inputBox.value = selectData;
+    icon.onclick = ()=>{
+        webLink = `https://www.google.com/search?q=${selectData}`;
+        linkTag.setAttribute("href", webLink);
+        linkTag.click();
+    }
+    searchWrapper.classList.remove("active");
+}
+function showSuggestions(list){
+    let listData;
+    if(!list.length){
+        userValue = inputBox.value;
+        listData = `<li>${userValue}</li>`;
+    }else{
+      listData = list.join('');
+    }
+    suggBox.innerHTML = listData;
+}
+let suggestions = [
+    'Haine',
+    'Carti',
+    'Jucarii',
+    'Articole sportive',
+    'Schimburi',
+    'Mama si copil',
+];
+</script>
+{% endblock %}

@@ -1,0 +1,166 @@
+{% extends 'my_app/base.html' %}
+
+{% block head_block %}
+<style>
+    #jb1{
+        text-align: center;
+        background-image: linear-gradient(-120deg, #b4d5ee, #A683E3);
+        font-family: 'Montserrat', sans-serif;
+    }
+    #item-3{
+        font-family: 'Montserrat', sans-serif;
+        padding-top: 40px;
+    }
+    #item-3-1{
+        font-family: 'Montserrat', sans-serif;
+    }
+    #item-3-2{
+        font-family: 'Montserrat', sans-serif;
+    }
+    #item-3-3{
+        font-family: 'Montserrat', sans-serif;
+    }
+    #item-3-4{
+        font-family: 'Montserrat', sans-serif;
+    }
+    #scrollspy p{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+    }
+    .animation{
+        animation: FadeIn 2s;
+    }
+    @keyframes FadeIn{
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
+    .text{
+        animation: Fade-In 2s;
+    }
+    @keyframes Fade-In{
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="jumbotron" id="jb1">
+    <div class="animation">
+        <h1>Termeni si Conditii</h1>
+    </div>
+</div>
+<div class="text">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <nav id="navbar-example3" class="navbar navbar-light bg-light flex-column align-items-stretch p-3">
+                      <a href="{% url 'ajutor_si_contact' %}" style="display: block;color: black;font-family: 'Montserrat', sans-serif;padding-top: 25px;font-size: 23px;">Ajutor si Contact</a> 
+                      <a href="{% url 'politica_confi' %}" style="display: block;color: black;font-family: 'Montserrat', sans-serif;padding-top: 15px;font-size: 23px;">Politica de confidentialitate</a>
+                      <a href="{% url 'politica_cookie' %}" style="display: block;color: black;font-family: 'Montserrat', sans-serif;padding-top: 15px;font-size: 23px;">Politica de Cookie-uri</a>
+                      <a href="{% url 'securitate' %}" style="display: block;color: black;font-family: 'Montserrat', sans-serif;padding-top: 15px;font-size: 23px;">Protejeaza-te pe Maglo</a>
+                      <a href="#item-3" style="display: block;color: black;font-family: 'Montserrat', sans-serif;padding-top: 15px;font-size: 23px;">Termeni si Conditii</a>
+                      <nav class="nav nav-pills flex-column">
+                        <ul>
+                            <li>
+                                <a class="nav-link ms-3 my-1" href="#item-3-1" style="color: black;font-family: 'Montserrat', sans-serif;">Contul Maglo</a>
+                            </li>
+                            <li>
+                                <a class="nav-link ms-3 my-1" href="#item-3-2" style="color: black;font-family: 'Montserrat', sans-serif;">Aplicatia mobila</a>
+                            </li>
+                            <li>
+                                <a class="nav-link ms-3 my-1" href="#item-3-3" style="color: black;font-family: 'Montserrat', sans-serif;">Informatiile oferite prin intermediul platformei</a>
+                            </li>
+                            <li>
+                                <a class="nav-link ms-3 my-1" href="#item-3-4" style="color: black;font-family: 'Montserrat', sans-serif;">Conduita utilizatorului</a>
+                            </li>
+                        </ul>
+                      </nav>
+                    </nav>
+                  </nav>
+            </div>
+            <div class="col-lg-8 col-md-4 col-sm-6">
+                <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" tabindex="0" class="new_animation" id="scrollspy">
+                    <h2 id="item-3">Drepturile asupra continutului platformei</h2>
+                    <br>
+                    <p>Maglo detine drepturi complete si depline asupra titlului de proprietate si prin aceasta toate drepturile de autor si cele brevetate. Nu aveti dreptul sa redistribuiti, vindeti, decompilati, dezasamblati aplicatia software într-o forma perceptibila de catre oameni.</p>
+                    <p>Toate informatiile, produsele sau aplicatiile continute în acest site sunt proprietatea Maglo, care îsi rezerva dreptul de a modifica continutul si/sau structura site-ului în orice moment si fara nici o informare prealabila.</p>
+                    <p>Întregul continut al platformei Maglo este protejat prin legea drepturilor de autor, toate drepturile fiind rezervate. Toate drepturile referitoare la pagini, continutul si prezentarea site-ului sunt detinute de Maglo. Este interzisa copierea, modificarea, afisarea, distribuirea, transmiterea, publicarea, comercializarea, licentierea, crearea unor materiale derivate sau utilizarea continutului site-ului în orice scop fara confirmarea scrisa din partea Maglo.
+
+                        Accesul si utilizarea paginii Maglo sunt gratuite si au scopul de a veni in ajutorul utilizatorilor pentru a gasi informatiile necesare în cel mai usor si rapid mod posibil, conform cerintelor fiecaruia.</p>
+                    <br>
+                    <h2 id="item-3-1">
+                        Contul Maglo
+                    </h2>
+                    <br>
+                    <p>
+                        Trebuie să creați un cont pentru a avea acces la serviciile și funcționalitățile pe care le putem stabili și întreține din când în când și la propria noastră discreție. Nu puteți utiliza niciodată contul altui utilizator fără permisiunea sa. Sunteți singurul responsabil pentru activitatea care se desfășoară în contul dvs. și trebuie să păstrați parola contului în siguranță. Trebuie să anunțați Maglo imediat despre orice încălcare a securității sau utilizarea neautorizată a contului dvs. Maglo nu va fi responsabil pentru pierderile cauzate de utilizarea neautorizată a contului dvs.
+                    </p>
+                    <br>
+                    <h2 id="item-3-2">Aplicatia mobila</h2>
+                    <br>
+                    <p>Putem pune la dispoziție software pentru a accesa Maglo printr-un dispozitiv mobil („Software mobil”). Pentru a utiliza software-ul mobil trebuie să aveți un dispozitiv mobil compatibil cu Maglo. Maglo nu garantează că software-ul mobil va fi compatibil cu dispozitivul dvs. mobil. Maglo vă acordă prin prezenta o licență revocabilă neexclusivă, netransferabilă, pentru a utiliza o copie de cod compilată a software-ului mobil pentru un cont Maglo pe un dispozitiv mobil deținut sau închiriat numai de dvs., pentru uz personal, necomercial.</p>
+                    <p>
+                        Nu aveți voie să: (i)  revindeti, sublicențiati, distribuiti sau transferati în alt mod Software-ul mobil către o terță parte sau folosește Software-ul mobil pentru a furniza partajarea timpului sau servicii similare pentru orice terță parte; (ii) să se facă orice copii ale software-ului mobil; (iii) eliminati, eludati, dezactivati, deteriorati sau interfati în alt mod cu funcțiile legate de securitate ale software-ului mobil, caracteristici care împiedică sau restricționează utilizarea sau copierea oricărui conținut accesibil prin intermediul software-ului mobil sau caracteristici care impun limitări de utilizare a dispozitivului mobil;(v) ștergeți notificările privind drepturile de autor și / sau alte drepturi de proprietate pe Software-ul mobil.
+                    </p>
+                    <br>
+                    <h2 id="item-3-3">Informatiile oferite prin intermediul platformei</h2>
+                    <br>
+                    <p>Legea 363/2018 reglementează prelucrarea datelor cu caracter personal în scopul realizării activităților de prevenire, descoperire, cercetare, urmărire penală și combatere a infracțiunilor, de executare a pedepselor, măsurilor educative și de siguranță, precum și de menținere și asigurare a ordinii și siguranței publice de către autoritățile competente, în limitele competențelor stabilite prin lege.</p>
+                    <p>Prelucrarea datelor cu caracter personal pentru realizarea activităților de menținere și asigurare a ordinii și siguranței publice se realizează numai dacă acestea sunt prevăzute de lege și sunt necesare pentru prevenirea unui pericol cel puțin asupra vieții, integrității corporale sau sănătății unei persoane ori a proprietății acesteia, precum și pentru combaterea infracțiunilor.</p>
+                    <p>Termenii și expresiile de mai jos au următoarele semnificații:</p>
+                    <p>-date cu caracter personal - orice informații privind o persoană fizică identificată sau identificabilă, denumită în continuare persoană vizată; o persoană fizică identificabilă este o persoană care poate fi identificată, direct sau indirect, în special prin referire la un element de identificare, cum ar fi un nume, un număr de identificare, date de localizare, un identificator online, sau la unul sau mai multe elemente specifice proprii identității sale fizice, fiziologice, genetice, psihice, economice, culturale sau sociale;</p>
+                    <p>-prelucrare - orice operațiune sau set de operațiuni efectuate asupra datelor cu caracter personal sau seturilor de date cu caracter personal, cu sau fără utilizarea de mijloace automatizate, cum ar fi colectarea, înregistrarea, organizarea, structurarea, stocarea, adaptarea sau modificarea, extragerea, consultarea, utilizarea, dezvăluirea prin transmitere, diseminarea sau punerea la dispoziție în orice alt mod, alinierea sau combinarea, restricționarea, ștergerea sau distrugerea;</p>
+                    <p>-restricționarea prelucrării - marcarea datelor cu caracter personal stocate, cu scopul de a limita prelucrarea viitoare a acestora;</p>
+                    <p>-creare de profiluri - orice formă de prelucrare automată a datelor cu caracter personal care constă în utilizarea datelor cu caracter personal pentru a evalua anumite aspecte personale referitoare la o persoană fizică, în special pentru a analiza sau a preconiza aspecte privind performanța la locul de muncă, situația economică, sănătatea, preferințele personale, interesele, corectitudinea, comportamentul, localizarea sau deplasările respectivei persoane fizice;</p>
+                    <p>-sistem de evidență a datelor - orice set structurat de date cu caracter personal accesibile conform unor criterii specifice, fie ele centralizate, descentralizate sau repartizate după criterii funcționale sau geografice;</p>
+                    <p>-încălcarea securității datelor cu caracter personal - orice eveniment, acțiune sau inacțiune ce poate provoca o încălcare a securității, care duce, în mod accidental sau ilegal, la distrugerea, pierderea, modificarea, divulgarea neautorizată sau accesul neautorizat la datele cu caracter personal transmise, stocate sau prelucrate în alt mod;</p>
+                    <br>
+                    <h2 id="item-3-4">Conduita utilizatorului</h2>
+                    <br>
+                    <p>Nu puteți utiliza niciun „deep-link”, „page-scrape”, „robot”, „spider” sau alt dispozitiv automat, program, algoritm sau metodologie sau orice alt proces manual similar sau echivalent, pentru a accesa, achiziționa, copia sau să monitorizeze orice porțiune a Serviciilor sau Conținutului, sau să reproducă sau să ocolească în orice mod structura de navigare sau prezentarea platformei sau a oricărui Conținut, pentru a obține sau a încerca să obțină orice materiale, documente sau informații prin orice mijloace care nu sunt puse la dispoziție în mod intenționat prin intermediul Serviciilor . Maglo își rezervă dreptul de a interzice orice astfel de activitate.</p>
+                    <p>Nu aveți posibilitatea să testați, să scanați sau să testați vulnerabilitatea Serviciilor sau a oricărei rețele conectate la Servicii și să nu încălcați măsurile de securitate sau autentificare ale Serviciilor sau ale oricărei rețele conectate la Servicii. Nu puteți inversa căutarea, urmărirea sau căutarea de urmărire a oricărei informații despre orice alt utilizator sau vizitator al Serviciilor sau a oricărui alt client al Maglo, sau exploatarea Serviciilor sau a oricărui serviciu sau informații puse la dispoziție sau oferite de sau prin intermediul Servicii, în orice mod în care scopul este să dezvăluie orice informație, inclusiv, dar fără a se limita la identificarea sau informațiile personale, altele decât informațiile dvs. proprii, astfel cum sunt prevăzute de Servicii.</p>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #334257;margin-bottom: 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Informatii</h3>
+                <br>
+                <a href="{% url 'ajutor_si_contact' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Ajutor si Contact</a>
+                <a href="{% url 'politica_confi' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de confidentialitate</a>
+                <a href="{% url 'politica_cookie' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de Cookie-uri</a>
+                <a href="{% url 'termeni_si_conditii' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Termeni si Conditii</a>
+                <a href="{% url 'securitate' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Protejeaza-te pe Maglo</a>
+                <a href="https://anpc.ro/" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">ANPC</a>
+            </div>
+            <br>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Date de contact</h3>
+                <br>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Email: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Date firma: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">CUI: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Registrul comertului: </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #151515;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;">
+    <div class="container">
+        <p style="font-size: 20px;font-family: Arial, Helvetica, sans-serif;color: aliceblue;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+    </div>
+</div>
+{% endblock %}

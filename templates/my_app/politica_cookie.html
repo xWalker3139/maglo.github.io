@@ -1,0 +1,175 @@
+{% extends 'my_app/base.html' %}
+
+{% block head_block %}
+<style>
+    #jb1{
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+        background-image: linear-gradient(-120deg, #b4d5ee, #A683E3);
+    }
+    .animate{
+        animation: FadeIn 2s;
+    }
+    .my_text h2{
+        font-family: 'Montserrat', sans-serif;
+    }
+    .my_text p{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 19px;
+    }
+    .my_text ul li{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 19px;
+    }
+    @keyframes FadeIn{
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
+    .text{
+        animation: Fade-In 2s;
+    }
+    @keyframes Fade-In{
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="banner">
+    <div class="jumbotron" id="jb1">
+        <div class="animate">
+            <h1>Politica de Cookie-uri</h1>
+        </div>
+    </div>
+</div>
+<div class="text">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <nav id="navbar-example3" class="navbar navbar-light bg-light flex-column align-items-stretch p-3">
+                      <a href="{% url 'ajutor_si_contact' %}" style="display: block;color: black;font-family: 'Montserrat', sans-serif;padding-top: 25px;font-size: 23px;">Ajutor si Contact</a> 
+                      <a href="{% url 'politica_confi' %}" style="display: block;color: black;font-family: 'Montserrat', sans-serif;padding-top: 15px;font-size: 23px;">Politica de confidentialitate</a>
+                      <a href="{% url 'politica_cookie' %}" style="display: block;color: black;font-family: 'Montserrat', sans-serif;padding-top: 15px;font-size: 23px;">Politica de Cookie-uri</a>
+                      <a href="{% url 'termeni_si_conditii' %}" style="display: block;color: black;font-family: 'Montserrat', sans-serif;padding-top: 15px;font-size: 23px;">Termeni si Conditii</a>
+                      <a href="{% url 'securitate' %}" style="display: block;color: black;font-family: 'Montserrat', sans-serif;padding-top: 15px;font-size: 23px;">Protejeaza-te pe Maglo</a>
+                    </nav>
+                </nav>
+            </div>
+            <div class="col-lg-8 col-md-4 col-sm-6">
+                <div class="my_text">
+                <h2>Ce sunt cookie-urile?</h2>
+                <br>
+                <p>Un "internet Cookie" (termen cunoscut si sub denumirea de "browser cookie" sau "HTTP cookie" ori pur si simplu "cookie") reprezinta un fisier de mici dimensiuni, format din litere si numere, care va fi stocat pe computerul, terminalul mobil sau pe alte echipamente ale unui utilizator prin intermediul carora se acceseaza internetul.</p>
+                <p>Cookie-urile sunt instalate prin solicitarea emisa de un web-server catre un browser (de ex. Internet Explorer, Firefox, Chrome).</p>
+                <p>Cookie-urile odata instalate au o durata de existenta determinata, ramanand "pasive", in sensul ca nu contin programe software, virusi sau spyware si nu vor accesa informatiile de pe hard driverul utilizatorului pe al carui echipament au fost instalate.</p>
+                <p>Un cookie este format din doua parti:numele cookie-ului si continutul / valoarea cookie-ului.</p>
+                <p>Din punct de vedere tehnic, doar web-serverul care a trimis cookie-ul il poate accesa din nou in momentul in care un utilizator se intoarce pe pagina de internet asociata web-serverului respectiv.</p>
+                <br>
+                <h2>Pentru ce scopuri sunt utilizate cookie-urile prin intermediul acestei pagini de internet?</h2>
+                <br>
+                <p>Cookie-urile sunt utilizate pentru a furniza utilizatorilor acestei pagini de internet o experienta mai buna de navigare si servicii adaptate nevoilor si interesului fiecarui utilizator in parte, dupa cum urmeaza:</p>
+                <p>-imbunatatirea utilizarii acestei pagini de internet, inclusiv prin identificarea oricaror erori care apar in timpul vizitarii / utilizarii acesteia de catre utilizatori;</p>
+                <p>-furnizarea de statistici anonime cu privire la modul in care este utilizata aceasta pagina de internet catre , in calitate de detinator al acestei pagini de internet;</p>
+                <p>-anticiparea unor eventuale bunuri care vor fi in viitor puse la dispozitia utilizatorilor prin intermediul acestei pagini de internet, in functie de serviciile / produsele accesate.</p>
+                <br>
+                <h2>Care este durata de viata a cookie-urilor?</h2>
+                <br>
+                <p>Durata de viata a cookie-urilor poate varia in functie de scopul pentru care este plasat. Exista urmatoarele categorii de cookie-uri care determina si durata de viata a acestora:</p>
+                <p>-Cookie-uri de sesiune - este un cookie care este sters automat cand utilizatorul isi inchide browserul.</p>
+                <p>-Cookie-uri persistente / fixe - este un cookie care ramane stocat in terminalul utilizatorului pana cand atinge o anumita data de expirare (cateva minute, zile sau cativa ani in viitor) sau pana la stegerea acestuia de catre utilizator in orice moment prin intermediul setarilor browserului.</p>
+                <br>
+                <h2>Ce sunt cookie-urile plasate de terti?</h2>
+                <p>Anumite sectiuni de continut de pe pagina de internet pot fi furnizate prin intermediul unor terti, adica nu de catre [detinatorul website-ului], caz in care aceste cookie-uri sunt denumite cookie-uri plasate de terti.</p>
+                <p>Aceste cookie-uri pot proveni de la urmatorii terti:</p>
+                <p>-Google Analytics</p>
+                <p>-Facebook Pixel</p>
+                <br>
+                <h2>Ce cookie-uri sunt folosite prin intermediul acestei pagini de internet?</h2>
+                <br>
+                <p>Prin utilizarea / vizitarea paginii de internet pot fi plasate urmatoarele cookie-uri:</p>
+                <p>
+                    <ul>
+                        <li>Cookie-uri de performanta a paginii de internet</li>
+                        <li>Cookie-uri de analiza a utilizatorilor</li>
+                        <li>Cookie-uri pentru geotargeting</li>
+                        <li>Cookie-uri de inregistrare</li>
+                        <li>Cookie-uri pentru publicitate</li>
+                        <li>Cookie-uri ale furnizorilor de publicitate</li>
+                    </ul>
+                </p>
+                <p>1. Cookie-uri de performanta</p>
+                <p>Prin acest tip de cookie-uri sunt memorate preferintele utilizatorului acestei pagini de internet, astfel incat setarea din nou a preferintelor in cazul vizitarii ulterioare a paginii de internet nu mai este necesara.</p>
+                <p>2. Cookie-uri de analiza a utilizatorilor</p>
+                <p>Aceste cookie-uri ne informeaza daca un anumit utilizator al paginii de internet a mai vizitat / utilizat aceasta pagina de internet anterior. Aceste cookie-uri sunt utilizate doar in scopuri statistice.</p>
+                <p>3. Cookie-uri pentru geotargeting</p>
+                <p>Aceste cookie-uri sunt utilizate de catre un soft care stabileste tara de provenienta a utilizatorului paginii de internet. Vor fi primite aceleasi reclame indiferent de limba selectata.</p>
+                <p>4. Cookie-uri pentru inregistrare</p>
+                <p>Atunci cand va inregistrati pe acest site, se genereaza cookie-uri care memoreaza acest fapt. Serverele utilizeaza aceste cookie-uri pentru a ne arata contul cu care sunteti inregistrat.
+
+                    De asemenea, utilizarea acestor cookie-uri permite sa asociem orice comentariu postat pe pagina de internet cu username-ul contului folosit. In cazul in care nu a fost selectata optiunea "pastreaza-ma inregistrat", aceste cookie-uri se vor sterge automat la momentul terminarii sesiunii de navigare.
+                </p>
+                <p>5. Cookie-uri pentru publicitate</p>
+                <p>Aceste cookie-uri permit aflarea vizualizarii de catre un utilizator a unei reclame online, tipul acesteia si timpul scurs de la momentul vizualizarii respectviului mesaj publicitar.
+
+                    Ca atare, astfel de cookie-uri sunt folosite pentru targetarea publicitatii online. Ele sunt anonime, stocand informatii despre contentul vizualizat, nu si despre utilizatori.
+                </p>
+                <br>
+                <h2>Ce tip de informatii sunt stocate si accesate prin intermediul cookie-urilor?</h2>
+                <br>
+                <p>Cookie-urile pastreaza informatii intr-un fisier text de mici dimensiuni care permit recunoasterea browserului. Aceasta pagina de internet recunoaste browserul pana cand cookie-urile expira sau sunt sterse.</p>
+                <br>
+                <h2>Cum pot fi oprite cookie-urile?</h2>
+                <br>
+                <p>Dezactivarea si refuzul de a primi cookie-uri pot face aceasta pagina de internet dificil de vizitat, atragand dupa sine limitari ale posibilitatilor de utilizare ale acesteia.</p>
+                <p>Utilizatorii isi pot configura browserul sa respinga fisierele cookie sau sa fie acceptate cookie-uri de la o pagina de internet anume. Cu toate acestea, refuzarea sau dezactivarea cookie-urilor nu inseamna ca nu veti mai primi publicitate online - ci doar ca aceasta nu va fi adaptata preferintelor si interesele dumneavoastra, evidentiate prin comportamentul de navigare.</p>
+                <p>Toate browserele moderne ofera posibilitatea de a schimba setarile cookie-urilor. Aceste setari pot fi accesate, ca regula, in sectiunea "optiuni" sau in meniul de "preferinte" al browserului tau.</p>
+                <p>Pentru a intelege aceste setari, urmatoarele linkuri pot fi folositoare:</p>
+                <p>-Setari Cookie pentru Google Chrome</p>
+                <p>-Setari Cookie pentru Mozilla Firefox</p>
+                <p>-Setari Cookie pentru Apple Safari</p>
+                <p>-Setari Cookie pentru Microsoft Internet Explorer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #334257;margin-bottom: 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Informatii</h3>
+                <br>
+                <a href="{% url 'ajutor_si_contact' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Ajutor si Contact</a>
+                <a href="{% url 'politica_confi' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de confidentialitate</a>
+                <a href="{% url 'politica_cookie' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de Cookie-uri</a>
+                <a href="{% url 'termeni_si_conditii' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Termeni si Conditii</a>
+                <a href="{% url 'securitate' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Protejeaza-te pe Maglo</a>
+                <a href="https://anpc.ro/" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">ANPC</a>
+            </div>
+            <br>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Date de contact</h3>
+                <br>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Email: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Date firma: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">CUI: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Registrul comertului: </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #151515;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;">
+    <div class="container">
+        <p style="font-size: 20px;font-family: Arial, Helvetica, sans-serif;color: aliceblue;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+    </div>
+</div>
+{% endblock %}

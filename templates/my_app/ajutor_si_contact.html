@@ -1,0 +1,128 @@
+{% extends 'my_app/base.html' %}
+
+{% block head_block %}
+<style>
+    .my_banner{
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), #3DB2FF),
+        url('https://image.freepik.com/free-vector/people-analyzing-growth-charts_23-2148866843.jpg');
+        background-size: cover;
+        background-position: center;
+        font-family: 'Montserrat', sans-serif;
+    }
+    #jb1{
+        margin-top: 50px;
+        padding-top: 40px;
+        background-color: aliceblue;
+    }
+    #header1{
+        margin-top: 18rem;
+        font-family: 'Montserrat', sans-serif;
+        color: aliceblue;
+    }
+    #param1{
+        font-family: 'Montserrat', sans-serif;
+        color: aliceblue;
+        font-size: 19px;
+    }
+    #param2{
+        font-family: 'Montserrat', sans-serif;
+        color: aliceblue;
+        font-size: 19px;
+    }
+    #param3{
+        font-family: 'Montserrat', sans-serif;
+        color: aliceblue;
+        font-size: 19px;
+    }
+    #param4{
+        font-family: 'Montserrat', sans-serif;
+        color: aliceblue;
+        font-size: 19px;
+    }
+    #hr1{
+        background-color: #FFB319;
+    }
+    #btn1{
+        margin-top: 30px;
+    }
+    .animate{
+        animation: FadeIn 2s;
+    }
+    @keyframes FadeIn{
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="my_banner">
+    <div class="animate">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-4 col-sm-6">
+                <h1 id="header1">Contacteaza-ne</h1>
+                <br>
+                <p id="param1">Ati intampinat anumite probleme sau doriti sa aflati mai multe detalii?</p>
+                <p id="param2">Vă rugăm să completați formularul și va vom contacta în curând.</p>
+                <br>
+                <hr id="hr1">
+                <br>
+                <p id="param3">Email: </p>
+                <p id="param4">Numar de telefon: </p>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-6">
+                <div class="jumbotron" id="jb1">
+                    <div class="text">
+                        <form class="form-group" method="POST" action="">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <input type="checkbox" required>
+                            <label for="Acord">Sunt de acord cu <a href="{% url 'termeni_si_conditii' %}">Termenii si Conditiile</a></label>
+                            <br>
+                            <input type="submit" value="Contacteaza-ne" class="btn btn-outline-primary btn-block" id="btn1">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #334257;margin-bottom: 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Informatii</h3>
+                <br>
+                <a href="{% url 'ajutor_si_contact' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Ajutor si Contact</a>
+                <a href="{% url 'politica_confi' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de confidentialitate</a>
+                <a href="{% url 'politica_cookie' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de Cookie-uri</a>
+                <a href="{% url 'termeni_si_conditii' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Termeni si Conditii</a>
+                <a href="{% url 'securitate' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Protejeaza-te pe Maglo</a>
+                <a href="https://anpc.ro/" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">ANPC</a>
+            </div>
+            <br>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Date de contact</h3>
+                <br>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Email: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Date firma: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">CUI: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Registrul comertului: </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #151515;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;">
+    <div class="container">
+        <p style="font-size: 20px;font-family: Arial, Helvetica, sans-serif;color: aliceblue;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+    </div>
+</div>
+{% endblock %}

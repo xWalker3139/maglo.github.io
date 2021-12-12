@@ -1,0 +1,453 @@
+{% extends 'my_app/base_adult.html' %}
+
+{% block head_block %}
+<style>
+    .block:before{
+        content: '';
+        width: 100%;
+        height: 760px;
+        transform: skewY(-12deg);
+        transform-origin: 0;
+        position: absolute;
+        top: 0;
+        z-index: -6;
+        margin-bottom: 0;
+        background-image: linear-gradient(150deg, #b846e6 15%, #9b61e2 70%, #a276ee 94%);
+    }
+    .text{
+        padding-top: 15rem;
+        font-family: 'Montserrat', sans-serif;
+        color: aliceblue;
+        display: block;
+        position: relative;
+    }
+    #image1{
+        transform: skewY(-10deg);
+        width: 80%;
+        height: 370px;
+        position: absolute;
+    }
+    .logo{
+        margin-top: 24rem;
+    }
+    .logo h1{
+        font-family: 'Montserrat', sans-serif;
+    }
+    .label{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+    }
+    .bg{
+        background-color: #E8E1D9;
+        background-image: url('');
+        width: 100%;
+        height: 120px;
+        border: 2px dashed grey;
+        border-radius: 10px;
+        color: #8ac4f3;
+    }
+    .bg:hover{
+        animation: FadeIn 2s;
+    }
+    #imagine{
+        width: 150px;
+        height: 100px;
+        padding-top: 20px;
+        margin-left: 40px;
+        margin-top: 20px;
+        opacity: 0;
+        z-index: -6;
+    }
+    .bg i{
+        position: absolute;
+        top: 40%;
+        right: 20%;
+        left: 45%;
+        font-size: 30px;
+    }
+    #form{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+    }
+    @keyframes FadeIn{
+        from{
+            color: #8ac4f3;
+            border: 2px dashed grey;
+        }
+        to{
+            color: #8df3c5;
+            border: 2px dashed #94D0CC;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="block">
+    <div class="text">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-4 col-sm-6">
+                    <h1><strong>Posteaza anuntul tau</strong></h1>
+                    <h1><strong>dorit</strong></h1>
+                </div>
+                <div class="col-lg-6 col-md-4 col-sm-6">
+                    <img src="https://stripe.com/img/v3/home/app-illustrations/salesforce.svg" id="image1">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="logo">
+    <div class="container">
+        <h1><strong>Publica un anunt</strong></h1>
+        <br>
+        <div class="row">
+            <div class="col-lg-8 col-md-4 col-sm-6">
+                <form class="was-validated" action="" enctype="multipart/form-data" method="POST" id="form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="Titlul">Titlul anuntului:</label>
+                        <input type="text" class="form-control" placeholder="Tiltul anuntului" name="numele_anuntului" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="descriere">Descriere:</label>
+                        <textarea placeholder="Descrierea anuntului" class="form-control" name="descriere" rows="10" required></textarea>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="categorie">Categorie:</label>
+                        <select class="form-control" name="categorie_adult" id="select" required>
+                            <option selected disabled>----------</option>
+                            <option value="auto">Auto, moto si ambarcatiuni</option>
+                            <option value="piese">Piese auto</option>
+                            <option value="agro">Agro si industrie</option>
+                            <option value="imobiliare">Imobiliare</option>
+                            <option value="moda">Moda si frumusete</option>
+                            <option value="electronice">Electronice si electrocasnice</option>
+                            <option value="animale">Animale de companie</option>
+                            <option value="locuri">Locuri de munca</option>
+                            <option value="sport">Sport, timp liber si Hobby</option>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                        </select>
+                        <div class="auto box" style="margin-top: 10px;">
+                            <label for="subcategorie">Subcategorie:</label>
+                            <select class="form-control" name="subcategorie_adult" required>
+                                <option selected disabled>----------</option>
+                                <option>Autoturisme</option>
+                                <option>Ambarcatiuni</option>
+                                <option>Autoutilitare</option>
+                                <option>Camioane, rulote, remorci</option>
+                                <option>Motociclete, scutere, ATV</option>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                            </select>
+                        </div>
+                        <div class="piese box" style="margin-top: 10px;">
+                            <label for="subcategorie">Sucategorie:</label>
+                            <select class="form-control" name="subcategorie_adult">
+                                <option selected disabled>----------</option>
+                                <option>Roti, jante, anvelope</option>
+                                <option>Caroserie</option>
+                                <option>Mecanica electrica</option>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                            </select>
+                        </div>
+                        <div class="agro box" style="margin-top: 10px;">
+                            <label for="subcategorie">Subcategorie:</label>
+                            <select class="form-control" name="subcategorie_adult">
+                                <option selected disabled>--------</option>
+                                <option>Utilaje agricole si industriale</option>
+                                <option>Animale domestice</option>
+                                <option>Produse piata</option>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                            </select>
+                        </div>
+                        <div class="imobiliare box" style="margin-top: 10px;">
+                            <label for="subcategorie">Subcategorie:</label>
+                            <select class="form-control" name="subcategorie_adult">
+                                <option selected disabled>----------</option>
+                                <option>Apartamente de vanzare</option>
+                                <option>Apartamente de inchiriat</option>
+                                <option>Birouri</option>
+                                <option>Case/Vile de vanzare</option>
+                                <option>Case/Vile de inchiriat</option>
+                                <option>Terenuri agricole</option>
+                                <option>Terenuri constructii</option>
+                                <option>Spatii comerciale</option>
+                                <option>Spatii industriale</option>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                            </select>
+                        </div>
+                        <div class="moda box" style="margin-top: 10px;">
+                            <label for="subcategorie">Subcategorie:</label>
+                            <select class="form-control" name="subcategorie_adult">
+                                <option selected disabled>----------</option>
+                                <option>Haine dama</option>
+                                <option>Haine barbati</option>
+                                <option>Incaltaminte dama</option>
+                                <option>Incaltaminte barbati</option>
+                                <option>Bijuterii</option>
+                                <option>Cosmetice</option>
+                                <option>Accesorii</option>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                            </select>
+                        </div>
+                        <div class="electronice box" style="margin-top: 10px;">
+                            <label for="subcategorie">Subcategorie:</label>
+                            <select class="form-control" name="subcategorie_adult">
+                                <option selected disabled>----------</option>
+                                <option>Telefoane</option>
+                                <option>Tablete</option>
+                                <option>Electrocasnice</option>
+                                <option>Laptop - Calculator</option>
+                                <option>Aparat foto - Camere video</option>
+                                <option>Console</option>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                            </select>
+                        </div>
+                        <div class="animale box" style="margin-top: 10px;">
+                            <label for="subcategorie">Subcategorie:</label>
+                            <select class="form-control" name="subcategorie_adult">
+                                <option selected disabled>----------</option>
+                                <option>Adoptii</option>
+                                <option>Accesorii animale</option>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                            </select>
+                        </div>
+                        <div class="locuri box">
+                            <label for="subcategorie">Subcategorie:</label>
+                            <select class="form-control" name="subcategorie_adult">
+                                <option selected disabled>----------</option>
+                                <option>Agenti de vanzari</option>
+                                <option>Confectii - Croitori</option>
+                                <option>Cosmeticieni - Frizeri</option>
+                                <option>Ingineri - Meseriasi - Constructori</option>
+                                <option>Munca in strainatate</option>
+                                <option>Paza si protectie</option>
+                                <option>Personal hotelier-restaurant</option>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                            </select>
+                        </div>
+                        <div class="sport box">
+                            <label for="subcategorie">Subcategorie:</label>
+                            <select class="form-control" name="subcategorie_adult">
+                                <option selected disabled>----------</option>
+                                <option>Articole sportive</option>
+                                <option>Carti, Filme</option>
+                                <option>Arta si antichitati</option>
+                                <option>Muzica, instrumente muzicale</option>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefon">Telefon:</label>
+                        <input type="number" name="telefon" placeholder="Telefon" class="form-control" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">Email:</label>
+                        <input type="email" name="email" placeholder="Email" class="form-control" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pret">Vând / Schimb</label>
+                        <select class="form-control" id="selectare">
+                            <option selected disabled>----------</option>
+                            <option value="vinde">Vând</option>
+                            <option value="schimb">Schimb</option>
+                        </select>
+                        <div class="vinde newbox" style="margin-top: 10px;">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-4 col-sm-6">
+                                <label for="pret">Pret:</label>
+                                <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                            </div>
+                            <div class="col-lg-6 col-md-4 col-sm-6">
+                                <label for="moneda">Moneda:</label>
+                                <select class="form-control" name="moneda">
+                                    <option selected disabled>----------</option>
+                                    <option>Lei</option>
+                                    <option>Euro</option>
+                                </select>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="localizare">Judet:</label>
+                        <select name="localizare" class="form-control" required>
+                            <option selected disabled>----------</option>
+                            <option>Alba</option>
+                            <option>Arad</option>
+                            <option>Arges</option>
+                            <option>Bacau</option>
+                            <option>Bihor</option>
+                            <option>Bistrita-Nasaud</option>
+                            <option>Botosani</option>
+                            <option>Braila</option>
+                            <option>Brasov</option>
+                            <option>Buzau</option>
+                            <option>Calarasi</option>
+                            <option>Caras-Severin</option>
+                            <option>Cluj</option>
+                            <option>Constanta</option>
+                            <option>Covasna</option>
+                            <option>Dambovita</option>
+                            <option>Dolj</option>
+                            <option>Galati</option>
+                            <option>Giurgiu</option>
+                            <option>Gorj</option>
+                            <option>Harghita</option>
+                            <option>Hunedoara</option>
+                            <option>Ialomita</option>
+                            <option>Iasi</option>
+                            <option>Ilfov</option>
+                            <option>Maramures</option>
+                            <option>Mehedinti</option>
+                            <option>Mures</option>
+                            <option>Neamt</option>
+                            <option>Olt</option>
+                            <option>Prahova</option>
+                            <option>Salaj</option>
+                            <option>Satu Mare</option>
+                            <option>Sibiu</option>
+                            <option>Suceava</option>
+                            <option>Teleorman</option>
+                            <option>Timis</option>
+                            <option>Tulcea</option>
+                            <option>Valcea</option>
+                            <option>Vaslui</option>
+                            <option>Vrancea</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="imagine">Imagini:</label>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="bg">
+                                    <input type="file"id="imagine" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine" required>
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="bg">
+                                    <input type="file"id="imagine" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine2" required>
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="bg">
+                                    <input type="file"id="imagine" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine3" required>
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="bg">
+                                    <input type="file"id="imagine" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine4" required>
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="bg">
+                                    <input type="file"id="imagine" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine5" required>
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="bg">
+                                    <input type="file" id="imagine" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine6" required>
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <input type="submit" class="btn btn-outline-info btn-block btn-lg" value="Posteaza">
+                    <br>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="jumbotron" style="background-color: #334257;margin-bottom: 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Informatii</h3>
+                <br>
+                <a href="{% url 'ajutor_si_contact' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Ajutor si Contact</a>
+                <a href="{% url 'politica_confi' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de confidentialitate</a>
+                <a href="{% url 'politica_cookie' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de Cookie-uri</a>
+                <a href="{% url 'termeni_si_conditii' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Termeni si Conditii</a>
+                <a href="{% url 'securitate' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Protejeaza-te pe Maglo</a>
+                <a href="https://anpc.ro/" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">ANPC</a>
+            </div>
+            <br>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Date de contact</h3>
+                <br>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Email: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Date firma: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">CUI: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Registrul comertului: </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #151515;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;">
+    <div class="container">
+        <p style="font-size: 20px;font-family: Arial, Helvetica, sans-serif;color: aliceblue;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $("#select").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("value");
+            if(optionValue){
+                $(".box").not("." + optionValue).hide();
+                $("." + optionValue).show();
+            } else{
+                $(".box").hide();
+            }
+        });
+    }).change();
+    })
+    $(document).ready(function(){
+        $("#selectare").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("value");
+            if(optionValue){
+                $(".newbox").not("." + optionValue).hide();
+                $("." + optionValue).show();
+            } else{
+                $(".newbox").hide();
+            }
+        });
+    }).change();
+    })
+</script>
+{% endblock %}

@@ -1,0 +1,336 @@
+{% extends 'my_app/base_copil.html' %}
+
+{% block head_block %}
+<style>
+    .card{
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+    }
+    .card:hover{
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+    }
+    .card-text{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+    }
+    .card-title{
+        font-family: 'Montserrat', sans-serif;
+    }
+    #hd1{
+        font-family: 'Montserrat', sans-serif;
+    }
+    #param1{
+        font-family: 'Montserrat', sans-serif;
+        padding-bottom: 10px;
+    }
+    #param2{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px; 
+    }
+    #jb1{
+        background-color: white;
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+    }
+    #jb1:hover{
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+    }
+    .jumbotron ul li a{
+        font-family: 'Montserrat', sans-serif;
+        text-decoration: none;
+        color: #3E00FF;
+    }
+    .form-control{
+        height: 60px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .input-group{
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    }
+    .input-group-text{
+        background-color: white;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        padding-left: 18px;
+    }
+    .input-group-text i{
+        padding-left: 13px;
+        font-size: 20px;
+        padding-right: 10px;
+    }
+    .input-group-text:hover{
+        background-color: #A683E3;
+        color: white;
+    }
+    #jb2{
+        font-family: 'Montserrat', sans-serif;
+    }
+    .row a{
+        text-decoration: none;
+        color: black;
+    }
+    .row a p{
+        padding-left: 45px;
+        font-size: 23px;
+        padding-top: 10px;
+    }
+    .row a:hover{
+        color: #A683E3;
+    }
+    #img1:hover{
+        animation: FadeIn 3s;
+    }
+    #img2:hover{
+        animation: FadeIn 3s;
+    }
+    #img3:hover{
+        animation: FadeIn 3s;
+    }
+    #img4:hover{
+        animation: FadeIn 3s;
+    }
+    #img5:hover{
+        animation: FadeIn 3s;
+    }
+    #img6:hover{
+        animation: FadeIn 3s;
+    }
+    .new_form{
+        font-family: 'Montserrat', sans-serif;
+    }
+    .new_form a{
+        font-size: 18px;
+    }
+    .new_form a:hover{
+        border-bottom: 2px solid #A683E3;
+    }
+    @keyframes FadeIn{
+        from{
+            transform: rotateY(0deg);
+        }to{
+            transform: rotateY(180deg);
+        }
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="jumbotron" style="margin-bottom: 0px;background-color: aliceblue;">
+    <div class="container">
+        <form method="POST" class="form-group" action="">
+            {% csrf_token %}
+            <div class="search-input">
+            <div class="input-group mb-3">
+                <div class="autocom-box">
+                </div>
+                <div class="input-group-prepend">
+                  <button class="input-group-text" type="submit"><strong>Cauta</strong> <i class="fas fa-search-dollar"></i></button>
+                </div>
+                <input type="search" placeholder="Cauta anuntul dorit" name="cautat_copil" class="form-control">
+            </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="jumbotron" style="margin-top: 0px;" id="jb2">
+    <div class="container">
+        <h1 style="text-align: center;margin: auto auto 40px auto;font-family: 'Montserrat', sans-serif;"><strong>Categorii</strong></h1>
+        <br>
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <a href="">
+                    <img src="https://images.unsplash.com/photo-1476275466078-4007374efbbe?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGJvb2tzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" style="border-radius: 100%;width: 150px;height: 120px;" id="img1">
+                    <p>Carti</p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <a href="">
+                    <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHRveXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" style="border-radius: 100%;width: 150px;height: 120px;" id="img2">
+                    <p>Jucării</p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <a href="">
+                    <img src="https://images.unsplash.com/photo-1620799139652-715e4d5b232d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTY0fHxjbG90aGVzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" style="border-radius: 100%;width: 150px;height: 120px;" id="img3">
+                    <p>Haine</p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <a href="">
+                    <img src="https://images.unsplash.com/photo-1508772382388-0b8fc7f7edb5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzh8fGJpa2VzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" style="border-radius: 100%;width: 150px;height: 120px;" id="img4">
+                    <p style="padding-left: 0px;">Arcticole sportive</p>
+                </a>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <a href="">
+                    <img src="https://images.unsplash.com/photo-1626245550585-0b8d640da77f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Y2hhbmdlc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" style="border-radius: 100%;width: 150px;height: 120px;" id="img5">
+                    <p style="padding-left: 20px;">Schimburi</p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <a href="">
+                    <img src="https://images.unsplash.com/photo-1635528047872-06f167fd5d8f?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzNHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" style="border-radius: 100%;width: 150px;height: 120px;" id="img6">
+                    <p style="padding-left: 5px;">Mama si copil</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <br>
+    <h1 style="font-family: 'Montserrat', sans-serif; text-align: center;"><strong>Anunturi promovate</strong></h1>
+    <br>
+    {% if cautat_copil %}
+    <h2 style="font-family: 'Montserrat', sans-serif;">Ai cautat pentru '{{cautat_copil}}'</h2>
+    <br>
+    {% endif %}
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="jumbotron" id="jb1">
+                <h3 id="hd1"><strong>Filtreaza</strong></h3>
+                <hr>
+                <br>
+                <h4 id="param1">Categorie: </h4>
+                <form method="POST" class="new_form">
+                    {% csrf_token %}
+                    <a href="{% url 'my_app:carti_copil' %}">
+                        <input type="checkbox" name="carti">
+                        <label for="carti">Carti</label>
+                    </a>
+                    <br>
+                    <a href="{% url 'my_app:jucarii_copil' %}">
+                        <input type="checkbox" name="jucarii">
+                        <label for="jucarii">Jucării</label>
+                    </a>
+                    <br>
+                    <a href="{% url 'my_app:haine_copil' %}">
+                        <input type="checkbox" name="haine">
+                        <label for="haine">Haine</label>
+                    </a>
+                    <br>
+                    <a href="{% url 'my_app:articole_sportive_copil' %}">
+                        <input type="checkbox" name="articole_sportive">
+                        <label for="articole sportive">Articole sportive</label>
+                    </a>
+                    <br>
+                    <a href="{% url 'my_app:schimburi_copil' %}">
+                        <input type="checkbox" name="schimburi">
+                        <label for="schimburi">Schimburi</label>
+                    </a>
+                    <br>
+                    <a href="{% url 'my_app:mama_si_copil' %}">
+                        <input type="checkbox" name="mama si copil">
+                        <label for="mama si copil">Mama si copil</label>
+                    </a>
+                    <br>
+                    <p id="param2">Judet: </p>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-4 col-sm-6">
+            {% for data in model %}
+            <div class="card">
+                <img class="card-img-top" src="{{ data.imagine }}">
+                <br>
+                <div class="card-body">
+                    <h3 class="card-title">Titlul: {{ data.titlul }}</h3>
+                    <hr>
+                    <p class="card-text">Judet: {{ data.localizare }}</p>
+                    <p class="card-text">Categorie: {{ data.categorie_copil }}</p>
+                    <br>
+                    <a href="{% url 'my_app:pag_mama_si_copil' pk=data.pk %}" class="btn btn-outline-primary btn-block">Vezi anuntul</a>
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #334257;margin-bottom: 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Informatii</h3>
+                <br>
+                <a href="{% url 'ajutor_si_contact' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Ajutor si Contact</a>
+                <a href="{% url 'politica_confi' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de confidentialitate</a>
+                <a href="{% url 'politica_cookie' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de Cookie-uri</a>
+                <a href="{% url 'termeni_si_conditii' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Termeni si Conditii</a>
+                <a href="{% url 'securitate' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Protejeaza-te pe Maglo</a>
+                <a href="https://anpc.ro/" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">ANPC</a>
+            </div>
+            <br>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Date de contact</h3>
+                <br>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Email: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Date firma: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">CUI: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Registrul comertului: </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #151515;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;">
+    <div class="container">
+        <p style="font-size: 20px;font-family: Arial, Helvetica, sans-serif;color: aliceblue;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+    </div>
+</div>
+<script>
+    const searchWrapper = document.querySelector('search-input');
+    const inputbox = document.querySelector('input');
+    const icon = document.querySelector('.icon');
+    const sugbox = document.querySelector('.autocom-box');
+    let weblink;
+    
+    inputbox.onkeyup = (e) => {
+        let userdata = e.target.value;
+        let emptyarray = [];
+        if(userdata){
+            icon.onclick=()=>{
+                weblink = 'https:www.google.com/search?' + userdata;
+            }
+        }emptyarray = suggestion.filter((data)=>{
+            data.tolocalowerCase().startsWith(userdata.tolocalowerCase());
+        });
+    emptyarray = emptyarray.map((data) => {
+
+    });
+    searchWrapper.classList.add("active");
+    showSuggestions(emptyarray);
+    let alllist = sugbox.querySelectorAll("li");
+    for(let i = 0; i < alllist.length; i++){
+
+    }
+}
+    function select(elements){
+        let selectdata = elements.textContent;
+        inputbox.value = selectdata;
+        icon.onclick = () => {
+            weblink = 'https:www.google.com/search?q=' + selectdata;
+        }
+    searchWrapper.classList.remove('active');
+    }
+    function showSugestion(list){
+        let listData;
+        if(!list.length){
+            userValue = inputbox.value;
+            listData = '<li>' + listData + '</li>';
+        }else{
+            listData = list.join('');
+        }
+        sugbox.innerHTML = listData;
+    }
+    let suggestions = [
+        "jucarii",
+        "haine",
+        "carti",
+        "biciclete",
+    ];
+</script>
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends 'my_app/base.html' %}
+
+{% block head_block %}
+<style>
+    #jb1{
+        text-align: center;
+        background-image: linear-gradient(-120deg, #b4d5ee, #A683E3);
+        font-family: 'Montserrat', sans-serif;
+    }
+    #jb1 h1{
+        animation: FadeIn 2s;
+    }
+    .text{
+        animation: FadeIn 2s;
+    }
+    @keyframes FadeIn{
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
+    #header1{
+        padding-top: 40px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    #header2{
+        font-family: 'Montserrat', sans-serif;
+    }
+    #param1{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 19px;
+    }
+    #param2{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 19px;
+    }
+    #param3{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 19px;
+    }
+    #param4{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 19px;
+    }
+    #param5{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 19px;
+    }
+    #param6{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 19px;
+    }
+    #param7{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 19px;
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="banner">
+    <div class="jumbotron" id="jb1">
+        <h1>Politica de Confidentialitate</h1>
+    </div>
+</div>
+<div class="text">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <nav id="navbar-example3" class="navbar navbar-light bg-light flex-column align-items-stretch p-3">
+                      <a href="{% url 'ajutor_si_contact' %}" style="display: block;color: black;font-family: 'Montserrat', sans-serif;padding-top: 25px;font-size: 23px;">Ajutor si Contact</a> 
+                      <a href="{% url 'politica_confi' %}" style="display: block;color: black;font-family: 'Montserrat', sans-serif;padding-top: 15px;font-size: 23px;">Politica de confidentialitate</a>
+                      <a href="{% url 'politica_cookie' %}" style="display: block;color: black;font-family: 'Montserrat', sans-serif;padding-top: 15px;font-size: 23px;">Politica de Cookie-uri</a>
+                      <a href="{% url 'termeni_si_conditii' %}" style="display: block;color: black;font-family: 'Montserrat', sans-serif;padding-top: 15px;font-size: 23px;">Termeni si Conditii</a>
+                      <a href="{% url 'securitate' %}" style="display: block;color: black;font-family: 'Montserrat', sans-serif;padding-top: 15px;font-size: 23px;">Protejeaza-te pe Maglo</a>
+                    </nav>
+                  </nav>
+            </div>
+            <div class="col-lg-8 col-md-4 col-sm-6">
+                <h2 id="header1">Confidentialitate</h2>
+                <br>
+                <p id="param1">Orice material sau date pe care le furnizați către Maglo în scopul furnizării Serviciului Maglo vor fi „Informații confidențiale” dvs., cu excepția măsurii în care astfel de documente (a) sunt cunoscute de Maglo înainte de primirea de la dvs. de la o altă sursă decât una care are o obligație de confidențialitate față de dvs.; (b) să devină cunoscut (independent de divulgarea dvs.) către Maglo direct sau indirect dintr-o altă sursă decât una care are o obligație de confidențialitate față de dvs.; sau (c) devin cunoscute publicului sau încetează să fie secret sau confidențial, cu excepția încălcării acestei secțiuni de către Maglo.</p>
+                <br>
+                <h2 id="header2">Drepturile de care beneficiati</h2>
+                <br>
+                <p id="param2">În condițiile prevăzute de legislația în materia prelucrării datelor cu caracter personal, în calitate de persoane vizate, beneficiați de următoarele drepturi:</p>
+                <p id="param3">-dreptul la informare, respectiv dreptul de a primi detalii privind activitățile de prelucrare efectuate de către Amplusnet Srl, conform celor descrise în prezentul document;</p>
+                <p id="param4">-dreptul de acces la date, respectiv dreptul de a obține confirmarea din partea Amplusnet Srl cu privire la prelucrarea datelor cu caracter personal, precum și detalii privind activitățile de prelucrare precum modalitatea în care sunt prelucrate datele, scopul în care se face prelucrarea, destinatarii sau categoriile de destinatari ai datelor, etc;</p>
+                <p id="param5">-dreptul la rectificare, respectiv dreptul de a obține corectarea, fără întârzieri justificate, de către Amplusnet Srl a datelor cu caracter personal inexacte/ nejustificate, precum și completarea datelor incomplete; Rectificarea/ completarea va fi comunicată fiecărui destinatar la care au fost transmise datele, cu excepția cazului în care acest lucru se dovedește imposibil sau presupune eforturi disproporționate.</p>
+                <p id="param6">-dreptul la portabilitatea datelor, respectiv (i) dreptul de a primi datele cu caracter personal într-o modalitate structurată, folosită în mod obișnuit și într-un format ușor de citit, precum și (ii) dreptul ca aceste date să fie transmise de către Amplusnet Srl către alt operator de date, în măsura în care sunt îndeplinite condițiile prevăzute de lege;</p>
+                <p id="param7">-dreptul de a vă adresa Autorităţii Naţionale de Supraveghere a Prelucrării Datelor cu Caracter Personal sau instanțelor competente, în măsura în care considerați necesar.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #334257;margin-bottom: 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Informatii</h3>
+                <br>
+                <a href="{% url 'ajutor_si_contact' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Ajutor si Contact</a>
+                <a href="{% url 'politica_confi' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de confidentialitate</a>
+                <a href="{% url 'politica_cookie' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de Cookie-uri</a>
+                <a href="{% url 'termeni_si_conditii' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Termeni si Conditii</a>
+                <a href="{% url 'securitate' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Protejeaza-te pe Maglo</a>
+                <a href="https://anpc.ro/" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">ANPC</a>
+            </div>
+            <br>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Date de contact</h3>
+                <br>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Email: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Date firma: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">CUI: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Registrul comertului: </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #151515;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;">
+    <div class="container">
+        <p style="font-size: 20px;font-family: Arial, Helvetica, sans-serif;color: aliceblue;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+    </div>
+</div>
+{% endblock %}
