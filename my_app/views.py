@@ -1303,7 +1303,7 @@ def utilaje(request):
         'date_posted':date_posted,
         'model':model
     }
-    return render(request, 'my_app/utiliaje_adult.html', context)
+    return render(request, 'my_app/utilaje_adult.html', context)
 
 def animale_domestice(request):
     date_posted = datetime.datetime.now().year
