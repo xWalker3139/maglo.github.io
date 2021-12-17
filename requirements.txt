@@ -68,7 +68,6 @@ PyAutoGUI==0.9.53
 pycparser==2.20
 pygame==2.0.0
 PyGetWindow==0.0.9
-PyJWT==2.0.1
 pylint==2.5.2
 PyMsgBox==1.0.9
 pyOpenSSL==21.0.0
