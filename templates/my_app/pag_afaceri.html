@@ -1,0 +1,226 @@
+{% extends 'my_app/base_adult.html' %}
+
+{% block head_block %}
+<style>
+    #a1{
+        font-size: 26px;
+        color: black;
+        font-family: 'Montserrat', sans-serif;
+    }
+    #a1:hover{
+        color: #A683E3;
+    }
+    #icon1{
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .carousel{
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    }
+    .carousel:hover{
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+    }
+    .header1{
+        margin-top: 40px;
+        margin-bottom: 30px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .param1{
+        margin-bottom: 25px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        font-size: 26px;
+    }
+    .param2{
+        font-family: 'Montserrat', sans-serif;
+        padding-bottom: 10px;
+    }
+    #jumbotron1{
+        background-image: url('https://marveltheme.com/themes-wp/appal/wp-content/uploads/2019/09/bg-4.png');
+        width: 100%;
+        height: 83%;
+        display: table;
+        font-size: 36px;
+        color: #ffffff;
+        position: relative;
+        text-align: center;
+        margin: auto;
+        background-repeat: no-repeat;
+        background-position: center center;
+        border: 1px solid cornflowerblue;
+        background-color: #fff;
+        font-family: 'Montserrat', sans-serif;
+    }
+    #jumbotron2{
+        background-image: url('https://marveltheme.com/themes-wp/appal/wp-content/uploads/2019/09/bg-4.png');
+        width: 100%;
+        height: 83%;
+        display:table;
+        font-size: 36px;
+        color: #ffffff;
+        position: relative;
+        text-align: center;
+        margin: auto;
+        background-repeat: no-repeat;
+        background-position: center center;
+        border: 1px solid #B983FF;
+        background-color: #fff;
+        font-family: 'Montserrat', sans-serif;
+    }
+    #jumbotron3{
+        background-image: url('https://marveltheme.com/themes-wp/appal/wp-content/uploads/2019/09/bg-4.png');
+        width: 100%;
+        height: 83%;
+        display:table;
+        font-size: 36px;
+        color: #ffffff;
+        position: relative;
+        text-align: center;
+        margin: auto;
+        background-repeat: no-repeat;
+        background-position: center center;
+        border: 1px solid #EC255A;
+        background-color: #fff;
+        font-family: 'Montserrat', sans-serif;
+    }
+    #form1{
+        margin-top: 40px;
+        margin-bottom: 40px;
+        font-family: 'Montserrat', sans-serif;
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="container">
+    <a href="{% url 'my_app:afaceri_servicii' %}" id="a1"><i class="fas fa-arrow-left" id="icon1"></i> <strong>Inapoi pe pagina principala</strong></a>
+    <div class="row">
+        <div class="col-lg-10 col-md-4 col-sm-6">
+            {%for data in model %}
+            <div id="demo" class="carousel slide" data-ride="carousel">
+
+                <!-- Indicators -->
+                <ul class="carousel-indicators">
+                  <li data-target="#demo" data-slide-to="0" class="active"></li>
+                  <li data-target="#demo" data-slide-to="1"></li>
+                  <li data-target="#demo" data-slide-to="2"></li>
+                  <li data-target="#demo" data-slide-to="3"></li>
+                  <li data-target="#demo" data-slide-to="4"></li>
+                  <li data-target="#demo" data-slide-to="5"></li>
+                </ul>
+              
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="{{ data.imagine.url }}" style="height: 60vh;width: 100%;">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{{ data.imagine2.url }}" style="height: 60vh;width: 100%;">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{{ data.imagine3.url }}" style="height: 60vh;width: 100%;">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{{ data.imagine4.url }}" style="height: 60vh;width: 100%;">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{{ data.imagine5.url }}" style="height: 60vh;width: 100%;">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{{ data.imagine6.url }}" style="height: 60vh;width: 100%;">
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                  </a>
+                  <a class="carousel-control-next" href="#demo" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
+            <h2 class="header1"><strong>{{data.numele_firmei}}</strong></h2>
+            <hr>
+            <p class="param1">Despre aceasta firma</p>
+            <p class="param2">{{data.descriere}}</p>
+            <hr>
+            <p class="param1">Nu ezitati sa ne contactati, asteptam sa te auzim!</p>
+            <div class="row" style="margin-bottom: 40px;">
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="jumbotron" id="jumbotron1">
+                        <p>
+                            <i class="fas fa-phone-alt" style="color: rgba(163,119,240,1);"></i>
+                            <p style="font-size: 18px;color: #5d6881;">+40{{data.telefon}}</p>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="jumbotron" id="jumbotron2">
+                        <p>
+                            <i class="fas fa-map-marker-alt" style="color: rgba(163,119,240,1);"></i>
+                            <p style="font-size: 18px;color: #5d6881;">{{data.adresa}}</p>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="jumbotron" id="jumbotron3">
+                        <p>
+                            <i class="far fa-envelope-open" style="color: rgba(163,119,240,1);"></i>
+                            <p style="font-size: 18px;color: #5d6881;">{{data.email}}</p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <hr>
+            <form class="form-group" action="" method="POST" id="form1">
+                <p class="param1">Trimite un mesaj</p>
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-lg-6 col-md-4 col-sm-6">
+                        <label for="nume">Nume:</label>
+                        {{ form.nume }}
+                    </div>
+                    <div class="col-lg-6 col-md-4 col-sm-6">
+                        <label for="email">Email:</label>
+                        {{ form.email }}
+                    </div>
+                </div>
+                <br>
+                <label for="mesaj">Mesaj:</label>
+                {{ form.mesaj }}
+                <br>
+                <input type="submit" class="btn btn-outline-info btn-lg" value="Trimite">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #334257;margin-bottom: 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Informatii</h3>
+                <br>
+                <a href="{% url 'ajutor_si_contact' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Ajutor si Contact</a>
+                <a href="{% url 'politica_confi' %}"" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de confidentialitate</a>
+                <a href="{% url 'politica_cookie' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de Cookie-uri</a>
+                <a href="{% url 'termeni_si_conditii' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Termeni si Conditii</a>
+                <a href="{% url 'securitate' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Protejeaza-te pe Maglo</a>
+                <a href="https://anpc.ro/" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">ANPC</a>
+            </div>
+            <br>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h3 style="color: #BBBFCA;">Date de contact</h3>
+                <br>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Email: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Date firma: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">CUI: </p>
+                <p style="display:block;text-decoration: none;color: aliceblue;">Registrul comertului: </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #151515;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;">
+    <div class="container">
+        <p style="font-size: 20px;font-family: Arial, Helvetica, sans-serif;color: aliceblue;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+    </div>
+</div>
+{% endblock %}

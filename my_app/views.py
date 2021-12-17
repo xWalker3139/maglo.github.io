@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import TIPUL_AFACERII, Adult, Copil, AnuntAdult, AnuntCopil, AjutorSiContact, CATEGORIE_COPIL, MesajCopil, JUDETE, MesajAdult, CATEGORIE_ADULT, SUBCATEGORIE_ADULT, Afacere, Serviciu
-from .forms import AdultForm, CopilForm, AnuntAdultForm, AnuntCopilForm, AjutorSiContactForm, MesajAdultForm, MesajCopilForm, AfacereForm, ServiciuForm
+from .models import TIPUL_AFACERII, Adult, Copil, AnuntAdult, AnuntCopil, AjutorSiContact, CATEGORIE_COPIL, MesajCopil, JUDETE, MesajAdult, CATEGORIE_ADULT, SUBCATEGORIE_ADULT, Afacere, Serviciu, MesajAfaceri, MesajServiciu
+from .forms import AdultForm, CopilForm, AnuntAdultForm, AnuntCopilForm, AjutorSiContactForm, MesajAdultForm, MesajCopilForm, AfacereForm, ServiciuForm, MesajAfaceriForm, MesajServiciuForm
 from django.views.generic import View, ListView, DetailView, UpdateView, DeleteView
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -2588,6 +2588,7 @@ def promoveazati_afacerea(request):
         judet = request.POST.get("judet")
         adresa = request.POST.get("adresa")
         email = request.POST.get("email")
+        telefon = request.POST.get("telefon")
         tipul_afacerii = request.POST.get("tipul_afacerii")
         imagine = request.FILES.get("imagine")
         imagine2 = request.FILES.get("imagine2")
@@ -2595,7 +2596,7 @@ def promoveazati_afacerea(request):
         imagine4 = request.FILES.get("imagine4")
         imagine5 = request.FILES.get("imagine5")
         imagine6 = request.FILES.get("imagine6")
-        model = Afacere(titlul=titlul,numele_firmei=numele_firmei, descriere=descriere, judet=judet, adresa=adresa, email=email, tipul_afacerii=tipul_afacerii, imagine=imagine,imagine2=imagine2, imagine3=imagine3, imagine4=imagine4, imagine5=imagine5, imagine6=imagine6)
+        model = Afacere(titlul=titlul,numele_firmei=numele_firmei,telefon=telefon, descriere=descriere, judet=judet, adresa=adresa, email=email, tipul_afacerii=tipul_afacerii, imagine=imagine,imagine2=imagine2, imagine3=imagine3, imagine4=imagine4, imagine5=imagine5, imagine6=imagine6)
         model.save()
     context = {
         'date_posted':date_posted
@@ -2608,18 +2609,18 @@ def promoveazati_serviciul(request):
         titlul = request.POST.get('titlul')
         numele_serviciului = request.POST.get('numele_serviciului')
         descriere = request.POST.get('descriere')
-        judet = request.POST.get('judet')
         tipul_serviciului = request.POST.get('tipul_serviciului')
         judet = request.POST.get('judet')
         email = request.POST.get('email')
         experienta_profesionala = request.POST.get('experienta_profesionala')
+        telefon = request.POST.get('telefon')
         imagine = request.FILES.get('imagine')
         imagine2 = request.FILES.get('imagine2')
         imagine3 = request.FILES.get('imagine3')
         imagine4 = request.FILES.get('imagine4')
         imagine5 = request.FILES.get('imagine5')
         imagine6 = request.FILES.get('imagine6')
-        model = Serviciu(titlul=titlul,numele_serviciului=numele_serviciului, descriere=descriere, tipul_serviciulut=tipul_serviciului, judet=judet, email=email, experienta_profesionala=experienta_profesionala,imagine=imagine, imagine2=imagine2, imagine3=imagine3, imagine4=imagine4, imagine5=imagine5, imagine6=imagine6)
+        model = Serviciu(titlul=titlul,telefon=telefon, numele_serviciului=numele_serviciului, descriere=descriere, tipul_serviciului=tipul_serviciului, judet=judet, email=email, experienta_profesionala=experienta_profesionala,imagine=imagine, imagine2=imagine2, imagine3=imagine3, imagine4=imagine4, imagine5=imagine5, imagine6=imagine6)
         model.save()
     context = {
         'date_posted':date_posted,
@@ -2662,5 +2663,66 @@ def matrimoniale(request):
         'model':model
     }
     return render(request, "my_app/matrimoniale.html", context)
+
+def pag_afaceri(request, pk):
+    date_posted = datetime.datetime.now().year
+    try:
+        model = Afacere.objects.filter(id=pk)
+        new_model = MesajAfaceri.objects.all()
+        my_model = Afacere.objects.all()
+        form = MesajAfaceriForm()
+        if request.method == "POST":
+            form = MesajAfaceriForm(request.POST)
+            if form.is_valid():
+                form.save()
+        if request.method == "POST":
+            nume = request.POST.get('nume5')
+            email = request.POST.get('email5')
+            email2 = request.POST.get('email5')
+            mesaj = request.POST.get('mesaj5')
+            send_mail(
+                'Maglo',
+                mesaj,
+                email,
+                email2
+            )
+    except:
+        raise Http404
+    context = {
+        'date_posted':date_posted,
+        'model':model,
+        'form':form,
+    }
+    return render(request, "my_app/pag_afaceri.html", context)
+
+def pag_servicii(request, pk):
+    date_posted = datetime.datetime.now().year
+    try:
+        model = Serviciu.objects.filter(id=pk)
+        new_model = MesajServiciu.objects.all()
+        form = MesajServiciuForm()
+        if request.method == "POST":
+            form = MesajServiciuForm(request.POST)
+            if form.is_valid():
+                form.save()
+        if request.method == "POST":
+            nume = request.POST.get('nume6')
+            email = request.POST.get('email6')
+            email2 = request.POST.get('email6')
+            mesaj = request.POST.get('mesaj6')
+            send_mail(
+                'Maglo',
+                mesaj,
+                email,
+                email2
+            )
+    except:
+        raise Http404
+    context = {
+        'date_posted':date_posted,
+        'model':model,
+        'form':form,
+    }
+    return render(request, "my_app/pag_servicii.html", context)
 
 # Create your views here.

@@ -127,4 +127,7 @@ urlpatterns = [
     url(r'^muzica_instrumente_muzicale/$', views.muzica_adult, name="muzica_adult"),
     url(r'^mici_intreprinzatori_autohtoni/$', views.intreprinzatori_autohtoni, name="intreprinzatori_autohtoni"),
     url(r'^matrimoniale/$', views.matrimoniale, name="matrimoniale"),
+
+    url(r'^pag_afaceri/(?P<pk>\d+)/$', views.pag_afaceri, name="pag_afaceri"),
+    url(r'^pag_servicii/(?P<pk>\d+)/$', views.pag_servicii, name="pag_servicii"),
 ]

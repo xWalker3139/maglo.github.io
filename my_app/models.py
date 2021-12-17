@@ -94,10 +94,12 @@ TIPUL_AFACERII = (
     ('Cafenea', 'Cafenea'),
     ('Cofetarie', 'Cofetarie'),
     ('Constructii', 'Constructii'),
+    ('Frizerii', 'Frizerii'),
     ('Hotel', 'Hotel'),
     ('Fast-Food-uri', 'Fast-Food-uri'),
     ('Pensiune', 'Pensiune'),
     ('Restaurant', 'Restaurant'),
+    ('Saloane de coafura', 'Saloane de coafura'),
     ('Service Auto', 'Service Auto'),
 )
 
@@ -106,6 +108,7 @@ TIPUL_SERVICIULUI = (
     ('Consultanta', 'Consultanta'),
     ('Digital Marketing', 'Digital Marketing'),
     ('Grafic si Design', 'Grafic si Design'),
+    ('Meditatii', 'Meditatii'),
     ('Programare si tehnologie', 'Programare si tehnologie'),
     ('Video si animatii', 'Video si animatii'),
 )
@@ -113,7 +116,7 @@ TIPUL_SERVICIULUI = (
 class AjutorSiContact(models.Model):
     nume = models.CharField(max_length=264)
     email = models.EmailField()
-    descriere = models.TextField(max_length=624)
+    descriere = models.TextField(max_length=9000)
 
     def __str__(self):
         return self.nume
@@ -139,7 +142,7 @@ class Copil(models.Model):
 class AnuntCopil(models.Model):
     titlul = models.CharField(max_length=264, null=True, blank=True)
     numele_anuntului = models.CharField(max_length=264, null=True)
-    descriere = models.TextField(max_length=624)
+    descriere = models.TextField(max_length=9000)
     categorie_copil = models.CharField(max_length=264, choices=CATEGORIE_COPIL)
     telefon = models.PositiveIntegerField()
     email = models.EmailField()
@@ -159,7 +162,7 @@ class AnuntCopil(models.Model):
 
 class AnuntAdult(models.Model):
     titlul = models.CharField(max_length=264, null=True)
-    descriere = models.TextField(max_length=624)
+    descriere = models.TextField(max_length=9000)
     numele_anuntului = models.CharField(max_length=264, null=True)
     categorie_adult = models.CharField(max_length=264, choices=CATEGORIE_ADULT)
     telefon = models.IntegerField()
@@ -183,13 +186,13 @@ class AnuntAdult(models.Model):
         return reverse('my_app:anunturi_postate_adult', kwargs={'pk':self.pk})
 
 class MesajCopil(models.Model):
-    mesaj = models.TextField(max_length=624)
+    mesaj = models.TextField(max_length=9000)
 
     def __str__(self):
         return self.mesaj
 
 class MesajAdult(models.Model):
-    mesaj = models.TextField(max_length=624)
+    mesaj = models.TextField(max_length=9000)
 
     def __str__(self):
         return self.mesaj
@@ -213,6 +216,7 @@ class Afacere(models.Model):
     judet = models.CharField(max_length=264, choices=JUDETE)
     adresa = models.CharField(max_length=264, null=True)
     email = models.EmailField(null=True, blank=True)
+    telefon = models.IntegerField(null=True, blank=True)
     tipul_afacerii = models.CharField(max_length=264, choices=TIPUL_AFACERII)
 
     def __str__(self):
@@ -232,8 +236,25 @@ class Serviciu(models.Model):
     tipul_serviciului = models.CharField(max_length=264, choices=TIPUL_SERVICIULUI)
     email = models.EmailField(null=True, blank=True)
     experienta_profesionala = models.TextField(max_length=9000, null=True)
+    telefon = models.IntegerField(null=True)
 
     def __str__(self):
-        return self.titlul
+        return self.numele_serviciului
+
+class MesajAfaceri(models.Model):
+    nume = models.CharField(max_length=264, null=True)
+    email = models.EmailField(null=True)
+    mesaj = models.TextField(max_length=9000, null=True)
+
+    def __str__(self):
+        return self.nume
+
+class MesajServiciu(models.Model):
+    nume = models.CharField(max_length=264, null=True)
+    email = models.EmailField(null=True)
+    mesaj = models.TextField(max_length=9000, null=True)
+
+    def __str__(self):
+        return self.nume
 
 # Create your models here.

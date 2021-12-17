@@ -1,6 +1,5 @@
 from django import forms
-from django.db.models import fields
-from .models import Adult, Copil, AnuntAdult, AnuntCopil, AjutorSiContact, MesajCopil, MesajAdult, Afacere, Serviciu
+from .models import Adult, Copil, AnuntAdult, AnuntCopil, AjutorSiContact, MesajCopil, MesajAdult, Afacere, Serviciu, MesajAfaceri, MesajServiciu
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -108,4 +107,24 @@ class ServiciuForm(forms.ModelForm):
             'tipul_serviciului':forms.Select(attrs={'class':'form-control'}),
             'experienta_profesionala':forms.Textarea(attrs={'class':'form-control', 'placeholder':'Experienta ta profesionala...'}),
             'email':forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Email'})
+        }
+
+class MesajAfaceriForm(forms.ModelForm):
+    class Meta:
+        model = MesajAfaceri
+        fields = '__all__'
+        widgets = {
+            'nume':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Nume', 'name':'nume5'}),
+            'email':forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Email', 'name':'email5'}),
+            'mesaj':forms.Textarea(attrs={'class':'form-control', 'placeholder':'Mesaj', 'name':'mesaj5'}),
+        }
+
+class MesajServiciuForm(forms.ModelForm):
+    class Meta:
+        model = MesajServiciu
+        fields = '__all__'
+        widgets = {
+            'nume':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Nume', 'name':'nume6'}),
+            'email':forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Email', 'name':'email6'}),
+            'mesaj':forms.Textarea(attrs={'class':'form-control', 'placeholder':'Mesaj', 'name':'mesaj6'}),
         }

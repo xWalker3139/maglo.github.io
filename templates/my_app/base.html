@@ -21,9 +21,47 @@
     {% block head_block %}
     {% endblock %}
     <style>
+        #navbar{
+        background-image: linear-gradient(-120deg, #b4d5ee, #A683E3);
+        font-family: 'Montserrat', sans-serif;
+      }
+      .banner{
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(-120deg, #b4d5ee, #A683E3);
+      }
+      #button3{
+        border: 3px solid #fff;
+        border-radius: 4px;
+        font-size: 22px;
+        padding-left: 25px;
+        padding-right: 25px;
+        color: #fff;
+      }
+      #button3:hover{
+        color: #A683E3;
+        background-color: #fff;
+      }
+      #button4{
+        border: 3px solid #fff;
+        border-radius: 4px;
+        font-size: 22px;
+        padding-left: 25px;
+        padding-right: 25px;
+        color: #fff;
+      }
+      #button4:hover{
+        color: #A683E3;
+        background-color: #fff;
+      }
         .bg{
             margin-top: 80px;
             margin-bottom: 60px;
+        }
+        #image1{
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 100%;
         }
         .new_bg{
             margin-left: 10px;
@@ -93,49 +131,90 @@
         #nav_2 strong:hover{
             color: #A683E3;
         }
+        #icon1{
+            font-size: 35px;
+            padding-top: 10px;
+        }
+        .new_banner{
+            margin-top: 30px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        #image2{
+          width: 100%;
+          margin-bottom: 40px;
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #A683E3;font-size: 25px;">
+    <nav class="navbar navbar-expand-md navbar-light sticky-top" id="navbar">
         <!-- Brand -->
-        <div class="container">
-            <!-- Toggler/collapsibe Button -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-        
-            <!-- Navbar links -->
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'acasa_adult' %}" id="nav_1"
-                        style="font-family: 'Montserrat', sans-serif;color: #fff;text-decoration: none;font-size: 23px;border: 3px solid #fff;padding-top: 7px;padding-bottom: 7px;padding-left: 26px;padding-right: 26px;border-radius: 4px;">
-                            <strong>Sunt adult</strong>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'acasa' %}">Maglo</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'acasa_copil' %}" id="nav_2"
-                        style="font-family: 'Montserrat', sans-serif;color: #fff;text-decoration: none;font-size: 23px;border: 3px solid #fff;padding-top: 7px;padding-bottom: 7px;padding-left: 26px;padding-right: 26px;border-radius: 4px;">
-                            <strong>Sunt copil</strong>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+      
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav" style="margin:auto;">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'acasa_adult' %}" id="button3"><strong>Sunt adult</strong></a>
+            </li>
+          </ul>
+          <ul class="navbar-nav" style="margin:auto;">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'acasa' %}">Maglo</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav" style="margin:auto;">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'acasa_copil' %}" id="button4"><strong>Sunt copil</strong></a>
+            </li>
+          </ul>
         </div>
-      </nav>
+    </nav>
     {% block body_block %}
-    <div class="my_bg">
-        <div class="my_new_text1">
-            <h1><strong>Esti adult</strong></h1>
-            <h1><strong>sau</strong></h1>
-            <h1><strong>esti copil?</strong></h1>
+    <div class="banner">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-4 col-sm-6">
+              <h1 style="margin-top: 15rem;color: aliceblue;font-size: 60px;font-family: 'Montserrat', sans-serif;"><strong>Esti adult sau</strong></h1>
+              <h1 style="color: aliceblue;font-size: 60px;font-family: 'Montserrat', sans-serif;"><strong>esti copil?</strong></h1>
+              <br>
+              <p style="font-family: 'Montserrat', sans-serif;color: aliceblue;font-size: 22px;">Copil,parinte sau bunic,pe Maglo faci un schimb rapid!</p>
+              <div class="row">
+                <div class="col-lg-6 col-md-4 col-sm-6">
+                  <a href="#" class="btn btn-secondary btn-lg btn-block" style="margin-top: 40px;">
+                    <div class="row">
+                      <div class="col-lg-2 col-md-4 col-sm-6">
+                        <i class="fab fa-apple" id="icon1"></i>
+                      </div>
+                      <div class="col-lg-8 col-md-4 col-sm-6">
+                        <p style="margin: 0;">valabil si pe</p>
+                        <p style="margin: 0;">App Store</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-lg-6 col-md-4 col-sm-6">
+                  <a href="#" class="btn btn-primary btn-lg btn-block" style="margin-top: 40px;">
+                    <div class="row">
+                      <div class="col-lg-2 col-md-4 col-sm-6">
+                        <i class="fab fa-google-play" id="icon1"></i>
+                      </div>
+                      <div class="col-lg-8 col-md-4 col-sm-6">
+                        <p style="margin: 0;">valabil si pe</p>
+                        <p style="margin: 0;padding-left: 10px;">Magazin Play</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-6">
+              <img src="https://marveltheme.com/themes-wp/appal/wp-content/uploads/2019/09/img-2-2.png" id="image1">
+            </div>
+          </div>
         </div>
     </div>
     <div class="container">
@@ -174,8 +253,8 @@
                 <img src="https://preview.codeless.co/specular/default/wp-content/uploads/2014/05/wall-460x275.jpg" style="width: 100%; height: 40vh;">
             </div>
             <div class="col-lg-7 col-md-4 col-sm-6">
-                <h1 style="font-family: 'Montserrat', sans-serif;margin-bottom: 30px;margin-top: 13px;"><strong>Viziunea noastra</strong></h1>
-                <p style="font-family: 'Montserrat', sans-serif;font-size: 26px;">Copil,parinte sau bunic,pe Maglo faci un schimb rapid!</p>
+                <h2 style="font-family: 'Montserrat', sans-serif;margin-bottom: 30px;margin-top: 13px;"><strong>Noi ajutam afaceri ambitoase pentru atingerea succesului</strong></h2>
+                <p style="font-family: 'Montserrat', sans-serif;font-size: 20px;">Internetul iti ofera puterea de a targeta orice potential client din lume. Poti gasi acesti clienti din orice tara.</p>
             </div>
         </div>
     </div>
@@ -194,8 +273,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-7 col-md-4 col-sm-6">
-                <h1 style="font-family: 'Montserrat', sans-serif;margin-bottom: 40px;"><strong>Disponibil pentru orice device</strong></h1>
-                <p style="font-family: 'Montserrat', sans-serif;margin-bottom: 20px;font-size: 22px;">Cu Maglo esti mereu aproape de ceea ce cauti.
+                <h2 style="font-family: 'Montserrat', sans-serif;margin-bottom: 40px;"><strong>Disponibil pentru orice device</strong></h2>
+                <p style="font-family: 'Montserrat', sans-serif;margin-bottom: 20px;font-size: 18px;">Cu Maglo esti mereu aproape de ceea ce cauti.
                     Fie ca folosesti smartphone-ul,tableta sau laptop-ul,experienta de utilizare este la fel de simpla.</p>
             </div>
             <div class="col-lg-5 col-md-4 col-sm-6">
@@ -203,6 +282,41 @@
             </div>
         </div>
     </div>
+    <hr style="margin-top: 80px;margin-bottom: 80px;">
+    <div class="new_banner">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-4 col-sm-6">
+              <img src="https://qu3r1v212d48cje431eqa61a-wpengine.netdna-ssl.com/mobile-app/wp-content/uploads/sites/3/2018/09/mobi-app-5.svg" id="image2">
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-6">
+              <h2><strong>Vă economisim timpul și banii</strong></h2>
+              <p style="padding-top: 30px;padding-bottom: 30px;font-size: 18px;">De asemenea, oamenii iubesc aplicația noastră pentru aceste funcții minunate și eficiente care oferă utilizatorului o libertate completă.</p>
+              <span>
+                <div class="row">
+                  <div class="col-lg-1 col-md-4 col-sm-6">
+                    <i class="far fa-gem" style="font-size: 22px;color: rgba(163,119,240,1);"></i>
+                  </div>
+                  <div class="col-lg-8 col-md-4 col-sm-6">
+                    <p style="font-size: 22px;margin-bottom: 12px;"><strong>Flexibilitatea de care ai nevoie</strong></p>
+                  </div>
+                </div>
+                <p style="padding-top: 0;padding-left: 40px;font-size: 18px;">Sarcinile de lucru grele sunt dăunătoare și avem grijă de el, astfel încât să nu fie nevoie să o faceți.</p>
+                <br>
+                <div class="row">
+                  <div class="col-lg-1 col-md-4 col-sm-6">
+                    <i class="far fa-money-bill-alt" style="font-size: 22px;color: rgba(163,119,240,1);"></i>
+                  </div>
+                  <div class="col-lg-8 col-md-4 col-sm-6">
+                    <p style="font-size: 22px;"><strong>Salveaza-ti banii</strong></p>
+                  </div>
+                </div>
+                <p style="padding-left: 40px;padding-top: 0;font-size: 18px;">Ajutându-vă să vă automatizați plățile, vă ajutăm să economisiți timp prețios.</p>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="jumbotron" style="background-color: #334257;margin-bottom: 0px;margin-top: 70px;">
         <div class="container">
             <div class="row">

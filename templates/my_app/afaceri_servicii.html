@@ -977,7 +977,7 @@
                                 <p style="padding-bottom: 12px;font-size: 19px;padding-left: 6px;padding-top: 0;">Judet: {{anunt.judet}} </p>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-6">
-                                <a href="" class="btn btn-outline-info" style="margin-bottom: 12px;margin-left: 6px;">Vezi detalii</a>
+                                <a href="{% url 'my_app:pag_afaceri' pk=anunt.pk %}" class="btn btn-outline-info" style="margin-bottom: 12px;margin-left: 6px;">Vezi detalii</a>
                             </div>
                         </div>
                     </div>
@@ -991,15 +991,15 @@
                         <img src="{{ new_anunt.imagine.url }}" style="width: 100%; height: 26vh;font-weight:bolder;">
                     </div>
                     <div class="col-lg-9 col-md-4 col-sm-6">
-                        <h2 style="padding-top: 12px;font-weight: bold;padding-left: 6px;"></h2>
+                        <h2 style="padding-top: 12px;font-weight: bold;padding-left: 6px;">{{new_anunt.numele_serviciului}}</h2>
                         <hr>
-                        <p style="font-size: 19px;padding-left: 6px;padding-top: 10px;"></p>
+                        <p style="font-size: 19px;padding-left: 6px;padding-top: 10px;">{{new_anunt.tipul_serviciului}}</p>
                         <div class="row">
                             <div class="col-lg-8 col-md-4 col-sm-6">
                                 <p style="padding-bottom: 12px;font-size: 19px;padding-left: 6px;padding-top: 0;">Judet: {{new_anunt.judet}} </p>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-6">
-                                <a href="{% url 'my_app:pag_anunturi_postate_adult' pk=anunt.pk %}" class="btn btn-outline-info" style="margin-bottom: 12px;margin-left: 6px;">Vezi detalii</a>
+                                <a href="{% url 'my_app:pag_servicii' pk=new_anunt.pk %}" class="btn btn-outline-info" style="margin-bottom: 12px;margin-left: 6px;">Vezi detalii</a>
                             </div>
                         </div>
                     </div>
