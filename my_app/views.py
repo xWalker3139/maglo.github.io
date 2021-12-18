@@ -233,9 +233,8 @@ def autentificate_copil(request):
         password = request.POST.get('password1')
         user = authenticate(request, username=username, password=password)
         if user:
-            if user.is_active():
-                login(request, user)
-                return redirect('acasa_copil')
+            login(request, user)
+            return redirect('acasa_copil')
         else:
             messages.warning(request, "Numele sau parola este incorecta!")
     return render(request, "my_app/autentificate_copil.html", {'date_posted':date_posted})
@@ -943,10 +942,9 @@ def autentificate_adult(request):
         username = request.POST.get('username')
         password = request.POST.get('password1')
         user = authenticate(request, username=username, password=password)
-        if user:
-            if user.is_active():
-                login(request, user)
-                return redirect('acasa_adult')
+        if user is not None:
+            login(request, user)
+            return redirect('acasa_adult')
         else:
             messages.warning(request, "Numele sau parola sunt incorecte!")
     context = {

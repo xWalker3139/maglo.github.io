@@ -23,32 +23,37 @@
     {% endblock %}
     <style>
         #nav_5{
-            border: 3px solid #fff;
-            border-radius: 4px;
-            font-size: 22px;
-            padding-left: 25px;
-            padding-right: 25px;
-            color: #fff;
-        }
-        #nav_5:hover{
-            color: #A683E3;
-            background-color: #fff;
-        }
-        #nav_4{
-            border: 3px solid #fff;
-            border-radius: 4px;
-            font-size: 22px;
-            padding-left: 25px;
-            padding-right: 25px;
-            color: #fff;
-        }
-        #nav_4:hover{
-            color: #A683E3;
-            background-color: #fff;
-        }
-        #text1:hover{
-            color: #A683E3;
-        }
+        border: 3px solid #fff;
+        border-radius: 4px;
+        font-size: 22px;
+        padding-left: 25px;
+        padding-right: 25px;
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        text-decoration: none;
+    }
+    #nav_5:hover{
+        color: #A683E3;
+        background-color: #fff;
+    }
+    #nav_4{
+        border: 3px solid #fff;
+        border-radius: 4px;
+        font-size: 22px;
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        text-decoration: none;
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+    }
+    #nav_4:hover{
+        color: #A683E3;
+        background-color: #fff;
+    }
     </style>
 </head>
 <body style="background-color: aliceblue;" data-spy="scroll" data-target="my_card1" data-offset="50">
@@ -72,13 +77,13 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item" style="margin-top: 7px;margin-bottom: 7px;">
-                        <a class="navbar-link" href="{% url 'my_app:contul_meu_copil' %}" style="font-family: 'Montserrat', sans-serif;color: #fff;padding-right: 30px;text-decoration: none;font-size: 23px;border: 3px solid #fff;padding: 7px;border-radius: 4px;" id="nav_4">
+                        <a class="navbar-link" href="{% url 'my_app:contul_meu_copil' %}" id="nav_4">
                             <strong id="text1">Contul meu</strong>
                         </a>
                     </li>
                     {% else %}
                     <li class="nav-item" style="margin-top: 7px;margin-bottom: 7px;">
-                        <a class="navbar-link" href="{% url 'my_app:inregistrare_copil' %}" style="font-family: 'Montserrat', sans-serif;color: #fff;padding-right: 30px;text-decoration: none;font-size: 23px;border: 3px solid #fff;padding: 7px;border-radius: 4px;" id="nav_4">
+                        <a class="navbar-link" href="{% url 'my_app:inregistrare_copil' %}" id="nav_4">
                             <strong id="text1">Inregistrare</strong>
                         </a>
                     </li>
