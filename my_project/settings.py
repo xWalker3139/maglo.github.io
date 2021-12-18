@@ -108,6 +108,11 @@ PASSWORD_HASHERS = [
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
+    'customers.backends.AnuntCopil',
+    'customers.backends.AnuntAdult',
+    'customers.backends.User',
+    'customers.backends.Afacere',
+    'customers.backends.Serviciu',
 ]
 
 # Password validation
