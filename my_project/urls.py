@@ -40,7 +40,6 @@ urlpatterns = [
     url(r'^cautare/$', views.search_adult, name="search_adult"),
     url(r'^cautare_c/$', views.search_copil, name="search_copil"),
 
-    url('oauth/', include('social_django.urls', namespace='social')),
 
     ##############BAZA################
 
