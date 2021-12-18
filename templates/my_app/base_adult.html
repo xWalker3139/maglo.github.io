@@ -20,9 +20,30 @@
     {% block head_block %}
     {% endblock %}
     <style>
-        #nav_5:hover{
-            background-color:#fff;
-        }
+    #nav_5{
+        border: 3px solid #fff;
+        border-radius: 4px;
+        font-size: 22px;
+        padding-left: 25px;
+        padding-right: 25px;
+        color: #fff;
+    }
+    #nav_5:hover{
+        color: #A683E3;
+        background-color: #fff;
+    }
+    #nav_4{
+        border: 3px solid #fff;
+        border-radius: 4px;
+        font-size: 22px;
+        padding-left: 25px;
+        padding-right: 25px;
+        color: #fff;
+    }
+    #nav_4:hover{
+        color: #A683E3;
+        background-color: #fff;
+    }
         #nav_4:hover{
             background-color:#fff;
         }
@@ -58,7 +79,7 @@
                     </li>
                     {% else %}
                     <li class="nav-item" style="margin-top: 7px;margin-bottom: 7px;">
-                        <a class="navbar-link" href="{% url 'my_app:inregistrare_adult' %}" style="font-family: 'Montserrat', sans-serif;color: #fff;padding-right: 30px;text-decoration: none;font-size: 23px;border: 3px solid #fff;padding: 7px;border-radius: 4px;margin-top: 7px;margin-bottom: 10px;" id="nav_5">
+                        <a class="navbar-link" href="{% url 'my_app:inregistrare_adult' %}" id="nav_5">
                             <strong id="text1">Inregistrare</strong>
                         </a>
                     </li>
