@@ -12,10 +12,6 @@ from django.core.paginator import Paginator
 from .filters import SearchBarCopil, SearchFilter
 from django.contrib import messages
 import datetime
-import stripe
-
-public_key = ''
-stripe.api_key = ''
 
 ########################################
 ###############BAZA#####################
