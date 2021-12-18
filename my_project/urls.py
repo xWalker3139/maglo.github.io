@@ -49,6 +49,8 @@ urlpatterns = [
     url(r'^politica_de_cookie-uri/$', views.PoliticaDeCookieuri.as_view(), name="politica_cookie"),
     url(r'^protejeaza-te_pe_maglo/$', views.Securitate.as_view(), name='securitate'),
 
+    url(r'', include("django.contrib.auth.urls")),
+
     ##################JUDETE##############
     url(r'^alba/$', views.judet_alba_copil, name="judet_alba_copil"),
     url(r'arad/$',views.judet_arad_copil, name="judet_arad_copil"),
