@@ -11,7 +11,7 @@ CATEGORIE_COPIL = (
     ('Mama si copil', 'Mama si copil'),
 )
 
-CATEGORIE_ADULT = (
+CATEGORIE_ADULT = [
     ('Auto, moto si ambarcatiuni','Auto, moto si ambarcatiuni'),
     ('Piese auto', 'Piese auto'),
     ('Agro si industrie', 'Agro si industrie'),
@@ -24,7 +24,7 @@ CATEGORIE_ADULT = (
     ('Sport, timp liber si Hobby', 'Sport, timp liber si Hobby'),
     ('Intreprinzatori autohtoni', 'Intreprinzatori autohtoni'),
     ('Matrimoniale', 'Matrimoniale'),
-)
+]
 
 SUBCATEGORIE_ADULT = [
     ('Autoturisme', 'Ambarcatiuni', 'Autoutilitare', 'Camioane, rulote, remorci', 'Motociclete, scutere, ATV'),
@@ -164,7 +164,7 @@ class AnuntAdult(models.Model):
     titlul = models.CharField(max_length=264, null=True)
     descriere = models.TextField(max_length=9000)
     numele_anuntului = models.CharField(max_length=264, null=True)
-    categorie_adult = models.CharField(max_length=264, choices=CATEGORIE_ADULT)
+    categorie_adult = models.CharField(max_length=264, null=True, blank=False)
     telefon = models.IntegerField()
     email = models.EmailField()
     pret = models.FloatField(null=True, blank=True)
@@ -175,15 +175,23 @@ class AnuntAdult(models.Model):
     imagine4 = models.ImageField(null=True, blank=False, upload_to='images/')
     imagine5 = models.ImageField(null=True, blank=False, upload_to='images/')
     imagine6 = models.ImageField(null=True, blank=False, upload_to='images/')
-    subcategorie_adult = models.CharField(max_length=264, unique=True, null=True)
+    subcategorie_adult = models.CharField(max_length=264, null=True)
     favorit = models.ManyToManyField(User, related_name="favorit", blank=True)
     localizare = models.CharField(max_length=264, choices=JUDETE)
 
     def __str__(self):
-        return self.descriere
+        return self.numele_anuntului
 
     def get_absolute_url(self):
         return reverse('my_app:anunturi_postate_adult', kwargs={'pk':self.pk})
+    
+    def save(self, *args, **kwargs):
+        for field_name in ['categorie_adult']:
+            val = getattr(self, field_name, False)
+            if val:
+                setattr(self, field_name, val.capitalize())
+        super(AnuntAdult, self).save(*args, **kwargs)
+    
 
 class MesajCopil(models.Model):
     mesaj = models.TextField(max_length=9000)

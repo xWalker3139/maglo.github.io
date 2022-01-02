@@ -119,22 +119,22 @@
                         <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                     </div>
                     <div class="form-group">
-                        <label for="categorie">Categorie:</label>
+                        <label for="categorie_adult">Categorie:</label>
                         <select class="form-control" name="categorie_adult" id="select" required>
                             <option selected disabled>----------</option>
-                            <option value="auto">Auto, moto si ambarcatiuni</option>
-                            <option value="piese">Piese auto</option>
-                            <option value="agro">Agro si industrie</option>
-                            <option value="imobiliare">Imobiliare</option>
-                            <option value="moda">Moda si frumusete</option>
-                            <option value="electronice">Electronice si electrocasnice</option>
-                            <option value="animale">Animale de companie</option>
-                            <option value="locuri">Locuri de munca</option>
-                            <option value="sport">Sport, timp liber si Hobby</option>
+                            <option id="Auto, moto si ambarcatiuni">Auto, moto si ambarcatiuni</option>
+                            <option id="Piese, auto">Piese auto</option>
+                            <option id="Agro, industrie">Agro si industrie</option>
+                            <option id="Imobiliare">Imobiliare</option>
+                            <option id="Moda, si frumusete">Moda si frumusete</option>
+                            <option id="Electrocasnice, si Electronice">Electronice si electrocasnice</option>
+                            <option id="Animale, de companie">Animale de companie</option>
+                            <option id="Locuri, de munca">Locuri de munca</option>
+                            <option id="Sport, timp liber si Hobby">Sport, timp liber si Hobby</option>
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                         </select>
-                        <div class="auto box" style="margin-top: 10px;">
+                        <div class="Auto box" style="margin-top: 10px;">
                             <label for="subcategorie">Subcategorie:</label>
                             <select class="form-control" name="subcategorie_adult" required>
                                 <option selected disabled>----------</option>
@@ -147,8 +147,8 @@
                                 <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                             </select>
                         </div>
-                        <div class="piese box" style="margin-top: 10px;">
-                            <label for="subcategorie">Sucategorie:</label>
+                        <div class="Piese box" style="margin-top: 10px;">
+                            <label for="subcategorie">Subcategorie:</label>
                             <select class="form-control" name="subcategorie_adult">
                                 <option selected disabled>----------</option>
                                 <option>Roti, jante, anvelope</option>
@@ -158,7 +158,7 @@
                                 <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                             </select>
                         </div>
-                        <div class="agro box" style="margin-top: 10px;">
+                        <div class="Agro box" style="margin-top: 10px;">
                             <label for="subcategorie">Subcategorie:</label>
                             <select class="form-control" name="subcategorie_adult">
                                 <option selected disabled>--------</option>
@@ -169,7 +169,7 @@
                                 <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                             </select>
                         </div>
-                        <div class="imobiliare box" style="margin-top: 10px;">
+                        <div class="Imobiliare box" style="margin-top: 10px;">
                             <label for="subcategorie">Subcategorie:</label>
                             <select class="form-control" name="subcategorie_adult">
                                 <option selected disabled>----------</option>
@@ -186,7 +186,7 @@
                                 <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                             </select>
                         </div>
-                        <div class="moda box" style="margin-top: 10px;">
+                        <div class="Moda box" style="margin-top: 10px;">
                             <label for="subcategorie">Subcategorie:</label>
                             <select class="form-control" name="subcategorie_adult">
                                 <option selected disabled>----------</option>
@@ -201,7 +201,7 @@
                                 <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                             </select>
                         </div>
-                        <div class="electronice box" style="margin-top: 10px;">
+                        <div class="Electrocasnice box" style="margin-top: 10px;">
                             <label for="subcategorie">Subcategorie:</label>
                             <select class="form-control" name="subcategorie_adult">
                                 <option selected disabled>----------</option>
@@ -215,7 +215,7 @@
                                 <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                             </select>
                         </div>
-                        <div class="animale box" style="margin-top: 10px;">
+                        <div class="Animale box" style="margin-top: 10px;">
                             <label for="subcategorie">Subcategorie:</label>
                             <select class="form-control" name="subcategorie_adult">
                                 <option selected disabled>----------</option>
@@ -225,7 +225,7 @@
                                 <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                             </select>
                         </div>
-                        <div class="locuri box">
+                        <div class="Locuri box">
                             <label for="subcategorie">Subcategorie:</label>
                             <select class="form-control" name="subcategorie_adult">
                                 <option selected disabled>----------</option>
@@ -240,7 +240,7 @@
                                 <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                             </select>
                         </div>
-                        <div class="sport box">
+                        <div class="Sport box">
                             <label for="subcategorie">Subcategorie:</label>
                             <select class="form-control" name="subcategorie_adult">
                                 <option selected disabled>----------</option>
@@ -269,8 +269,8 @@
                         <label for="pret">Vând / Schimb</label>
                         <select class="form-control" id="selectare">
                             <option selected disabled>----------</option>
-                            <option value="vinde">Vând</option>
-                            <option value="schimb">Schimb</option>
+                            <option id="vinde">Vând</option>
+                            <option id="schimb">Schimb</option>
                         </select>
                         <div class="vinde newbox" style="margin-top: 10px;">
                         <div class="row">
@@ -426,7 +426,7 @@
     $(document).ready(function(){
         $("#select").change(function(){
         $(this).find("option:selected").each(function(){
-            var optionValue = $(this).attr("value");
+            var optionValue = $(this).attr("id");
             if(optionValue){
                 $(".box").not("." + optionValue).hide();
                 $("." + optionValue).show();
@@ -439,7 +439,7 @@
     $(document).ready(function(){
         $("#selectare").change(function(){
         $(this).find("option:selected").each(function(){
-            var optionValue = $(this).attr("value");
+            var optionValue = $(this).attr("id");
             if(optionValue){
                 $(".newbox").not("." + optionValue).hide();
                 $("." + optionValue).show();

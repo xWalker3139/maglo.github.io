@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from .filters import SearchBarCopil, SearchFilter
 from django.contrib import messages
+from django.db.models import Q
 import datetime
 
 ########################################
@@ -1147,7 +1148,8 @@ def cautare_anunt(request):
     model = myFilter.qs
     if request.method == "POST":
         cautat = request.POST['cautat']
-        model_cautat = AnuntAdult.objects.filter(categorie_adult = cautat)
+        lookup = (Q(localizare__icontains = cautat) and Q(categorie_adult__contains = cautat))
+        model_cautat = AnuntAdult.objects.filter(lookup)
         return render(request, "my_app/anunturi_postate_adult.html", {'cautat':cautat, 'model_cautat':model_cautat, 'model':model, 'date_posted':date_posted, 'anunturile':anunturile, 'myFilter':myFilter})
     else:
         return render(request, "my_app/anunturi_postate_adult.html", {'model':model, 'date_posted':date_posted, 'anunturile':anunturile, 'myFilter':myFilter})
@@ -1157,7 +1159,7 @@ def cautare_anunt(request):
 def auto_adult(request):
     date_posted = datetime.datetime.now().year
     categorie = CATEGORIE_ADULT[0][0]
-    model = AnuntAdult.objects.filter(categorie_adult=categorie)
+    model = AnuntAdult.objects.filter(categorie_adult = categorie)
     context = {
         'date_posted':date_posted,
         'model':model
@@ -2028,7 +2030,8 @@ def search_adult(request):
     date_posted = datetime.datetime.now().year
     if request.method == "POST":
         cautat = request.POST['cautat']
-        model_cautat = AnuntAdult.objects.filter(categorie_adult__contains = cautat)
+        lookup = Q(numele_anuntului__icontains = cautat) | Q(localizare__icontains = cautat) | Q(subcategorie_adult__icontains = cautat)
+        model_cautat = AnuntAdult.objects.filter(lookup)
         return render(request, 'my_app/cautare_adult.html', {'date_posted':date_posted, 'model_cautat':model_cautat, 'cautat':cautat})
     else:
         raise Http404
