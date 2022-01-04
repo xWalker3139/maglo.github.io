@@ -26,7 +26,6 @@ app_name = "my_app"
 urlpatterns = [
     url('admin/', admin.site.urls),
     url(r'^acasa/$', views.BaseView.as_view(), name="acasa"),
-    url(r'^acasa_copil/$', views.BaseCopilView.as_view(), name="acasa_copil"),
     url(r'^my_app/', include("my_app.urls", namespace="my_app")),
     url(r'^anunturi_postate_copil/$', views.anunturi_postate_copil, name="anunturi_postate_copil"),
     url(r'^deconectare_copil/$', views.deconectare_copil, name="deconectare_copil"),
@@ -35,7 +34,6 @@ urlpatterns = [
 
     #################ADULT###########
 
-    url(r'^acasa_adult/$', views.AdultBaseView.as_view(), name="acasa_adult"),
     url(r'^anunturi_postate_adult/$', views.cautare_anunt, name="anunturi_postate_adult"),
     url(r'^cautare/$', views.search_adult, name="search_adult"),
     url(r'^cautare_c/$', views.search_copil, name="search_copil"),

@@ -159,7 +159,7 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav" style="margin:auto;">
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'acasa_adult' %}" id="button3"><strong>Sunt adult</strong></a>
+              <a class="nav-link" href="{% url 'anunturi_postate_adult' %}" id="button3"><strong>Sunt adult</strong></a>
             </li>
           </ul>
           <ul class="navbar-nav" style="margin:auto;">
@@ -169,7 +169,7 @@
           </ul>
           <ul class="navbar-nav" style="margin:auto;">
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'acasa_copil' %}" id="button4"><strong>Sunt copil</strong></a>
+              <a class="nav-link" href="{% url 'anunturi_postate_copil' %}" id="button4"><strong>Sunt copil</strong></a>
             </li>
           </ul>
         </div>
@@ -216,6 +216,16 @@
               <img src="https://marveltheme.com/themes-wp/appal/wp-content/uploads/2019/09/img-2-2.png" id="image1">
             </div>
           </div>
+        </div>
+        <div class="toast" data-autohide="false" style="max-width: 100%;">
+          <nav class="navbar navbar-expand-sm bg-light navbar-dark fixed-bottom" style="height: 20vh;background-color: aliceblue;">
+            <div class="container">
+              <p style="font-family: 'Montserrat', sans-serif;font-weight: bolder;font-size: 20px;">Noua ne pasa ca datele tale sa fie confidentiale</p>
+              <p style="font-family: 'Montserrat', sans-serif;font-weight: bolder;font-size: 20px;">Text aleatoriu:</p>
+              <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">Accept &times;</button>
+            </div>
+            <br>
+          </nav>
         </div>
     </div>
     <div class="container">
@@ -349,5 +359,10 @@
         </div>
     </div>
     {% endblock %}
+    <script>
+      $(document).ready(function(){
+        $('.toast').toast('show');
+      });
+  </script>
 </body>
 </html>

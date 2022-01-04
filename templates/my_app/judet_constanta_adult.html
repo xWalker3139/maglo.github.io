@@ -1,4 +1,4 @@
-{% extends 'my_app/base_adult.html' %}
+{% extends 'my_app/anunturi_postate_adult.html' %}
 
 {% block head_block %}
 <style>
@@ -147,7 +147,7 @@
             <div class="wrapper">
                 <div class="search-input">
                   <a href="" target="_blank" hidden></a>
-                  <input type="search" placeholder="Cauta anuntul dorit" name="cautat">
+                  <input type="search" placeholder="{{model.count}} anunturi postate" name="cautat">
                   <div class="autocom-box">
                     <!-- here list are inserted from javascript -->
                   </div>
@@ -159,7 +159,7 @@
 </div>
 <div class="jumbotron">
     <div class="container">
-        <h1 style="text-align: center; margin-bottom: 40px;font-family: 'Montserrat', sans-serif;"><strong>Categorii</strong></h1>
+        <h1 style="text-align: center; margin-bottom: 40px;font-family: 'Montserrat', sans-serif;"><strong>Categorii principale</strong></h1>
         <br>
         <div class="row">
             <div class="col-lg-2 col-md-4 col-sm-6">
@@ -375,7 +375,7 @@
                     <a href="#demo51" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Mici intrepinzatori autohtoni</a>
                     <div id="demo51" class="collapse"></div>
                     <br>
-                    <a href="#demo52" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Mama si Copil</a>
+                    <a href="#demo52" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Matrimoniale</a>
                     <div id="demo52" class="collapse">
                         <ul>
                             <li></li>
@@ -969,7 +969,7 @@
                         <img src="{{ anunt.imagine.url }}" style="width: 100%; height: 26vh;font-weight:bolder;">
                     </div>
                     <div class="col-lg-9 col-md-4 col-sm-6">
-                        <h2 style="padding-top: 12px;font-weight: bold;padding-left: 6px;">{{anunt.titlul}}</h2>
+                        <h2 style="padding-top: 12px;font-weight: bold;padding-left: 6px;">{{anunt.numele_anuntului}}</h2>
                         <hr>
                         <p style="font-size: 19px;padding-left: 6px;padding-top: 10px;">Categorie: {{anunt.categorie_adult}}</p>
                         <div class="row">

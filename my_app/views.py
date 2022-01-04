@@ -61,12 +61,6 @@ class Securitate(View):
 ############COPIL############################
 #############################################
 
-
-class BaseCopilView(View):
-    def get(self, request):
-        date_posted = datetime.datetime.now().year
-        return render(request, "my_app/base_copil.html", {'date_posted':date_posted})
-
 ###############CONTUL_MEU####################
 
 @login_required
@@ -196,7 +190,7 @@ def deconectare_copil1(request):
 @login_required
 def deconectare_copil(request):
     logout(request)
-    return HttpResponseRedirect(reverse('acasa_copil'))
+    return HttpResponseRedirect(reverse('anunturi_postate_copil'))
 
 @login_required
 def anunturi_totale_copil(request):
@@ -235,7 +229,7 @@ def autentificate_copil(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('acasa_copil')
+            return redirect('my_app:contul_meu_copil')
         else:
             messages.warning(request, "Numele sau parola este incorecta!")
     return render(request, "my_app/autentificate_copil.html", {'date_posted':date_posted})
@@ -903,9 +897,9 @@ def anunturi_postate_copil(request):
     if request.method == "POST":
         cautat = request.POST['cautat']
         model_cautat = AnuntCopil.objects.filter(categorie_adult = cautat)
-        return render(request, "my_app/anunturi_postate_copil.html", {'cautat':cautat, 'model_cautat':model_cautat, 'model':model, 'date_posted':date_posted, 'anunturile':anunturile, 'myFilter':myFilter})
+        return render(request, "my_app/base_copil.html", {'cautat':cautat, 'model_cautat':model_cautat, 'model':model, 'date_posted':date_posted, 'anunturile':anunturile, 'myFilter':myFilter})
     else:
-        return render(request, "my_app/anunturi_postate_copil.html", {'model':model, 'date_posted':date_posted, 'anunturile':anunturile, 'myFilter':myFilter})
+        return render(request, "my_app/base_copil.html", {'model':model, 'date_posted':date_posted, 'anunturile':anunturile, 'myFilter':myFilter})
 
 def search_copil(request):
     date_posted = datetime.datetime.now().year
@@ -920,10 +914,6 @@ def search_copil(request):
 #########################################
 #############ADULT#######################
 #########################################
-
-class AdultBaseView(View):
-    def get(self, request):
-        return render(request, "my_app/base_adult.html")
 
 def inregistrare_adult(request):
     date_posted = datetime.datetime.now().year
@@ -945,7 +935,7 @@ def autentificate_adult(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('acasa_adult')
+            return redirect('my_app:contul_meu_adult')
         else:
             messages.warning(request, "Numele sau parola sunt incorecte!")
     context = {
@@ -1107,7 +1097,7 @@ def deconectare_adult1(request):
 @login_required
 def deconectare_adult(request):
     logout(request)
-    return HttpResponseRedirect(reverse('acasa_adult'))
+    return HttpResponseRedirect(reverse('anunturi_postate_adult'))
 
 def pag_anunturi_postate_adult(request, pk):
     date_posted = datetime.datetime.now().year
@@ -1140,6 +1130,7 @@ def pag_anunturi_postate_adult(request, pk):
 
 def cautare_anunt(request):
     model = AnuntAdult.objects.all()
+    new_model = AnuntAdult.objects.count()
     date_posted = datetime.datetime.now().year
     p = Paginator(AnuntAdult.objects.all(), 26)
     page = request.GET.get('page')
@@ -1150,9 +1141,9 @@ def cautare_anunt(request):
         cautat = request.POST['cautat']
         lookup = (Q(localizare__icontains = cautat) and Q(categorie_adult__contains = cautat))
         model_cautat = AnuntAdult.objects.filter(lookup)
-        return render(request, "my_app/anunturi_postate_adult.html", {'cautat':cautat, 'model_cautat':model_cautat, 'model':model, 'date_posted':date_posted, 'anunturile':anunturile, 'myFilter':myFilter})
+        return render(request, "my_app/anunturi_postate_adult.html", {'cautat':cautat, 'model_cautat':model_cautat, 'model':model, 'date_posted':date_posted, 'anunturile':anunturile, 'myFilter':myFilter, 'new_model':new_model})
     else:
-        return render(request, "my_app/anunturi_postate_adult.html", {'model':model, 'date_posted':date_posted, 'anunturile':anunturile, 'myFilter':myFilter})
+        return render(request, "my_app/anunturi_postate_adult.html", {'model':model, 'date_posted':date_posted, 'anunturile':anunturile, 'myFilter':myFilter, 'new_model':new_model})
 
 #################CATEGORII_ADULT###############
 
