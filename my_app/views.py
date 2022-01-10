@@ -9,9 +9,9 @@ from django.urls import reverse, reverse_lazy
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
-from .filters import SearchBarCopil, SearchFilter
+from .filters import SearchBarCopil, SearchFilter, AutoFilter
 from django.contrib import messages
-from django.db.models import Q
+from django.db.models import Q, Max, Min
 import datetime
 
 ########################################
@@ -1053,12 +1053,14 @@ def DeleteAdult(request, pk):
 ############################################
 
 @login_required
-def anunturi_totale_adult(request):
+def anunturi_totale_adult(request, pk):
     date_posted = datetime.datetime.now().year
-    model = AnuntAdult.objects.all()
+    user_model = User.objects.get(id=pk)
+    anunt = user_model.anuntadult_set.all()
     context = {
         'date_posted':date_posted,
-        'model':model,
+        'anunt':anunt,
+        'user_model':user_model
     }
     return render(request, "my_app/anunturi_totale_adult.html", context)
 
@@ -1066,6 +1068,7 @@ def anunturi_totale_adult(request):
 def posteaza_anunt_adult(request):
     date_posted = datetime.datetime.now().year
     if request.method == "POST":
+        user = request.POST.get("user")
         titlul = request.POST.get("titlul")
         numele_anuntului = request.POST.get('numele_anuntului')
         descriere = request.POST.get("descriere")
@@ -1082,7 +1085,37 @@ def posteaza_anunt_adult(request):
         imagine5 = request.FILES.get("imagine5")
         imagine6 = request.FILES.get("imagine6")
         localizare = request.POST.get("localizare")
-        model = AnuntAdult(titlul=titlul,numele_anuntului=numele_anuntului, descriere=descriere, categorie_adult=categorie_adult, subcategorie_adult=subcategorie_adult, telefon=telefon, email=email, pret=pret, moneda=moneda, imagine=imagine, localizare=localizare, imagine2=imagine2, imagine3=imagine3, imagine4=imagine4, imagine5=imagine5, imagine6=imagine6)
+        ########Autoturisme########
+        caroserie = request.POST.get("caroserie")
+        capacitate_motor = request.POST.get("capacitate_motor")
+        combustibil = request.POST.get("combustibil")
+        culoare = request.POST.get("culoare")
+        cutie_de_viteze = request.POST.get("cutie_de_viteze")
+        marca = request.POST.get("marca")
+        rulaj = request.POST.get("rulaj")
+        stare = request.POST.get("stare")
+        #########Imobiliare########
+        numar_de_camere = request.POST.get("numar_de_camere")
+        compartimentare = request.POST.get("compartimentare")
+        suprafata_utila = request.POST.get("suprafata_utila")
+        an_de_constructie = request.POST.get("an_de_constructie")
+        etaj = request.POST.get("etaj")
+        teren = request.POST.get("teren")
+        ##########Moda#############
+        marime = request.POST.get("marime")
+        ##########Locuri###########
+        tip_job = request.POST.get("tip_job")
+        tip_contract = request.POST.get("tip_contract")
+        nivelul_de_studii = request.POST.get("nivelul_de_studii")
+        nivelul_de_experienta = request.POST.get("nivelul_de_experienta")
+        mobilitatea_postului = request.POST.get("mobilitatea_postului")
+        program_flexibil = request.POST.get("program_flexibil")
+        model = AnuntAdult(titlul=titlul,numele_anuntului=numele_anuntului, descriere=descriere, categorie_adult=categorie_adult, subcategorie_adult=subcategorie_adult, telefon=telefon, email=email, pret=pret, moneda=moneda,
+                            caroserie=caroserie, capacitate_motor=capacitate_motor,combustibil=combustibil,culoare=culoare,cutie_de_viteze=cutie_de_viteze, marca=marca,rulaj=rulaj,stare=stare,
+                            numar_de_camere=numar_de_camere, compartimentare=compartimentare,suprafata_utila=suprafata_utila,an_de_constructie=an_de_constructie,etaj=etaj,teren=teren,
+                            marime=marime,
+                            tip_job=tip_job,tip_contract=tip_contract,nivelul_de_studii=nivelul_de_studii,nivelul_de_experienta=nivelul_de_experienta,mobilitatea_postului=mobilitatea_postului,program_flexibil=program_flexibil,
+                            imagine=imagine, localizare=localizare, imagine2=imagine2, imagine3=imagine3, imagine4=imagine4, imagine5=imagine5, imagine6=imagine6)
         model.save()
     context = {
         'date_posted':date_posted,
@@ -1139,7 +1172,7 @@ def cautare_anunt(request):
     model = myFilter.qs
     if request.method == "POST":
         cautat = request.POST['cautat']
-        lookup = (Q(localizare__icontains = cautat) and Q(categorie_adult__contains = cautat))
+        lookup = (Q(localizare__icontains = cautat) and Q(categorie_adult__icontains = cautat))
         model_cautat = AnuntAdult.objects.filter(lookup)
         return render(request, "my_app/anunturi_postate_adult.html", {'cautat':cautat, 'model_cautat':model_cautat, 'model':model, 'date_posted':date_posted, 'anunturile':anunturile, 'myFilter':myFilter, 'new_model':new_model})
     else:
@@ -1151,11 +1184,28 @@ def auto_adult(request):
     date_posted = datetime.datetime.now().year
     categorie = CATEGORIE_ADULT[0][0]
     model = AnuntAdult.objects.filter(categorie_adult = categorie)
+    myFilter = AutoFilter(request.GET, queryset=model)
     context = {
         'date_posted':date_posted,
-        'model':model
+        'model':model,
+        'myFilter':myFilter,
     }
     return render(request, "my_app/auto_adult.html", context)
+
+def specificatii_auto(request):
+    if request.method == "POST":
+        caroserie = request.POST.get("caroserie")
+        combustibil = request.POST.get("combustibil")
+        culoare = request.POST.get("culoare")
+        cutie_de_viteze = request.POST.get("cutie_de_viteze")
+        marca = request.POST.get("marca")
+        rulaj = request.POST.get("rulaj")
+        stare = request.POST.get("stare")
+        lookup = (Q(caroserie__icontains=caroserie) or Q(combustibil__icontains=combustibil) or Q(culoare__icontains=culoare) or Q(cutie_de_viteze__icontains=cutie_de_viteze) or Q(marca_icontains=marca) or Q(rulaj__icontains=rulaj) or Q(stare__icontains=stare))
+        new_model = AnuntAdult.objects.filter(lookup)
+        return render(request, "my_app/specificatii_auto.html", {'new_model':new_model})
+    else:
+        return HttpResponseRedirect(reverse("my_app:anunturi_postate_adult"))
 
 def autoturisme(request):
     date_posted = datetime.datetime.now().year
@@ -2019,11 +2069,12 @@ def muzica_adult(request):
 
 def search_adult(request):
     date_posted = datetime.datetime.now().year
+    model = AnuntAdult.objects.all()
     if request.method == "POST":
         cautat = request.POST['cautat']
-        lookup = Q(numele_anuntului__icontains = cautat) | Q(localizare__icontains = cautat) | Q(subcategorie_adult__icontains = cautat)
+        lookup = (Q(categorie_adult__icontains = cautat) | Q(numele_anuntului__icontains = cautat) | Q(localizare__icontains=cautat))
         model_cautat = AnuntAdult.objects.filter(lookup)
-        return render(request, 'my_app/cautare_adult.html', {'date_posted':date_posted, 'model_cautat':model_cautat, 'cautat':cautat})
+        return render(request, 'my_app/cautare_adult.html', {'date_posted':date_posted, 'model_cautat':model_cautat, 'cautat':cautat, 'model':model})
     else:
         raise Http404
         

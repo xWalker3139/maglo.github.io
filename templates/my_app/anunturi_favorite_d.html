@@ -99,6 +99,27 @@
         background-color: #A683E3;
         color: white;
     }
+    #navbarDropdown{
+            border: 3px solid #fff;
+            border-radius: 50px;
+            font-size: 22px;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            text-decoration: none;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+        }
+        #navbarDropdown:hover{
+            color: #A683E3;
+            background-color: #fff;
+        }
+        @media only screen and (min-width: 768px){
+            .dropdown:hover>.dropdown-menu{
+                display: block;
+            }
+        }
 </style>
 {% endblock %}
 
@@ -115,9 +136,9 @@
                     <li><a href="{% url 'my_app:deconectare_adult1' %}">Deconectare</a></li>
                     <li><a href="{% url 'my_app:posteaza_anunt_adult' %}">Posteaza un anunt</a></li>
                 </ul>
-                <a href="{% url 'my_app:anunturi_totale_adult' %}" id="a2"><p id="param2"><i class="fas fa-calendar-check"></i> Anunturi postate</p></a>
+                <a href="{% url 'my_app:anunturi_totale_adult' user.pk %}" id="a2"><p id="param2"><i class="fas fa-calendar-check"></i> Anunturi postate</p></a>
                 <ul>
-                    <li><a href="{% url 'my_app:anunturi_totale_adult' %}">Anunturi tale</a></li>
+                    <li><a href="{% url 'my_app:anunturi_totale_adult' user.pk %}">Anunturile tale</a></li>
                     <li><a href="{% url 'my_app:pag_update_adult' %}">Actualizeaza un anunt</a></li>
                     <li><a href="{% url 'my_app:anunturi_favorite_d' %}">Anunturi favorite</a></li>
                     <li><a href="{% url 'my_app:pag_delete_adult' %}">Sterge un anunt</a></li>

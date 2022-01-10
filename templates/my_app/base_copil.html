@@ -38,9 +38,9 @@
             color: #A683E3;
             background-color: #fff;
         }
-        #nav_4{
+        #navbarDropdown{
             border: 3px solid #fff;
-            border-radius: 4px;
+            border-radius: 50px;
             font-size: 22px;
             padding-left: 25px;
             padding-right: 25px;
@@ -50,9 +50,26 @@
             color: #fff;
             font-family: 'Montserrat', sans-serif;
         }
-        #nav_4:hover{
+        #navbarDropdown:hover{
             color: #A683E3;
             background-color: #fff;
+        }
+        @media only screen and (min-width: 768px){
+            .dropdown:hover>.dropdown-menu{
+                display: block;
+            }
+        }
+        #nav_4{
+            border: 3px solid #fff;
+            border-radius: 50px;
+            font-size: 22px;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            text-decoration: none;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
         }
         .card{
         box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
@@ -256,14 +273,23 @@
                             <strong><i class="fas fa-plus" style="padding-right: 10px;"></i>Posteaza un anunt</strong>
                         </a>
                     </li>
-                    <li class="nav-item" style="margin-top: 7px;margin-bottom: 7px;">
-                        <a class="navbar-link" href="{% url 'my_app:contul_meu_copil' %}" id="nav_4">
+                    <li class="nav-item dropdown" style="margin-top: 7px;margin-bottom: 7px;">
+                        <a class="navbar-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false" href="{% url 'my_app:contul_meu_adult' %}">
                             <strong id="text1">Contul meu</strong>
                         </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'my_app:posteaza_anunt_copil' %}" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="fas fa-plus" style="padding-right: 4px;color:  #A683E3;"></i> Adauga un anunt</a>
+                            <a class="dropdown-item" href="{% url 'my_app:anunturi_totale_copil' %}" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="far fa-clone" style="padding-right: 4px;color:  #A683E3;"></i> Anunturile mele</a>
+                            <a class="dropdown-item" href="{% url 'my_app:anunturi_favorite_copil' %}" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="far fa-heart" style="padding-right: 4px;color:  #A683E3;"></i> Anunturi favorite</a>
+                            <a class="dropdown-item" href="{% url 'my_app:contul_meu_copil' %}" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="far fa-user" style="padding-right: 4px;color:  #A683E3;"></i> Contul meu</a>
+                            <a class="dropdown-item" href="#" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="far fa-comments" style="padding-right: 4px;color:  #A683E3;"></i> Conversatii</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'my_app:deconectare_copil1' %}" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="fas fa-power-off" style="padding-right: 4px;color:  #A683E3;"></i> Deconectare</a>
+                        </div>
                     </li>
                     {% else %}
                     <li class="nav-item" style="margin-top: 7px;margin-bottom: 7px;">
-                        <a class="navbar-link" href="{% url 'my_app:inregistrare_copil' %}" id="nav_4">
+                        <a class="navbar-link" href="{% url 'my_app:inregistrare_copil' %}" id="navbarDropdown">
                             <strong id="text1">Contul meu</strong>
                         </a>
                     </li>

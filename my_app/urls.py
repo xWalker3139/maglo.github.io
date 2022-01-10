@@ -50,7 +50,7 @@ urlpatterns = [
     url(r'^pag_delete_adult/$', views.pag_delete_adult, name="pag_delete_adult"),
     url(r'^actualizeaza_date_adult/(?P<pk>\d+)/$', views.actualizeaza_date_adult, name="actualizeaza_date_adult"),
     url(r'schimb_parola_adult/$', views.schimb_parola_adult, name="schimb_parola_adult"),
-    url(r'anunturi_totale_adult/$', views.anunturi_totale_adult, name="anunturi_totale_adult"),
+    url(r'anunturi_totale_adult/(?P<pk>\d+)/$', views.anunturi_totale_adult, name="anunturi_totale_adult"),
     url(r'pag_anunturi_postate_adult/(?P<pk>\d+)/$', views.pag_anunturi_postate_adult, name="pag_anunturi_postate_adult"),
     url(r'^pag_anunturi_adult/(?P<pk>\d+)/$', views.pag_anunturi_adult, name="pag_anunturi_adult"),
     url(r'^promoveaza-ti_afacerea_sau_serviciul/$', views.promoveazati_afacerea_serviciul, name="promoveazati_afacerea_serviciul"),
@@ -130,4 +130,7 @@ urlpatterns = [
 
     url(r'^pag_afaceri/(?P<pk>\d+)/$', views.pag_afaceri, name="pag_afaceri"),
     url(r'^pag_servicii/(?P<pk>\d+)/$', views.pag_servicii, name="pag_servicii"),
+
+    ################Specificatii###################
+    url(r'^specificatii_auto/$', views.specificatii_auto, name="specificatii_auto"),
 ]

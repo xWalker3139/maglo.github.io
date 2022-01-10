@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="{% static 'my_app/css/main.css' %}">
     <title>Maglo</title>
     {% block head_block %}
-    {% endblock %}
     <style>
         #nav_5{
             border: 3px solid #fff;
@@ -36,9 +35,9 @@
             color: #A683E3;
             background-color: #fff;
         }
-        #nav_4{
+        #navbarDropdown{
             border: 3px solid #fff;
-            border-radius: 4px;
+            border-radius: 50px;
             font-size: 22px;
             padding-left: 25px;
             padding-right: 25px;
@@ -48,9 +47,14 @@
             color: #fff;
             font-family: 'Montserrat', sans-serif;
         }
-        #nav_4:hover{
+        #navbarDropdown:hover{
             color: #A683E3;
             background-color: #fff;
+        }
+        @media only screen and (min-width: 768px){
+            .dropdown:hover>.dropdown-menu{
+                display: block;
+            }
         }
         .card{
         box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
@@ -90,6 +94,7 @@
     #jumbotron_1{
         background-color: white;
         padding: 0;
+        margin-top: 25px;
         font-family: 'Montserrat', sans-serif;
         box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.2);
     }
@@ -186,7 +191,26 @@
         transform: rotateY(180deg);
     }
 }
-    </style>
+    .collapse1{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 22px;
+        text-decoration: none;
+        color: black;
+        padding-bottom: 10px;
+    }
+    .new_bg{
+        font-family: 'Montserrat', sans-serif;
+        padding-top: 10px;
+        font-size: 18px;
+    }
+    .new_bg i{
+        color: black;
+    }
+    .new_bg a{
+        color: black;
+    }
+</style>
+{% endblock %}
 </head>
 <body style="background-color: aliceblue;">
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #06ff00;box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);">
@@ -213,14 +237,24 @@
                             <strong><i class="fas fa-plus" style="padding-right: 10px;"></i>Posteaza un anunt</strong>
                         </a>
                     </li>
-                    <li class="nav-item" style="margin-top: 7px;margin-bottom: 7px;">
-                        <a class="navbar-link" href="{% url 'my_app:contul_meu_adult' %}" id="nav_4">
+                    <li class="nav-item dropdown" style="margin-top: 7px;margin-bottom: 7px;">
+                        <a class="navbar-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false" href="{% url 'my_app:contul_meu_adult' %}">
                             <strong id="text1">Contul meu</strong>
                         </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'my_app:posteaza_anunt_adult' %}" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="fas fa-plus" style="padding-right: 4px;color:  #A683E3;"></i> Adauga un anunt</a>
+                            <a class="dropdown-item" href="{% url 'my_app:afaceri_servicii' %}" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="fas fa-briefcase" style="padding-right: 4px;color:  #A683E3;"></i> Afaceri/Servicii</a>
+                            <a class="dropdown-item" href="{% url 'my_app:anunturi_totale_adult' user.pk %}" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="far fa-clone" style="padding-right: 4px;color:  #A683E3;"></i> Anunturile mele</a>
+                            <a class="dropdown-item" href="{% url 'my_app:anunturi_favorite_d' %}" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="far fa-heart" style="padding-right: 4px;color:  #A683E3;"></i> Anunturi favorite</a>
+                            <a class="dropdown-item" href="{% url 'my_app:contul_meu_adult' %}" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="far fa-user" style="padding-right: 4px;color:  #A683E3;"></i> Contul meu</a>
+                            <a class="dropdown-item" href="#" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="far fa-comments" style="padding-right: 4px;color:  #A683E3;"></i> Conversatii</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'my_app:deconectare_adult1' %}" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="fas fa-power-off" style="padding-right: 4px;color:  #A683E3;"></i> Deconectare</a>
+                        </div>
                     </li>
                     {% else %}
                     <li class="nav-item" style="margin-top: 7px;margin-bottom: 7px;">
-                        <a class="navbar-link" href="{% url 'my_app:inregistrare_adult' %}" id="nav_5">
+                        <a class="navbar-link" href="{% url 'my_app:inregistrare_adult' %}" id="navbarDropdown">
                             <strong id="text1">Contul meu</strong>
                         </a>
                     </li>
@@ -337,11 +371,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="jumbotron" id="jb1">
-                    <h3><strong>Filtreaza</strong></h3>
-                    <hr>
-                    <br>
-                    <h4 style="padding-bottom: 15px;">Categorie:</h4>
+                <h2 style="font-family: 'Montserrat', sans-serif;color: black;margin-top: 25px;"><strong>Filtreaza</strong></h2>
+                <br>
+                <hr style="padding-bottom: 1px;">
+                <a href="#demo60" class="collapse1" data-toggle="collapse" data-target="#demo60"><strong><i class="fas fa-chevron-right"></i> Categorii / Subcategorii</strong></a>
+                <div id="demo60" class="collapse" style="font-family: 'Montserrat', sans-serif;">
                     <form method="POST" class="new_form">
                         {% csrf_token %}
                         <a href="#demo41" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Auto, moto si ambarcatiuni</a>
@@ -467,588 +501,587 @@
                         <br>
                         <a href="#demo52" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Matrimoniale</a>
                         <div id="demo52" class="collapse">
+                        </div>
+                    </form>
+                </div>
+                <hr style="padding-bottom: 1px;">
+                <a href="#demo61" data-toggle="collapse" class="collapse1" data-target="#demo61"><strong><i class="fas fa-chevron-right"></i> Judete / Localitati</strong></a>
+                <div id="demo61" class="collapse">
+                    <div class="new_bg">
+                        <a href="#demo" data-toggle="collapse"><i class="fas fa-chevron-right" id="fas"></i> Alba</a>
+                        <div id="demo" class="collapse">
                             <ul>
-                                <li></li>
+                                <li><strong><a href="{% url 'judet_alba_adult' %}">Alba</a></strong></li>
+                                <li>Abrud</li>
+                                <li>Aiud</li>
+                                <li>Alba Iulia</li>
+                                <li>Baia de Aries</li>
+                                <li>Blaj</li>
+                                <li>Campeni</li>
+                                <li>Cugir</li>
+                                <li>Ocna Mures</li>
+                                <li>Sebes</li>
+                                <li>Teius</li>
+                                <li>Zlatna</li>
                             </ul>
                         </div>
                         <br>
-                        <h4 id="param2">Judete: </h4>
-                        <div class="new_bg">
-                            <a href="#demo" data-toggle="collapse"><i class="fas fa-chevron-right" id="fas"></i> Alba</a>
-                            <div id="demo" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_alba_adult' %}">Alba</a></strong></li>
-                                    <li>Abrud</li>
-                                    <li>Aiud</li>
-                                    <li>Alba Iulia</li>
-                                    <li>Baia de Aries</li>
-                                    <li>Blaj</li>
-                                    <li>Campeni</li>
-                                    <li>Cugir</li>
-                                    <li>Ocna Mures</li>
-                                    <li>Sebes</li>
-                                    <li>Teius</li>
-                                    <li>Zlatna</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo2" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Arad</a>
-                            <div id="demo2" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_arad_adult' %}">Arad</a></strong></li>
-                                    <li>Arad</li>
-                                    <li>Chisineu Cris</li>
-                                    <li>Curtici</li>
-                                    <li>Ineu</li>
-                                    <li>Lipova</li>
-                                    <li>Nadlac</li>
-                                    <li>Pancota</li>
-                                    <li>Pecica</li>
-                                    <li>Santana</li>
-                                    <li>Sebes</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo3" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Arges</a>
-                            <div id="demo3" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_arges_adult' %}">Arges</a></strong></li>
-                                    <li>Campulung</li>
-                                    <li>Costesti</li>
-                                    <li>Curtea de Arges</li>
-                                    <li>Mioveni</li>
-                                    <li>Pitesti</li>
-                                    <li>Stefanesti</li>
-                                    <li>Topoloveni</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo4" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Bacau</a>
-                            <div id="demo4" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_bacau_adult' %}">Bacau</a></strong></li>
-                                    <li>Bacau</li>
-                                    <li>Buhusi</li>
-                                    <li>Comanesti</li>
-                                    <li>Darmanesti</li>
-                                    <li>Moinesti</li>
-                                    <li>Onesti</li>
-                                    <li>Slanic-Moldova</li>
-                                    <li>Targu Ocna</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo5" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Bihor</a>
-                            <div id="demo5" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_bihor_adult' %}">Bihor</a></strong></li>
-                                    <li>Alesd</li>
-                                    <li>Beius</li>
-                                    <li>Marghita</li>
-                                    <li>Nucet</li>
-                                    <li>Oradea</li>
-                                    <li>Sacueni</li>
-                                    <li>Salonta</li>
-                                    <li>Stei</li>
-                                    <li>Valea lui Mihai</li>
-                                    <li>Vascau</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo6" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Bistrita-Nasaud</a>
-                            <div id="demo6" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_bistrita_adult' %}">Bistrita-Nasaud</a></strong></li>
-                                    <li>Beclean</li>
-                                    <li>Bistrita</li>
-                                    <li>Nasaud</li>
-                                    <li>Sangeorz-Bai</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo7" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Botosani</a>
-                            <div id="demo7" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_botosani_adult' %}">Botosani</a></strong></li>
-                                    <li>Botosani</li>
-                                    <li>Bucecea</li>
-                                    <li>Darabani</li>
-                                    <li>Dorohoi</li>
-                                    <li>Flamanzi</li>
-                                    <li>Slaveni</li>
-                                    <li>Stefanesti</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo8" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Braila</a>
-                            <div id="demo8" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_braila_adult' %}">Braila</a></strong></li>
-                                    <li>Braila</li>
-                                    <li>Faurei</li>
-                                    <li>Ianca</li>
-                                    <li>Insuratei</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo9" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Brasov</a>
-                            <div id="demo9" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_brasov_adult' %}">Brasov</a></strong></li>
-                                    <li>Bran</li>
-                                    <li>Brasov</li>
-                                    <li>Codlea</li>
-                                    <li>Fagaras</li>
-                                    <li>Ghimbav</li>
-                                    <li>Predeal</li>
-                                    <li>Rasnov</li>
-                                    <li>Rupea</li>
-                                    <li>Sacele</li>
-                                    <li>Victoria</li>
-                                    <li>Zarnesti</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo10" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="{% url 'judet_ilfov_adult' %}">Bucuresti-Ilfov</a></a>
-                            <br>
-                            <a href="#demo11" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Buzau</a>
-                            <div id="demo11" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_buzau_adult' %}">Buzau</a></strong></li>
-                                    <li>Buzau</li>
-                                    <li>Nehoiu</li>
-                                    <li>Patarlagele</li>
-                                    <li>Pogoanele</li>
-                                    <li>Ramnicu Sarat</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo12" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Calarasi</a>
-                            <div id="demo12" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_calarasi_adult' %}">Calarasi</a></strong></li>
-                                    <li>Budesti</li>
-                                    <li>Calarasi</li>
-                                    <li>Fundulea</li>
-                                    <li>Lehliu-Gara</li>
-                                    <li>Oltenita</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo13" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Caras-Severin</a>
-                            <div id="demo13" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_caras_adult' %}">Caras-Severin</a></strong></li>
-                                    <li>Anina</li>
-                                    <li>Baile Herculane</li>
-                                    <li>Bocsa</li>
-                                    <li>Caransebes</li>
-                                    <li>Moldova Noua</li>
-                                    <li>Oravita</li>
-                                    <li>Otelu Rosu</li>
-                                    <li>Resita</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo14" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Cluj</a>
-                            <div id="demo14" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_cluj_adult' }">Cluj</a></strong></li>
-                                    <li>Campia Turzii</li>
-                                    <li>Cluj-Napoca</li>
-                                    <li>Dej</li>
-                                    <li>Gherla</li>
-                                    <li>Huedin</li>
-                                    <li>Turda</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo15" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Constanta</a>
-                            <div id="demo15" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_constanta_adult' %}">Constanta</a></strong></li>
-                                    <li>Baneasa</li>
-                                    <li>Cernavoda</li>
-                                    <li>Constanta</li>
-                                    <li>Eforie</li>
-                                    <li>Harsova</li>
-                                    <li>Mangalia</li>
-                                    <li>Medgidia</li>
-                                    <li>Murfatlar</li>
-                                    <li>Navodari</li>
-                                    <li>Negru Voda</li>
-                                    <li>Ovidiu</li>
-                                    <li>Techirghiol</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo16" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Covasna</a>
-                            <div id="demo16" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_covasna_adult' %}">Covasna</a></strong></li>
-                                    <li>Baraolt</li>
-                                    <li>Covasna</li>
-                                    <li>Intorsura Buzaului</li>
-                                    <li>Sfantu Gheorghe</li>
-                                    <li>Targu Secuiesc</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo17" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Dambovita</a>
-                            <div id="demo17" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_dambovita_adult' %}">Dambovita</a></strong></li>
-                                    <li>Fieni</li>
-                                    <li>Gaesti</li>
-                                    <li>Moreni</li>
-                                    <li>Pucioasa</li>
-                                    <li>Racari</li>
-                                    <li>Targoviste</li>
-                                    <li>Titu</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo18" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Dolj</a>
-                            <div id="demo18" class="collapse">
-                                <ul>
-                                    <li><storng><a href="{% url 'judet_dolj_adult' %}">Dolj</a></storng></li>
-                                    <li>Bailesti</li>
-                                    <li>Bechet</li>
-                                    <li>Calafat</li>
-                                    <li>Craiova</li>
-                                    <li>Dabuleni</li>
-                                    <li>Filiasi</li>
-                                    <li>Segarcea</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo19" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Galati</a>
-                            <div id="demo19" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_galati_adult' %}">Galati</a></strong></li>
-                                    <li>Beresti</li>
-                                    <li>Galati</li>
-                                    <li>Targu Bujor</li>
-                                    <li>Tecuci</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo20" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Giurgiu</a>
-                            <div id="demo20" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_giurgiu_adult' %}">Giurgiu</a></strong></li>
-                                    <li>Bolintin Vale</li>
-                                    <li>Giurgiu</li>
-                                    <li>Mihailesti</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo21" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Gorj</a>
-                            <div id="demo21" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_gorj_adult' %}">Gorj</a></strong></li>
-                                    <li>Bumbesti Jiu</li>
-                                    <li>Motru</li>
-                                    <li>Novaci</li>
-                                    <li>Rovinari</li>
-                                    <li>Targu Carbunesti</li>
-                                    <li>Targu Jiu</li>
-                                    <li>Ticleni</li>
-                                    <li>Tismana</li>
-                                    <li>Turceni</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo22" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Harghita</a>
-                            <div id="demo22" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_harghita_adult' %}">Harghita</a></strong></li>
-                                    <li>Baile Tusnad</li>
-                                    <li>Balan</li>
-                                    <li>Borsec</li>
-                                    <li>Cristuru Secuiesc</li>
-                                    <li>Gheorgheni</li>
-                                    <li>Miercurea-Ciuc</li>
-                                    <li>Odorheiu Secuiesc</li>
-                                    <li>Toplita</li>
-                                    <li>Vlahita</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo23" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Hunedoara</a>
-                            <div id="demo23" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_hunedoara_adult' %}">Hunedoara</a></strong></li>
-                                    <li>Aninoasa</li>
-                                    <li>Brad</li>
-                                    <li>Calan</li>
-                                    <li>Deva</li>
-                                    <li>Geoagiu</li>
-                                    <li>Hateg</li>
-                                    <li>Hunedoara</li>
-                                    <li>Lupeni</li>
-                                    <li>Orastie</li>
-                                    <li>Petrila</li>
-                                    <li>Petrosani</li>
-                                    <li>Simeria</li>
-                                    <li>Uricani</li>
-                                    <li>Vulcan</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo24" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Ialomita</a>
-                            <div id="demo24" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_ialomita_adult' %}">Ialomita</a></strong></li>
-                                    <li>Amara</li>
-                                    <li>Cazanesti</li>
-                                    <li>Fetesti</li>
-                                    <li>Fierbinti-Targ</li>
-                                    <li>Slobozia</li>
-                                    <li>Tandariei</li>
-                                    <li>Urziceni</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo25" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Iasi</a>
-                            <div id="demo25" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_iasi_adult' %}">Iasi</a></strong></li>
-                                    <li>Harlau</li>
-                                    <li>Iasi</li>
-                                    <li>Pascani</li>
-                                    <li>Podul Iloaiei</li>
-                                    <li>Targu Frumos</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo26" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Maramures</a>
-                            <div id="demo26" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_maramures_adult' %}">Maramures</a></strong></li>
-                                    <li>Baia Mare</li>
-                                    <li>Baia Sprie</li>
-                                    <li>Borsa</li>
-                                    <li>Cavnic</li>
-                                    <li>Dragomiresti</li>
-                                    <li>Salistea de Sus</li>
-                                    <li>Seini</li>
-                                    <li>Sighetu Marmatiei</li>
-                                    <li>Somcuta Mare</li>
-                                    <li>Targu Lapus</li>
-                                    <li>Ulmeni</li>
-                                    <li>Viseu de Sus</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo27" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Mehedinti</a>
-                            <div id="demo27" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_mehedinti_adult' %}">Mehedinti</a></strong></li>
-                                    <li>Baia de Arama</li>
-                                    <li>Drobeta-Turnu Severin</li>
-                                    <li>Orsova</li>
-                                    <li>Strehaia</li>
-                                    <li>Vanju Mare</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo28" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Mures</a>
-                            <div id="demo28" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_mures_adult' %}">Mures</a></strong></li>
-                                    <li>Iernut</li>
-                                    <li>Ludus</li>
-                                    <li>Miercurea Nirajului</li>
-                                    <li>Reghin</li>
-                                    <li>Sangeorgiu de Padure</li>
-                                    <li>Sarmasu</li>
-                                    <li>Sighisoara</li>
-                                    <li>Sovata</li>
-                                    <li>Targu Mures</li>
-                                    <li>Ungheni</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo29" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Neamt</a>
-                            <div id="demo29" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_neamt_adult' %}">Neamt</a></strong></li>
-                                    <li>Bicaz</li>
-                                    <li>Piatra Neamt</li>
-                                    <li>Roman</li>
-                                    <li>Roznov</li>
-                                    <li>Targu Neamt</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo30" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Olt</a>
-                            <div id="demo30" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_olt_adult' %}">Olt</a></strong></li>
-                                    <li>Bals</li>
-                                    <li>Caracal</li>
-                                    <li>Corabia</li>
-                                    <li>Draganesti-Olt</li>
-                                    <li>Piatra-Olt</li>
-                                    <li>Potcoava</li>
-                                    <li>Scornicesti</li>
-                                    <li>Slatina</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo31" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Prahova</a>
-                            <div id="demo31" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_prahova_adult' %}">Prahova</a></strong></li>
-                                    <li>Azuga</li>
-                                    <li>Baicoi</li>
-                                    <li>Boldesti-Scaeni</li>
-                                    <li>Breaza</li>
-                                    <li>Busteni</li>
-                                    <li>Campina</li>
-                                    <li>Comarnic</li>
-                                    <li>Ploiesti</li>
-                                    <li>Plopeni</li>
-                                    <li>Sinaia</li>
-                                    <li>Slanic</li>
-                                    <li>Valenii de Munte</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo32" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Salaj</a>
-                            <div id="demo32" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_salaj_adult' %}">Salaj</a></strong></li>
-                                    <li>Cehu Silvaniei</li>
-                                    <li>Jibou</li>
-                                    <li>Simleu Silvaniei</li>
-                                    <li>Zalau</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo33" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Satu Mare</a>
-                            <div id="demo33" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_satu_adult' %}">Satu Mare</a></strong></li>
-                                    <li>Ardud</li>
-                                    <li>Carei</li>
-                                    <li>Livada</li>
-                                    <li>Negresti-Oas</li>
-                                    <li>Satu Mare</li>
-                                    <li>Tasnad</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo34" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Sibiu</a>
-                            <div id="demo34" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_sibiu_adult' %}">Sibiu</a></strong></li>
-                                    <li>Agnita</li>
-                                    <li>Avrig</li>
-                                    <li>Cisnadie</li>
-                                    <li>Dumbraveni</li>
-                                    <li>Medias</li>
-                                    <li>Miercurea Sibiului</li>
-                                    <li>Ocna Sibiului</li>
-                                    <li>Saliste</li>
-                                    <li>Sibiu</li>
-                                    <li>Talmaciu</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo35" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Suceava</a>
-                            <div id="demo35" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_suceava_adult' %}">Suceava</a></strong></li>
-                                    <li>Brosteni</li>
-                                    <li>Campulung Moldovenesc</li>
-                                    <li>Falticeni</li>
-                                    <li>Gura Homorului</li>
-                                    <li>Radauti</li>
-                                    <li>Salcea</li>
-                                    <li>Siret</li>
-                                    <li>Suceava</li>
-                                    <li>Vatra Dornei</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo36" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Teleorman</a>
-                            <div id="demo36" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_teleorman_adult' %}">Teleorman</a></strong></li>
-                                    <li>Alexandria</li>
-                                    <li>Rosiorii de Vede</li>
-                                    <li>Turnu Magurele</li>
-                                    <li>Videle</li>
-                                    <li>Zimnicea</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo37" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Timis</a>
-                            <div id="demo37" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_timis_adult' %}">Timis</a></strong></li>
-                                    <li>Buzias</li>
-                                    <li>Deta</li>
-                                    <li>Gataia</li>
-                                    <li>Jimbolia</li>
-                                    <li>Lugoj</li>
-                                    <li>Recas</li>
-                                    <li>Timisoara</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo41" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Tulcea</a>
-                            <div id="demo41" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_tulcea_adult' %}">Tulcea</a></strong></li>
-                                    <li>Babadag</li>
-                                    <li>Isaccea</li>
-                                    <li>Macin</li>
-                                    <li>Sulina</li>
-                                    <li>Tulcea</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo38" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Valcea</a>
-                            <div id="demo38" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_valcea_adult' %}">Valcea</a></strong></li>
-                                    <li>Babeni</li>
-                                    <li>Balcesti</li>
-                                    <li>Brezoi</li>
-                                    <li>Calimanesti</li>
-                                    <li>Dragasani</li>
-                                    <li>Ramnicu Valcea</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo39" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Vaslui</a>
-                            <div id="demo39" class="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_vaslui_adult' %}">Vaslui</a></strong></li>
-                                    <li>Barlad</li>
-                                    <li>Husi</li>
-                                    <li>Murgeni</li>
-                                    <li>Negresti</li>
-                                    <li>Vaslui</li>
-                                </ul>
-                            </div>
-                            <br>
-                            <a href="#demo40" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Vrancea</a>
-                            <div id="demo40" data-toggle="collapse">
-                                <ul>
-                                    <li><strong><a href="{% url 'judet_vrancea_adult' %}">Vrancea</a></strong></li>
-                                    <li>Adjud</li>
-                                    <li>Focsani</li>
-                                    <li>Marasesti</li>
-                                    <li>Odobesti</li>
-                                    <li>Panciu</li>
-                                </ul>
-                            </div>
+                        <a href="#demo2" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Arad</a>
+                        <div id="demo2" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_arad_adult' %}">Arad</a></strong></li>
+                                <li>Arad</li>
+                                <li>Chisineu Cris</li>
+                                <li>Curtici</li>
+                                <li>Ineu</li>
+                                <li>Lipova</li>
+                                <li>Nadlac</li>
+                                <li>Pancota</li>
+                                <li>Pecica</li>
+                                <li>Santana</li>
+                                <li>Sebes</li>
+                            </ul>
                         </div>
-                    </form>
+                        <br>
+                        <a href="#demo3" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Arges</a>
+                        <div id="demo3" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_arges_adult' %}">Arges</a></strong></li>
+                                <li>Campulung</li>
+                                <li>Costesti</li>
+                                <li>Curtea de Arges</li>
+                                <li>Mioveni</li>
+                                <li>Pitesti</li>
+                                <li>Stefanesti</li>
+                                <li>Topoloveni</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo4" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Bacau</a>
+                        <div id="demo4" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_bacau_adult' %}">Bacau</a></strong></li>
+                                <li>Bacau</li>
+                                <li>Buhusi</li>
+                                <li>Comanesti</li>
+                                <li>Darmanesti</li>
+                                <li>Moinesti</li>
+                                <li>Onesti</li>
+                                <li>Slanic-Moldova</li>
+                                <li>Targu Ocna</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo5" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Bihor</a>
+                        <div id="demo5" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_bihor_adult' %}">Bihor</a></strong></li>
+                                <li>Alesd</li>
+                                <li>Beius</li>
+                                <li>Marghita</li>
+                                <li>Nucet</li>
+                                <li>Oradea</li>
+                                <li>Sacueni</li>
+                                <li>Salonta</li>
+                                <li>Stei</li>
+                                <li>Valea lui Mihai</li>
+                                <li>Vascau</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo6" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Bistrita-Nasaud</a>
+                        <div id="demo6" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_bistrita_adult' %}">Bistrita-Nasaud</a></strong></li>
+                                <li>Beclean</li>
+                                <li>Bistrita</li>
+                                <li>Nasaud</li>
+                                <li>Sangeorz-Bai</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo7" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Botosani</a>
+                        <div id="demo7" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_botosani_adult' %}">Botosani</a></strong></li>
+                                <li>Botosani</li>
+                                <li>Bucecea</li>
+                                <li>Darabani</li>
+                                <li>Dorohoi</li>
+                                <li>Flamanzi</li>
+                                <li>Slaveni</li>
+                                <li>Stefanesti</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo8" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Braila</a>
+                        <div id="demo8" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_braila_adult' %}">Braila</a></strong></li>
+                                <li>Braila</li>
+                                <li>Faurei</li>
+                                <li>Ianca</li>
+                                <li>Insuratei</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo9" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Brasov</a>
+                        <div id="demo9" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_brasov_adult' %}">Brasov</a></strong></li>
+                                <li>Bran</li>
+                                <li>Brasov</li>
+                                <li>Codlea</li>
+                                <li>Fagaras</li>
+                                <li>Ghimbav</li>
+                                <li>Predeal</li>
+                                <li>Rasnov</li>
+                                <li>Rupea</li>
+                                <li>Sacele</li>
+                                <li>Victoria</li>
+                                <li>Zarnesti</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo10" data-toggle="collapse"><i class="fas fa-chevron-right"></i> <a href="{% url 'judet_ilfov_adult' %}">Bucuresti-Ilfov</a></a>
+                        <br>
+                        <a href="#demo11" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Buzau</a>
+                        <div id="demo11" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_buzau_adult' %}">Buzau</a></strong></li>
+                                <li>Buzau</li>
+                                <li>Nehoiu</li>
+                                <li>Patarlagele</li>
+                                <li>Pogoanele</li>
+                                <li>Ramnicu Sarat</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo12" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Calarasi</a>
+                        <div id="demo12" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_calarasi_adult' %}">Calarasi</a></strong></li>
+                                <li>Budesti</li>
+                                <li>Calarasi</li>
+                                <li>Fundulea</li>
+                                <li>Lehliu-Gara</li>
+                                <li>Oltenita</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo13" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Caras-Severin</a>
+                        <div id="demo13" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_caras_adult' %}">Caras-Severin</a></strong></li>
+                                <li>Anina</li>
+                                <li>Baile Herculane</li>
+                                <li>Bocsa</li>
+                                <li>Caransebes</li>
+                                <li>Moldova Noua</li>
+                                <li>Oravita</li>
+                                <li>Otelu Rosu</li>
+                                <li>Resita</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo14" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Cluj</a>
+                        <div id="demo14" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_cluj_adult' }">Cluj</a></strong></li>
+                                <li>Campia Turzii</li>
+                                <li>Cluj-Napoca</li>
+                                <li>Dej</li>
+                                <li>Gherla</li>
+                                <li>Huedin</li>
+                                <li>Turda</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo15" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Constanta</a>
+                        <div id="demo15" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_constanta_adult' %}">Constanta</a></strong></li>
+                                <li>Baneasa</li>
+                                <li>Cernavoda</li>
+                                <li>Constanta</li>
+                                <li>Eforie</li>
+                                <li>Harsova</li>
+                                <li>Mangalia</li>
+                                <li>Medgidia</li>
+                                <li>Murfatlar</li>
+                                <li>Navodari</li>
+                                <li>Negru Voda</li>
+                                <li>Ovidiu</li>
+                                <li>Techirghiol</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo16" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Covasna</a>
+                        <div id="demo16" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_covasna_adult' %}">Covasna</a></strong></li>
+                                <li>Baraolt</li>
+                                <li>Covasna</li>
+                                <li>Intorsura Buzaului</li>
+                                <li>Sfantu Gheorghe</li>
+                                <li>Targu Secuiesc</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo17" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Dambovita</a>
+                        <div id="demo17" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_dambovita_adult' %}">Dambovita</a></strong></li>
+                                <li>Fieni</li>
+                                <li>Gaesti</li>
+                                <li>Moreni</li>
+                                <li>Pucioasa</li>
+                                <li>Racari</li>
+                                <li>Targoviste</li>
+                                <li>Titu</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo18" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Dolj</a>
+                        <div id="demo18" class="collapse">
+                            <ul>
+                                <li><storng><a href="{% url 'judet_dolj_adult' %}">Dolj</a></storng></li>
+                                <li>Bailesti</li>
+                                <li>Bechet</li>
+                                <li>Calafat</li>
+                                <li>Craiova</li>
+                                <li>Dabuleni</li>
+                                <li>Filiasi</li>
+                                <li>Segarcea</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo19" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Galati</a>
+                        <div id="demo19" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_galati_adult' %}">Galati</a></strong></li>
+                                <li>Beresti</li>
+                                <li>Galati</li>
+                                <li>Targu Bujor</li>
+                                <li>Tecuci</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo20" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Giurgiu</a>
+                        <div id="demo20" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_giurgiu_adult' %}">Giurgiu</a></strong></li>
+                                <li>Bolintin Vale</li>
+                                <li>Giurgiu</li>
+                                <li>Mihailesti</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo21" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Gorj</a>
+                        <div id="demo21" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_gorj_adult' %}">Gorj</a></strong></li>
+                                <li>Bumbesti Jiu</li>
+                                <li>Motru</li>
+                                <li>Novaci</li>
+                                <li>Rovinari</li>
+                                <li>Targu Carbunesti</li>
+                                <li>Targu Jiu</li>
+                                <li>Ticleni</li>
+                                <li>Tismana</li>
+                                <li>Turceni</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo22" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Harghita</a>
+                        <div id="demo22" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_harghita_adult' %}">Harghita</a></strong></li>
+                                <li>Baile Tusnad</li>
+                                <li>Balan</li>
+                                <li>Borsec</li>
+                                <li>Cristuru Secuiesc</li>
+                                <li>Gheorgheni</li>
+                                <li>Miercurea-Ciuc</li>
+                                <li>Odorheiu Secuiesc</li>
+                                <li>Toplita</li>
+                                <li>Vlahita</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo23" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Hunedoara</a>
+                        <div id="demo23" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_hunedoara_adult' %}">Hunedoara</a></strong></li>
+                                <li>Aninoasa</li>
+                                <li>Brad</li>
+                                <li>Calan</li>
+                                <li>Deva</li>
+                                <li>Geoagiu</li>
+                                <li>Hateg</li>
+                                <li>Hunedoara</li>
+                                <li>Lupeni</li>
+                                <li>Orastie</li>
+                                <li>Petrila</li>
+                                <li>Petrosani</li>
+                                <li>Simeria</li>
+                                <li>Uricani</li>
+                                <li>Vulcan</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo24" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Ialomita</a>
+                        <div id="demo24" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_ialomita_adult' %}">Ialomita</a></strong></li>
+                                <li>Amara</li>
+                                <li>Cazanesti</li>
+                                <li>Fetesti</li>
+                                <li>Fierbinti-Targ</li>
+                                <li>Slobozia</li>
+                                <li>Tandariei</li>
+                                <li>Urziceni</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo25" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Iasi</a>
+                        <div id="demo25" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_iasi_adult' %}">Iasi</a></strong></li>
+                                <li>Harlau</li>
+                                <li>Iasi</li>
+                                <li>Pascani</li>
+                                <li>Podul Iloaiei</li>
+                                <li>Targu Frumos</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo26" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Maramures</a>
+                        <div id="demo26" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_maramures_adult' %}">Maramures</a></strong></li>
+                                <li>Baia Mare</li>
+                                <li>Baia Sprie</li>
+                                <li>Borsa</li>
+                                <li>Cavnic</li>
+                                <li>Dragomiresti</li>
+                                <li>Salistea de Sus</li>
+                                <li>Seini</li>
+                                <li>Sighetu Marmatiei</li>
+                                <li>Somcuta Mare</li>
+                                <li>Targu Lapus</li>
+                                <li>Ulmeni</li>
+                                <li>Viseu de Sus</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo27" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Mehedinti</a>
+                        <div id="demo27" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_mehedinti_adult' %}">Mehedinti</a></strong></li>
+                                <li>Baia de Arama</li>
+                                <li>Drobeta-Turnu Severin</li>
+                                <li>Orsova</li>
+                                <li>Strehaia</li>
+                                <li>Vanju Mare</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo28" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Mures</a>
+                        <div id="demo28" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_mures_adult' %}">Mures</a></strong></li>
+                                <li>Iernut</li>
+                                <li>Ludus</li>
+                                <li>Miercurea Nirajului</li>
+                                <li>Reghin</li>
+                                <li>Sangeorgiu de Padure</li>
+                                <li>Sarmasu</li>
+                                <li>Sighisoara</li>
+                                <li>Sovata</li>
+                                <li>Targu Mures</li>
+                                <li>Ungheni</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo29" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Neamt</a>
+                        <div id="demo29" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_neamt_adult' %}">Neamt</a></strong></li>
+                                <li>Bicaz</li>
+                                <li>Piatra Neamt</li>
+                                <li>Roman</li>
+                                <li>Roznov</li>
+                                <li>Targu Neamt</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo30" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Olt</a>
+                        <div id="demo30" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_olt_adult' %}">Olt</a></strong></li>
+                                <li>Bals</li>
+                                <li>Caracal</li>
+                                <li>Corabia</li>
+                                <li>Draganesti-Olt</li>
+                                <li>Piatra-Olt</li>
+                                <li>Potcoava</li>
+                                <li>Scornicesti</li>
+                                <li>Slatina</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo31" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Prahova</a>
+                        <div id="demo31" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_prahova_adult' %}">Prahova</a></strong></li>
+                                <li>Azuga</li>
+                                <li>Baicoi</li>
+                                <li>Boldesti-Scaeni</li>
+                                <li>Breaza</li>
+                                <li>Busteni</li>
+                                <li>Campina</li>
+                                <li>Comarnic</li>
+                                <li>Ploiesti</li>
+                                <li>Plopeni</li>
+                                <li>Sinaia</li>
+                                <li>Slanic</li>
+                                <li>Valenii de Munte</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo32" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Salaj</a>
+                        <div id="demo32" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_salaj_adult' %}">Salaj</a></strong></li>
+                                <li>Cehu Silvaniei</li>
+                                <li>Jibou</li>
+                                <li>Simleu Silvaniei</li>
+                                <li>Zalau</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo33" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Satu Mare</a>
+                        <div id="demo33" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_satu_adult' %}">Satu Mare</a></strong></li>
+                                <li>Ardud</li>
+                                <li>Carei</li>
+                                <li>Livada</li>
+                                <li>Negresti-Oas</li>
+                                <li>Satu Mare</li>
+                                <li>Tasnad</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo34" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Sibiu</a>
+                        <div id="demo34" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_sibiu_adult' %}">Sibiu</a></strong></li>
+                                <li>Agnita</li>
+                                <li>Avrig</li>
+                                <li>Cisnadie</li>
+                                <li>Dumbraveni</li>
+                                <li>Medias</li>
+                                <li>Miercurea Sibiului</li>
+                                <li>Ocna Sibiului</li>
+                                <li>Saliste</li>
+                                <li>Sibiu</li>
+                                <li>Talmaciu</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo35" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Suceava</a>
+                        <div id="demo35" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_suceava_adult' %}">Suceava</a></strong></li>
+                                <li>Brosteni</li>
+                                <li>Campulung Moldovenesc</li>
+                                <li>Falticeni</li>
+                                <li>Gura Homorului</li>
+                                <li>Radauti</li>
+                                <li>Salcea</li>
+                                <li>Siret</li>
+                                <li>Suceava</li>
+                                <li>Vatra Dornei</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo36" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Teleorman</a>
+                        <div id="demo36" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_teleorman_adult' %}">Teleorman</a></strong></li>
+                                <li>Alexandria</li>
+                                <li>Rosiorii de Vede</li>
+                                <li>Turnu Magurele</li>
+                                <li>Videle</li>
+                                <li>Zimnicea</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo37" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Timis</a>
+                        <div id="demo37" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_timis_adult' %}">Timis</a></strong></li>
+                                <li>Buzias</li>
+                                <li>Deta</li>
+                                <li>Gataia</li>
+                                <li>Jimbolia</li>
+                                <li>Lugoj</li>
+                                <li>Recas</li>
+                                <li>Timisoara</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo41" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Tulcea</a>
+                        <div id="demo41" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_tulcea_adult' %}">Tulcea</a></strong></li>
+                                <li>Babadag</li>
+                                <li>Isaccea</li>
+                                <li>Macin</li>
+                                <li>Sulina</li>
+                                <li>Tulcea</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo38" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Valcea</a>
+                        <div id="demo38" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_valcea_adult' %}">Valcea</a></strong></li>
+                                <li>Babeni</li>
+                                <li>Balcesti</li>
+                                <li>Brezoi</li>
+                                <li>Calimanesti</li>
+                                <li>Dragasani</li>
+                                <li>Ramnicu Valcea</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo39" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Vaslui</a>
+                        <div id="demo39" class="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_vaslui_adult' %}">Vaslui</a></strong></li>
+                                <li>Barlad</li>
+                                <li>Husi</li>
+                                <li>Murgeni</li>
+                                <li>Negresti</li>
+                                <li>Vaslui</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo40" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Vrancea</a>
+                        <div id="demo40" data-toggle="collapse">
+                            <ul>
+                                <li><strong><a href="{% url 'judet_vrancea_adult' %}">Vrancea</a></strong></li>
+                                <li>Adjud</li>
+                                <li>Focsani</li>
+                                <li>Marasesti</li>
+                                <li>Odobesti</li>
+                                <li>Panciu</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-8 col-md-4 col-sm-6">

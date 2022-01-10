@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields import related
 from django.urls import reverse
 from django.contrib.auth.models import User
 
@@ -161,13 +162,14 @@ class AnuntCopil(models.Model):
     
 
 class AnuntAdult(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     titlul = models.CharField(max_length=264, null=True)
     descriere = models.TextField(max_length=9000)
     numele_anuntului = models.CharField(max_length=264, null=True)
     categorie_adult = models.CharField(max_length=264, null=True, blank=False)
     telefon = models.IntegerField()
     email = models.EmailField()
-    pret = models.FloatField(null=True, blank=True)
+    pret = models.CharField(max_length=264, null=True, blank=False, default=1)
     moneda = models.CharField(max_length=264, null=True)
     imagine = models.ImageField(null=False, blank=False, upload_to='images/')
     imagine2 = models.ImageField(null=True, blank=False, upload_to='images/')
@@ -185,13 +187,31 @@ class AnuntAdult(models.Model):
     def get_absolute_url(self):
         return reverse('my_app:anunturi_postate_adult', kwargs={'pk':self.pk})
     
-    def save(self, *args, **kwargs):
-        for field_name in ['categorie_adult']:
-            val = getattr(self, field_name, False)
-            if val:
-                setattr(self, field_name, val.capitalize())
-        super(AnuntAdult, self).save(*args, **kwargs)
-    
+    #########Autoturisme#######
+    caroserie = models.CharField(max_length=264, null=True)
+    capacitate_motor = models.CharField(max_length=264, null=True)
+    combustibil = models.CharField(max_length=264, null=True)
+    culoare = models.CharField(max_length=264, null=True)
+    cutie_de_viteze = models.CharField(max_length=264, null=True)
+    marca = models.CharField(max_length=264, null=True)
+    rulaj = models.CharField(max_length=264, null=True)
+    stare = models.CharField(max_length=264, null=True)
+    ##########Imobiliare########
+    numar_de_camere = models.CharField(max_length=264, null=True)
+    compartimentare = models.CharField(max_length=264, null=True)
+    suprafata_utila = models.CharField(max_length=264, null=True)
+    an_de_constructie = models.CharField(max_length=264, null=True)
+    etaj = models.CharField(max_length=264, null=True)
+    teren = models.CharField(max_length=264, null=True)
+    ###########Moda##############
+    marime = models.CharField(max_length=264, null=True)
+    ###########Locuri############
+    tip_job = models.CharField(max_length=264, null=True)
+    tip_contract = models.CharField(max_length=264, null=True)
+    nivelul_de_studii = models.CharField(max_length=264, null=True)
+    nivelul_de_experienta = models.CharField(max_length=264, null=True)
+    mobilitatea_postului = models.CharField(max_length=264, null=True)
+    program_flexibil = models.CharField(max_length=264, null=True)
 
 class MesajCopil(models.Model):
     mesaj = models.TextField(max_length=9000)

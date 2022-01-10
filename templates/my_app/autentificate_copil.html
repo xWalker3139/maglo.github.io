@@ -87,6 +87,27 @@
         color: white;
         background-color: cornflowerblue;
     }
+    #navbarDropdown{
+            border: 3px solid #fff;
+            border-radius: 50px;
+            font-size: 22px;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            text-decoration: none;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+        }
+        #navbarDropdown:hover{
+            color: #A683E3;
+            background-color: #fff;
+        }
+        @media only screen and (min-width: 768px){
+            .dropdown:hover>.dropdown-menu{
+                display: block;
+            }
+        }
 </style>
 {% endblock %}
 
