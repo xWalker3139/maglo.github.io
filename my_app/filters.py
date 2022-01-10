@@ -12,4 +12,4 @@ class SearchFilter(django_filters.FilterSet):
 class AutoFilter(django_filters.FilterSet):
     class Meta:
         model = AnuntAdult
-        fields = ['caroserie', 'capacitate_motor', 'combustibil', 'culoare', 'cutie_de_viteze', 'marca', 'rulaj', 'stare']
+        fields = ['capacitate_motor', 'combustibil', 'culoare', 'cutie_de_viteze', 'marca', 'rulaj', 'stare']

@@ -1085,7 +1085,6 @@ def posteaza_anunt_adult(request):
         imagine6 = request.FILES.get("imagine6")
         localizare = request.POST.get("localizare")
         ########Autoturisme########
-        caroserie = request.POST.get("caroserie")
         capacitate_motor = request.POST.get("capacitate_motor")
         combustibil = request.POST.get("combustibil")
         culoare = request.POST.get("culoare")
@@ -1110,7 +1109,7 @@ def posteaza_anunt_adult(request):
         mobilitatea_postului = request.POST.get("mobilitatea_postului")
         program_flexibil = request.POST.get("program_flexibil")
         model = AnuntAdult(titlul=titlul,numele_anuntului=numele_anuntului, descriere=descriere, categorie_adult=categorie_adult, subcategorie_adult=subcategorie_adult, telefon=telefon, email=email, pret=pret, moneda=moneda,
-                            caroserie=caroserie, capacitate_motor=capacitate_motor,combustibil=combustibil,culoare=culoare,cutie_de_viteze=cutie_de_viteze, marca=marca,rulaj=rulaj,stare=stare,
+                            capacitate_motor=capacitate_motor,combustibil=combustibil,culoare=culoare,cutie_de_viteze=cutie_de_viteze, marca=marca,rulaj=rulaj,stare=stare,
                             numar_de_camere=numar_de_camere, compartimentare=compartimentare,suprafata_utila=suprafata_utila,an_de_constructie=an_de_constructie,etaj=etaj,teren=teren,
                             marime=marime,
                             tip_job=tip_job,tip_contract=tip_contract,nivelul_de_studii=nivelul_de_studii,nivelul_de_experienta=nivelul_de_experienta,mobilitatea_postului=mobilitatea_postului,program_flexibil=program_flexibil,

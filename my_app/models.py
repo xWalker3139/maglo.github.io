@@ -187,7 +187,6 @@ class AnuntAdult(models.Model):
         return reverse('my_app:anunturi_postate_adult', kwargs={'pk':self.pk})
     
     #########Autoturisme#######
-    caroserie = models.CharField(max_length=264, null=True)
     capacitate_motor = models.CharField(max_length=264, null=True)
     combustibil = models.CharField(max_length=264, null=True)
     culoare = models.CharField(max_length=264, null=True)
