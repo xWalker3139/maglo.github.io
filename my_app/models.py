@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models.fields import related
 from django.urls import reverse
 from django.contrib.auth.models import User
 
@@ -180,7 +179,7 @@ class AnuntAdult(models.Model):
     favorit = models.ManyToManyField(User, related_name="favorit", blank=True)
     localizare = models.CharField(max_length=264, choices=JUDETE)
     #########Autoturisme#######
-    caroserie = models.CharField(max_length=264, null=True)
+    caroserie = models.CharField(max_length=264, null=True, unique=True)
     capacitate_motor = models.CharField(max_length=264, null=True)
     combustibil = models.CharField(max_length=264, null=True)
     culoare = models.CharField(max_length=264, null=True)
