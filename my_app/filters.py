@@ -8,7 +8,3 @@ class SearchFilter(django_filters.FilterSet):
         search = CharFilter(field_name='search', lookup_expr='icontains')
         model = SearchBarCopil
         fields = '__all__'
-
-class AutoFilter(django_filters.FilterSet):
-    class Meta:
-        model = AnuntAdult

@@ -9,7 +9,7 @@ from django.urls import reverse, reverse_lazy
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
-from .filters import SearchBarCopil, SearchFilter, AutoFilter
+from .filters import SearchBarCopil, SearchFilter
 from django.contrib import messages
 from django.db.models import Q, Max, Min
 import datetime
@@ -1182,11 +1182,9 @@ def auto_adult(request):
     date_posted = datetime.datetime.now().year
     categorie = CATEGORIE_ADULT[0][0]
     model = AnuntAdult.objects.filter(categorie_adult = categorie)
-    myFilter = AutoFilter(request.GET, queryset=model)
     context = {
         'date_posted':date_posted,
         'model':model,
-        'myFilter':myFilter,
     }
     return render(request, "my_app/auto_adult.html", context)
 
