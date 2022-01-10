@@ -187,29 +187,30 @@ class AnuntAdult(models.Model):
         return reverse('my_app:anunturi_postate_adult', kwargs={'pk':self.pk})
     
     #########Autoturisme#######
-    # capacitate_motor = models.CharField(max_length=264, null=True)
-    # combustibil = models.CharField(max_length=264, null=True)
-    # culoare = models.CharField(max_length=264, null=True)
-    # cutie_de_viteze = models.CharField(max_length=264, null=True)
-    # marca = models.CharField(max_length=264, null=True)
-    # rulaj = models.CharField(max_length=264, null=True)
-    # stare = models.CharField(max_length=264, null=True)
-    # ##########Imobiliare########
-    # numar_de_camere = models.CharField(max_length=264, null=True)
-    # compartimentare = models.CharField(max_length=264, null=True)
-    # suprafata_utila = models.CharField(max_length=264, null=True)
-    # an_de_constructie = models.CharField(max_length=264, null=True)
-    # etaj = models.CharField(max_length=264, null=True)
-    # teren = models.CharField(max_length=264, null=True)
-    # ###########Moda##############
-    # marime = models.CharField(max_length=264, null=True)
-    # ###########Locuri############
-    # tip_job = models.CharField(max_length=264, null=True)
-    # tip_contract = models.CharField(max_length=264, null=True)
-    # nivelul_de_studii = models.CharField(max_length=264, null=True)
-    # nivelul_de_experienta = models.CharField(max_length=264, null=True)
-    # mobilitatea_postului = models.CharField(max_length=264, null=True)
-    # program_flexibil = models.CharField(max_length=264, null=True)
+    caroserie = models.CharField(max_length=264, null=True)
+    capacitate_motor = models.CharField(max_length=264, null=True)
+    combustibil = models.CharField(max_length=264, null=True)
+    culoare = models.CharField(max_length=264, null=True)
+    cutie_de_viteze = models.CharField(max_length=264, null=True)
+    marca = models.CharField(max_length=264, null=True)
+    rulaj = models.CharField(max_length=264, null=True)
+    stare = models.CharField(max_length=264, null=True)
+    ##########Imobiliare########
+    numar_de_camere = models.CharField(max_length=264, null=True)
+    compartimentare = models.CharField(max_length=264, null=True)
+    suprafata_utila = models.CharField(max_length=264, null=True)
+    an_de_constructie = models.CharField(max_length=264, null=True)
+    etaj = models.CharField(max_length=264, null=True)
+    teren = models.CharField(max_length=264, null=True)
+    ###########Moda##############
+    marime = models.CharField(max_length=264, null=True)
+    ###########Locuri############
+    tip_job = models.CharField(max_length=264, null=True)
+    tip_contract = models.CharField(max_length=264, null=True)
+    nivelul_de_studii = models.CharField(max_length=264, null=True)
+    nivelul_de_experienta = models.CharField(max_length=264, null=True)
+    mobilitatea_postului = models.CharField(max_length=264, null=True)
+    program_flexibil = models.CharField(max_length=264, null=True)
 
 class MesajCopil(models.Model):
     mesaj = models.TextField(max_length=9000)
