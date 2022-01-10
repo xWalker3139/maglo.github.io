@@ -162,7 +162,6 @@ class AnuntCopil(models.Model):
     
 
 class AnuntAdult(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     titlul = models.CharField(max_length=264, null=True)
     descriere = models.TextField(max_length=9000)
     numele_anuntului = models.CharField(max_length=264, null=True)
