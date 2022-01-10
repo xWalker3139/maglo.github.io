@@ -179,13 +179,6 @@ class AnuntAdult(models.Model):
     subcategorie_adult = models.CharField(max_length=264, null=True)
     favorit = models.ManyToManyField(User, related_name="favorit", blank=True)
     localizare = models.CharField(max_length=264, choices=JUDETE)
-
-    def __str__(self):
-        return self.numele_anuntului
-
-    def get_absolute_url(self):
-        return reverse('my_app:anunturi_postate_adult', kwargs={'pk':self.pk})
-    
     #########Autoturisme#######
     caroserie = models.CharField(max_length=264, null=True)
     capacitate_motor = models.CharField(max_length=264, null=True)
@@ -211,6 +204,12 @@ class AnuntAdult(models.Model):
     nivelul_de_experienta = models.CharField(max_length=264, null=True)
     mobilitatea_postului = models.CharField(max_length=264, null=True)
     program_flexibil = models.CharField(max_length=264, null=True)
+
+    def __str__(self):
+        return self.numele_anuntului
+
+    def get_absolute_url(self):
+        return reverse('my_app:anunturi_postate_adult', kwargs={'pk':self.pk})
 
 class MesajCopil(models.Model):
     mesaj = models.TextField(max_length=9000)
