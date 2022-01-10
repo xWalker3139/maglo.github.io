@@ -1068,7 +1068,6 @@ def anunturi_totale_adult(request, pk):
 def posteaza_anunt_adult(request):
     date_posted = datetime.datetime.now().year
     if request.method == "POST":
-        user = request.POST.get("user")
         titlul = request.POST.get("titlul")
         numele_anuntului = request.POST.get('numele_anuntului')
         descriere = request.POST.get("descriere")
