@@ -1086,34 +1086,35 @@ def posteaza_anunt_adult(request):
         localizare = request.POST.get("localizare")
         ########Autoturisme########
         caroserie = request.POST.get("caroserie")
-        capacitate_motor = request.POST.get("capacitate_motor")
-        combustibil = request.POST.get("combustibil")
-        culoare = request.POST.get("culoare")
-        cutie_de_viteze = request.POST.get("cutie_de_viteze")
-        marca = request.POST.get("marca")
-        rulaj = request.POST.get("rulaj")
-        stare = request.POST.get("stare")
-        #########Imobiliare########
-        numar_de_camere = request.POST.get("numar_de_camere")
-        compartimentare = request.POST.get("compartimentare")
-        suprafata_utila = request.POST.get("suprafata_utila")
-        an_de_constructie = request.POST.get("an_de_constructie")
-        etaj = request.POST.get("etaj")
-        teren = request.POST.get("teren")
-        ##########Moda#############
-        marime = request.POST.get("marime")
-        ##########Locuri###########
-        tip_job = request.POST.get("tip_job")
-        tip_contract = request.POST.get("tip_contract")
-        nivelul_de_studii = request.POST.get("nivelul_de_studii")
-        nivelul_de_experienta = request.POST.get("nivelul_de_experienta")
-        mobilitatea_postului = request.POST.get("mobilitatea_postului")
-        program_flexibil = request.POST.get("program_flexibil")
+        # capacitate_motor = request.POST.get("capacitate_motor")
+        # combustibil = request.POST.get("combustibil")
+        # culoare = request.POST.get("culoare")
+        # cutie_de_viteze = request.POST.get("cutie_de_viteze")
+        # marca = request.POST.get("marca")
+        # rulaj = request.POST.get("rulaj")
+        # stare = request.POST.get("stare")
+        # #########Imobiliare########
+        # numar_de_camere = request.POST.get("numar_de_camere")
+        # compartimentare = request.POST.get("compartimentare")
+        # suprafata_utila = request.POST.get("suprafata_utila")
+        # an_de_constructie = request.POST.get("an_de_constructie")
+        # etaj = request.POST.get("etaj")
+        # teren = request.POST.get("teren")
+        # ##########Moda#############
+        # marime = request.POST.get("marime")
+        # ##########Locuri###########
+        # tip_job = request.POST.get("tip_job")
+        # tip_contract = request.POST.get("tip_contract")
+        # nivelul_de_studii = request.POST.get("nivelul_de_studii")
+        # nivelul_de_experienta = request.POST.get("nivelul_de_experienta")
+        # mobilitatea_postului = request.POST.get("mobilitatea_postului")
+        # program_flexibil = request.POST.get("program_flexibil")
         model = AnuntAdult(titlul=titlul,numele_anuntului=numele_anuntului, descriere=descriere, categorie_adult=categorie_adult, subcategorie_adult=subcategorie_adult, telefon=telefon, email=email, pret=pret, moneda=moneda,
-                            caroserie=caroserie, capacitate_motor=capacitate_motor,combustibil=combustibil,culoare=culoare,cutie_de_viteze=cutie_de_viteze, marca=marca,rulaj=rulaj,stare=stare,
-                            numar_de_camere=numar_de_camere, compartimentare=compartimentare,suprafata_utila=suprafata_utila,an_de_constructie=an_de_constructie,etaj=etaj,teren=teren,
-                            marime=marime,
-                            tip_job=tip_job,tip_contract=tip_contract,nivelul_de_studii=nivelul_de_studii,nivelul_de_experienta=nivelul_de_experienta,mobilitatea_postului=mobilitatea_postului,program_flexibil=program_flexibil,
+                            caroserie=caroserie, 
+                            # capacitate_motor=capacitate_motor,combustibil=combustibil,culoare=culoare,cutie_de_viteze=cutie_de_viteze, marca=marca,rulaj=rulaj,stare=stare,
+                            # numar_de_camere=numar_de_camere, compartimentare=compartimentare,suprafata_utila=suprafata_utila,an_de_constructie=an_de_constructie,etaj=etaj,teren=teren,
+                            # marime=marime,
+                            # tip_job=tip_job,tip_contract=tip_contract,nivelul_de_studii=nivelul_de_studii,nivelul_de_experienta=nivelul_de_experienta,mobilitatea_postului=mobilitatea_postului,program_flexibil=program_flexibil,
                             imagine=imagine, localizare=localizare, imagine2=imagine2, imagine3=imagine3, imagine4=imagine4, imagine5=imagine5, imagine6=imagine6)
         model.save()
     context = {
