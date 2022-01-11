@@ -180,7 +180,6 @@ class AnuntAdult(models.Model):
     localizare = models.CharField(max_length=264, choices=JUDETE)
     #########Autoturisme#######
     caroserie = models.CharField(max_length=264, null=True)
-    capacitate_motor = models.CharField(max_length=264, null=True, db_column="capacitate_motor")
     combustibil = models.CharField(max_length=264, null=True)
     culoare = models.CharField(max_length=264, null=True)
     cutie_de_viteze = models.CharField(max_length=264, null=True)
