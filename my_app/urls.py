@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from my_app import views
+from django.urls import path
 
 app_name = "my_app"
 
@@ -39,11 +40,13 @@ urlpatterns = [
 
     url(r'^inregistrare_adult/$', views.inregistrare_adult, name="inregistrare_adult"),
     url(r'contul_meu_adult/$', views.contul_meu_adult, name="contul_meu_adult"),
-    url(r'^posteaza_anunt_adult/$', views.posteaza_anunt_adult, name="posteaza_anunt_adult"),
+    url(r'^conversatii_adult/$', views.conversatii_adult, name="conversatii_adult"),
+    url(r'^posteaza_anunt_adult/(?P<pk>\d+)/$', views.posteaza_anunt_adult, name="posteaza_anunt_adult"),
     url(r'^deconectare_adult/$', views.deconectare_adult, name="deconectare_adult"),
     url(r'^deconectare_adult1/$', views.deconectare_adult1, name="deconectare_adult1"),
     url(r'^autentificate_adult/$', views.autentificate_adult, name="autentificate_adult"),
     url(r'^anunturi_favorite_d/$', views.anunturi_favorite_d, name="anunturi_favorite_d"),
+    url(r'^adauga_anunturi_favorite_d/(?P<pk>\d+)/$', views.adauga_anunturi_favorite_d, name="adauga_anunturi_favorite_d"),
     url(r'update_adult/(?P<pk>\d+)/$', views.UpdateAdult, name="update_adult"),
     url(r'^pag_update_adult/$', views.pag_update_adult, name="pag_update_adult"),
     url(r'^delete_adult/(?P<pk>\d+)/$', views.DeleteAdult, name="delete_adult"),
@@ -133,4 +136,15 @@ urlpatterns = [
 
     ################Specificatii###################
     url(r'^specificatii_auto/$', views.specificatii_auto, name="specificatii_auto"),
+    url(r'^specificatii_piese/$', views.specificatii_piese, name="specificatii_piese"),
+    url(r'^specificatii_agro/$', views.specificatii_agro, name="specificatii_agro"),
+    url(r'^specificatii_imobiliare/$', views.specificatii_imobiliare, name="specificatii_imobiliare"),
+    url(r'^specificatii_moda/$', views.specificatii_moda, name="specificatii_moda"),
+    url(r'^specificatii_electronice/$', views.specificatii_electronice, name="specificatii_electronice"),
+    url(r'^specificatii_locuri/$', views.specificatii_locuri, name="specificatii_locuri"),
+
+    ################PRET#####################
+    url(r'^pret_sport/$', views.pret_sport, name="pret_sport"),
+
+    #################CHAT####################
 ]

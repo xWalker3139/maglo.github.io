@@ -102,6 +102,19 @@
                 display: block;
             }
         }
+        #anchor1{
+          font-family: 'Montserrat', sans-serif;
+          font-weight: bold;
+          font-size: 19px;
+          color: #fff;
+          text-decoration: none;
+          display: block;
+          margin-top: 10px;
+          transition: 0.4s ease-in-out grey;
+        }
+        #anchor1:hover{
+          color: grey;
+        }
 </style>
 {% endblock %}
 
@@ -127,10 +140,11 @@
         <br>
         <div class="row">
             <div class="col-lg-8 col-md-4 col-sm-6">
-                <form class="was-validated" action="" enctype="multipart/form-data" method="POST" id="form" novalidate>
+                <form class="was-validated" action="" enctype="multipart/form-data" method="POST" id="form">
                     {% csrf_token %}
+                    {{ form.user }}
                     <div class="form-group">
-                        <input type="hidden" class="form-control" id="user1" value="" name="user">
+                        <input type="text" name="user" value="" hidden>
                     </div>
                     <div class="form-group">
                         <label for="Titlul">Titlul anuntului:</label>
@@ -291,7 +305,7 @@
                             <div class="row" style="margin-top: 12px;">
                                 <div class="col-lg-6 col-md-4 col-sm-6">
                                     <label for="rulaj">Rulaj:</label>
-                                    <input type="text" class="form-control" placeholder="km" name="rulaj" required>
+                                    <input type="text" class="form-control" placeholder="km" name="rulaj">
                                 </div>
                                 <div class="col-lg-6 col-md-4 col-sm-6">
                                     <label for="stare">Stare:</label>
@@ -347,7 +361,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-4 col-sm-6">
                                         <label for="pret">Pret:</label>
-                                        <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                        <input type="number" placeholder="Pret" class="form-control" name="pret">
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                     </div>
@@ -375,7 +389,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-4 col-sm-6">
                                     <label for="rulaj">Rulaj:</label>
-                                    <input type="text" class="form-control" placeholder="km" name="rulaj" required>
+                                    <input type="text" class="form-control" placeholder="km" name="rulaj">
                                 </div>
                             </div>
                             <label for="marca">Marca:</label>
@@ -411,7 +425,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-4 col-sm-6">
                                         <label for="pret">Pret:</label>
-                                        <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                        <input type="number" placeholder="Pret" class="form-control" name="pret">
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                     </div>
@@ -439,7 +453,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-4 col-sm-6">
                                     <label for="rulaj">Rulaj:</label>
-                                    <input type="text" class="form-control" placeholder="km" name="rulaj" required>
+                                    <input type="text" class="form-control" placeholder="km" name="rulaj">
                                 </div>
                             </div>
                             <div class="form-group" style="margin-top: 12px;">
@@ -453,7 +467,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-4 col-sm-6">
                                         <label for="pret">Pret:</label>
-                                        <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                        <input type="number" placeholder="Pret" class="form-control" name="pret">
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                     </div>
@@ -495,7 +509,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-4 col-sm-6">
                                         <label for="pret">Pret:</label>
-                                        <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                        <input type="number" placeholder="Pret" class="form-control" name="pret">
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                     </div>
@@ -541,7 +555,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-4 col-sm-6">
                                         <label for="pret">Pret:</label>
-                                        <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                        <input type="number" placeholder="Pret" class="form-control" name="pret">
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                     </div>
@@ -575,7 +589,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-4 col-sm-6">
                                         <label for="pret">Pret:</label>
-                                        <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                        <input type="number" placeholder="Pret" class="form-control" name="pret">
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                     </div>
@@ -609,7 +623,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-4 col-sm-6">
                                         <label for="pret">Pret:</label>
-                                        <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                        <input type="number" placeholder="Pret" class="form-control" name="pret">
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                     </div>
@@ -655,7 +669,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-4 col-sm-6">
                                         <label for="pret">Pret:</label>
-                                        <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                        <input type="number" placeholder="Pret" class="form-control" name="pret">
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                     </div>
@@ -682,7 +696,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-4 col-sm-6">
                                         <label for="pret">Pret:</label>
-                                        <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                        <input type="number" placeholder="Pret" class="form-control" name="pret">
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                     </div>
@@ -709,7 +723,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-4 col-sm-6">
                                         <label for="pret">Pret:</label>
-                                        <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                        <input type="number" placeholder="Pret" class="form-control" name="pret">
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                     </div>
@@ -747,7 +761,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-4 col-sm-6">
                                     <label for="an">An de constructie:</label>
-                                    <input type="text" class="form-control" name="an_de_constructie" placeholder="An de constructie" required>
+                                    <input type="text" class="form-control" name="an_de_constructie" placeholder="An de constructie">
                                 </div>
                                 <div class="col-lg-6 col-md-4 col-sm-6">
                                     <label for="">Compartimentare:</label>
@@ -805,7 +819,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-4 col-sm-6">
                                         <label for="pret">Pret:</label>
-                                        <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                        <input type="number" placeholder="Pret" class="form-control" name="pret">
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                     </div>
@@ -825,7 +839,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-4 col-sm-6">
                                     <label for="an">An de constructie:</label>
-                                    <input type="text" class="form-control" name="an_de_constructie" placeholder="An de constructie" required>
+                                    <input type="text" class="form-control" name="an_de_constructie" placeholder="An de constructie">
                                 </div>
                                 <div class="col-lg-6 col-md-4 col-sm-6">
                                     <label for="">Compartimentare:</label>
@@ -883,7 +897,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-4 col-sm-6">
                                         <label for="pret">Pret:</label>
-                                        <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                        <input type="number" placeholder="Pret" class="form-control" name="pret">
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                     </div>
@@ -913,7 +927,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-4 col-sm-6">
                                         <label for="pret">Pret:</label>
-                                        <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                        <input type="number" placeholder="Pret" class="form-control" name="pret">
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                     </div>
@@ -931,7 +945,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -951,7 +965,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-4 col-sm-6">
                                     <label for="an">An de constructie:</label>
-                                    <input type="text" class="form-control" name="an_de_constructie" placeholder="An de constructie" required>
+                                    <input type="text" class="form-control" name="an_de_constructie" placeholder="An de constructie">
                                 </div>
                                 <div class="col-lg-6 col-md-4 col-sm-6">
                                     <label for="">Compartimentare:</label>
@@ -991,7 +1005,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-4 col-sm-6">
                                         <label for="pret">Pret:</label>
-                                        <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                        <input type="number" placeholder="Pret" class="form-control" name="pret">
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                     </div>
@@ -1011,7 +1025,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-4 col-sm-6">
                                     <label for="an">An de constructie:</label>
-                                    <input type="text" class="form-control" name="an_de_constructie" placeholder="An de constructie" required>
+                                    <input type="text" class="form-control" name="an_de_constructie" placeholder="An de constructie">
                                 </div>
                                 <div class="col-lg-6 col-md-4 col-sm-6">
                                     <label for="">Compartimentare:</label>
@@ -1051,7 +1065,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1069,7 +1083,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1111,7 +1125,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1129,7 +1143,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1171,7 +1185,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1189,7 +1203,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1219,7 +1233,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1237,7 +1251,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1267,7 +1281,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1285,7 +1299,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1399,7 +1413,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1497,7 +1511,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1599,7 +1613,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1701,7 +1715,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1735,7 +1749,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1769,7 +1783,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1803,7 +1817,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1852,7 +1866,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1886,7 +1900,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1920,7 +1934,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1954,7 +1968,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -1988,7 +2002,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -2022,7 +2036,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -2060,7 +2074,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -2087,7 +2101,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -2591,7 +2605,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -2618,7 +2632,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -2645,7 +2659,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 col-sm-6">
                                             <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                         </div>
@@ -2671,7 +2685,7 @@
                                         <div class="row">
                                             <div class="col-lg-6 col-md-4 col-sm-6">
                                                 <label for="pret">Pret:</label>
-                                                <input type="number" placeholder="Pret" class="form-control" name="pret" required>
+                                                <input type="number" placeholder="Pret" class="form-control" name="pret">
                                                 <div class="valid-feedback">Valid.</div>
                                                 <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                             </div>
@@ -2691,7 +2705,7 @@
                     </div>
                     <div class="form-group">
                         <label for="telefon">Telefon:</label>
-                        <input type="tel" name="telefon" placeholder="Telefon" class="form-control" required>
+                        <input type="number" name="telefon" placeholder="Telefon" class="form-control" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                     </div>
@@ -2802,46 +2816,50 @@
     </div>
 </div>
 <br>
-<div class="jumbotron" style="background-color: #334257;margin-bottom: 0px;">
+<div class="jumbotron" style="background-color: #1F1D36;margin-bottom: 0px;margin-top: 30px;">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <h3 style="color: #BBBFCA;">Informatii</h3>
-                <br>
-                <a href="{% url 'ajutor_si_contact' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Ajutor si Contact</a>
-                <a href="{% url 'politica_confi' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de confidentialitate</a>
-                <a href="{% url 'politica_cookie' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de Cookie-uri</a>
-                <a href="{% url 'termeni_si_conditii' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Termeni si Conditii</a>
-                <a href="{% url 'securitate' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Protejeaza-te pe Maglo</a>
-                <a href="https://anpc.ro/" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">ANPC</a>
-            </div>
-            <br>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <h3 style="color: #BBBFCA;">Date de contact</h3>
-                <br>
-                <p style="display:block;text-decoration: none;color: aliceblue;">Email: </p>
-                <p style="display:block;text-decoration: none;color: aliceblue;">Date firma: </p>
-                <p style="display:block;text-decoration: none;color: aliceblue;">CUI: </p>
-                <p style="display:block;text-decoration: none;color: aliceblue;">Registrul comertului: </p>
-            </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6">
+          <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Informatii</h2>
+          <br>
+          <a href="{% url 'ajutor_si_contact' %}" id="anchor1">Ajutor si contact</a>
+          <a href="{% url 'politica_confi' %}" id="anchor1">Politica de confidentialitate</a>
+          <a href="{% url 'politica_cookie' %}" id="anchor1">Politica de cookie-uri</a>
+          <a href="{% url 'termeni_si_conditii' %}" id="anchor1">Termeni si conditii</a>
+          <a href="{% url 'securitate' %}" id="anchor1">Protejeaza-te pe Maglo</a>
+          <a href="https://anpc.ro/" id="anchor1">ANPC</a>
         </div>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+          <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Date de contact</h2>
+          <br>
+          <p id="anchor1">E-mail:</p>
+          <p id="anchor1">Date firma:</p>
+          <p id="anchor1">CUI:</p>
+          <p id="anchor1">Registrul comertului:</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+          <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Urmareste-ne</h2>
+          <br>
+          <a href="" id="anchor1"><i class="fab fa-facebook"></i> Facebook</a>
+          <a href="" id="anchor1"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="" id="anchor1"><i class="fab fa-linkedin"></i> Linked-In</a>
+        </div>
+      </div>
     </div>
 </div>
-<div class="jumbotron" style="background-color: #151515;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;">
+<div class="jumbotron" style="background-color: #2d2b4b;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;font-family: 'Montserrat', sans-serif;font-weight: bolder;">
     <div class="container">
-        <p style="font-size: 20px;font-family: Arial, Helvetica, sans-serif;color: aliceblue;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+        <p style="font-size: 22px;color: #fff;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
     </div>
 </div>
 <script src="{% static 'js/index.js' %}">
 </script>
 <script>
-    // var name = "{{ user.id }}";
-    // document.getElementById('user1').value = name;
-</script>
-<script>
     function myFunction(){
         console.log("click");
     };
+    var my_name = "{{ user.id }}";
+    document.getElementsByName('user').value = my_name;
     $(document).ready(function(){
         $("#mybox4").change(function(){
             $(this).find("option:selected").each(function(){

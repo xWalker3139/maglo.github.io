@@ -11,7 +11,7 @@
     }
     .banner{
         background-color: white;
-        max-width: 300px;
+        width: 100%;
         height: 100%;
         box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
     }
@@ -113,8 +113,9 @@
                 <a href="{% url 'my_app:contul_meu_adult' %}"><p id="param1"><i class="fas fa-user"></i> Contul meu</p></a>
                 <ul>
                     <li><a href="{% url 'my_app:contul_meu_adult' %}">Informatii personale</a></li>
+                    <li><a href="{% url 'my_app:conversatii_adult' %}">Conversatii</a></li>
                     <li><a href="{% url 'my_app:deconectare_adult1' %}">Deconectare</a></li>
-                    <li><a href="{% url 'my_app:posteaza_anunt_adult' %}">Posteaza un anunt</a></li>
+                    <li><a href="{% url 'my_app:posteaza_anunt_adult' user.pk %}">Posteaza un anunt</a></li>
                 </ul>
                 <a href="{% url 'my_app:anunturi_totale_adult' user.pk %}"><p id="param2"><i class="fas fa-calendar-check"></i> Anunturi postate</p></a>
                 <ul>
@@ -133,6 +134,8 @@
         </div>
         <div class="col-lg-8 col-md-4 col-sm-6">
             <h2 id="header1"><strong>Sunteti sigur ca doriti sa va deconectati?</strong></h2>
+            <hr>
+            <br>
             <a href="{% url 'my_app:deconectare_adult' %}" class="btn btn-outline-danger btn-lg" style="margin-top: 15px;margin-left:20px;margin-bottom: 20px;">Ma deconectez</a>
             <a href="{% url 'my_app:contul_meu_adult' %}" class="btn btn-outline-info btn-lg" style="margin-top: 15px;margin-left: 20px;margin-bottom: 20px;">Raman pe cont</a>
         </div>

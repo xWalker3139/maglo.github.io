@@ -157,6 +157,13 @@
                 display: block;
             }
         }
+        .collapse1{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 22px;
+        text-decoration: none;
+        color: black;
+        padding-bottom: 10px;
+    }
 </style>
 {% endblock %}
 
@@ -168,7 +175,7 @@
             <div class="wrapper">
                 <div class="search-input">
                   <a href="" target="_blank" hidden></a>
-                  <input type="search" placeholder="Cauta anuntul dorit" name="cautat">
+                  <input type="search" placeholder="{{model.count}} anunturi postate" name="cautat">
                   <div class="autocom-box">
                     <!-- here list are inserted from javascript -->
                   </div>
@@ -180,7 +187,7 @@
 </div>
 <div class="jumbotron">
     <div class="container">
-        <h1 style="text-align: center; margin-bottom: 40px;font-family: 'Montserrat', sans-serif;"><strong>Categorii</strong></h1>
+        <h1 style="text-align: center; margin-bottom: 40px;font-family: 'Montserrat', sans-serif;"><strong>Categorii principale</strong></h1>
         <br>
         <div class="row">
             <div class="col-lg-2 col-md-4 col-sm-6">
@@ -268,142 +275,142 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-6">
-            <div class="jumbotron" id="jb1">
-                <h3><strong>Filtreaza</strong></h3>
-                <hr>
+            <h2 style="font-family: 'Montserrat', sans-serif;color: black;margin-top: 25px;"><strong>Filtreaza</strong></h2>
                 <br>
-                <h4 style="padding-bottom: 15px;">Categorie:</h4>
-                <form method="POST" class="new_form">
-                    {% csrf_token %}
-                    <a href="#demo41" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Auto, moto si ambarcatiuni</a>
-                    <div id="demo41" class="collapse">
-                        <ul>
-                            <li><a href="{% url 'my_app:autoturisme' %}">Autoturisme</a></li>
-                            <li><a href="{% url 'my_app:ambarcatiuni' %}">Ambarcatiuni</a></li>
-                            <li><a href="{% url 'my_app:autoutilitare' %}">Autoutilitare</a></li>
-                            <li><a href="{% url 'my_app:camioane_rulote_remorci' %}">Camioane, rulote, remorci</a></li>
-                            <li><a href="{% url 'my_app:motociclete_scutere_atv' %}">Motociclete, scutere, ATV</a></li>
-                        </ul>
-                    </div>
-                    <br>
-                    <a href="#demo42" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Piese auto</a>
-                    <div id="demo42" class="collapse">
-                        <ul>
-                            <li><a href="{% url 'my_app:roti_jante_anvelope' %}">Roti, jante, anvelope</a></li>
-                            <li><a href="{% url 'my_app:caroserie_interior' %}">Caroserie interior</a></li>
-                            <li><a href="{% url 'my_app:mecanica_electrica' %}">Mecanica electrica</a></li>
-                        </ul>
-                    </div>
-                    <br>
-                    <a href="#demo43" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Agro si Industrie</a>
-                    <div id="demo43" class="collapse">
-                        <ul>
-                            <li><a href="{% url 'my_app:utilaje' %}">Utilaje agricole si industriale</a></li>
-                            <li><a href="{% url 'my_app:animale' %}">Animale domestice</a></li>
-                            <li><a href="{% url 'my_app:produse' %}">Produse piata</a></li>
-                        </ul>
-                    </div>
-                    <br>
-                    <a href="#demo44" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Imobiliare</a>
-                    <div id="demo44" class="collapse">
-                        <ul>
-                            <li><a href="{% url 'my_app:apartamente_de_vanzare' %}">Apartamente de vanzare</a></li>
-                            <li><a href="{% url 'my_app:apartamente_de_inchiriat' %}">Apartamente de inchiriat</a></li>
-                            <li><a href="{% url 'my_app:birouri' %}">Birouri</a></li>
-                            <li><a href="{% url 'my_app:case_de_vanzare' %}">Case/Vile de vanzare</a></li>
-                            <li><a href="{% url 'my_app:case_de_inchiriat' %}">Case/Vile de inchiriat</a></li>
-                            <li><a href="{% url 'my_app:terenuri_agricole' %}">Terenuri agricole</a></li>
-                            <li><a href="{% url 'my_app:terenuri_constructii' %}">Terenuri constructii</a></li>
-                            <li><a href="{% url 'my_app:spatii_comerciale' %}">Spatii comerciale</a></li>
-                            <li><a href="{% url 'my_app:spatii_industriale' %}">Spatii industriale</a></li>
-                        </ul>
-                    </div>
-                    <br>
-                    <a href="#demo45" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Moda si frumusete</a>
-                    <div id="demo45" class="collapse">
-                        <ul>
-                            <li><a href="{% url 'my_app:haine_dama' %}">Haine dama</a></li>
-                            <li><a href="{% url 'my_app:haine_barbati' %}">Haine barbati</a></li>
-                            <li><a href="{% url 'my_app:incaltaminte_dama' %}">Incaltaminte dama</a></li>
-                            <li><a href="{% url 'my_app:incaltaminte_barbati' %}">Incaltaminte barbati</a></li>
-                            <li><a href="{% url 'my_app:bijuterii' %}">Bijuterii</a></li>
-                            <li><a href="{% url 'my_app:cosmetice' %}">Cosmetice</a></li>
-                            <li><a href="{% url 'my_app:accesorii' %}">Accesorii</a></li>
-                        </ul>
-                    </div>
-                    <br>
-                    <a href="#demo46" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Electronice si Electrocasnice</a>
-                    <div id="demo46" class="collapse">
-                        <ul>
-                            <li><a href="{% url 'my_app:telefoane' %}">Telefoane</a></li>
-                            <li><a href="{% url 'my_app:tablete' %}">Tablete</a></li>
-                            <li><a href="{% url 'my_app:electrocasnice' %}">Electrocasnice</a></li>
-                            <li><a href="{% url 'my_app:laptop_calculator' %}">Laptop - Calculator</a></li>
-                            <li><a href="{% url 'my_app:aparate_foto' %}">Aparate foto - Camere video</a></li>
-                            <li><a href="{% url 'my_app:console' %}">Console</a></li>
-                        </ul>
-                    </div>
-                    <br>
-                    <a href="#demo47" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Afaceri / Servicii</a></a>
-                    <div id="demo47" class="collapse">
-                        <ul>
-                            <li><a href="{% url 'my_app:cafenele' %}">Cafenele</a></li>
-                            <li><a href="{% url 'my_app:cofetarii' %}">Cofetarii</a></li>
-                            <li><a href="{% url 'my_app:constructii' %}">Constructii</a></li>
-                            <li><a href="{% url 'my_app:cabinete_medicale' %}">Cabinete medicale</a></li>
-                            <li><a href="{% url 'my_app:fast_food' %}">Fast Food-uri</a></li>
-                            <li><a href="{% url 'my_app:restaurante' %}">Restaurante</a></li>
-                            <li><a href="{% url 'my_app:contabilitate' %}">Contabilitate</a></li>
-                            <li><a href="{% url 'my_app:digital_marketing' %}">Digital Marketing</a></li>
-                            <li><a href="{% url 'my_app:grafic_design' %}">Grafic si design</a></li>
-                            <li><a href="{% url 'my_app:meditatii' %}">Meditatii</a></li>
-                            <li><a href="{% url 'my_app:programare_si_tehnologie' %}">Programare si tehnologie</a></li>
-                            <li><a href="{% url 'my_app:video_si_animatii' %}">Video si animatii</a></li>
-                        </ul>
-                    </div>
-                    <br>
-                    <a href="#demo48" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Animale de companie</a>
-                    <div id="demo48" class="collapse">
-                        <ul>
-                            <li><a href="{% url 'my_app:adoptii_animale' %}">Adoptii</a></li>
-                            <li><a href="{% url 'my_app:accesorii_animale' %}">Accesorii animale</a></li>
-                        </ul>
-                    </div>
-                    <br>
-                    <a href="#demo49" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Locuri de munca</a>
-                    <div id="demo49" class="collapse">
-                        <ul>
-                            <li><a href="{% url 'my_app:agenti_vanzari' %}">Agenti de vanzari</a></li>
-                            <li><a href="{% url 'my_app:confectii' %}">Confectii - Croitori</a></li>
-                            <li><a href="{% url 'my_app:cosmeticieni' %}">Cosmeticieni - Frizeri</a></li>
-                            <li><a href="{% url 'my_app:ingineri' %}">Ingineri - Meseriasi - Constructori</a></li>
-                            <li><a href="{% url 'my_app:munca' %}">Munca in strainatate</a></li>
-                            <li><a href="{% url 'my_app:paza_si_protectie' %}">Paza si protectie</a></li>
-                            <li><a href="{% url 'my_app:personal_hotelier' %}">Personal hotelier - restaurant</a></li>
-                        </ul>
-                    </div>
-                    <br>
-                    <a href="#demo50" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Sport, timp liber si Hobby</a>
-                    <div id="demo50" class="collapse">
-                        <ul>
-                            <li><a href="{% url 'my_app:articole_sportive_adult' %}">Articole sportive</a></li>
-                            <li><a href="{% url 'my_app:carti_filme' %}">Carti, Filme</a></li>
-                            <li><a href="{% url 'my_app:arta_antichitati' %}">Arta si antichitati</a></li>
-                            <li><a href="{% url 'my_app:muzica_adult' %}">Muzica, instrumente muzicale</a></li>
-                        </ul>
-                    </div>
-                    <br>
-                    <a href="#demo51" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Mici intrepinzatori autohtoni</a>
-                    <div id="demo51" class="collapse"></div>
-                    <br>
-                    <a href="#demo52" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Mama si Copil</a>
-                    <div id="demo52" class="collapse">
-                        <ul>
-                            <li></li>
-                        </ul>
-                    </div>
-                    <br>
-                    <h4 id="param2">Judete: </h4>
+                <hr style="padding-bottom: 1px;">
+                <a href="#demo60" class="collapse1" data-toggle="collapse" data-target="#demo60"><strong><i class="fas fa-chevron-right"></i> Categorii / Subcategorii</strong></a>
+                <div id="demo60" class="collapse" style="font-family: 'Montserrat', sans-serif;">
+                    <form method="POST" class="new_form" novalidate>
+                        {% csrf_token %}
+                        <a href="#demo41" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Auto, moto si ambarcatiuni</a>
+                        <div id="demo41" class="collapse">
+                            <ul>
+                                <li><a href="{% url 'my_app:autoturisme' %}">Autoturisme</a></li>
+                                <li><a href="{% url 'my_app:ambarcatiuni' %}">Ambarcatiuni</a></li>
+                                <li><a href="{% url 'my_app:autoutilitare' %}">Autoutilitare</a></li>
+                                <li><a href="{% url 'my_app:camioane_rulote_remorci' %}">Camioane, rulote, remorci</a></li>
+                                <li><a href="{% url 'my_app:motociclete_scutere_atv' %}">Motociclete, scutere, ATV</a></li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo42" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Piese auto</a>
+                        <div id="demo42" class="collapse">
+                            <ul>
+                                <li><a href="{% url 'my_app:roti_jante_anvelope' %}">Roti, jante, anvelope</a></li>
+                                <li><a href="{% url 'my_app:caroserie_interior' %}">Caroserie interior</a></li>
+                                <li><a href="{% url 'my_app:mecanica_electrica' %}">Mecanica electrica</a></li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo43" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Agro si Industrie</a>
+                        <div id="demo43" class="collapse">
+                            <ul>
+                                <li><a href="{% url 'my_app:utilaje' %}">Utilaje agricole si industriale</a></li>
+                                <li><a href="{% url 'my_app:animale' %}">Animale domestice</a></li>
+                                <li><a href="{% url 'my_app:produse' %}">Produse piata</a></li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo44" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Imobiliare</a>
+                        <div id="demo44" class="collapse">
+                            <ul>
+                                <li><a href="{% url 'my_app:apartamente_de_vanzare' %}">Apartamente de vanzare</a></li>
+                                <li><a href="{% url 'my_app:apartamente_de_inchiriat' %}">Apartamente de inchiriat</a></li>
+                                <li><a href="{% url 'my_app:birouri' %}">Birouri</a></li>
+                                <li><a href="{% url 'my_app:case_de_vanzare' %}">Case/Vile de vanzare</a></li>
+                                <li><a href="{% url 'my_app:case_de_inchiriat' %}">Case/Vile de inchiriat</a></li>
+                                <li><a href="{% url 'my_app:terenuri_agricole' %}">Terenuri agricole</a></li>
+                                <li><a href="{% url 'my_app:terenuri_constructii' %}">Terenuri constructii</a></li>
+                                <li><a href="{% url 'my_app:spatii_comerciale' %}">Spatii comerciale</a></li>
+                                <li><a href="{% url 'my_app:spatii_industriale' %}">Spatii industriale</a></li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo45" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Moda si frumusete</a>
+                        <div id="demo45" class="collapse">
+                            <ul>
+                                <li><a href="{% url 'my_app:haine_dama' %}">Haine dama</a></li>
+                                <li><a href="{% url 'my_app:haine_barbati' %}">Haine barbati</a></li>
+                                <li><a href="{% url 'my_app:incaltaminte_dama' %}">Incaltaminte dama</a></li>
+                                <li><a href="{% url 'my_app:incaltaminte_barbati' %}">Incaltaminte barbati</a></li>
+                                <li><a href="{% url 'my_app:bijuterii' %}">Bijuterii</a></li>
+                                <li><a href="{% url 'my_app:cosmetice' %}">Cosmetice</a></li>
+                                <li><a href="{% url 'my_app:accesorii' %}">Accesorii</a></li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo46" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Electronice si Electrocasnice</a>
+                        <div id="demo46" class="collapse">
+                            <ul>
+                                <li><a href="{% url 'my_app:telefoane' %}">Telefoane</a></li>
+                                <li><a href="{% url 'my_app:tablete' %}">Tablete</a></li>
+                                <li><a href="{% url 'my_app:electrocasnice' %}">Electrocasnice</a></li>
+                                <li><a href="{% url 'my_app:laptop_calculator' %}">Laptop - Calculator</a></li>
+                                <li><a href="{% url 'my_app:aparate_foto' %}">Aparate foto - Camere video</a></li>
+                                <li><a href="{% url 'my_app:console' %}">Console</a></li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo47" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Afaceri / Servicii</a></a>
+                        <div id="demo47" class="collapse">
+                            <ul>
+                                <li><a href="{% url 'my_app:cafenele' %}">Cafenele</a></li>
+                                <li><a href="{% url 'my_app:cofetarii' %}">Cofetarii</a></li>
+                                <li><a href="{% url 'my_app:constructii' %}">Constructii</a></li>
+                                <li><a href="{% url 'my_app:cabinete_medicale' %}">Cabinete medicale</a></li>
+                                <li><a href="{% url 'my_app:fast_food' %}">Fast Food-uri</a></li>
+                                <li><a href="{% url 'my_app:restaurante' %}">Restaurante</a></li>
+                                <li><a href="{% url 'my_app:contabilitate' %}">Contabilitate</a></li>
+                                <li><a href="{% url 'my_app:digital_marketing' %}">Digital Marketing</a></li>
+                                <li><a href="{% url 'my_app:grafic_design' %}">Grafic si design</a></li>
+                                <li><a href="{% url 'my_app:meditatii' %}">Meditatii</a></li>
+                                <li><a href="{% url 'my_app:programare_si_tehnologie' %}">Programare si tehnologie</a></li>
+                                <li><a href="{% url 'my_app:video_si_animatii' %}">Video si animatii</a></li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo48" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Animale de companie</a>
+                        <div id="demo48" class="collapse">
+                            <ul>
+                                <li><a href="{% url 'my_app:adoptii_animale' %}">Adoptii</a></li>
+                                <li><a href="{% url 'my_app:accesorii_animale' %}">Accesorii animale</a></li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo49" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Locuri de munca</a>
+                        <div id="demo49" class="collapse">
+                            <ul>
+                                <li><a href="{% url 'my_app:agenti_vanzari' %}">Agenti de vanzari</a></li>
+                                <li><a href="{% url 'my_app:confectii' %}">Confectii - Croitori</a></li>
+                                <li><a href="{% url 'my_app:cosmeticieni' %}">Cosmeticieni - Frizeri</a></li>
+                                <li><a href="{% url 'my_app:ingineri' %}">Ingineri - Meseriasi - Constructori</a></li>
+                                <li><a href="{% url 'my_app:munca' %}">Munca in strainatate</a></li>
+                                <li><a href="{% url 'my_app:paza_si_protectie' %}">Paza si protectie</a></li>
+                                <li><a href="{% url 'my_app:personal_hotelier' %}">Personal hotelier - restaurant</a></li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo50" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Sport, timp liber si Hobby</a>
+                        <div id="demo50" class="collapse">
+                            <ul>
+                                <li><a href="{% url 'my_app:articole_sportive_adult' %}">Articole sportive</a></li>
+                                <li><a href="{% url 'my_app:carti_filme' %}">Carti, Filme</a></li>
+                                <li><a href="{% url 'my_app:arta_antichitati' %}">Arta si antichitati</a></li>
+                                <li><a href="{% url 'my_app:muzica_adult' %}">Muzica, instrumente muzicale</a></li>
+                            </ul>
+                        </div>
+                        <br>
+                        <a href="#demo51" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Mici intrepinzatori autohtoni</a>
+                        <div id="demo51" class="collapse"></div>
+                        <br>
+                        <a href="#demo52" data-toggle="collapse"><i class="fas fa-chevron-right"></i> Matrimoniale</a>
+                        <div id="demo52" class="collapse">
+                        </div>
+                    </form>
+                </div>
+                <hr style="padding-bottom: 1px;">
+                <a href="#demo61" data-toggle="collapse" class="collapse1" data-target="#demo61"><strong><i class="fas fa-chevron-right"></i> Judete / Localitati</strong></a>
+                <div id="demo61" class="collapse">
                     <div class="new_bg">
                         <a href="#demo" data-toggle="collapse"><i class="fas fa-chevron-right" id="fas"></i> Alba</a>
                         <div id="demo" class="collapse">
@@ -979,8 +986,37 @@
                             </ul>
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+                <hr style="padding-bottom: 1px;">
+                <a href="#demo62" data-toggle="collapse" data-target="#demo62" class="collapse1"><strong><i class="fas fa-chevron-right"></i> Pret</strong></a>
+                <div class="collapse" id="demo62" style="margin-top: 12px;">
+                    <form method="POST" action="" class="form-group">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-lg-6 col-md-4 col-sm-6">
+                                <input type="text" class="form-control" name="minim_pret" placeholder="Minim" required>
+                            </div>
+                            <div class="col-lg-6 col-md-4 col-sm-6">
+                                <input type="text" class="form-control" name="maxim-pret" placeholder="Maxim" required>
+                            </div>
+                        </div>
+                        <br>
+                        <input type="submit" class="btn btn-outline-secondary btn-block" value="Cauta">
+                    </form>
+                </div>
+                <hr style="padding-bottom: 1px;">
+                <a href="#demo63" data-toggle="collapse" data-target="#demo63" class="collapse1"><strong><i class="fas fa-chevron-right"></i> Specificatii</strong></a>
+                <div class="collapse" id="demo63" style="margin-top: 12px;">
+                    <form method="POST" class="form-group" action="{% url 'my_app:specificatii_piese' %}" style="font-family: 'Montserrat', sans-serif;">
+                        {% csrf_token %}
+                        <label for="stare" style="margin-top: 10px;">Stare:</label>
+                        <select class="form-control" name="stare" required>
+                            <option>Utilizat</option>
+                            <option>Nou</option>
+                        </select>
+                        <input type="submit" class="btn btn-outline-secondary btn-block" value="Cauta" style="margin-top: 15px;">
+                    </form>
+                </div>
         </div>
         <div class="col-lg-8 col-md-4 col-sm-6">
             {% for anunt in model %}

@@ -20,6 +20,7 @@ from django.conf.urls import url, include
 from my_app import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import path
 
 app_name = "my_app"
 
@@ -135,5 +136,20 @@ urlpatterns = [
     url(r'^valcea1/$', views.judet_valcea_adult, name="judet_valcea_adult"),
     url(r'^vaslui1/$', views.judet_vaslui_adult, name="judet_vaslui_adult"),
     url(r'^vrancea1/$', views.judet_vrancea_adult, name="judet_vrancea_adult"),
+
+    ##############CHAT##############
+
+    url(r'conversatii_adult_m/$', views.conversatii_adult_m, name="conversatii_adult_m"),
+    url(r'<str:room>/$', views.room, name='room'),
+    url(r'checkview/$', views.checkview, name='checkview'),
+    url(r'send/$', views.send, name='send'),
+    url(r'getMessages/<str:room>/$', views.getMessages, name='getMessages'),
+
+    url(r'^conversatii_adult_v/$', views.lobby, name="lobby"),
+    url(r'^room_video/$', views.room_video, name="room"),
+    url(r'^get_token/$', views.getToken),
+    url(r'^create_member/$', views.createMember),
+    url(r'^get_member/$', views.getMember),
+    url(r'^delete_member/$', views.deleteMember),
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

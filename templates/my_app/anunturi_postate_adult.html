@@ -209,11 +209,24 @@
     .new_bg a{
         color: black;
     }
+    #anchor1{
+          font-family: 'Montserrat', sans-serif;
+          font-weight: bold;
+          font-size: 19px;
+          color: #fff;
+          text-decoration: none;
+          display: block;
+          margin-top: 10px;
+          transition: 0.4s ease-in-out grey;
+        }
+        #anchor1:hover{
+          color: grey;
+        }
 </style>
 {% endblock %}
 </head>
 <body style="background-color: aliceblue;">
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #06ff00;box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #28a6fa;box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);">
         <div class="container">
             <a href="{% url 'acasa' %}" class="navbar-brand" style="font-family: Arial, Helvetica, sans-serif;" id="nav_6"><h3>Maglo</h3></a>
             <button type="button" data-target="#navbarMenu" data-toggle="collapse" class="navbar-toggler">
@@ -233,7 +246,7 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item" style="margin-top: 7px;margin-bottom: 7px;">
-                        <a class="navbar-link" href="{% url 'my_app:posteaza_anunt_adult' %}" style="font-family: 'Montserrat', sans-serif;color: #fff;padding-right: 30px;text-decoration: none;font-size: 23px;margin-top: 7px;margin-bottom: 7px;" id="nav_3">
+                        <a class="navbar-link" href="{% url 'my_app:posteaza_anunt_adult' user.pk %}" style="font-family: 'Montserrat', sans-serif;color: #fff;padding-right: 30px;text-decoration: none;font-size: 23px;margin-top: 7px;margin-bottom: 7px;" id="nav_3">
                             <strong><i class="fas fa-plus" style="padding-right: 10px;"></i>Posteaza un anunt</strong>
                         </a>
                     </li>
@@ -242,12 +255,12 @@
                             <strong id="text1">Contul meu</strong>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'my_app:posteaza_anunt_adult' %}" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="fas fa-plus" style="padding-right: 4px;color:  #A683E3;"></i> Adauga un anunt</a>
+                            <a class="dropdown-item" href="{% url 'my_app:posteaza_anunt_adult' user.pk %}" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="fas fa-plus" style="padding-right: 4px;color:  #A683E3;"></i> Adauga un anunt</a>
                             <a class="dropdown-item" href="{% url 'my_app:afaceri_servicii' %}" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="fas fa-briefcase" style="padding-right: 4px;color:  #A683E3;"></i> Afaceri/Servicii</a>
                             <a class="dropdown-item" href="{% url 'my_app:anunturi_totale_adult' user.pk %}" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="far fa-clone" style="padding-right: 4px;color:  #A683E3;"></i> Anunturile mele</a>
                             <a class="dropdown-item" href="{% url 'my_app:anunturi_favorite_d' %}" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="far fa-heart" style="padding-right: 4px;color:  #A683E3;"></i> Anunturi favorite</a>
                             <a class="dropdown-item" href="{% url 'my_app:contul_meu_adult' %}" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="far fa-user" style="padding-right: 4px;color:  #A683E3;"></i> Contul meu</a>
-                            <a class="dropdown-item" href="#" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="far fa-comments" style="padding-right: 4px;color:  #A683E3;"></i> Conversatii</a>
+                            <a class="dropdown-item" href="{% url 'my_app:conversatii_adult' %}" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="far fa-comments" style="padding-right: 4px;color:  #A683E3;"></i> Conversatii</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{% url 'my_app:deconectare_adult1' %}" style="font-size: 17px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 7px;"><i class="fas fa-power-off" style="padding-right: 4px;color:  #A683E3;"></i> Deconectare</a>
                         </div>
@@ -1123,34 +1136,40 @@
         </div>
     </div>
     <br>
-    <div class="jumbotron" style="background-color: #334257;margin-bottom: 0px;">
+    <div class="jumbotron" style="background-color: #1F1D36;margin-bottom: 0px;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <h3 style="color: #BBBFCA;">Informatii</h3>
-                    <br>
-                    <a href="{% url 'ajutor_si_contact' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Ajutor si Contact</a>
-                    <a href="{% url 'politica_confi' %}"" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de confidentialitate</a>
-                    <a href="{% url 'politica_cookie' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de Cookie-uri</a>
-                    <a href="{% url 'termeni_si_conditii' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Termeni si Conditii</a>
-                    <a href="{% url 'securitate' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Protejeaza-te pe Maglo</a>
-                    <a href="https://anpc.ro/" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">ANPC</a>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                  <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Informatii</h2>
+                  <br>
+                  <a href="{% url 'ajutor_si_contact' %}" id="anchor1">Ajutor si contact</a>
+                  <a href="{% url 'politica_confi' %}" id="anchor1">Politica de confidentialitate</a>
+                  <a href="{% url 'politica_cookie' %}" id="anchor1">Politica de cookie-uri</a>
+                  <a href="{% url 'termeni_si_conditii' %}" id="anchor1">Termeni si conditii</a>
+                  <a href="{% url 'securitate' %}" id="anchor1">Protejeaza-te pe Maglo</a>
+                  <a href="https://anpc.ro/" id="anchor1">ANPC</a>
                 </div>
-                <br>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <h3 style="color: #BBBFCA;">Date de contact</h3>
-                    <br>
-                    <p style="display:block;text-decoration: none;color: aliceblue;">Email: </p>
-                    <p style="display:block;text-decoration: none;color: aliceblue;">Date firma: </p>
-                    <p style="display:block;text-decoration: none;color: aliceblue;">CUI: </p>
-                    <p style="display:block;text-decoration: none;color: aliceblue;">Registrul comertului: </p>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                  <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Date de contact</h2>
+                  <br>
+                  <p id="anchor1">E-mail:</p>
+                  <p id="anchor1">Date firma:</p>
+                  <p id="anchor1">CUI:</p>
+                  <p id="anchor1">Registrul comertului:</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                  <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Urmareste-ne</h2>
+                  <br>
+                  <a href="" id="anchor1"><i class="fab fa-facebook"></i> Facebook</a>
+                  <a href="" id="anchor1"><i class="fab fa-instagram"></i> Instagram</a>
+                  <a href="" id="anchor1"><i class="fab fa-linkedin"></i> Linked-In</a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="jumbotron" style="background-color: #151515;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;">
+    <div class="jumbotron" style="background-color: #2d2b4b;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;font-family: 'Montserrat', sans-serif;font-weight: bolder;">
         <div class="container">
-            <p style="font-size: 20px;font-family: Arial, Helvetica, sans-serif;color: aliceblue;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+            <p style="font-size: 22px;color: #fff;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
         </div>
     </div>
     <script>

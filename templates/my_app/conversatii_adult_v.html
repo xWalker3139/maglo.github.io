@@ -1,0 +1,194 @@
+{% extends 'my_app/anunturi_postate_adult.html' %}
+{% load static %}
+
+{% block head_block %}
+<style>
+    #anchor1{
+          font-family: 'Montserrat', sans-serif;
+          font-weight: bold;
+          font-size: 19px;
+          color: #fff;
+          text-decoration: none;
+          display: block;
+          margin-top: 10px;
+          transition: 0.4s ease-in-out grey;
+        }
+        #anchor1:hover{
+          color: grey;
+        }
+    #navbarDropdown{
+            border: 3px solid #fff;
+            border-radius: 50px;
+            font-size: 22px;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            text-decoration: none;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+        }
+        #navbarDropdown:hover{
+            color: #A683E3;
+            background-color: #fff;
+        }
+        @media only screen and (min-width: 768px){
+            .dropdown:hover>.dropdown-menu{
+                display: block;
+            }
+        }
+    #section2{
+        max-width: 500px;
+        margin: 140px auto;
+        border-radius: 5px;
+        padding: 25px 25px 25px 25px;
+        box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+        background-color: white;
+    }
+    .anchor3{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        font-size: 20px;
+        color: black;
+    }
+    #post-form{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        margin-top: 30px;
+    }
+    .my_btn{
+        background-color: rgb(75, 93, 172);
+        border-color: rgb(75, 93, 172);
+        color: #fff;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        width: 100%;
+        height: 100%;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        border-radius: 6px;
+    }
+    .my_btn:hover{
+        background-color: rgb(63, 81, 158);
+    }
+    #hr2{
+        padding-bottom: 1px;
+        background-color: rgb(158, 145, 145);
+    }
+    #form-id{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        margin-top: 30px;
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<section id="section2">
+    <div class="con">
+        <div class="row">
+            <div class="col-lg-6 col-md-4 col-sm-6" style="text-align: center;text-decoration: none;">
+                <a href="{% url 'conversatii_adult_m' %}" class="anchor3">Trimite un mesaj</a>
+                <hr id="hr2">
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-6" style="text-align: center;text-decoration: none;">
+                <a href="{% url 'lobby' %}" class="anchor3">Initiaza un apel video</a>
+                <hr id="hr2">
+            </div>
+        </div>
+        <section id="form-id">
+    
+            <form id="form-id">
+                <div class="field-wrapper">
+    
+                    <div class="form-field">
+                        <label>ID-ul membrului / ID-ul grupului:</label>
+                        <input name="room" class="form-control" placeholder="ID" minlength="8" autocomplete="off" required />
+                    </div>
+    
+                    <div class="form-field">
+                        <label style="padding-top: 24px;">Numele tau:</label>
+                        <input name="name" class="form-control" placeholder="Numele tau" autocomplete="off" required />
+                    </div>
+
+                    <div class="toast" data-autohide="false" style="max-width: 100%;text-align: center;background-color: aliceblue;margin-top: 24px;">
+                        <div class="toast-header">
+                            <p id="toast-p">Ai posibilitatea sa initiezi un apel video cu una sau mai multe persoane doar creand un ID!</p>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                    </div>
+                    <div class="form-field" id="form-id">
+                        <input type="submit" class="my_btn" value="Apeleaza">
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</section>
+<div class="jumbotron" style="background-color: #1F1D36;margin-bottom: 0px;margin-top: 70px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6">
+          <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Informatii</h2>
+          <br>
+          <a href="{% url 'ajutor_si_contact' %}" id="anchor1">Ajutor si contact</a>
+          <a href="{% url 'politica_confi' %}" id="anchor1">Politica de confidentialitate</a>
+          <a href="{% url 'politica_cookie' %}" id="anchor1">Politica de cookie-uri</a>
+          <a href="{% url 'termeni_si_conditii' %}" id="anchor1">Termeni si conditii</a>
+          <a href="{% url 'securitate' %}" id="anchor1">Protejeaza-te pe Maglo</a>
+          <a href="https://anpc.ro/" id="anchor1">ANPC</a>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+          <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Date de contact</h2>
+          <br>
+          <p id="anchor1">E-mail:</p>
+          <p id="anchor1">Date firma:</p>
+          <p id="anchor1">CUI:</p>
+          <p id="anchor1">Registrul comertului:</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+          <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Urmareste-ne</h2>
+          <br>
+          <a href="" id="anchor1"><i class="fab fa-facebook"></i> Facebook</a>
+          <a href="" id="anchor1"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="" id="anchor1"><i class="fab fa-linkedin"></i> Linked-In</a>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #2d2b4b;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;font-family: 'Montserrat', sans-serif;font-weight: bolder;">
+    <div class="container">
+        <p style="font-size: 22px;color: #fff;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+    </div>
+</div>
+<script>
+    let form = document.getElementById('form-id');
+
+    let handleSubmit = async (e) => {
+        e.preventDefault()
+        let room = e.target.room.value.toUpperCase()
+        let name = e.target.name.value
+
+        let response = await fetch(`/get_token/?channel=${room}`)
+        let data = await response.json()
+
+        let UID = data.uid
+        let token = data.token
+
+        sessionStorage.setItem('UID', UID)
+        sessionStorage.setItem('token', token)
+        sessionStorage.setItem('room', room)
+        sessionStorage.setItem('name', name)
+
+        window.open('/room_video/', '_self')
+    }
+    form.addEventListener('submit', handleSubmit)
+    
+    $(document).ready(function(){
+      $('.toast').toast('show');
+    });
+</script>
+{% endblock %}

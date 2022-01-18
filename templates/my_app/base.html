@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <!-- <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script> -->
     <!-- Icons -->
     <script src="https://kit.fontawesome.com/0945a95cb6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
@@ -22,14 +23,16 @@
     {% endblock %}
     <style>
         #navbar{
-        background-color: #06ff00;
+        /* background-color: #06ff00 #FFAD60; */
+        background-color: #28a6fa;
         font-family: 'Montserrat', sans-serif;
-        box-shadow: 0 0 15px -1px rgba(0, 0, 0, 0.1);
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
       }
       .banner{
         width: 100%;
         height: 100%;
-        background-color: #ffe400;
+        /* background-color: #ffe400; */
+        background-color: #e4eeec;
       }
       #button3{
         border: 3px solid #fff;
@@ -60,7 +63,7 @@
             margin-bottom: 60px;
         }
         #image1{
-            margin-top: 20px;
+            margin-top: 120px;
             margin-bottom: 20px;
             width: 100%;
         }
@@ -70,10 +73,10 @@
             height: 15vh;
             background-color: #f0efef;
             border-radius: 100%;
-            color: #A683E3;
+            color: #28a6fa;
         }
         .new_bg:hover{
-            background-color: #A683E3;
+            background-color: #28a6fa;
             color: #f0efef;
             transition-duration: .4s;
         }
@@ -89,7 +92,7 @@
             margin-top: 10px;
         }
         #p1:hover{
-            color: #A683E3;
+            color: #28a6fa;
             transition-duration: .4s;
         }
         .button1{
@@ -148,6 +151,19 @@
           font-family: 'Montserrat', sans-serif;
           margin-top: 20px;
         }
+        #anchor1{
+          font-family: 'Montserrat', sans-serif;
+          font-weight: bold;
+          font-size: 19px;
+          color: #fff;
+          text-decoration: none;
+          display: block;
+          margin-top: 10px;
+          transition: 0.4s ease-in-out grey;
+        }
+        #anchor1:hover{
+          color: grey;
+        }
     </style>
 </head>
 <!-- 06ff00 -->
@@ -185,8 +201,8 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-6 col-md-4 col-sm-6">
-              <h1 style="margin-top: 15rem;color: aliceblue;font-size: 60px;font-family: 'Montserrat', sans-serif;"><strong>Esti adult sau</strong></h1>
-              <h1 style="color: aliceblue;font-size: 60px;font-family: 'Montserrat', sans-serif;"><strong>esti copil?</strong></h1>
+              <h1 style="margin-top: 15rem;color: black;font-size: 60px;font-family: 'Montserrat', sans-serif;"><strong>Esti adult sau</strong></h1>
+              <h1 style="color: black;font-size: 60px;font-family: 'Montserrat', sans-serif;"><strong>esti copil?</strong></h1>
               <br>
               <p style="font-family: 'Montserrat', sans-serif;color: aliceblue;font-size: 22px;color: black;">
                 <strong>Copil,parinte sau bunic,
@@ -195,7 +211,7 @@
               </p>
               <div class="row">
                 <div class="col-lg-6 col-md-4 col-sm-6">
-                  <a href="#" class="btn btn-secondary btn-lg btn-block" style="margin-top: 40px;">
+                  <a href="#" class="btn btn-secondary btn-lg btn-block" style="margin-top: 40px;margin-bottom: 70px;">
                     <div class="row">
                       <div class="col-lg-2 col-md-4 col-sm-6">
                         <i class="fab fa-apple" id="icon1"></i>
@@ -208,7 +224,7 @@
                   </a>
                 </div>
                 <div class="col-lg-6 col-md-4 col-sm-6">
-                  <a href="#" class="btn btn-primary btn-lg btn-block" style="margin-top: 40px;">
+                  <a href="#" class="btn btn-primary btn-lg btn-block" style="margin-top: 40px;margin-bottom: 70px;">
                     <div class="row">
                       <div class="col-lg-2 col-md-4 col-sm-6">
                         <i class="fab fa-google-play" id="icon1"></i>
@@ -223,11 +239,13 @@
               </div>
             </div>
             <div class="col-lg-6 col-md-4 col-sm-6">
-              <img src="{% static 'images/imagine.jpeg' %}" id="image1">
+              <!-- <img src="{% static 'images/imagine.jpeg' %}" id="image1"> -->
+              <img src="http://shtheme.org/demosd/snowlake/wp-content/uploads/2020/07/concept23@2x-1.png" id="image1">
             </div>
           </div>
         </div>
-        <div class="toast" data-autohide="false" style="max-width: 100%;">
+        <img src="https://shtheme.org/demosd/snowlake/wp-content/uploads/2020/07/rocket1-1.png" style="width: 100%;">
+        <div class="toast" data-autohide="false" style="max-width: 100%;" data-dismiss="toast">
           <div class="jumbotron fixed-bottom" style="margin-bottom: 0;">
             <div class="container">
               <div class="row">
@@ -288,7 +306,7 @@
             </div>
         </div>
     </div>
-    <div class="jumbotron" style="background-color: #06ff00;margin-top: 30px;padding-top: 45px;padding-bottom: 45px;margin-bottom: 70px;">
+    <div class="jumbotron" style="background-color: #28a6fa;margin-top: 30px;padding-top: 45px;padding-bottom: 45px;margin-bottom: 70px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 col-md-4 col-sm-6">
@@ -347,34 +365,40 @@
           </div>
         </div>
       </div>
-    <div class="jumbotron" style="background-color: #334257;margin-bottom: 0px;margin-top: 70px;">
+    <div class="jumbotron" style="background-color: #1F1D36;margin-bottom: 0px;margin-top: 70px;">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <h3 style="color: #BBBFCA;">Informatii</h3>
-                    <br>
-                    <a href="{% url 'ajutor_si_contact' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Ajutor si Contact</a>
-                    <a href="{% url 'politica_confi' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de confidentialitate</a>
-                    <a href="{% url 'politica_cookie' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de Cookie-uri</a>
-                    <a href="{% url 'termeni_si_conditii' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Termeni si Conditii</a>
-                    <a href="{% url 'securitate' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Protejeaza-te pe Maglo</a>
-                    <a href="https://anpc.ro/" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">ANPC</a>
-                </div>
-                <br>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <h3 style="color: #BBBFCA;">Date de contact</h3>
-                    <br>
-                    <p style="display:block;text-decoration: none;color: aliceblue;">Email: </p>
-                    <p style="display:block;text-decoration: none;color: aliceblue;">Date firma: </p>
-                    <p style="display:block;text-decoration: none;color: aliceblue;">CUI: </p>
-                    <p style="display:block;text-decoration: none;color: aliceblue;">Registrul comertului: </p>
-                </div>
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+              <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Informatii</h2>
+              <br>
+              <a href="{% url 'ajutor_si_contact' %}" id="anchor1">Ajutor si contact</a>
+              <a href="{% url 'politica_confi' %}" id="anchor1">Politica de confidentialitate</a>
+              <a href="{% url 'politica_cookie' %}" id="anchor1">Politica de cookie-uri</a>
+              <a href="{% url 'termeni_si_conditii' %}" id="anchor1">Termeni si conditii</a>
+              <a href="{% url 'securitate' %}" id="anchor1">Protejeaza-te pe Maglo</a>
+              <a href="https://anpc.ro/" id="anchor1">ANPC</a>
             </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+              <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Date de contact</h2>
+              <br>
+              <p id="anchor1">E-mail:</p>
+              <p id="anchor1">Date firma:</p>
+              <p id="anchor1">CUI:</p>
+              <p id="anchor1">Registrul comertului:</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+              <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Urmareste-ne</h2>
+              <br>
+              <a href="" id="anchor1"><i class="fab fa-facebook"></i> Facebook</a>
+              <a href="" id="anchor1"><i class="fab fa-instagram"></i> Instagram</a>
+              <a href="" id="anchor1"><i class="fab fa-linkedin"></i> Linked-In</a>
+            </div>
+          </div>
         </div>
     </div>
-    <div class="jumbotron" style="background-color: #151515;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;">
+    <div class="jumbotron" style="background-color: #2d2b4b;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;font-family: 'Montserrat', sans-serif;font-weight: bolder;">
         <div class="container">
-            <p style="font-size: 20px;font-family: Arial, Helvetica, sans-serif;color: aliceblue;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+            <p style="font-size: 22px;color: #fff;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
         </div>
     </div>
     {% endblock %}
@@ -382,6 +406,6 @@
       $(document).ready(function(){
         $('.toast').toast('show');
       });
-  </script>
+    </script>
 </body>
 </html>

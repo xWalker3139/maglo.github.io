@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import TIPUL_AFACERII, Adult, Copil, AnuntAdult, AnuntCopil, AjutorSiContact, CATEGORIE_COPIL, MesajCopil, JUDETE, MesajAdult, CATEGORIE_ADULT, SUBCATEGORIE_ADULT, Afacere, Serviciu, MesajAfaceri, MesajServiciu
+from .models import TIPUL_AFACERII, Adult, Copil, AnuntAdult, AnuntCopil, AjutorSiContact, CATEGORIE_COPIL, MesajCopil, JUDETE, MesajAdult, CATEGORIE_ADULT, SUBCATEGORIE_ADULT, Afacere, Serviciu, MesajAfaceri, MesajServiciu, Room, Message, RoomMember
 from .forms import AdultForm, CopilForm, AnuntAdultForm, AnuntCopilForm, AjutorSiContactForm, MesajAdultForm, MesajCopilForm, AfacereForm, ServiciuForm, MesajAfaceriForm, MesajServiciuForm
 from django.views.generic import View, ListView, DetailView, UpdateView, DeleteView
-from django.http import Http404, HttpResponseRedirect, HttpResponse
+from django.http import Http404, HttpResponseRedirect, HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse, reverse_lazy
@@ -12,7 +12,12 @@ from django.core.paginator import Paginator
 from .filters import SearchBarCopil, SearchFilter
 from django.contrib import messages
 from django.db.models import Q, Max, Min
+from django.views.decorators.csrf import csrf_exempt
+from agora_token_builder import RtcTokenBuilder
 import datetime
+import random
+import json
+import time
 
 ########################################
 ###############BAZA#####################
@@ -953,6 +958,25 @@ def contul_meu_adult(request):
     return render(request, "my_app/contul_meu_adult.html", {'date_posted':date_posted, 'model_anunt':model_anunt, 'data_anunt':data_anunt})
 
 @login_required
+def conversatii_adult(request):
+    date_posted = datetime.datetime.now().year
+    context = {
+        'date_posted':date_posted,
+    }
+    return render(request, "my_app/conversatii_adult.html", context)
+
+def adauga_anunturi_favorite_d(request, pk):
+    anunt = get_object_or_404(AnuntAdult, id=request.POST.get('favorit'))
+    favorit_id = False
+    if anunt.favorit.filter(id=request.user.id).exists():
+        anunt.favorit.remove(request.user)
+        favorit_id = True
+    else:
+        anunt.favorit.add(request.user)
+        favorit_id = False
+    return HttpResponseRedirect(reverse("my_app:pag_anunturi_postate_adult", args=[str(pk)]))
+
+@login_required
 def anunturi_favorite_d(request):
     date_posted = datetime.datetime.now().year
     user = request.user
@@ -967,14 +991,15 @@ def anunturi_favorite_d(request):
 def actualizeaza_date_adult(request, pk):
     date_posted = datetime.datetime.now().year
     model = User.objects.get(id=pk)
-    form = AdultForm(instance=model)
+    new_model = User()
     if request.method == "POST":
-        form = AdultForm(request.POST, instance=model)
-        if form.is_valid():
-            form.save()
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        new_model = User(username=username, email=email)
+        new_model.save()
     context = {
-        'form':form,
         'model':model,
+        'new_model':new_model,
         'date_posted':date_posted,
     }
     return render(request, "my_app/actualizeaza_date_adult.html", context)
@@ -1007,8 +1032,15 @@ def pag_update_adult(request):
 @login_required
 def UpdateAdult(request, pk):
     date_posted = datetime.datetime.now().year
+    form = AnuntAdultForm()
     if request.method == "POST":
+        form = AnuntAdultForm(request.POST)
+        if form.is_valid():
+            form.save()
+    if request.method == "POST":
+        user = User.objects.get(id=pk)
         titlul = request.POST.get("titlul")
+        numele_anuntului = request.POST.get('numele_anuntului')
         descriere = request.POST.get("descriere")
         categorie_adult = request.POST.get("categorie_adult")
         subcategorie_adult = request.POST.get("subcategorie_adult")
@@ -1023,9 +1055,44 @@ def UpdateAdult(request, pk):
         imagine5 = request.FILES.get("imagine5")
         imagine6 = request.FILES.get("imagine6")
         localizare = request.POST.get("localizare")
-        model = AnuntAdult(titlul=titlul, descriere=descriere, categorie_adult=categorie_adult, subcategorie_adult=subcategorie_adult, telefon=telefon, email=email, pret=pret, moneda=moneda, imagine=imagine, localizare=localizare, imagine2=imagine2, imagine3=imagine3, imagine4=imagine4, imagine5=imagine5, imagine6=imagine6)
+        ########Autoturisme########
+        caroserie = request.POST.get("caroserie")
+        capacitate_motor = request.POST.get("capacitate_motor")
+        combustibil = request.POST.get("combustibil")
+        culoare = request.POST.get("culoare")
+        cutie_de_viteze = request.POST.get("cutie_de_viteze")
+        marca = request.POST.get("marca")
+        rulaj = request.POST.get("rulaj")
+        stare = request.POST.get("stare")
+        #########Imobiliare########
+        numar_de_camere = request.POST.get("numar_de_camere")
+        compartimentare = request.POST.get("compartimentare")
+        suprafata_utila = request.POST.get("suprafata_utila")
+        an_de_constructie = request.POST.get("an_de_constructie")
+        etaj = request.POST.get("etaj")
+        teren = request.POST.get("teren")
+        ##########Moda#############
+        marime = request.POST.get("marime")
+        ##########Locuri###########
+        tip_job = request.POST.get("tip_job")
+        tip_contract = request.POST.get("tip_contract")
+        nivelul_de_studii = request.POST.get("nivelul_de_studii")
+        nivelul_de_experienta = request.POST.get("nivelul_de_experienta")
+        mobilitatea_postului = request.POST.get("mobilitatea_postului")
+        program_flexibil = request.POST.get("program_flexibil")
+        model = AnuntAdult(user=user, titlul=titlul,numele_anuntului=numele_anuntului, descriere=descriere, categorie_adult=categorie_adult, subcategorie_adult=subcategorie_adult, telefon=telefon, email=email, pret=pret, moneda=moneda,
+                            caroserie=caroserie, 
+                            capacitate_motor=capacitate_motor,combustibil=combustibil,culoare=culoare,cutie_de_viteze=cutie_de_viteze, marca=marca,rulaj=rulaj,stare=stare,
+                            numar_de_camere=numar_de_camere, compartimentare=compartimentare,suprafata_utila=suprafata_utila,an_de_constructie=an_de_constructie,etaj=etaj,teren=teren,
+                            marime=marime,
+                            tip_job=tip_job,tip_contract=tip_contract,nivelul_de_studii=nivelul_de_studii,nivelul_de_experienta=nivelul_de_experienta,mobilitatea_postului=mobilitatea_postului,program_flexibil=program_flexibil,
+                            imagine=imagine, localizare=localizare, imagine2=imagine2, imagine3=imagine3, imagine4=imagine4, imagine5=imagine5, imagine6=imagine6)
         model.save()
-    return render(request, 'my_app/update_adult.html', {'date_posted':date_posted})
+    context = {
+        'form':form,
+        'date_posted':date_posted,
+    }
+    return render(request, 'my_app/update_adult.html', context)
 
 @login_required
 def pag_delete_adult(request):
@@ -1057,17 +1124,27 @@ def anunturi_totale_adult(request, pk):
     date_posted = datetime.datetime.now().year
     user_model = User.objects.get(id=pk)
     anunt = user_model.anuntadult_set.all()
+    afacere = user_model.afacere_set.all()
+    serviciu = user_model.serviciu_set.all()
     context = {
         'date_posted':date_posted,
         'anunt':anunt,
-        'user_model':user_model
+        'user_model':user_model,
+        'afacere':afacere,
+        'serviciu':serviciu,
     }
     return render(request, "my_app/anunturi_totale_adult.html", context)
 
 @login_required
-def posteaza_anunt_adult(request):
+def posteaza_anunt_adult(request, pk):
     date_posted = datetime.datetime.now().year
+    form = AnuntAdultForm()
     if request.method == "POST":
+        form = AnuntAdultForm(request.POST)
+        if form.is_valid():
+            form.save()
+    if request.method == "POST":
+        user = User.objects.get(id=pk)
         titlul = request.POST.get("titlul")
         numele_anuntului = request.POST.get('numele_anuntului')
         descriere = request.POST.get("descriere")
@@ -1086,39 +1163,40 @@ def posteaza_anunt_adult(request):
         localizare = request.POST.get("localizare")
         ########Autoturisme########
         caroserie = request.POST.get("caroserie")
-        # capacitate_motor = request.POST.get("capacitate_motor")
-        # combustibil = request.POST.get("combustibil")
-        # culoare = request.POST.get("culoare")
-        # cutie_de_viteze = request.POST.get("cutie_de_viteze")
-        # marca = request.POST.get("marca")
-        # rulaj = request.POST.get("rulaj")
-        # stare = request.POST.get("stare")
-        # #########Imobiliare########
-        # numar_de_camere = request.POST.get("numar_de_camere")
-        # compartimentare = request.POST.get("compartimentare")
-        # suprafata_utila = request.POST.get("suprafata_utila")
-        # an_de_constructie = request.POST.get("an_de_constructie")
-        # etaj = request.POST.get("etaj")
-        # teren = request.POST.get("teren")
-        # ##########Moda#############
-        # marime = request.POST.get("marime")
-        # ##########Locuri###########
-        # tip_job = request.POST.get("tip_job")
-        # tip_contract = request.POST.get("tip_contract")
-        # nivelul_de_studii = request.POST.get("nivelul_de_studii")
-        # nivelul_de_experienta = request.POST.get("nivelul_de_experienta")
-        # mobilitatea_postului = request.POST.get("mobilitatea_postului")
-        # program_flexibil = request.POST.get("program_flexibil")
-        model = AnuntAdult(titlul=titlul,numele_anuntului=numele_anuntului, descriere=descriere, categorie_adult=categorie_adult, subcategorie_adult=subcategorie_adult, telefon=telefon, email=email, pret=pret, moneda=moneda,
+        capacitate_motor = request.POST.get("capacitate_motor")
+        combustibil = request.POST.get("combustibil")
+        culoare = request.POST.get("culoare")
+        cutie_de_viteze = request.POST.get("cutie_de_viteze")
+        marca = request.POST.get("marca")
+        rulaj = request.POST.get("rulaj")
+        stare = request.POST.get("stare")
+        #########Imobiliare########
+        numar_de_camere = request.POST.get("numar_de_camere")
+        compartimentare = request.POST.get("compartimentare")
+        suprafata_utila = request.POST.get("suprafata_utila")
+        an_de_constructie = request.POST.get("an_de_constructie")
+        etaj = request.POST.get("etaj")
+        teren = request.POST.get("teren")
+        ##########Moda#############
+        marime = request.POST.get("marime")
+        ##########Locuri###########
+        tip_job = request.POST.get("tip_job")
+        tip_contract = request.POST.get("tip_contract")
+        nivelul_de_studii = request.POST.get("nivelul_de_studii")
+        nivelul_de_experienta = request.POST.get("nivelul_de_experienta")
+        mobilitatea_postului = request.POST.get("mobilitatea_postului")
+        program_flexibil = request.POST.get("program_flexibil")
+        model = AnuntAdult(user=user, titlul=titlul,numele_anuntului=numele_anuntului, descriere=descriere, categorie_adult=categorie_adult, subcategorie_adult=subcategorie_adult, telefon=telefon, email=email, pret=pret, moneda=moneda,
                             caroserie=caroserie, 
-                            # capacitate_motor=capacitate_motor,combustibil=combustibil,culoare=culoare,cutie_de_viteze=cutie_de_viteze, marca=marca,rulaj=rulaj,stare=stare,
-                            # numar_de_camere=numar_de_camere, compartimentare=compartimentare,suprafata_utila=suprafata_utila,an_de_constructie=an_de_constructie,etaj=etaj,teren=teren,
-                            # marime=marime,
-                            # tip_job=tip_job,tip_contract=tip_contract,nivelul_de_studii=nivelul_de_studii,nivelul_de_experienta=nivelul_de_experienta,mobilitatea_postului=mobilitatea_postului,program_flexibil=program_flexibil,
+                            capacitate_motor=capacitate_motor,combustibil=combustibil,culoare=culoare,cutie_de_viteze=cutie_de_viteze, marca=marca,rulaj=rulaj,stare=stare,
+                            numar_de_camere=numar_de_camere, compartimentare=compartimentare,suprafata_utila=suprafata_utila,an_de_constructie=an_de_constructie,etaj=etaj,teren=teren,
+                            marime=marime,
+                            tip_job=tip_job,tip_contract=tip_contract,nivelul_de_studii=nivelul_de_studii,nivelul_de_experienta=nivelul_de_experienta,mobilitatea_postului=mobilitatea_postului,program_flexibil=program_flexibil,
                             imagine=imagine, localizare=localizare, imagine2=imagine2, imagine3=imagine3, imagine4=imagine4, imagine5=imagine5, imagine6=imagine6)
         model.save()
     context = {
         'date_posted':date_posted,
+        'form':form,
     }
     return render(request, "my_app/posteaza_anunt_adult.html", context)
 
@@ -1134,30 +1212,16 @@ def deconectare_adult(request):
 
 def pag_anunturi_postate_adult(request, pk):
     date_posted = datetime.datetime.now().year
+    anunt = AnuntAdult.objects.get(id=pk)
     model = AnuntAdult.objects.filter(id=pk)
-    new_model = User.objects.filter(id=pk)
-    my_model = MesajCopil.objects.all()
-    form = MesajAdultForm()
-    if request.method == "POST":
-        form = MesajAdultForm(request.POST)
-        if form.is_valid:
-            form.save()
-    if request.method == "POST":
-        email = request.POST.get('email')
-        new_email = request.POST.get('email2')
-        mesaj = request.POST.get('mesaj_adult')
-        send_mail(
-            'Maglo',
-            mesaj,
-            email,
-            new_email,
-        )
+    favorit_id = False
+    if anunt.favorit.filter(id=request.user.id).exists():
+        favorit_id = True
     context = {
         'date_posted':date_posted,
         'model':model,
-        'new_model':new_model,
-        'my_model':my_model,
-        'form':form,
+        'anunt':anunt,
+        'favorit_id':favorit_id
     }
     return render(request, "my_app/pag_anunturi_postate_adult.html", context)
 
@@ -1280,6 +1344,20 @@ def piese_auto(request):
     }
     return render(request, "my_app/piese_auto_adult.html", context)
 
+def specificatii_piese(request):
+    if request.method == "POST":
+        date_posted = datetime.datetime.now().year
+        stare = request.POST.get("stare")
+        lookup = Q(stare__icontains = stare)
+        model = AnuntAdult.objects.filter(stare=lookup)
+        context = {
+            'date_posted':date_posted,
+            'model':model,
+        }
+        return render(request, "my_app/specificatii_piese.html", context)
+    else:
+        raise Http404
+
 def roti_jante_anvelope(request):
     date_posted = datetime.datetime.now().year
     subcategorie = SUBCATEGORIE_ADULT[1][0]
@@ -1329,6 +1407,16 @@ def agro_si_industrie(request):
     }
     return render(request, "my_app/agro_si_industrie.html", context)
 
+def specificatii_agro(request):
+    if request.method == "POST":
+        stare = request.POST.get("stare")
+        lookup = Q(stare__icontains = stare)
+        model = AnuntAdult.objects.filter(stare=lookup)
+        context = {
+            'model':model
+        }
+        return render(request, "my_app/specificatii_agro.html", context)
+
 def utilaje(request):
     date_posted = datetime.datetime.now().year
     subcategorie = SUBCATEGORIE_ADULT[2][0]
@@ -1377,6 +1465,23 @@ def imobiliare(request):
         'model':model
     }
     return render(request, 'my_app/imobiliare_adult.html', context)
+
+def specificatii_imobiliare(request):
+    if request.method == "POST":
+        date_posted = datetime.datetime.now().year
+        numar_de_camere = request.POST.get("numar_de_camere")
+        compartimentare = request.POST.get("compartimentare")
+        suprafata_utila = request.POST.get("suprafata_utila")
+        an_de_constructie = request.POST.get("an_de_constructie")
+        etaj = request.POST.get("etaj")
+        teren = request.POST.get("teren")
+        lookup = (Q(numar_de_camere__icontains = numar_de_camere) or Q(compartimentare__icontains=compartimentare) or Q(suprafata_utila__icontains=suprafata_utila) or Q(an_de_constructie__icontains=an_de_constructie) or Q(etaj__icontains=etaj) or Q(teren__icontains=teren))
+        model = AnuntAdult.objects.filter(lookup)
+        context = {
+            'model':model,
+            'date_posted':date_posted,
+        }
+        return render(request, "my_app/specificatii_imobiliare.html", context)
 
 def apartamente_de_vanzare(request):
     date_posted = datetime.datetime.now().year
@@ -1508,6 +1613,21 @@ def moda(request):
     }
     return render(request, 'my_app/moda_adult.html', context)
 
+def specificatii_moda(request):
+    if request.method == "POST":
+        date_posted = datetime.datetime.now().year
+        marca = request.POST.get("marca")
+        stare = request.POST.get("stare")
+        marime = request.POST.get("marime")
+        culoare = request.POST.get("culoare")
+        lookup = (Q(marca__icontains=marca) or Q(stare__icontains=stare) or Q(marime__icontains=marime) or Q(culoare__icontains=culoare))
+        model = AnuntAdult.objects.filter(lookup)
+        context = {
+            'model':model,
+            'date_posted':date_posted,
+        }
+        return render(request, "my_app/specificatii_moda.html", context)
+
 def haine_dama(request):
     date_posted = datetime.datetime.now().year
     subcategorie = SUBCATEGORIE_ADULT[4][0]
@@ -1611,6 +1731,18 @@ def electronice_si_electrocasnice(request):
         'model':model
     }
     return render(request, 'my_app/electronice_si_electrocasnice.html', context)
+
+def specificatii_electronice(request):
+    if request.method == "POST":
+        date_posted = datetime.datetime.now().year
+        stare = request.POST.get("stare")
+        lookup = Q(stare__icontains = stare)
+        model = AnuntAdult.objects.filter(stare = lookup)
+        context = {
+            'date_posted':date_posted,
+            'model':model
+        }
+        return render(request, "my_app/specificatii_electronice.html", context)
 
 def telefoane_adult(request):
     date_posted = datetime.datetime.now().year
@@ -1909,6 +2041,23 @@ def locuri_de_munca(request):
     }
     return render(request, 'my_app/locuri_de_munca.html', context)
 
+def specificatii_locuri(request):
+    if request.method == "POST":
+        date_posted = datetime.datetime.now().year
+        tip_job = request.POST.get("tip_job")
+        tip_contract = request.POST.get("tip_contract")
+        nivelul_de_studii = request.POST.get("nivelul_de_studii")
+        nivelul_de_experienta = request.POST.get("nivelul_de_experienta")
+        mobilitatea_postului = request.POST.get("mobilitatea_postului")
+        program_flexibil = request.POST.get("program_flexibil")
+        lookup = (Q(tip_job__icontains=tip_job) or Q(tip_contract__icontains=tip_contract) or Q(nivelul_de_studii__icontains=nivelul_de_studii) or Q(nivelul_de_experienta__icontains=nivelul_de_experienta) or Q(mobilitatea_postului__icontains=mobilitatea_postului) or Q(program_flexibil__icontains=program_flexibil))
+        model = AnuntAdult.objects.filter(lookup)
+        context = {
+            'date_posted':date_posted,
+            'model':model
+        }
+        return render(request, "my_app/specificatii_locuri.html", context)
+
 def agenti_vanzari(request):
     date_posted = datetime.datetime.now().year
     subcategorie = SUBCATEGORIE_ADULT[8][0]
@@ -2012,6 +2161,17 @@ def sport_timp_liber(request):
         'model':model
     }
     return render(request, 'my_app/sport_timp_liber.html', context)
+
+def pret_sport(request):
+    if request.method == "POST":
+        date_posted = datetime.datetime.now().year
+        pret = request.POST.get("pret")
+        model = AnuntAdult.objects.filter(pret__icontains = pret)
+        context = {
+            'date_posted':date_posted,
+            'model':model
+        }
+        return render(request, "my_app/pret_sport.html", context)
 
 def articole_sportive_adult(request):
     date_posted = datetime.datetime.now().year
@@ -2763,5 +2923,103 @@ def pag_servicii(request, pk):
         'form':form,
     }
     return render(request, "my_app/pag_servicii.html", context)
+
+#################CHAT################
+
+def conversatii_adult_m(request):
+    date_posted = datetime.datetime.now().year
+    context = {
+        'date_posted':date_posted
+    }
+    return render(request, "my_app/conversatii_adult_m.html", context)
+
+def room(request, room):
+    username = request.GET.get('username')
+    room_details = Room.objects.get(name=room)
+    return render(request, 'my_app/room.html', {
+        'username': username,
+        'room': room,
+        'room_details': room_details
+    })
+
+def checkview(request):
+    room = request.POST.get('room_name')
+    username = request.POST.get('username')
+
+    if Room.objects.filter(name=room).exists():
+        return redirect('/'+room+'/?username='+username)
+    else:
+        new_room = Room.objects.create(name=room)
+        new_room.save()
+        return redirect('/'+room+'/?username='+username)
+
+def send(request):
+    message = request.POST['message']
+    username = request.POST['username']
+    room_id = request.POST['room_id']
+
+    new_message = Message.objects.create(value=message, user=username, room=room_id)
+    new_message.save()
+    return HttpResponse('Message sent successfully')
+
+def getMessages(request, room):
+    room_detail = Room.objects.get(name=room)
+
+    messages = Message.objects.filter(room=room_detail.id)
+    return JsonResponse({"messages":list(messages.values())})
+
+def getToken(request):
+    appId = "6d5386bc336e46b49dd2afc9bd3aa4a4"
+    appCertificate = "d74d8f50f5c449f5b3fadbe70200b086"
+    channelName = request.GET.get('channel')
+    uid = random.randint(1, 230)
+    expirationTimeInSeconds = 3600
+    currentTimeStamp = int(time.time())
+    privilegeExpiredTs = currentTimeStamp + expirationTimeInSeconds
+    role = 1
+
+    token = RtcTokenBuilder.buildTokenWithUid(appId, appCertificate, channelName, uid, role, privilegeExpiredTs)
+
+    return JsonResponse({'token': token, 'uid': uid}, safe=False)
+
+def lobby(request):
+    return render(request, "my_app/conversatii_adult_v.html")
+
+def room_video(request):
+    return render(request, "my_app/room_video.html")
+
+@csrf_exempt
+def createMember(request):
+    data = json.loads(request.body)
+    member, created = RoomMember.objects.get_or_create(
+        name=data['name'],
+        uid=data['UID'],
+        room_name=data['room_name']
+    )
+
+    return JsonResponse({'name':data['name']}, safe=False)
+
+
+def getMember(request):
+    uid = request.GET.get('UID')
+    room_name = request.GET.get('room_name')
+
+    member = RoomMember.objects.get(
+        uid=uid,
+        room_name=room_name,
+    )
+    name = member.name
+    return JsonResponse({'name':member.name}, safe=False)
+
+@csrf_exempt
+def deleteMember(request):
+    data = json.loads(request.body)
+    member = RoomMember.objects.get(
+        name=data['name'],
+        uid=data['UID'],
+        room_name=data['room_name']
+    )
+    member.delete()
+    return JsonResponse('Member deleted', safe=False)
 
 # Create your views here.

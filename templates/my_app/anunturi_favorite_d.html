@@ -4,7 +4,7 @@
 <style>
     .banner{
         background-color: white;
-        max-width: 300px;
+        width: 100%;
         height: 100%;
         box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
     }
@@ -72,6 +72,7 @@
         padding-top: 30px;
         padding-bottom: 20px;
         padding-left: 20px;
+        margin-left: 20px;
     }
     .text{
         font-family: 'Montserrat', sans-serif;
@@ -98,6 +99,16 @@
     #param3:hover{
         background-color: #A683E3;
         color: white;
+    }
+    #jumbotron_1{
+        background-color: white;
+        padding: 0;
+        font-family: 'Montserrat', sans-serif;
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+        margin-left: 20px;
+    }
+    #jumbotron_1:hover{
+        box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.4);
     }
     #navbarDropdown{
             border: 3px solid #fff;
@@ -133,8 +144,9 @@
                 <a href="{% url 'my_app:contul_meu_adult' %}" id="a1"><p id="param1"><i class="fas fa-user"></i> Contul meu</p></a>
                 <ul>
                     <li><a href="{% url 'my_app:contul_meu_adult' %}">Informatii personale</a></li>
+                    <li><a href="{% url 'my_app:conversatii_adult' %}">Conversatii</a></li>
                     <li><a href="{% url 'my_app:deconectare_adult1' %}">Deconectare</a></li>
-                    <li><a href="{% url 'my_app:posteaza_anunt_adult' %}">Posteaza un anunt</a></li>
+                    <li><a href="{% url 'my_app:posteaza_anunt_adult' user.pk %}">Posteaza un anunt</a></li>
                 </ul>
                 <a href="{% url 'my_app:anunturi_totale_adult' user.pk %}" id="a2"><p id="param2"><i class="fas fa-calendar-check"></i> Anunturi postate</p></a>
                 <ul>
@@ -152,7 +164,31 @@
             </div>
         </div>
         <div class="col-lg-8 col-md-4 col-sm-6">
-            <h2 id="header1"><strong>Anunturi favorite</strong></h2>
+            <h2 id="header1"><strong>Anunturi favorite: {{anunt_favorit.count}}</strong></h2>
+            <hr>
+            <br>
+            {% for i in anunt_favorit %}
+            <div class="jumbotron" id="jumbotron_1">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <img src="{{ anunt.imagine.url }}" style="width: 100%; height: 26vh;font-weight:bolder;">
+                    </div>
+                    <div class="col-lg-9 col-md-4 col-sm-6">
+                        <h2 style="padding-top: 12px;font-weight: bold;padding-left: 6px;">{{i.numele_anuntului}}</h2>
+                        <hr>
+                        <p style="font-size: 19px;padding-left: 6px;padding-top: 10px;">Categorie: {{i.categorie_adult}}</p>
+                        <div class="row">
+                            <div class="col-lg-8 col-md-4 col-sm-6">
+                                <p style="padding-bottom: 12px;font-size: 19px;padding-left: 6px;padding-top: 0;">Judet: {{i.localizare}} </p>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <a href="{% url 'my_app:pag_anunturi_postate_adult' pk=i.pk %}" class="btn btn-outline-info" style="margin-bottom: 12px;margin-left: 6px;">Vezi detalii</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
     </div>
