@@ -30,7 +30,7 @@ SECRET_KEY = '305_3)#*q+xdl%ldm(+=kl%h-q04$n9!6*c5g)t9v*nmp%^rbn'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['magloapp.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
