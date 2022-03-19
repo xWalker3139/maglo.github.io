@@ -93,6 +93,10 @@
         #anchor1:hover{
           color: grey;
         }
+        .form-group{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+        }
 </style>
 {% endblock %}
 
@@ -143,7 +147,7 @@
                 </a>
             </div>
             <table style="width: 100%;font-family: 'Montserrat', sans-serif;margin-top: 60px;margin-bottom: 40px;font-size: 21px;border: 1px solid aliceblue;border-collapse: collapse;">
-                <tr style="background-color: #d8d7fd;">
+                <tr style="background-color: #9cd4fc;">
                     <td>Titlul anuntului:</td>
                     <td>{{data.numele_anuntului}}</td>
                 </tr>
@@ -151,7 +155,7 @@
                     <td>Categorie:</td>
                     <td>{{data.categorie_adult}}</td>
                 </tr>
-                <tr style="background-color: #d8d7fd;">
+                <tr style="background-color: #9cd4fc;">
                     <td>Subcategorie:</td>
                     <td>{{data.subcategorie_adult}}</td>
                 </tr>
@@ -159,7 +163,7 @@
                     <td>Judet:</td>
                     <td>{{data.localizare}}</td>
                 </tr>
-                <tr style="background-color: #d8d7fd;">
+                <tr style="background-color: #9cd4fc;">
                     <td>Pret:</td>
                     <td>{{data.pret}} {{data.moneda}}</td>
                 </tr>
@@ -173,18 +177,48 @@
             <p style="font-family: 'Montserrat', sans-serif;font-size: 21px;padding-top: 20px;">Email: {{data.email}}</p>
             <p style="font-family: 'Montserrat', sans-serif;font-size: 21px;">Numar de telefon: +40 {{data.telefon}}</p>
             {% endfor %}
-            <div class="card" id="card">
-                <div class="card-body">
-                    <div class="card-title" id="card-title">Trimite un mesaj vanzatorului:</div>
-                    <form class="form-group" action="" method="POST">
-                        {% csrf_token %}
-                        <textarea class="form-control" placeholder="Scrie mesajul tau..." rows="12" cols="5"
-                        style="background-color: #EEEEEE;" required></textarea>
-                        <br>
-                        <a href="{% url 'conversatii_adult_m' %}" class="btn btn-outline-info btn-block" style="font-weight: bolder;">Trimite mesajul</a>
-                    </form>
+            <br>
+            {% if user.is_authenticated %}
+            <form method="POST" class="form-group" action="{% url 'my_app:chat_adult' %}">
+                {% csrf_token %}
+                <input type="text" name="post" id="post1" class="form-control" value="" hidden>
+                <div class="row">
+                    <div class="col-lg-6 col-md-4 col-sm-6">
+                        <label for="nume">Nume:</label>
+                        <input type="text" placeholder="Numele tau" class="form-control" autocomplete="off" name="nume" required>
+                    </div>
+                    <div class="col-lg-6 col-md-4 col-sm-6">
+                        <label for="prenume">Prenume:</label>
+                        <input type="text" placeholder="Prenumele tau" class="form-control" autocomplete="off" name="prenume" required>
+                    </div>
                 </div>
-            </div>
+                <br>
+                <label for="mesaj">Mesaj:</label>
+                <textarea class="form-control" name="comment" placeholder="Mesajul tau..." rows="10" required></textarea>
+                <br>
+                <input type="submit" class="btn btn-outline-info btn-block" value="Trimite">
+            </form>
+            {% else %}
+            <form method="POST" class="form-group" action="">
+                {% csrf_token %}
+                <input type="text" name="post" id="post1" class="form-control" value="" hidden>
+                <div class="row">
+                    <div class="col-lg-6 col-md-4 col-sm-6">
+                        <label for="nume">Nume:</label>
+                        <input type="text" placeholder="Numele tau" class="form-control" autocomplete="off" name="nume" required>
+                    </div>
+                    <div class="col-lg-6 col-md-4 col-sm-6">
+                        <label for="prenume">Prenume:</label>
+                        <input type="text" placeholder="Prenumele tau" class="form-control" autocomplete="off" name="prenume" required>
+                    </div>
+                </div>
+                <br>
+                <label for="mesaj">Mesaj:</label>
+                <textarea class="form-control" name="comment" placeholder="Mesajul tau..." rows="10" required></textarea>
+                <br>
+                <input type="submit" class="btn btn-outline-info btn-block" value="Trimite" disabled>
+            </form>
+            {% endif %}
         </div>
         <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="card">
@@ -215,7 +249,7 @@
         </div>
     </div>
 </div>
-<div class="jumbotron" style="background-color: #1F1D36;margin-bottom: 0px;margin-top: 70px;">
+<div class="jumbotron" style="background-color: #1F1D36;margin-bottom: 0px;margin-top: 40px;">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-6">
@@ -251,4 +285,8 @@
         <p style="font-size: 22px;color: #fff;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
     </div>
 </div>
+<script>
+    var name = "{{ post.id }}";
+    document.getElementById('post1').value = name;
+</script>
 {% endblock %}

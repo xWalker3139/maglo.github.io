@@ -1013,10 +1013,10 @@
                 <hr style="padding-bottom: 1px;">
                 <a href="#demo62" data-toggle="collapse" data-target="#demo62" class="collapse1"><strong><i class="fas fa-chevron-right"></i> Pret</strong></a>
                 <div class="collapse" id="demo62" style="margin-top: 12px;">
-                    <form method="POST" action="{% url 'my_app:pret_sport' %}" class="form-group" style="font-family: 'Montserrat', sans-serif;font-weight: bolder;">
+                    <form method="POST" action="{% url 'my_app:specificatii_sport' %}" class="form-group" style="font-family: 'Montserrat', sans-serif;font-weight: bolder;">
                         {% csrf_token %}
                         <label for="pret">Pret:</label>
-                        <input type="text" class="form-control" name="pret" placeholder="Maxim" required>
+                        <input type="number" class="form-control" name="pret" placeholder="Pret" autocomplete="off">
                         <br>
                         <input type="submit" class="btn btn-outline-secondary btn-block" value="Cauta">
                     </form>

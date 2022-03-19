@@ -1,35 +1,7 @@
 from django import forms
-from .models import Adult, Copil, AnuntAdult, AnuntCopil, AjutorSiContact, MesajCopil, MesajAdult, Afacere, Serviciu, MesajAfaceri, MesajServiciu
+from .models import Adult, Copil, AnuntAdult, AnuntCopil, AjutorSiContact, MesajCopil, MesajAdult, Afacere, Serviciu, MesajAfaceri, MesajServiciu, CommentAdult
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-
-CATEGORIE_ADULT = [
-    ('Auto, moto si ambarcatiuni','Auto, moto si ambarcatiuni'),
-    ('Piese auto', 'Piese auto'),
-    ('Agro si industrie', 'Agro si industrie'),
-    ('Imobiliare','Imobiliare'),
-    ('Moda si frumusete','Moda si frumusete'),
-    ('Electronice si electrocasnice', 'Electronice si electrocasnice'),
-    ('Afaceri/Servicii', 'Afaceri/Servicii'),
-    ('Animale de companie','Animale de companie'),
-    ('Locuri de munca', 'Locuri de munca'),
-    ('Sport, timp liber si Hobby', 'Sport, timp liber si Hobby'),
-    ('Intreprinzatori autohtoni', 'Intreprinzatori autohtoni'),
-    ('Matrimoniale', 'Matrimoniale'),
-]
-
-SUBCATEGORIE_ADULT = [
-    ('Autoturisme', 'Ambarcatiuni', 'Autoutilitare', 'Camioane, rulote, remorci', 'Motociclete, scutere, ATV'),
-    ('Roti, jante, anvelope', 'Caroserie', 'Mecanica electrica'),
-    ('Utilaje agricole si industriale', 'Animale domestice', 'Produse piata'),
-    ('Apartamente de vanzare', 'Apartamente de inchiriat', 'Birouri', 'Case/Vile de vanzare', 'Case/Vile de inchiriat', 'Terenuri agricole', 'Terenuri constructii', 'Spatii comerciale', 'Spatii industriale'),
-    ('Haine dama', 'Haine barbati', 'Incaltaminte dama', 'Incaltaminte barbati', 'Bijuterii', 'Cosmetice', 'Accesorii'),
-    ('Telefoane', 'Tablete', 'Electrocasnice', 'Laptop - Calculator', 'Aparate foto - Camere video', 'Console'),
-    ('Cafenele', 'Cofetarii', 'Constructii', 'Cabinete medicale', 'Fast-Food-uri', 'Restaurante', 'Contabilitate', 'Digital Marketing', 'Grafic si Design', 'Meditatii', 'Programare si tehnologie', 'Video si animatii', 'Cabinet medical', 'Cabinet psihologic', 'Hotel', 'Pensiune'),
-    ('Adoptii', 'Accesorii animale'),
-    ('Agenti de vanzari', 'Confectii - Croitori', 'Cosmeticieni - Frizeri', 'Ingineri - Meseriasi - Constructori', 'Munca in strainatate', 'Paza si protectie', 'Personal hotelier-restaurant'),
-    ('Articole sportive', 'Carti, Filme', 'Arta si antichitati', 'Muzica, instrumente muzicale'),
-]
 
 class AdultForm(UserCreationForm):
     class Meta:
@@ -148,4 +120,16 @@ class MesajServiciuForm(forms.ModelForm):
             'nume':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Nume', 'name':'nume6'}),
             'email':forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Email', 'name':'email6'}),
             'mesaj':forms.Textarea(attrs={'class':'form-control', 'placeholder':'Mesaj', 'name':'mesaj6'}),
+        }
+
+
+class CommentAdultForm(forms.ModelForm):
+    class Meta:
+        model = CommentAdult
+        fields = ('post', 'nume', 'prenume', 'comment')
+        widgets = {
+            'post':forms.TextInput(attrs={'class':'form-control', 'type':'hidden', 'value':'', 'id':'post1'}),
+            'nume':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Nume'}),
+            'prenume':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Prenume'}),
+            'comment':forms.Textarea(attrs={'class':'form-control', 'placeholder':'Mesajul tau...'}),
         }

@@ -154,7 +154,7 @@
                     </div>
                     <div class="form-group">
                         <label for="descriere">Descriere:</label>
-                        <textarea placeholder="Descrierea anuntului" class="form-control" name="descriere" rows="10" required></textarea>
+                        <textarea placeholder="Descrierea anuntului" class="form-control" minlength="80" name="descriere" rows="10" required></textarea>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                     </div>
@@ -171,6 +171,8 @@
                             <option id="Animale, de companie">Animale de companie</option>
                             <option id="Locuri, de munca">Locuri de munca</option>
                             <option id="Sport, timp liber si Hobby">Sport, timp liber si Hobby</option>
+                            <option id="Mici, intreprinzatori autohtoni">Mici intreprinzatori autohtoni</option>
+                            <option id="Matrimoniale">Matrimoniale</option>
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                         </select>
@@ -2702,6 +2704,128 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Intreprinzatori autohtoni -->
+                        <div class="Mici box" style="margin-top: 10px;">
+                            <label for="subcategorie">Subcategorie</label>
+                            <select class="form-control" name="subcategorie_adult" id="mybox10">
+                                <option selected disabled>----------</option>
+                                <option id="Producatori, legume,fructe">Producatori legume/fructe</option>
+                                <option id="Crescatori, animale">Crescatori de animale</option>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                            </select>
+                        </div>
+                        <div class="Producatori mybox10" style="margin-top: 12px;">
+                            <label for="pret">Vând / Schimb</label>
+                                <select class="form-control" id="selectare43">
+                                    <option selected disabled>----------</option>
+                                    <option id="vinde">Vând</option>
+                                    <option id="schimb">Schimb</option>
+                                </select>
+                                <div class="vinde newbox" style="margin-top: 10px;">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-4 col-sm-6">
+                                            <label for="pret">Pret:</label>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
+                                            <div class="valid-feedback">Valid.</div>
+                                            <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-4 col-sm-6">
+                                            <label for="moneda">Moneda:</label>
+                                            <select class="form-control" name="moneda">
+                                                <option selected disabled>----------</option>
+                                                <option>Lei</option>
+                                                <option>Euro</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="Crescatori mybox10" style="margin-top: 12px;">
+                            <label for="pret">Vând / Schimb</label>
+                                <select class="form-control" id="selectare40">
+                                    <option selected disabled>----------</option>
+                                    <option id="vinde">Vând</option>
+                                    <option id="schimb">Schimb</option>
+                                </select>
+                                <div class="vinde newbox" style="margin-top: 10px;">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-4 col-sm-6">
+                                            <label for="pret">Pret:</label>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
+                                            <div class="valid-feedback">Valid.</div>
+                                            <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-4 col-sm-6">
+                                            <label for="moneda">Moneda:</label>
+                                            <select class="form-control" name="moneda">
+                                                <option selected disabled>----------</option>
+                                                <option>Lei</option>
+                                                <option>Euro</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <!-- Matrimoniale -->
+                        <div class="Matrimoniale box" style="margin-top: 12px;">
+                            <label for="subcategorie">Subcategorie</label>
+                            <select class="form-control" name="subcategorie_adult" id="mybox11">
+                                <option selected disabled>----------</option>
+                                <option id="Escorte">Escorte</option>
+                                <option id="Saloane, masaj">Saloane masaj</option>
+                            </select>
+                        </div>
+                        <div class="Escorte mybox11" style="margin-top: 12px;">
+                            <label for="pret">Vând</label>
+                                <select class="form-control" id="selectare41">
+                                    <option selected disabled>----------</option>
+                                    <option id="vinde">Vând</option>
+                                </select>
+                                <div class="vinde newbox" style="margin-top: 10px;">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-4 col-sm-6">
+                                            <label for="pret">Pret:</label>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
+                                            <div class="valid-feedback">Valid.</div>
+                                            <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-4 col-sm-6">
+                                            <label for="moneda">Moneda:</label>
+                                            <select class="form-control" name="moneda">
+                                                <option selected disabled>----------</option>
+                                                <option>Lei</option>
+                                                <option>Euro</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="Saloane mybox11" style="margin-top: 12px;">
+                            <label for="pret">Vând</label>
+                                <select class="form-control" id="selectare42">
+                                    <option selected disabled>----------</option>
+                                    <option id="vinde">Vând</option>
+                                </select>
+                                <div class="vinde newbox" style="margin-top: 10px;">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-4 col-sm-6">
+                                            <label for="pret">Pret:</label>
+                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
+                                            <div class="valid-feedback">Valid.</div>
+                                            <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-4 col-sm-6">
+                                            <label for="moneda">Moneda:</label>
+                                            <select class="form-control" name="moneda">
+                                                <option selected disabled>----------</option>
+                                                <option>Lei</option>
+                                                <option>Euro</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="telefon">Telefon:</label>
@@ -2936,6 +3060,28 @@
             });
         }).change();
     })
+    $("#mybox10").change(function(){
+            $(this).find("option:selected").each(function(){
+                var optionValue = $(this).attr("id");
+                if(optionValue){
+                    $(".mybox10").not("." + optionValue).hide();
+                    $("." + optionValue).show();
+                } else{
+                    $(".mybox10").hide();
+                }
+            });
+        }).change();
+    $("#mybox11").change(function(){
+            $(this).find("option:selected").each(function(){
+                var optionValue = $(this).attr("id");
+                if(optionValue){
+                    $(".mybox11").not("." + optionValue).hide();
+                    $("." + optionValue).show();
+                } else{
+                    $(".mybox11").hide();
+                }
+            });
+        }).change();
 </script>
 <script>
     $(document).ready(function(){
@@ -3347,6 +3493,50 @@
         });
         }).change();
         $("#selectare39").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("id");
+            if(optionValue){
+                $(".newbox").not("." + optionValue).hide();
+                $("." + optionValue).show();
+            } else{
+                $(".newbox").hide();
+            }
+        });
+        }).change();
+        $("#selectare40").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("id");
+            if(optionValue){
+                $(".newbox").not("." + optionValue).hide();
+                $("." + optionValue).show();
+            } else{
+                $(".newbox").hide();
+            }
+        });
+        }).change();
+        $("#selectare41").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("id");
+            if(optionValue){
+                $(".newbox").not("." + optionValue).hide();
+                $("." + optionValue).show();
+            } else{
+                $(".newbox").hide();
+            }
+        });
+        }).change();
+        $("#selectare42").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("id");
+            if(optionValue){
+                $(".newbox").not("." + optionValue).hide();
+                $("." + optionValue).show();
+            } else{
+                $(".newbox").hide();
+            }
+        });
+        }).change();
+        $("#selectare43").change(function(){
         $(this).find("option:selected").each(function(){
             var optionValue = $(this).attr("id");
             if(optionValue){

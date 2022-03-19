@@ -1,0 +1,304 @@
+{% extends 'my_app/anunturi_postate_adult.html' %}
+
+{% block head_block %}
+<style>
+    #navbarDropdown{
+            border: 3px solid #fff;
+            border-radius: 50px;
+            font-size: 22px;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            text-decoration: none;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+        }
+        #navbarDropdown:hover{
+            color: #28a6fa;
+            background-color: #fff;
+        }
+        @media only screen and (min-width: 768px){
+            .dropdown:hover>.dropdown-menu{
+                display: block;
+            }
+        }
+    .banner{
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80');
+        background-size: cover;
+        background-position: center;
+    }
+    .box{
+        max-width: 500px;
+        margin: 140px auto;
+        border-radius: 5px;
+        padding: 25px 25px 25px 25px;
+        box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+        background-color: white;
+    }
+    .button1{
+        background-color: rgba(88,138,240,1);
+        border-color: rgba(88,138,240,1);
+        border-radius: 6px;
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        text-align: center;
+        font-size: 19px;
+        width: 100%;
+        height: 90%;
+        margin-top: 20px;
+        transition: 0.3s ease-in-out;
+    }
+    .button2{
+        background-color: rgba(163,119,240,1);
+        border-color: rgba(163,119,240,1);
+        border-radius: 6px;
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        text-align: center;
+        font-size: 19px;
+        width: 100%;
+        height: 90%;
+        margin-top: 20px;
+        transition: 0.3s ease-in-out;
+    }
+    .button1:hover{
+        background-color: rgb(76, 120, 207);
+    }
+    .button2:hover{
+        background-color: rgb(144, 105, 212);
+    }
+    .form-group{
+        margin-top: 36px;
+    }
+    .header1{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        font-size: 50px;
+        color: #fff;
+        margin-top: 14rem;
+    }
+    .param1{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        font-size: 20px;
+        color: rgb(217, 223, 233);
+    }
+    #anchor2{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        font-size: 18px;
+        color: black;
+    }
+    .new_banner{
+        margin-top: 2rem;
+    }
+    .header2{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        text-align: center;
+        margin-top: 4rem;
+    }
+    #jumbotron1{
+        margin-top: 60px;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 0;
+        padding-right: 0;
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+    #jumbotron1:hover{
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    }
+    .header3{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        padding-top: 12px;
+    }
+    .param3{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        font-size: 18px;
+    }
+    #anchor1{
+          font-family: 'Montserrat', sans-serif;
+          font-weight: bold;
+          font-size: 19px;
+          color: #fff;
+          text-decoration: none;
+          display: block;
+          margin-top: 10px;
+          transition: 0.4s ease-in-out grey;
+        }
+        #anchor1:hover{
+          color: grey;
+        }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-4 col-sm-6">
+                <p class="header1">Afaceri</p>
+                <p class="param1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae ipsum ut iure, vitae minima sequi veniam</p>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-6">
+                <div class="box">
+                    <a href="{% url 'anunturi_postate_adult' %}" id="anchor2"><i class="fas fa-arrow-left"></i> Inapoi spre categoriile principale</a>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-4 col-sm-6">
+                            <a href="{% url 'my_app:afaceri_servicii' %}">
+                                <button class="button1">Afaceri</button>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-4 col-sm-6">
+                            <a href="{% url 'my_app:servicii' %}">
+                                <button class="button2">Servicii</button>
+                            </a>
+                        </div>
+                    </div>
+                    <form method="POST" class="form-group" action="">
+                        {% csrf_token %}
+                        <label for="afacere">Tipul afacerii:</label>
+                        <select class="form-control" name="tipul_afacerii">
+                            <option>Cabinet medical</option>
+                            <option>Cabinet psihologic</option>
+                            <option>Cafenea</option>
+                            <option>Cofetarie</option>
+                            <option>Constructii</option>
+                            <option>Frizerii</option>
+                            <option>Hotel</option>
+                            <option>Saloane de coafura</option>
+                            <option>Service Auto</option>
+                        </select>
+                        <label for="judete" style="margin-top: 14px;">Judete:</label>
+                        <select class="form-control" name="judet">
+                            <option selected disabled>------------</option>
+                            <option>Alba</option>
+                            <option>Arad</option>
+                            <option>Arges</option>
+                            <option>Bacau</option>
+                            <option>Bihor</option>
+                            <option>Bistrita-Nasaud</option>
+                            <option>Botosani</option>
+                            <option>Braila</option>
+                            <option>Brasov</option>
+                            <option>Buzau</option>
+                            <option>Calarasi</option>
+                            <option>Caras-Severin</option>
+                            <option>Cluj</option>
+                            <option>Constanta</option>
+                            <option>Covasna</option>
+                            <option>Dambovita</option>
+                            <option>Dolj</option>
+                            <option>Galati</option>
+                            <option>Giurgiu</option>
+                            <option>Gorj</option>
+                            <option>Harghita</option>
+                            <option>Hunedoara</option>
+                            <option>Ialomita</option>
+                            <option>Iasi</option>
+                            <option>Ilfov</option>
+                            <option>Maramures</option>
+                            <option>Mehedinti</option>
+                            <option>Mures</option>
+                            <option>Neamt</option>
+                            <option>Olt</option>
+                            <option>Prahova</option>
+                            <option>Salaj</option>
+                            <option>Satu Mare</option>
+                            <option>Sibiu</option>
+                            <option>Suceava</option>
+                            <option>Teleorman</option>
+                            <option>Timis</option>
+                            <option>Tulcea</option>
+                            <option>Valcea</option>
+                            <option>Vaslui</option>
+                            <option>Vrancea</option>
+                        </select>
+                        <br>
+                        <input type="submit" class="btn btn-outline-info btn-block" value="Cauta">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="new_banner">
+    <div class="container">
+        <h1 class="header2">Anunturi postate</h1>
+        <hr style="padding-bottom: 1px;background-color: rgba(88,138,240,1);margin-left: 420px;margin-right: 420px;">
+        <div class="row">
+            <div class="col-lg-9 col-md-4 col-sm-6">
+                {% for data in model %}
+                <div class="jumbotron" id="jumbotron1">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <img src="{{ data.imagine.url }}" width="100%" height="100%">
+                        </div>
+                        <div class="col-lg-8 col-md-4 col-sm-6">
+                            <h2 class="header3">{{ data.numele_firmei }}</h2>
+                            <hr>
+                            <p class="param3">Categorie: {{ data.tipul_afacerii }}</p>
+                            <div class="row">
+                                <div class="col-lg-8 col-md-4 col-sm-6">
+                                    <p class="param3">Judet: {{data.judet}} </p>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <a href="{% url 'my_app:pag_afaceri' pk=data.pk %}" class="btn btn-outline-info" style="margin-bottom: 12px;margin-left: 6px;">Vezi detalii</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+    <div class="jumbotron" style="background-color: #1F1D36;margin-bottom: 0px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                  <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Informatii</h2>
+                  <br>
+                  <a href="{% url 'ajutor_si_contact' %}" id="anchor1">Ajutor si contact</a>
+                  <a href="{% url 'politica_confi' %}" id="anchor1">Politica de confidentialitate</a>
+                  <a href="{% url 'politica_cookie' %}" id="anchor1">Politica de cookie-uri</a>
+                  <a href="{% url 'termeni_si_conditii' %}" id="anchor1">Termeni si conditii</a>
+                  <a href="{% url 'securitate' %}" id="anchor1">Protejeaza-te pe Maglo</a>
+                  <a href="https://anpc.ro/" id="anchor1">ANPC</a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                  <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Date de contact</h2>
+                  <br>
+                  <p id="anchor1">E-mail:</p>
+                  <p id="anchor1">Date firma:</p>
+                  <p id="anchor1">CUI:</p>
+                  <p id="anchor1">Registrul comertului:</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                  <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Urmareste-ne</h2>
+                  <br>
+                  <a href="" id="anchor1"><i class="fab fa-facebook"></i> Facebook</a>
+                  <a href="" id="anchor1"><i class="fab fa-instagram"></i> Instagram</a>
+                  <a href="" id="anchor1"><i class="fab fa-linkedin"></i> Linked-In</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron" style="background-color: #2d2b4b;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;font-family: 'Montserrat', sans-serif;font-weight: bolder;">
+        <div class="container">
+            <p style="font-size: 22px;color: #fff;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+        </div>
+    </div>
+{% endblock %}

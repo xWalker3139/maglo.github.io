@@ -100,6 +100,9 @@ urlpatterns = [
     url(r'^aparate_foto/$', views.aparate_foto, name="aparate_foto"),
     url(r'^console/$', views.console, name="console"),
     url(r'^afaceri_servicii/$', views.afaceri_servicii, name="afaceri_servicii"),
+    url(r'^cautare_afaceri/$', views.cautare_afaceri, name="cautare_afaceri"),
+    url(r'^servicii/$', views.servicii, name="servicii"),
+    url(r'^cautare_servicii/$', views.cautare_servicii, name="cautare_servicii"),
     url(r'^cafenele/$', views.cafenele, name="cafenele"),
     url(r'^cofetarii/$', views.cofetarii, name="cofetarii"),
     url(r'^constructii/$', views.constructii, name="constructii"),
@@ -129,7 +132,12 @@ urlpatterns = [
     url(r'^arta_antichitati/$', views.arta_antichitati, name="arta_antichitati"),
     url(r'^muzica_instrumente_muzicale/$', views.muzica_adult, name="muzica_adult"),
     url(r'^mici_intreprinzatori_autohtoni/$', views.intreprinzatori_autohtoni, name="intreprinzatori_autohtoni"),
+    url(r'^producatori_legume_fructe/$', views.producatori_legume, name="producatori_legume"),
+    url(r'^crescatori_animale/$', views.crescatori_animale, name="crescatori_animale"),
+    url(r'^microintreprinderi/$', views.microintreprinderi, name="microintreprinderi"),
     url(r'^matrimoniale/$', views.matrimoniale, name="matrimoniale"),
+    url(r'^escorte/$', views.escorte, name="escorte"),
+    url(r'^saloane_masaj/$', views.saloane_masaj, name="saloane_masaj"),
 
     url(r'^pag_afaceri/(?P<pk>\d+)/$', views.pag_afaceri, name="pag_afaceri"),
     url(r'^pag_servicii/(?P<pk>\d+)/$', views.pag_servicii, name="pag_servicii"),
@@ -142,9 +150,11 @@ urlpatterns = [
     url(r'^specificatii_moda/$', views.specificatii_moda, name="specificatii_moda"),
     url(r'^specificatii_electronice/$', views.specificatii_electronice, name="specificatii_electronice"),
     url(r'^specificatii_locuri/$', views.specificatii_locuri, name="specificatii_locuri"),
-
-    ################PRET#####################
-    url(r'^pret_sport/$', views.pret_sport, name="pret_sport"),
+    url(r'^specificatii_animale/$', views.specificatii_animale, name="specificatii_animale"),
+    url(r'^specificatii_sport/$', views.specificatii_sport, name="specificatii_sport"),
 
     #################CHAT####################
+    url(r'^chat_adult/$', views.chat_adult, name="chat_adult"),
+    url(r'^pag_chat_adult/(?P<pk>\d+)/$', views.pag_chat_adult, name="pag_chat_adult"),
+
 ]

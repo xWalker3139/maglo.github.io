@@ -39,6 +39,8 @@ SUBCATEGORIE_ADULT = [
     ('Adoptii', 'Accesorii animale'),
     ('Agenti de vanzari', 'Confectii - Croitori', 'Cosmeticieni - Frizeri', 'Ingineri - Meseriasi - Constructori', 'Munca in strainatate', 'Paza si protectie', 'Personal hotelier-restaurant'),
     ('Articole sportive', 'Carti, Filme', 'Arta si antichitati', 'Muzica, instrumente muzicale'),
+    ('Producatori legume/fructe', 'Crescatori de animale', 'Microintreprinderi'),
+    ('Escorte', 'Saloane masaj'),
 ]
 
 JUDETE = (
@@ -288,7 +290,7 @@ class MesajServiciu(models.Model):
         return self.nume
 
 class Room(models.Model):
-    name = models.CharField(max_length=1000)
+    name_room = models.CharField(max_length=1000)
     
 class Message(models.Model):
     value = models.CharField(max_length=1000000)
@@ -304,5 +306,14 @@ class RoomMember(models.Model):
 
     def __str__(self):
         return self.name
+
+class CommentAdult(models.Model):
+    post = models.ForeignKey(AnuntAdult, on_delete=models.CASCADE)
+    nume = models.CharField(max_length=264, null=True, blank=False)
+    prenume = models.CharField(max_length=264, null=True, blank=False)
+    comment = models.TextField(max_length=100000, null=True, blank=False)
+
+    def __str__(self):
+        return self.nume
 
 # Create your models here.

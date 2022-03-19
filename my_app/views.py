@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import TIPUL_AFACERII, Adult, Copil, AnuntAdult, AnuntCopil, AjutorSiContact, CATEGORIE_COPIL, MesajCopil, JUDETE, MesajAdult, CATEGORIE_ADULT, SUBCATEGORIE_ADULT, Afacere, Serviciu, MesajAfaceri, MesajServiciu, Room, Message, RoomMember
-from .forms import AdultForm, CopilForm, AnuntAdultForm, AnuntCopilForm, AjutorSiContactForm, MesajAdultForm, MesajCopilForm, AfacereForm, ServiciuForm, MesajAfaceriForm, MesajServiciuForm
+from .models import TIPUL_AFACERII, Adult, Copil, AnuntAdult, AnuntCopil, AjutorSiContact, CATEGORIE_COPIL, MesajCopil, JUDETE, MesajAdult, CATEGORIE_ADULT, SUBCATEGORIE_ADULT, Afacere, Serviciu, MesajAfaceri, MesajServiciu, Room, Message, RoomMember, CommentAdult
+from .forms import AdultForm, CopilForm, AnuntAdultForm, AnuntCopilForm, AjutorSiContactForm, MesajAdultForm, MesajCopilForm, AfacereForm, ServiciuForm, MesajAfaceriForm, MesajServiciuForm, CommentAdultForm
 from django.views.generic import View, ListView, DetailView, UpdateView, DeleteView
 from django.http import Http404, HttpResponseRedirect, HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
@@ -1217,17 +1217,53 @@ def pag_anunturi_postate_adult(request, pk):
     favorit_id = False
     if anunt.favorit.filter(id=request.user.id).exists():
         favorit_id = True
+    if request.method == "POST":
+        post = AnuntAdult.objects.get(id=pk)
+        nume = request.POST.get("nume")
+        prenume = request.POST.get("prenume")
+        comment = request.POST.get("comment")
+        new_model = CommentAdult(post=post, nume=nume, prenume=prenume, comment=comment)
+        new_model.save()
+        return render(request, "my_app/pag_anunturi_postate_adult.html", {'new_model':new_model, 'date_posted':date_posted, 'model':model, 'favorit_id':favorit_id, 'anunt':anunt})
     context = {
         'date_posted':date_posted,
         'model':model,
         'anunt':anunt,
-        'favorit_id':favorit_id
+        'favorit_id':favorit_id,
     }
     return render(request, "my_app/pag_anunturi_postate_adult.html", context)
+
+def chat_adult(request):
+    date_posted = datetime.datetime.now().year
+    model = CommentAdult.objects.all()
+    context = {
+        'model':model,
+        'date_posted':date_posted,
+    }
+    return render(request, "my_app/chat_adult.html", context)
+
+def pag_chat_adult(request, pk):
+    date_posted = datetime.datetime.now().year
+    model = CommentAdult.objects.get(id=pk)
+    new_model = CommentAdult.objects.all()
+    if request.method == "POST":
+        comment = request.POST.get("comment")
+        new_model = CommentAdult(comment=comment)
+        new_model.save()
+    context = {
+        'date_posted':date_posted,
+        'model':model,
+        'new_model':new_model,
+    }
+    return render(request, "my_app/pag_chat_adult.html", context)
+
+
 
 def cautare_anunt(request):
     model = AnuntAdult.objects.all()
     new_model = AnuntAdult.objects.count()
+    model_afacere = Afacere.objects.all().order_by("?")
+    model_serviciu = Serviciu.objects.all().order_by("?")
     date_posted = datetime.datetime.now().year
     p = Paginator(AnuntAdult.objects.all(), 26)
     page = request.GET.get('page')
@@ -1240,7 +1276,7 @@ def cautare_anunt(request):
         model_cautat = AnuntAdult.objects.filter(lookup)
         return render(request, "my_app/anunturi_postate_adult.html", {'cautat':cautat, 'model_cautat':model_cautat, 'model':model, 'date_posted':date_posted, 'anunturile':anunturile, 'myFilter':myFilter, 'new_model':new_model})
     else:
-        return render(request, "my_app/anunturi_postate_adult.html", {'model':model, 'date_posted':date_posted, 'anunturile':anunturile, 'myFilter':myFilter, 'new_model':new_model})
+        return render(request, "my_app/anunturi_postate_adult.html", {'model':model, 'date_posted':date_posted, 'anunturile':anunturile, 'myFilter':myFilter, 'new_model':new_model, 'model_afacere':model_afacere, 'model_serviciu':model_serviciu})
 
 #################CATEGORII_ADULT###############
 
@@ -1263,7 +1299,8 @@ def specificatii_auto(request):
         marca = request.POST.get("marca")
         rulaj = request.POST.get("rulaj")
         stare = request.POST.get("stare")
-        lookup = (Q(caroserie__icontains=caroserie) or Q(combustibil__icontains=combustibil) or Q(culoare__icontains=culoare) or Q(cutie_de_viteze__icontains=cutie_de_viteze) or Q(marca_icontains=marca) or Q(rulaj__icontains=rulaj) or Q(stare__icontains=stare))
+        pret = CATEGORIE_ADULT[0][0]
+        lookup = (Q(caroserie__icontains=caroserie) or Q(combustibil__icontains=combustibil) or Q(culoare__icontains=culoare) or Q(cutie_de_viteze__icontains=cutie_de_viteze) or Q(marca_icontains=marca) or Q(rulaj__icontains=rulaj) or Q(stare__icontains=stare) or Q(pret__icontains=pret))
         new_model = AnuntAdult.objects.filter(lookup)
         return render(request, "my_app/specificatii_auto.html", {'new_model':new_model})
     else:
@@ -1348,8 +1385,9 @@ def specificatii_piese(request):
     if request.method == "POST":
         date_posted = datetime.datetime.now().year
         stare = request.POST.get("stare")
-        lookup = Q(stare__icontains = stare)
-        model = AnuntAdult.objects.filter(stare=lookup)
+        pret = CATEGORIE_ADULT[1][0]
+        lookup = (Q(stare__icontains = stare) or Q(pret__icontains=pret))
+        model = AnuntAdult.objects.filter(lookup)
         context = {
             'date_posted':date_posted,
             'model':model,
@@ -1410,8 +1448,9 @@ def agro_si_industrie(request):
 def specificatii_agro(request):
     if request.method == "POST":
         stare = request.POST.get("stare")
-        lookup = Q(stare__icontains = stare)
-        model = AnuntAdult.objects.filter(stare=lookup)
+        pret = CATEGORIE_ADULT[2][0]
+        lookup = (Q(stare__icontains = stare) or Q(pret__icontains=pret))
+        model = AnuntAdult.objects.filter(lookup)
         context = {
             'model':model
         }
@@ -1475,7 +1514,8 @@ def specificatii_imobiliare(request):
         an_de_constructie = request.POST.get("an_de_constructie")
         etaj = request.POST.get("etaj")
         teren = request.POST.get("teren")
-        lookup = (Q(numar_de_camere__icontains = numar_de_camere) or Q(compartimentare__icontains=compartimentare) or Q(suprafata_utila__icontains=suprafata_utila) or Q(an_de_constructie__icontains=an_de_constructie) or Q(etaj__icontains=etaj) or Q(teren__icontains=teren))
+        pret = CATEGORIE_ADULT[3][0]
+        lookup = (Q(numar_de_camere__icontains = numar_de_camere) or Q(compartimentare__icontains=compartimentare) or Q(suprafata_utila__icontains=suprafata_utila) or Q(an_de_constructie__icontains=an_de_constructie) or Q(etaj__icontains=etaj) or Q(teren__icontains=teren) or Q(pret__icontains=pret))
         model = AnuntAdult.objects.filter(lookup)
         context = {
             'model':model,
@@ -1620,7 +1660,8 @@ def specificatii_moda(request):
         stare = request.POST.get("stare")
         marime = request.POST.get("marime")
         culoare = request.POST.get("culoare")
-        lookup = (Q(marca__icontains=marca) or Q(stare__icontains=stare) or Q(marime__icontains=marime) or Q(culoare__icontains=culoare))
+        pret = CATEGORIE_ADULT[4][0]
+        lookup = (Q(marca__icontains=marca) or Q(stare__icontains=stare) or Q(marime__icontains=marime) or Q(culoare__icontains=culoare) or Q(pret__icontains=pret))
         model = AnuntAdult.objects.filter(lookup)
         context = {
             'model':model,
@@ -1736,7 +1777,8 @@ def specificatii_electronice(request):
     if request.method == "POST":
         date_posted = datetime.datetime.now().year
         stare = request.POST.get("stare")
-        lookup = Q(stare__icontains = stare)
+        pret = CATEGORIE_ADULT[5][0]
+        lookup = (Q(stare__icontains = stare) or Q(pret__icontains = pret))
         model = AnuntAdult.objects.filter(stare = lookup)
         context = {
             'date_posted':date_posted,
@@ -1825,13 +1867,42 @@ def console(request):
 def afaceri_servicii(request):
     date_posted = datetime.datetime.now().year
     model = Afacere.objects.all()
-    new_model = Serviciu.objects.all()
+    context = {
+        'model':model,
+        'date_posted':date_posted,
+    }
+    return render(request, "my_app/afaceri_servicii.html", context)
+
+def cautare_afaceri(request):
+    date_posted = datetime.datetime.now().year
+    if request.method == "POST":
+        tipul_afacerii = request.POST.get("tipul_afacerii")
+        judet = request.POST.get("judet")
+        lookup = (Q(tipul_afacerii__icontains = tipul_afacerii) or Q(judet__icontains = judet))
+        model = Afacere.objects.filter(lookup)
+        return render(request, "my_app/cautare_afaceri.html", {'model':model, 'date_posted':date_posted})
+    else:
+        return render(request, "my_app/cautare_afaceri.html", {'date_posted':date_posted})
+
+def servicii(request):
+    date_posted = datetime.datetime.now().year
+    model = Serviciu.objects.all()
     context = {
         'date_posted':date_posted,
         'model':model,
-        'new_model':new_model
     }
-    return render(request, 'my_app/afaceri_servicii.html', context)
+    return render(request, "my_app/servicii.html", context)
+
+def cautare_servicii(request):
+    date_posted = datetime.datetime.now().year
+    if request.method == "POST":
+        tipul_serviciului = request.POST.get("tipul_serviciului")
+        judet = request.POST.get("judet")
+        lookup = (Q(tipul_serviciului__icontains = tipul_serviciului) or Q(judet_icontains = judet))
+        model = Serviciu.objects.filter(lookup)
+        return render(request, "my_app/cautare_servicii.html", {'date_posted':date_posted, 'model':model})
+    else:
+        return render(request, "my_app/cautare_servicii.html", {'date_posted':date_posted})
 
 def cafenele(request):
     date_posted = datetime.datetime.now().year
@@ -2002,6 +2073,18 @@ def animale_de_companie(request):
     }
     return render(request, 'my_app/animale_de_companie.html', context)
 
+def specificatii_animale(request):
+    if request.method == "POST":
+        date_posted = datetime.datetime.now().year
+        pret = CATEGORIE_ADULT[7][0]
+        lookup = Q(pret__icontains=pret)
+        model = AnuntAdult.objects.filter(lookup)
+        context = {
+            'date_posted':date_posted,
+            'model':model,
+        }
+        return render(request, "my_app/specificatii_animale.html", context)
+
 def adoptii_animale(request):
     date_posted = datetime.datetime.now().year
     subcategorie = SUBCATEGORIE_ADULT[7][0]
@@ -2162,16 +2245,17 @@ def sport_timp_liber(request):
     }
     return render(request, 'my_app/sport_timp_liber.html', context)
 
-def pret_sport(request):
+def specificatii_sport(request):
     if request.method == "POST":
         date_posted = datetime.datetime.now().year
-        pret = request.POST.get("pret")
-        model = AnuntAdult.objects.filter(pret__icontains = pret)
+        pret = CATEGORIE_ADULT[9][0]
+        lookup = Q(pret__icontains = pret)
+        model = AnuntAdult.objects.filter(lookup)
         context = {
+            'model':model,
             'date_posted':date_posted,
-            'model':model
         }
-        return render(request, "my_app/pret_sport.html", context)
+        return render(request, "my_app/specificatii_sport.html", context)
 
 def articole_sportive_adult(request):
     date_posted = datetime.datetime.now().year
@@ -2227,10 +2311,10 @@ def muzica_adult(request):
 
 def search_adult(request):
     date_posted = datetime.datetime.now().year
-    model = AnuntAdult.objects.all()
+    model = AnuntAdult.objects.all().order_by("id")
     if request.method == "POST":
         cautat = request.POST['cautat']
-        lookup = (Q(categorie_adult__icontains = cautat) | Q(numele_anuntului__icontains = cautat) | Q(localizare__icontains=cautat))
+        lookup = (Q(numele_anuntului__icontains = cautat))
         model_cautat = AnuntAdult.objects.filter(lookup)
         return render(request, 'my_app/cautare_adult.html', {'date_posted':date_posted, 'model_cautat':model_cautat, 'cautat':cautat, 'model':model})
     else:
@@ -2850,6 +2934,45 @@ def intreprinzatori_autohtoni(request):
     }
     return render(request, 'my_app/intreprinzatori.html', context)
 
+def producatori_legume(request):
+    date_posted = datetime.datetime.now().year
+    subcategorie = SUBCATEGORIE_ADULT[10][0]
+    try:
+        model = AnuntAdult.objects.filter(subcategorie_adult = subcategorie)
+    except:
+        raise Http404
+    context = {
+        'date_posted':date_posted,
+        'model':model,
+    }
+    return render(request, "my_app/producatori_legume.html", context)
+
+def crescatori_animale(request):
+    date_posted = datetime.datetime.now().year
+    subcategorie = SUBCATEGORIE_ADULT[10][1]
+    try:
+        model = AnuntAdult.objects.filter(subcategorie_adult = subcategorie)
+    except:
+        raise Http404
+    context = {
+        'date_posted':date_posted,
+        'model':model
+    }
+    return render(request, "my_app/crescatori_animale.html", context)
+
+def microintreprinderi(request):
+    date_posted = datetime.datetime.now().year
+    subcategorie = SUBCATEGORIE_ADULT[10][2]
+    try:
+        model = AnuntAdult.objects.filter(subcategorie_adult = subcategorie)
+    except:
+        raise Http404
+    context = {
+        'date_posted':date_posted,
+        'model':model,
+    }
+    return render(request, "my_app/microintreprinderi.html", context)
+
 def matrimoniale(request):
     date_posted = datetime.datetime.now().year
     categorie = CATEGORIE_ADULT[11][0]
@@ -2862,6 +2985,32 @@ def matrimoniale(request):
         'model':model
     }
     return render(request, "my_app/matrimoniale.html", context)
+
+def escorte(request):
+    date_posted = datetime.datetime.now().year
+    subcategorie = SUBCATEGORIE_ADULT[11][0]
+    try:
+        model = AnuntAdult.objects.filter(subcategorie_adult = subcategorie)
+    except:
+        raise Http404
+    context = {
+        'date_posted':date_posted,
+        'model':model
+    }
+    return render(request, "my_app/escorte.html", context)
+
+def saloane_masaj(request):
+    date_posted = datetime.datetime.now().year
+    subcategorie = SUBCATEGORIE_ADULT[11][1]
+    try:
+        model = AnuntAdult.objects.filter(subcategorie_adult = subcategorie)
+    except:
+        raise Http404
+    context = {
+        'date_posted':date_posted,
+        'model':model
+    }
+    return render(request, "my_app/saloane_masaj.html", context)
 
 def pag_afaceri(request, pk):
     date_posted = datetime.datetime.now().year
@@ -2935,8 +3084,8 @@ def conversatii_adult_m(request):
 
 def room(request, room):
     username = request.GET.get('username')
-    room_details = Room.objects.get(name=room)
-    return render(request, 'my_app/room.html', {
+    room_details = Room.objects.get(name_room=room)
+    return render(request, 'my_app/room_m.html', {
         'username': username,
         'room': room,
         'room_details': room_details
@@ -2946,10 +3095,10 @@ def checkview(request):
     room = request.POST.get('room_name')
     username = request.POST.get('username')
 
-    if Room.objects.filter(name=room).exists():
+    if Room.objects.filter(name_room=room).exists():
         return redirect('/'+room+'/?username='+username)
     else:
-        new_room = Room.objects.create(name=room)
+        new_room = Room.objects.create(name_room=room)
         new_room.save()
         return redirect('/'+room+'/?username='+username)
 
@@ -2963,7 +3112,7 @@ def send(request):
     return HttpResponse('Message sent successfully')
 
 def getMessages(request, room):
-    room_detail = Room.objects.get(name=room)
+    room_detail = Room.objects.get(name_room=room)
 
     messages = Message.objects.filter(room=room_detail.id)
     return JsonResponse({"messages":list(messages.values())})

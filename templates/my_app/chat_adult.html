@@ -1,0 +1,135 @@
+{% extends 'my_app/anunturi_postate_adult.html' %}
+
+{% block head_block %}
+<style>
+    #navbarDropdown{
+            border: 3px solid #fff;
+            border-radius: 50px;
+            font-size: 22px;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            text-decoration: none;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+        }
+        #navbarDropdown:hover{
+            color: #A683E3;
+            background-color: #fff;
+        }
+        @media only screen and (min-width: 768px){
+            .dropdown:hover>.dropdown-menu{
+                display: block;
+            }
+        }
+        .new_banner{
+            margin-top: 5rem;
+        }
+        .banner{
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            border-radius: 10px;
+            border: 2px solid #EEEEEE;
+        }
+        .header1{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bolder;
+            margin: auto;
+            text-align: center;
+            margin-top: 12rem;
+            margin-bottom: 16rem;
+        }
+        .bg{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bolder;
+            font-size: 19px;
+            overflow: auto;
+            width: 100%;
+            height: 100%;
+        }
+        .anchor1{
+            padding-left: 16px;
+            color: black;
+        }
+        #anchor1{
+          font-family: 'Montserrat', sans-serif;
+          font-weight: bold;
+          font-size: 19px;
+          color: #fff;
+          text-decoration: none;
+          display: block;
+          margin-top: 10px;
+          transition: 0.4s ease-in-out grey;
+        }
+        #anchor1:hover{
+          color: grey;
+        }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="new_banner">
+    <div class="container">
+        <div class="banner">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="input-group mb-3" style="margin-left: 8px;margin-top: 12px;">
+                        <input type="search" class="form-control" placeholder="Cauta dupa nume" required>
+                        <div class="input-group-append">
+                            <input type="submit" class="btn btn-info" value="Cauta">
+                        </div>
+                    </div>
+                    <hr>
+                    {% for data in model %}
+                    <div class="bg">
+                        <a href="{% url 'my_app:pag_chat_adult' pk=data.pk %}" class="anchor1"><i class="fas fa-user" style="padding-right: 4px;"></i> {{ data.nume }} {{data.prenume}}</a>
+                    </div>
+                    <hr>
+                    {% endfor %}
+                </div>
+                <div class="col-lg-8 col-md-4 col-sm-6">
+                    <h2 class="header1">Nu ai nicio conversatie deschisa!</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #1F1D36;margin-bottom: 0px;margin-top: 40px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6">
+          <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Informatii</h2>
+          <br>
+          <a href="{% url 'ajutor_si_contact' %}" id="anchor1">Ajutor si contact</a>
+          <a href="{% url 'politica_confi' %}" id="anchor1">Politica de confidentialitate</a>
+          <a href="{% url 'politica_cookie' %}" id="anchor1">Politica de cookie-uri</a>
+          <a href="{% url 'termeni_si_conditii' %}" id="anchor1">Termeni si conditii</a>
+          <a href="{% url 'securitate' %}" id="anchor1">Protejeaza-te pe Maglo</a>
+          <a href="https://anpc.ro/" id="anchor1">ANPC</a>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+          <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Date de contact</h2>
+          <br>
+          <p id="anchor1">E-mail:</p>
+          <p id="anchor1">Date firma:</p>
+          <p id="anchor1">CUI:</p>
+          <p id="anchor1">Registrul comertului:</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+          <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Urmareste-ne</h2>
+          <br>
+          <a href="" id="anchor1"><i class="fab fa-facebook"></i> Facebook</a>
+          <a href="" id="anchor1"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="" id="anchor1"><i class="fab fa-linkedin"></i> Linked-In</a>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #2d2b4b;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;font-family: 'Montserrat', sans-serif;font-weight: bolder;">
+    <div class="container">
+        <p style="font-size: 22px;color: #fff;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+    </div>
+</div>
+{% endblock %}

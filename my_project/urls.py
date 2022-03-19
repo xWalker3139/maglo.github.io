@@ -22,12 +22,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 
-app_name = "my_app"
 
 urlpatterns = [
     url('admin/', admin.site.urls),
     url(r'^acasa/$', views.BaseView.as_view(), name="acasa"),
-    url(r'^my_app/', include("my_app.urls", namespace="my_app")),
+    url(r'^my_app/', include("my_app.urls")),
     url(r'^anunturi_postate_copil/$', views.anunturi_postate_copil, name="anunturi_postate_copil"),
     url(r'^deconectare_copil/$', views.deconectare_copil, name="deconectare_copil"),
     url(r'^contul_meu_copil/$', views.contul_meu_copil, name="contul_meu_copil"),
@@ -139,14 +138,14 @@ urlpatterns = [
 
     ##############CHAT##############
 
-    url(r'conversatii_adult_m/$', views.conversatii_adult_m, name="conversatii_adult_m"),
-    url(r'<str:room>/$', views.room, name='room'),
-    url(r'checkview/$', views.checkview, name='checkview'),
-    url(r'send/$', views.send, name='send'),
-    url(r'getMessages/<str:room>/$', views.getMessages, name='getMessages'),
+    path('conversatii_adult_m/', views.conversatii_adult_m, name='conversatii_adult_m'),
+    path('<str:room>/', views.room, name='room_m'),
+    path('checkview', views.checkview, name='checkview'),
+    path('send', views.send, name='send'),
+    path('getMessages/<str:room>/', views.getMessages, name='getMessages'),
 
     url(r'^conversatii_adult_v/$', views.lobby, name="lobby"),
-    url(r'^room_video/$', views.room_video, name="room"),
+    url(r'^room_video/$', views.room_video, name="room_video"),
     url(r'^get_token/$', views.getToken),
     url(r'^create_member/$', views.createMember),
     url(r'^get_member/$', views.getMember),

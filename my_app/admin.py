@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Adult, Copil, AnuntAdult, AnuntCopil, AjutorSiContact, MesajCopil, Afacere, Serviciu, MesajAfaceri, MesajServiciu, Room, Message, RoomMember
+from .models import Adult, Copil, AnuntAdult, AnuntCopil, AjutorSiContact, MesajCopil, Afacere, Serviciu, MesajAfaceri, MesajServiciu, Room, Message, RoomMember, CommentAdult
 
 admin.site.register(Adult)
 admin.site.register(Copil)
@@ -14,5 +14,6 @@ admin.site.register(MesajServiciu)
 admin.site.register(Room)
 admin.site.register(Message)
 admin.site.register(RoomMember)
+admin.site.register(CommentAdult)
 
 # Register your models here.

@@ -2,114 +2,6 @@
 
 {% block head_block %}
 <style>
-    .banner{
-        background-color: white;
-        width: 100%;
-        height: 100%;
-        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
-    }
-    .jumbotron{
-        padding-top: 0px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        margin-bottom: 0px;
-        background-color: aliceblue;
-    }
-    .banner h2{
-        font-family: 'Montserrat', sans-serif;
-        padding: 30px 0px 20px 20px;
-    }
-    .banner hr{
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-    #param1{
-        font-family: 'Montserrat', sans-serif;
-        padding: 10px 0px 10px 20px;
-        font-size: 20px;
-    }
-    #param1:hover{
-        background-color: #A683E3;
-        color: white;
-    }
-    .banner ul{
-        font-family: 'Montserrat', sans-serif;
-        padding-left: 60px;
-    }
-    .banner ul li{
-        padding-top: 10px;
-        font-size: 18px;
-    }
-    .banner ul li a:hover{
-        border-bottom: 2px solid #A683E3;
-        margin-right: 60px;
-    }
-    #param2{
-        font-family: 'Montserrat', sans-serif;
-        padding: 10px 0px 10px 20px;
-        font-size: 20px;
-    }
-    #param2:hover{
-        background-color: #A683E3;
-        color: white;
-    }
-    #param3{
-        font-family: 'Montserrat', sans-serif;
-        padding: 10px 0px 10px 20px;
-        font-size: 20px;
-    }
-    #param3:hover{
-        background-color: #A683E3;
-        color: white;
-    }
-    .banner ul li a{
-        text-decoration: none;
-    }
-    #a1{
-        text-decoration: none;
-        color: black;
-    }
-    #a2{
-        text-decoration: none;
-        color: black;
-    }
-    #a3{
-        text-decoration: none;
-        color: black;
-    }
-    .banner ul li a{
-        color: black;
-    }
-    #header1{
-        font-family: 'Montserrat', sans-serif;
-        padding-top: 30px;
-        padding-bottom: 20px;
-        padding-left: 20px;
-    }
-    .text{
-        font-family: 'Montserrat', sans-serif;
-        font-size: 20px;
-    }
-    #header2{
-        font-family: 'Montserrat', sans-serif;
-        padding-left: 20px;
-    }
-    #header3{
-        padding-top: 50px;
-        font-family: 'Montserrat', sans-serif;
-        padding-left: 20px;
-    }
-    #header4{
-        padding-top: 30px;
-        padding-bottom: 30px;
-        font-family: 'Montserrat', sans-serif;
-        margin-left: 20px;
-    }
-    #param4{
-        font-size: 18px;
-        margin-left: 20px;
-        font-family: 'Montserrat', sans-serif;
-    }
     #navbarDropdown{
             border: 3px solid #fff;
             border-radius: 50px;
@@ -131,82 +23,215 @@
                 display: block;
             }
         }
+    .bg{
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-position: bottom center;
+        background-size: cover;
+        background-image: url('https://qu3r1v212d48cje431eqa61a-wpengine.netdna-ssl.com/mobile-app/wp-content/uploads/sites/3/2019/01/mobile-app-intro-bg.svg');
+        width: 100%;
+        height: 100%;
+        margin-top: 1rem;
+    }
+    .header1{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        margin-top: 10rem;
+    }
+    #image1{
+        width: 100%;
+        height: 66%;
+        margin-top: 4rem;
+    }
+    .param1{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        font-size: 19px;
+        margin-top: 40px;
+        color: rgba(105,108,113,1);
+    }
+    .button1{
+        background-color: rgba(88,138,240,1);
+        border-color: rgba(88,138,240,1);
+        border-radius: 6px;
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        text-align: center;
+        font-size: 19px;
+        width: 100%;
+        height: 90%;
+        margin-top: 20px;
+        transition: 0.3s ease-in-out;
+    }
+    .button2{
+        background-color: rgba(163,119,240,1);
+        border-color: rgba(163,119,240,1);
+        border-radius: 6px;
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        text-align: center;
+        font-size: 19px;
+        width: 100%;
+        height: 90%;
+        margin-top: 20px;
+        transition: 0.3s ease-in-out;
+    }
+    .button1:hover{
+        background-color: rgb(76, 120, 207);
+    }
+    .button2:hover{
+        background-color: rgb(144, 105, 212);
+    }
+    .header2{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        margin-top: 60px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    #image2{
+        width: 100%;
+        height: 100%;
+    }
+    #icon1{
+        color: rgba(88,138,240,1);
+        font-size: 26px;
+        margin-top: 30px;
+    }
+    .param3{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        color: rgba(105,108,113,1);
+        margin-top: 30px;
+    }
+    #anchor1{
+          font-family: 'Montserrat', sans-serif;
+          font-weight: bold;
+          font-size: 19px;
+          color: #fff;
+          text-decoration: none;
+          display: block;
+          margin-top: 10px;
+          transition: 0.4s ease-in-out grey;
+        }
+        #anchor1:hover{
+          color: grey;
+        }
 </style>
 {% endblock %}
 
 {% block body_block %}
-<div class="jumbotron">
-    <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="banner">
-                <h2>Maglo</h2>
-                <hr>
-                <a href="{% url 'my_app:contul_meu_adult' %}" id="a1"><p id="param1"><i class="fas fa-user"></i> Contul meu</p></a>
-                <ul>
-                    <li><a href="{% url 'my_app:contul_meu_adult' %}">Informatii personale</a></li>
-                    <li><a href="{% url 'my_app:conversatii_adult' %}">Conversatii</a></li>
-                    <li><a href="{% url 'my_app:deconectare_adult1' %}">Deconectare</a></li>
-                    <li><a href="{% url 'my_app:posteaza_anunt_adult' user.pk %}">Posteaza un anunt</a></li>
-                </ul>
-                <a href="{% url 'my_app:anunturi_totale_adult' user.pk %}" id="a2"><p id="param2"><i class="fas fa-calendar-check"></i> Anunturi postate</p></a>
-                <ul>
-                    <li><a href="{% url 'my_app:anunturi_totale_adult' user.pk %}">Anunturile tale</a></li>
-                    <li><a href="{% url 'my_app:pag_update_adult' %}">Actualizeaza anunt</a></li>
-                    <li><a href="{% url 'my_app:anunturi_favorite_d' %}">Anunturi favorite</a></li>
-                    <li><a href="{% url 'my_app:pag_delete_adult' %}">Sterge anunt</a></li>
-                </ul>
-                <a href="{% url 'my_app:promoveazati_afacerea_serviciul' %}" id="a3"><p id="param3"><i class="fas fa-briefcase"></i> Afacere/Serviciu</p></a>
-                <ul>
-                    <li><a href="{% url 'my_app:promoveazati_afacerea' %}">Scaleaza-ti afacerea</a></li>
-                    <li><a href="{% url 'my_app:promoveazati_serviciul' %}">Promoveaza-ti serviciul</a></li>
-                </ul>
-                <br>
-            </div>
-        </div>
-        <div class="col-lg-8 col-md-4 col-sm-6">
-            <h1 id="header4"><strong>Promoveaza-ti afacerea / serviciul</strong></h1>
-            <hr>
-            <br>
-            <p id="param4">Fie ca detii o cafenea,fie ca ai o minunata pensiune gata sa fie vizitata de turisti,sau pur si simplu esti bun in domeniul tau de expertiza,pe Maglo te poti bucura de o expunere ampla!
-
-                Fa cele mai bune fotografii in care sa prezinti atmosfera afacerii tale si incarca un videoclip scurt de prezentare,iar noi ne ocupam de restul detaliilor.
-                
-            </p>
-            <p id="param4"> Pe baza unui sistem de rating,vei fi clasat in functie de cat de bine iti vei intampina noii clienti,deci ofera-le cea mai buna experienta.
-                
-                Tine minte:un client fericit,e o afacere reusita!
-            </p>
-        </div>
-    </div>
-</div>
-<div class="jumbotron" style="background-color: #334257;margin-bottom: 0px;padding-top: 20px;padding-bottom: 20px;">
+<div class="bg">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <h3 style="color: #BBBFCA;">Informatii</h3>
-                <br>
-                <a href="{% url 'ajutor_si_contact' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Ajutor si Contact</a>
-                <a href="{% url 'politica_confi' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de confidentialitate</a>
-                <a href="{% url 'politica_cookie' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de Cookie-uri</a>
-                <a href="{% url 'termeni_si_conditii' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Termeni si Conditii</a>
-                <a href="{% url 'securitate' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Protejeaza-te pe Maglo</a>
-                <a href="https://anpc.ro/" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">ANPC</a>
+            <div class="col-lg-6 col-md-4 col-sm-6">
+                <h1 class="header1">Promoveaza-ti afacerea sau serviciul</h1>
+                <p class="param1">Devino astazi membru in comunitatea noastra si exploreaza
+                    beneficiile exclusive și alte gratuități.</p>
+                <div class="row">
+                    <div class="col-lg-6 col-md-4 col-sm-4">
+                        <a href="{% url 'my_app:promoveazati_afacerea' %}">
+                            <button class="button1">Afaceri</button>
+                        </a>
+                    </div>
+                    <div class="col-lg-6 col-md-4 col-sm-4">
+                        <a href="{% url 'my_app:promoveazati_serviciul' %}">
+                            <button class="button2">Servicii</button>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <br>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <h3 style="color: #BBBFCA;">Date de contact</h3>
-                <br>
-                <p style="display:block;text-decoration: none;color: aliceblue;">Email: </p>
-                <p style="display:block;text-decoration: none;color: aliceblue;">Date firma: </p>
-                <p style="display:block;text-decoration: none;color: aliceblue;">CUI: </p>
-                <p style="display:block;text-decoration: none;color: aliceblue;">Registrul comertului: </p>
+            <div class="col-lg-6 col-md-4 col-sm-6">
+                <img src="https://qu3r1v212d48cje431eqa61a-wpengine.netdna-ssl.com/mobile-app/wp-content/uploads/sites/3/2018/09/mobi-app-4.svg" id="image1">
             </div>
         </div>
     </div>
 </div>
-<div class="jumbotron" style="background-color: #151515;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;">
+<div class="banner">
     <div class="container">
-        <p style="font-size: 20px;font-family: Arial, Helvetica, sans-serif;color: aliceblue;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+        <h2 class="header2">De ce sa iti promovezi afacerea sau serviciul?</h2>
+        <hr style="padding-bottom: 1px;margin-left: 420px;margin-right: 420px;background-color: rgba(88,138,240,1);margin-bottom: 100px;">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="row">
+                    <div class="col-lg-1 col-md-4 col-sm-6">
+                        <i class="fas fa-fire" id="icon1"></i>
+                    </div>
+                    <div class="col-lg-9 col-md-4 col-sm-6">
+                        <p class="param3">Lorem ipsum dolor sit amet consectetur adipisicing elit. At beatae omnis, iure id architecto neque</p>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-1 col-md-4 col-sm-6">
+                        <i class="far fa-gem" id="icon1"></i>
+                    </div>
+                    <div class="col-lg-9 col-md-4 col-sm-6">
+                        <p class="param3">Lorem ipsum dolor sit amet consectetur adipisicing elit. At beatae omnis, iure id architecto neque</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <img src="https://qu3r1v212d48cje431eqa61a-wpengine.netdna-ssl.com/mobile-app/wp-content/uploads/sites/3/2019/01/app-shot-1.jpg" id="image2">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="row">
+                    <div class="col-lg-1 col-md-4 col-sm-6">
+                        <i class="fas fa-pager" id="icon1"></i>
+                    </div>
+                    <div class="col-lg-9 col-md-4 col-sm-6">
+                        <p class="param3">Lorem ipsum dolor sit amet consectetur adipisicing elit. At beatae omnis, iure id architecto neque</p>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-1 col-md-4 col-sm-6">
+                        <i class="far fa-comment" id="icon1"></i>
+                    </div>
+                    <div class="col-lg-9 col-md-4 col-sm-6">
+                        <p class="param3">Lorem ipsum dolor sit amet consectetur adipisicing elit. At beatae omnis, iure id architecto neque</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #1F1D36;margin-bottom: 0px;margin-top: 70px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6">
+          <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Informatii</h2>
+          <br>
+          <a href="{% url 'ajutor_si_contact' %}" id="anchor1">Ajutor si contact</a>
+          <a href="{% url 'politica_confi' %}" id="anchor1">Politica de confidentialitate</a>
+          <a href="{% url 'politica_cookie' %}" id="anchor1">Politica de cookie-uri</a>
+          <a href="{% url 'termeni_si_conditii' %}" id="anchor1">Termeni si conditii</a>
+          <a href="{% url 'securitate' %}" id="anchor1">Protejeaza-te pe Maglo</a>
+          <a href="https://anpc.ro/" id="anchor1">ANPC</a>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+          <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Date de contact</h2>
+          <br>
+          <p id="anchor1">E-mail:</p>
+          <p id="anchor1">Date firma:</p>
+          <p id="anchor1">CUI:</p>
+          <p id="anchor1">Registrul comertului:</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+          <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Urmareste-ne</h2>
+          <br>
+          <a href="" id="anchor1"><i class="fab fa-facebook"></i> Facebook</a>
+          <a href="" id="anchor1"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="" id="anchor1"><i class="fab fa-linkedin"></i> Linked-In</a>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="jumbotron" style="background-color: #2d2b4b;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;font-family: 'Montserrat', sans-serif;font-weight: bolder;">
+    <div class="container">
+        <p style="font-size: 22px;color: #fff;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
     </div>
 </div>
 {% endblock %}
