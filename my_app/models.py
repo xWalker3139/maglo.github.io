@@ -171,7 +171,7 @@ class AnuntAdult(models.Model):
     numele_anuntului = models.CharField(max_length=264, null=True)
     categorie_adult = models.CharField(max_length=264, null=True, blank=False, choices=CATEGORIE_ADULT)
     telefon = models.IntegerField()
-    email = models.EmailField()
+    email = models.EmailField(null=True, blank=False, max_length=264)
     pret = models.CharField(max_length=264, null=True, blank=False)
     moneda = models.CharField(max_length=264, null=True)
     imagine = models.ImageField(null=False, blank=False, upload_to='images/')
