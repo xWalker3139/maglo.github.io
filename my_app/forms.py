@@ -46,6 +46,7 @@ class AnuntAdultForm(forms.ModelForm):
         fields = ('user', )
         widgets = {
             'user':forms.TextInput(attrs={'class':'form-control', 'id':'user1', 'value':'', 'type':'hidden'}),
+            'pret':forms.NumberInput(attrs={'class':'form-control', 'placeholder':'Pret'}),
         }
 
 class AjutorSiContactForm(forms.ModelForm):

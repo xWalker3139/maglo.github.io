@@ -318,17 +318,17 @@
                                 </div>
                             </div>
                             <div class="form-group" style="margin-top: 12px;">
-                                <label for="pret">Vând / Schimb</label>
+                                <label for="pret">Vinde / Schimba</label>
                                 <select class="form-control" id="selectare">
                                     <option selected disabled>----------</option>
-                                    <option id="vinde">Vând</option>
-                                    <option id="schimb">Schimb</option>
+                                    <option name="vinde" id="vinde">Vând</option>
+                                    <option name="schimb" id="schimb">Schimb</option>
                                 </select>
                                 <div class="vinde newbox" style="margin-top: 10px;">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-4 col-sm-6">
                                         <label for="pret">Pret:</label>
-                                        <input type="number" placeholder="Pret" class="form-control" name="pret">
+                                        {{ form.pret }}
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                                     </div>
