@@ -1,205 +1,208 @@
-{% extends 'my_app/anunturi_postate_adult.html' %}
-
-{% block head_block %}
-<style>
-    .banner{
-        background-color: white;
-        width: 100%;
-        height: 100%;
-        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
-    }
-    .jumbotron{
-        padding-top: 0px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        margin-bottom: 0px;
-        background-color: aliceblue;
-    }
-    .banner h2{
-        font-family: 'Montserrat', sans-serif;
-        padding: 30px 0px 20px 20px;
-    }
-    .banner hr{
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-    #param1{
-        font-family: 'Montserrat', sans-serif;
-        padding: 10px 0px 10px 20px;
-        font-size: 20px;
-    }
-    #param1:hover{
-        background-color: #A683E3;
-        color: white;
-    }
-    .banner ul{
-        font-family: 'Montserrat', sans-serif;
-        padding-left: 60px;
-    }
-    .banner ul li{
-        padding-top: 10px;
-        font-size: 18px;
-    }
-    .banner ul li a:hover{
-        border-bottom: 2px solid #A683E3;
-        margin-right: 60px;
-    }
-    #param2{
-        font-family: 'Montserrat', sans-serif;
-        padding: 10px 0px 10px 20px;
-        font-size: 20px;
-    }
-    #param2:hover{
-        background-color: #A683E3;
-        color: white;
-    }
-    .banner ul li a{
-        text-decoration: none;
-    }
-    #a1{
-        text-decoration: none;
-        color: black;
-    }
-    #a2{
-        text-decoration: none;
-        color: black;
-    }
-    .banner ul li a{
-        color: black;
-    }
-    #header1{
-        font-family: 'Montserrat', sans-serif;
-        padding-top: 30px;
-        padding-bottom: 20px;
-        padding-left: 20px;
-    }
-    .text{
-        font-family: 'Montserrat', sans-serif;
-        font-size: 20px;
-    }
-    #header2{
-        font-family: 'Montserrat', sans-serif;
-        padding-left: 20px;
-    }
-    #header3{
-        padding-top: 50px;
-        font-family: 'Montserrat', sans-serif;
-        padding-left: 20px;
-    }
-    #a3{
-        text-decoration: none;
-        color: black;
-    }
-    #param3{
-        font-family: 'Montserrat', sans-serif;
-        padding: 10px 0px 10px 20px;
-        font-size: 20px;
-    }
-    #param3:hover{
-        background-color: #A683E3;
-        color: white;
-    }
-    #navbarDropdown{
-            border: 3px solid #fff;
-            border-radius: 50px;
-            font-size: 22px;
-            padding-left: 25px;
-            padding-right: 25px;
-            padding-top: 6px;
-            padding-bottom: 6px;
-            text-decoration: none;
-            color: #fff;
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <!-- Bootstrap -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/0945a95cb6.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/chat.js' %}"></script>
+    {% block head_block %}
+    {% endblock %}
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #jumbotron1{
+            padding-top: 0;
+            padding-left: 0;
+            padding-bottom: 0;
+            margin-bottom: 0;
+            background-color: aliceblue;
+        }
+        .banner1{
+            width: 100%;
+            height: 100%;
+            background-color: #28a6fa;
+        }
+        .anchor1{
+            display: block;
+        }
+        .logo h2{
             font-family: 'Montserrat', sans-serif;
+            font-weight: bolder;
+            text-align: center;
+            color: #fff;
+            padding-top: 50px;
         }
-        #navbarDropdown:hover{
-            color: #A683E3;
+        .image3{
+            width: 30%;
+            height: 60px;
+            border-radius: 100%;
+        }
+        .anchor1{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bolder;
+            font-size: 19px;
+            color: #fff;
+            transition: 0.3s ease-in-out;
+            text-decoration: none;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .anchor1:hover{
             background-color: #fff;
+            color: #28a6fa;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            padding-left: 20px;
         }
-        @media only screen and (min-width: 768px){
-            .dropdown:hover>.dropdown-menu{
-                display: block;
+        .anchor1 i{
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 24px;
+        }
+        .search-wrapper{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bolder;
+            padding-top: 50px;
+            padding-bottom: 30px;
+            width: 100%;
+        }
+        .button2{
+            padding-left: 20px;
+            padding-right: 20px;
+            color: #28a6fa;
+            background-color: aliceblue;
+            border: 2px solid #28a6fa;
+            transition: 0.3s ease-in-out;
+            border-top-left-radius: 0.25rem;
+            border-bottom-left-radius: 0.25rem;
+        }
+        .button2:hover{
+            background-color: #28a6fa;
+            color: aliceblue;
+        }
+        .user-section{
+            margin-top: 80px;
+        }
+        .header1{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bolder;
+        }
+        .param2{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bolder;
+            font-size: 19px;
+        }
+        .profile_pic{
+            width: 80%;
+            height: 30vh;
+            border-radius: 100%;
+            margin-top: 40px;
+            transition: 0.3s ease-in-out;
+        }
+        @media only screen and (max-width: 600px){
+            .search-wrapper{
+                margin-left: 20px;
+                margin-right: 0;
+            }
+            .profile_pic{
+                height: 100%;
+                width: 100%;
             }
         }
-</style>
-{% endblock %}
-
-{% block body_block %}
-<div class="jumbotron">
-    <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="banner">
-                <h2>Maglo</h2>
-                <hr>
-                <a href="{% url 'my_app:contul_meu_adult' %}" id="a1"><p id="param1"><i class="fas fa-user"></i> Contul meu</p></a>
-                <ul>
-                    <li><a href="{% url 'my_app:contul_meu_adult' %}">Informatii personale</a></li>
-                    <li><a href="{% url 'my_app:conversatii_adult' %}">Conversatii</a></li>
-                    <li><a href="{% url 'my_app:deconectare_adult1' %}">Deconectare</a></li>
-                    <li><a href="{% url 'my_app:posteaza_anunt_adult' user.pk %}">Posteaza un anunt</a></li>
-                </ul>
-                <a href="{% url 'my_app:anunturi_totale_adult' user.pk %}" id="a2"><p id="param2"><i class="fas fa-calendar-check"></i> Anunturi postate</p></a>
-                <ul>
-                    <li><a href="{% url 'my_app:anunturi_totale_adult' user.pk %}">Anunturile tale</a></li>
-                    <li><a href="{% url 'my_app:pag_update_adult' %}">Actualizeaza un anunt</a></li>
-                    <li><a href="{% url 'my_app:anunturi_favorite_d' %}">Anunturi favorite</a></li>
-                    <li><a href="{% url 'my_app:pag_delete_adult' %}">Sterge un anunt</a></li>
-                </ul>
-                <a href="{% url 'my_app:promoveazati_afacerea_serviciul' %}" id="a3"><p id="param3"><i class="fas fa-briefcase"></i> Afacere/Serviciu</p></a>
-                <ul>
-                    <li><a href="{% url 'my_app:promoveazati_afacerea' %}">Scaleaza-ti afacerea</a></li>
-                    <li><a href="{% url 'my_app:promoveazati_serviciul' %}">Promoveaza-ti serviciul</a></li>
-                </ul>
-                <br>
-            </div>
-        </div>
-        <div class="col-lg-8 col-md-4 col-sm-6">
-            <h2 id="header1"><strong>Informatii personale</strong></h2>
-            <hr>
-            <div class="text">
-                <p style="padding-top: 30px;">Nume: {{request.user.username}}</p>
-                <p>Email: {{ request.user.email }}</p>
-            </div>
-            <a href="{% url 'my_app:posteaza_anunt_adult' user.pk %}" class='btn btn-outline-secondary btn-lg' style="margin-bottom: 30px; margin-left: 20px;margin-top: 20px;">Posteaza un anunt</a>
-            <br>
-            <h3 id="header2"><strong>Doresti sa iti schimbi parola?</strong></h3>
-            <br>
-            <a href="{% url 'my_app:schimb_parola_adult' %}" class="btn btn-outline-warning btn-lg" style="margin-left: 20px;">Schimb parola</a>
-            <br>
-            <h3 id="header3"><strong>Doresti sa iti actualizezi datele?</strong></h3>
-            <br>
-            <a href="{% url 'my_app:actualizeaza_date_adult' user.pk %}" class="btn btn-outline-info btn-lg" style="margin-bottom: 40px;margin-left: 20px;">Da, actualizez</a>
-            <br>
-        </div>
-    </div>
-</div>
-<div class="jumbotron" style="background-color: #334257;margin-bottom: 0px;padding-top: 20px;padding-bottom: 20px;">
-    <div class="container">
+        @media only screen and (max-width: 1200px){
+            .search-wrapper{
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron" id="jumbotron1">
         <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <h3 style="color: #BBBFCA;">Informatii</h3>
-                <br>
-                <a href="{% url 'ajutor_si_contact' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Ajutor si Contact</a>
-                <a href="{% url 'politica_confi' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de confidentialitate</a>
-                <a href="{% url 'politica_cookie' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de Cookie-uri</a>
-                <a href="{% url 'termeni_si_conditii' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Termeni si Conditii</a>
-                <a href="{% url 'securitate' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Protejeaza-te pe Maglo</a>
-                <a href="https://anpc.ro/" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">ANPC</a>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="banner1">
+                    <div class="logo">
+                        <!-- <img src="{% static '/images/logo_m.jpeg' %}" class="image3"> -->
+                        <h2>Maglo</h2>
+                    </div>
+                    <br>
+                    <a href="{% url 'my_app:contul_meu_adult' %}" class="anchor1"><i class="fas fa-user"></i> Contul meu</a>
+                    <a href="{% url 'anunturi_postate_adult' %}" class="anchor1"><i class="fas fa-home"></i> Acasa</a>
+                    <a href="{% url 'my_app:anunturi_totale_adult' user.pk %}" class="anchor1"><i class="far fa-clone"></i> Anunturile mele</a>
+                    <a href="{% url 'my_app:afaceri_servicii' %}" class="anchor1"><i class="fas fa-briefcase"></i> Afaceri/Servicii</a>
+                    <a href="{% url 'my_app:anunturi_favorite_d' %}" class="anchor1"><i class="fas fa-heart"></i> Favorite</a>
+                    <a href="{% url 'my_app:chats' %}" class="anchor1"><i class="fas fa-comment"></i> Mesaje</a>
+                    <a href="{% url 'my_app:posteaza_anunt_adult' user.pk %}" class="anchor1"><i class="fas fa-plus"></i> Posteaza un anunt</a>
+                    <a href="{% url 'my_app:actualizeaza_date_adult' %}" class="anchor1"><i class="fas fa-cog"></i> Setari</a>
+                    <a href="{% url 'ajutor_si_contact' %}" class="anchor1"><i class="fas fa-question"></i> Ajutor si Contact</a>
+                    <a href="{% url 'termeni_si_conditii' %}" class="anchor1"><i class="fas fa-file"></i> Termeni si Conditii</a>
+                    <a href="{% url 'my_app:deconectare_adult1' %}" class="anchor1"><i class="fas fa-power-off"></i> Deconectare</a>
+                </div>
             </div>
-            <br>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <h3 style="color: #BBBFCA;">Date de contact</h3>
-                <br>
-                <p style="display:block;text-decoration: none;color: aliceblue;">Email: </p>
-                <p style="display:block;text-decoration: none;color: aliceblue;">Date firma: </p>
-                <p style="display:block;text-decoration: none;color: aliceblue;">CUI: </p>
-                <p style="display:block;text-decoration: none;color: aliceblue;">Registrul comertului: </p>
+            <div class="col-lg-9 col-md-6 col-sm-6">
+                <div class="search-wrapper">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-sm-6">
+                                <h2 style="font-weight: bolder;">Contul meu</h2>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <form method="POST" action="" class="form-group">
+                                    {% csrf_token %}
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <button type="submit" class="button2">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
+                                        <input type="search" class="form-control" placeholder="Cauta aici..." required>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6">
+                                <a href="{% url 'my_app:contul_meu_copil' %}" style="color: black;text-decoration: none;">
+                                    <img src="{{request.user.adult.profile_pic.url}}" style="height: 5vh;width: 22%;display: inline-block;border-radius: 100%;">
+                                    <p style="display: inline-block;font-weight: bolder;">{{request.user}}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% block body_block %}
+                <div class="user-section">
+                    <div class="container">
+                        <h2 class="header1">Informatii personale:</h2>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <img class="profile_pic" src="{{request.user.adult.profile_pic.url}}">
+                            </div>
+                            <div class="col-lg-8 col-md-6 col-sm-6">
+                                <p class="param2" style="margin-top: 60px;">Numele utilizatorului: {{request.user}}</p>
+                                <p class="param2">E-mail: {{request.user.email}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endblock%}
             </div>
         </div>
     </div>
-</div>
-<div class="jumbotron" style="background-color: #151515;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;">
-    <div class="container">
-        <p style="font-size: 20px;font-family: Arial, Helvetica, sans-serif;color: aliceblue;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
-    </div>
-</div>
-{% endblock %}
+</body>
+</html>

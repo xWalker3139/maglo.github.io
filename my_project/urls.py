@@ -31,6 +31,9 @@ urlpatterns = [
     url(r'^deconectare_copil/$', views.deconectare_copil, name="deconectare_copil"),
     url(r'^contul_meu_copil/$', views.contul_meu_copil, name="contul_meu_copil"),
 
+    path('api/messages/<int:sender>/<int:receiver>/', views.message_list, name='message-detail'),
+    path('api/messages/', views.message_list, name='message-list'),
+
 
     #################ADULT###########
 

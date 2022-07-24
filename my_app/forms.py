@@ -25,18 +25,42 @@ class CopilForm(UserCreationForm):
             'password2':forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Verifica-ti parola', 'name':'password'}),
         }
 
+class Copil_ReForm(forms.ModelForm):
+    class Meta:
+        model = Copil
+        fields = '__all__'
+        widgets = {
+            'user':forms.TextInput(attrs={'class':'form-control', 'id':'user1', 'value':'', 'type':'hidden'}),
+            'nume':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Numele...', 'autocomplete':'off'}),
+            'email':forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Email...', 'autocomplete':'off'}),
+            'profile_pic':forms.FileInput(attrs={'class':'form-control', 'placeholder':'Introdu o imagine...'}),
+        }
+
+class Adult_ReForm(forms.ModelForm):
+    class Meta:
+        model = Copil
+        fields = '__all__'
+        widgets = {
+            'user':forms.TextInput(attrs={'class':'form-control', 'id':'user1', 'value':'', 'type':'hidden'}),
+            'nume':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Numele...', 'autocomplete':'off'}),
+            'email':forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Email...', 'autocomplete':'off'}),
+            'profile_pic':forms.FileInput(attrs={'class':'form-control', 'placeholder':'Introdu o imagine...'}),
+        }
+
 class AnuntCopilForm(forms.ModelForm):
     class Meta:
         model = AnuntCopil
         fields = '__all__'
         widgets = {
-            'titlul':forms.TextInput(attrs={'class':'form-control mb-2','placeholder':'Tilul'}),
+            'titlul':forms.TextInput(attrs={'class':'form-control mb-2','placeholder':'Tilul', 'type':'hidden'}),
+            'numele_anuntului':forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Titlul anuntului'}),
             'descriere':forms.Textarea(attrs={'class':'form-control mb-2','placeholder':'Descriere'}),
             'email':forms.EmailInput(attrs={'class':'form-control mb-2','placeholder':'Email', 'name':'email2'}),
             'telefon':forms.NumberInput(attrs={'class':'form-control mb-2','placeholder':'Numar de telefon'}),
             'localizare':forms.Select(attrs={'class':'form-control mb-2','placeholder':'Localizare'}),
             'categorie_copil':forms.Select(attrs={'class':'form-control mb-2','placeholder':'Categoria'}),
             'pret':forms.NumberInput(attrs={'class':'form-control', 'placeholder':'Pret'}),
+            'moneda':forms.Select(attrs={'class':'form-control', 'placeholder':'Moneda'}),
             'imagine':forms.FileInput(attrs={'id':'imagine'})
         }
 

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'my_app',
     'agora_token_builder',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -154,7 +155,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = os.path.join(BASE_DIR, "static/images")
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

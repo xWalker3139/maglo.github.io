@@ -1,0 +1,43 @@
+{% extends 'my_app/chat_copil.html' %}
+{% block hide %}{% endblock %}
+{% block messages %}
+<div class="jumbotron" id="jumbotron2">
+    <div class="row">
+        <div class="col-lg-9 col-md-6 col-sm-6">
+            <p class="param3">{{user.username}}</p>
+        </div>
+        <div class="col-lg-1 col-md-6 col-sm-6">
+            <a href="{% url 'acasa' %}">
+                <i class="fas fa-home" id="icon2"></i>
+            </a>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6">
+            <a href="{% url 'my_app:video_room' %}">
+                <i class="fas fa-video" id="icon2"></i>
+            </a>
+        </div>
+    </div>
+</div>
+    {% for message in messages %}
+    {% if message.sender == request.user %}
+<div class="card-panel right" style="width: 75%; position: relative;transition: box-shadow .25s, -webkit-box-shadow .25s;
+                                    padding: 24px;margin: 0.5rem 0 1rem 0;border-radius: 2px;background-color: aliceblue;float: right !important;">
+    <div class="title" style="position: absolute; top: 0; left:3px; font-weight: bolder;font-family: 'Montserrat', sans-serif;    display: block;">Tu</div>
+    <p>{{ message }}</p>
+</div>
+    {% else %}
+<div class="card-panel left blue lighten-5" style="width: 75%; position: relative;transition: box-shadow .25s, -webkit-box-shadow .25s;
+                                                    padding: 24px;margin: 0.5rem 0 1rem 0;border-radius: 2px;background-color: aliceblue;float: left !important;">
+    <div class="title" style="position: absolute; top: 0; left:3px; font-weight: bolder;font-family: 'Montserrat', sans-serif;display: block;">{{ message.sender }}</div>
+    <p>{{ message }}</p>
+</div>
+    {% endif %}
+    {% endfor %}
+<script>
+$(function () {
+    $('#user{{ receiver.id }}').addClass('active');
+    //Call receive function each 1 seconds to check for new messages in the database
+    setInterval(receive,1000)
+})
+</script>
+{% endblock %}

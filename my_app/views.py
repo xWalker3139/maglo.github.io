@@ -1,19 +1,21 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import TIPUL_AFACERII, Adult, Copil, AnuntAdult, AnuntCopil, AjutorSiContact, CATEGORIE_COPIL, MesajCopil, JUDETE, MesajAdult, CATEGORIE_ADULT, SUBCATEGORIE_ADULT, Afacere, Serviciu, MesajAfaceri, MesajServiciu, Room, Message, RoomMember, CommentAdult
-from .forms import AdultForm, CopilForm, AnuntAdultForm, AnuntCopilForm, AjutorSiContactForm, MesajAdultForm, MesajCopilForm, AfacereForm, ServiciuForm, MesajAfaceriForm, MesajServiciuForm, CommentAdultForm
-from django.views.generic import View, ListView, DetailView, UpdateView, DeleteView
+from .models import TIPUL_AFACERII, Adult, Copil, AnuntAdult, AnuntCopil, AjutorSiContact, CATEGORIE_COPIL, MesajCopil, JUDETE, MesajAdult, CATEGORIE_ADULT, SUBCATEGORIE_ADULT, Afacere, Serviciu, MesajAfaceri, MesajServiciu, Room, Message, RoomMember, CommentAdult, Mesaj_Copil
+from .forms import AdultForm, Adult_ReForm, Copil_ReForm, CopilForm, AnuntAdultForm, AnuntCopilForm, AjutorSiContactForm, MesajAdultForm, MesajCopilForm, AfacereForm, ServiciuForm, MesajAfaceriForm, MesajServiciuForm, CommentAdultForm
+from django.views.generic import View
 from django.http import Http404, HttpResponseRedirect, HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
-from .filters import SearchBarCopil, SearchFilter
+from .filters import SearchFilter
 from django.contrib import messages
-from django.db.models import Q, Max, Min
+from django.db.models import Q
 from django.views.decorators.csrf import csrf_exempt
 from agora_token_builder import RtcTokenBuilder
+from rest_framework.parsers import JSONParser
+from .serializers import MessageSerializer
 import datetime
 import random
 import json
@@ -71,24 +73,30 @@ class Securitate(View):
 @login_required
 def contul_meu_copil(request):
     date_posted = datetime.datetime.now().year
-    data_anunt = datetime.datetime.now()
-    model = Copil.objects.all()
-    model_anunt = AnuntCopil.objects.all()
-    return render(request, 'my_app/contul_meu_copil.html', {'date_posted':date_posted, 'model':model, 'model_anunt':model_anunt, 'data_anunt':data_anunt})
-
-@login_required
-def actualizare_date_copil(request, pk):
-    date_posted = datetime.datetime.now().year
-    model = User.objects.get(id=pk)
-    form = CopilForm(instance=model)
-    if request.method == "POST":
-        form = CopilForm(request.POST, instance=model)
-        if form.is_valid():
-            form.save()
+    model = request.user.copil
+    form = Copil_ReForm(instance=model)
     context = {
         'date_posted':date_posted,
-        'form':form,
         'model':model,
+        'form':form,
+    }
+    return render(request, "my_app/contul_meu_copil.html", context)
+
+@login_required
+def actualizare_date_copil(request):
+    date_posted = datetime.datetime.now().year
+    model = request.user.copil
+    form = Copil_ReForm(instance=model)
+    if request.method == "POST":
+        form = Copil_ReForm(request.POST, request.FILES, instance=model)
+        if form.is_valid:
+            form.save()
+        else:
+            form = Copil_ReForm()
+    context = {
+        'date_posted':date_posted,
+        'model':model,
+        'form':form,
     }
     return render(request, "my_app/actualizare_date_copil.html", context)
 
@@ -111,6 +119,10 @@ def pag_anunturi_postate(request, pk):
     date_posted = datetime.datetime.now().year
     form = CopilForm()
     new_form = MesajCopilForm()
+    favorit_id = False
+    anunt = AnuntCopil.objects.get(id=pk)
+    if anunt.favorite.filter(id=request.user.id).exists():
+        favorit_id = True
     if request.method == "POST":
         form = CopilForm(request.POST)
         if form.is_valid():
@@ -129,7 +141,7 @@ def pag_anunturi_postate(request, pk):
             email,
             new_email
         )
-    return render(request, "my_app/pag_anunturi_postate.html", {'model':model, 'form':form, 'date_posted':date_posted, 'new_model':new_model,'my_model':my_model, 'new_form':new_form})
+    return render(request, "my_app/pag_anunturi_postate.html", {'model':model, 'form':form, 'date_posted':date_posted, 'new_model':new_model,'my_model':my_model, 'new_form':new_form, 'anunt':anunt, 'favorit_id':favorit_id})
 
 ###############CRUD###########################
 
@@ -169,7 +181,7 @@ def delete_copil(request, pk):
     data_anunt = datetime.datetime.now()
     if request.method == "POST":
         model.delete()
-        return redirect('/my_app/pag_delete_copil')
+        return redirect('/my_app/anunturi_totale_copil')
     context = {
         'model':model,
         'date_posted':date_posted,
@@ -182,10 +194,24 @@ def delete_copil(request, pk):
 @login_required
 def anunturi_favorite_copil(request):
     date_posted = datetime.datetime.now().year
+    user = request.user
+    anunt_favorit = user.favorite.all()
     context = {
         'date_posted':date_posted,
+        'anunt_favorit':anunt_favorit
     }
     return render(request, "my_app/anunturi_favorite_copil.html", context)
+
+def adauga_anunturi_favorite_c(request, pk):
+    anunt = get_object_or_404(AnuntCopil, id=request.POST.get('favorite'))
+    favorit_id = False
+    if anunt.favorite.filter(id=request.user.id).exists():
+        anunt.favorite.remove(request.user)
+        favorit_id = True
+    else:
+        anunt.favorite.add(request.user)
+        favorit_id = False
+    return HttpResponseRedirect(reverse("my_app:pag_anunturi_postate", args=[str(pk)]))
 
 @login_required
 def deconectare_copil1(request):
@@ -212,7 +238,7 @@ def pag_anunturi_copil(request, pk):
         'model':model,
         'new_model':new_model,
     }
-    return render(request, 'my_app/pag_anunturi_adult.html', context)
+    return render(request, 'my_app/pag_anunturi_copil.html', context)
 
 def inregistrare_copil(request):
     date_posted = datetime.datetime.now().year
@@ -220,7 +246,11 @@ def inregistrare_copil(request):
     if request.method == "POST":
         form = CopilForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            Copil.objects.create(
+                user=user,
+                nume=user.username,
+            )
             return redirect('my_app:autentificate_copil')
         else:
             messages.warning(request, "Parola este prea scurta! Pentru a va imbunatatii parola folositi minim 8 caractere, numere si semne de punctuatie!")
@@ -265,6 +295,71 @@ def posteaza_anunt_copil(request):
         'date_posted':date_posted,
     }
     return render(request, "my_app/posteaza_anunt_copil.html", context)
+
+################################################
+######################CHAT######################
+################################################
+
+@login_required
+def cautare_user(request):
+    date_posted = datetime.datetime.now().year
+    if request.method == "POST":
+        name = request.POST.get("name")
+        lookup = (Q(username__icontains = name))
+        model = User.objects.filter(lookup)
+        return render(request, "my_app/cautare_user.html", {'date_posted':date_posted, 'model':model})
+    else:
+        return render(request, "my_app/cautare_user.html", {'date_posted':date_posted})
+
+@login_required
+def video_room(request):
+    date_posted = datetime.datetime.now().year
+    context = {
+        'date_posted':date_posted,
+    }
+    return render(request, "my_app/video_room.html", context)
+
+@csrf_exempt
+def message_list(request, sender=None, receiver=None):
+    """
+    List all required messages, or create a new message.
+    """
+    if request.method == 'GET':
+        messages = Mesaj_Copil.objects.filter(sender_id=sender, receiver_id=receiver, is_read=False)
+        serializer = MessageSerializer(messages, many=True, context={'request': request})
+        for message in messages:
+            message.is_read = True
+            message.save()
+        return JsonResponse(serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = MessageSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201)
+        return JsonResponse(serializer.errors, status=400)
+
+def chat_view(request):
+    date_posted = datetime.datetime.now().year
+    if not request.user.is_authenticated:
+        return redirect('my_app/base')
+    if request.method == "GET":
+        return render(request, 'my_app/chat_copil.html',
+                      {'users': User.objects.exclude(username=request.user.username), 'date_posted':date_posted})
+
+
+def message_view(request, sender, receiver):
+    date_posted = datetime.datetime.now().year
+    if not request.user.is_authenticated:
+        return redirect('my_app/base')
+    if request.method == "GET":
+        return render(request, "my_app/mesaj_copil.html",
+                      {'users': User.objects.exclude(username=request.user.username),
+                       'receiver': User.objects.get(id=receiver),
+                       'messages': Mesaj_Copil.objects.filter(sender_id=sender, receiver_id=receiver) |
+                                   Mesaj_Copil.objects.filter(sender_id=receiver, receiver_id=sender),
+                        'date_posted':date_posted})
 
 #################CATEGORII#######################
 
@@ -926,8 +1021,12 @@ def inregistrare_adult(request):
     if request.method == "POST":
         form = AdultForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('my_app:autentificate_adult')
+            user = form.save()
+            Adult.objects.create(
+                user=user,
+                nume=user.username,
+            )
+            return redirect("my_app:autentificate_adult")
         else:
             messages.warning(request, "Parola este prea scurta! Pentru a va imbunatatii parola folositi minim 8 caractere, numere si semne de punctuatie!")
     return render(request, "my_app/inregistrare_adult.html", {"form":form, "date_posted":date_posted})
@@ -988,21 +1087,23 @@ def anunturi_favorite_d(request):
     return render(request, "my_app/anunturi_favorite_d.html", context)
 
 @login_required
-def actualizeaza_date_adult(request, pk):
+def actualizeaza_date_adult(request):
     date_posted = datetime.datetime.now().year
-    model = User.objects.get(id=pk)
-    new_model = User()
+    model = request.user.adult
+    form = Adult_ReForm(instance=model)
     if request.method == "POST":
-        username = request.POST.get("username")
-        email = request.POST.get("email")
-        new_model = User(username=username, email=email)
-        new_model.save()
+        form = Adult_ReForm(request.POST, request.FILES, instance=model)
+        if form.is_valid():
+            form.save()
+        else:
+            form = Adult_ReForm()
     context = {
         'model':model,
-        'new_model':new_model,
+        'form':form,
         'date_posted':date_posted,
     }
     return render(request, "my_app/actualizeaza_date_adult.html", context)
+
 
 @login_required
 def schimb_parola_adult(request):

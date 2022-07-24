@@ -116,6 +116,11 @@ TIPUL_SERVICIULUI = (
     ('Video si animatii', 'Video si animatii'),
 )
 
+MONEDA = (
+    ('Euro', 'Euro'),
+    ('Lei', 'Lei'),
+)
+
 class AjutorSiContact(models.Model):
     nume = models.CharField(max_length=264)
     email = models.EmailField()
@@ -125,19 +130,19 @@ class AjutorSiContact(models.Model):
         return self.nume
 
 class Adult(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-    nume = models.CharField(max_length=264, null=True)
-    emailul = models.EmailField(null=True)
-    parola = models.CharField(max_length=264, null=True)
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    nume = models.CharField(max_length=264, null=True, blank=False)
+    email = models.EmailField(null=True, blank=False)
+    profile_pic = models.ImageField(null=True, blank=False, default="user2.png")
 
     def __str__(self):
         return self.nume
 
 class Copil(models.Model):
-    nume = models.CharField(max_length=264, null=True)
-    prenume = models.CharField(max_length=264, null=True)
-    email = models.EmailField(null=True)
-    parola = models.CharField(max_length=264, null=True)
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    nume = models.CharField(max_length=264, null=True, blank=False)
+    email = models.EmailField(null=True, blank=False)
+    profile_pic = models.ImageField(null=True, blank=True, default="user2.png")
 
     def __str__(self):
         return self.nume
@@ -150,13 +155,14 @@ class AnuntCopil(models.Model):
     telefon = models.PositiveIntegerField()
     email = models.EmailField()
     pret = models.FloatField(null=True, blank=True)
-    moneda = models.CharField(max_length=264,null=True, blank=True)
+    moneda = models.CharField(max_length=264,null=True, blank=True, choices=MONEDA)
     imagine = models.ImageField(null=True, blank=True, upload_to="images/")
     imagine2 = models.ImageField(null=True, blank=True, upload_to="images/")
     imagine3 = models.ImageField(null=True, blank=True, upload_to="images/")
     imagine4 = models.ImageField(null=True, blank=True, upload_to="images/")
     imagine5 = models.ImageField(null=True, blank=True, upload_to="images/")
     imagine6 = models.ImageField(null=True, blank=True, upload_to="images/")
+    favorite = models.ManyToManyField(User, related_name="favorite", blank=True)
     localizare = models.CharField(max_length=264, choices=JUDETE)
 
     def __str__(self):
@@ -314,5 +320,18 @@ class CommentAdult(models.Model):
 
     def __str__(self):
         return self.nume
+
+class Mesaj_Copil(models.Model):
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sender')
+    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='receiver')
+    message = models.CharField(max_length=1200)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    is_read = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.message
+
+    class Meta:
+        ordering = ('timestamp',)
 
 # Create your models here.
