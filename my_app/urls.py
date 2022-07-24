@@ -160,7 +160,4 @@ urlpatterns = [
     url(r'^specificatii_sport/$', views.specificatii_sport, name="specificatii_sport"),
 
     #################CHAT####################
-    url(r'^chat_adult/$', views.chat_adult, name="chat_adult"),
-    url(r'^pag_chat_adult/(?P<pk>\d+)/$', views.pag_chat_adult, name="pag_chat_adult"),
-
 ]

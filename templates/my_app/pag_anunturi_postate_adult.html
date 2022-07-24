@@ -179,44 +179,20 @@
             {% endfor %}
             <br>
             {% if user.is_authenticated %}
-            <form method="POST" class="form-group" action="{% url 'my_app:chat_adult' %}">
+            <form method="POST" action="" class="form-group">
                 {% csrf_token %}
-                <input type="text" name="post" id="post1" class="form-control" value="" hidden>
-                <div class="row">
-                    <div class="col-lg-6 col-md-4 col-sm-6">
-                        <label for="nume">Nume:</label>
-                        <input type="text" placeholder="Numele tau" class="form-control" autocomplete="off" name="nume" required>
-                    </div>
-                    <div class="col-lg-6 col-md-4 col-sm-6">
-                        <label for="prenume">Prenume:</label>
-                        <input type="text" placeholder="Prenumele tau" class="form-control" autocomplete="off" name="prenume" required>
-                    </div>
-                </div>
-                <br>
                 <label for="mesaj">Mesaj:</label>
-                <textarea class="form-control" name="comment" placeholder="Mesajul tau..." rows="10" required></textarea>
+                <textarea class="form-control" placeholder="Trimite un mesaj vanzatorului..." rows="10" cols="8" required></textarea>
                 <br>
-                <input type="submit" class="btn btn-outline-info btn-block" value="Trimite">
+                <a href="{% url 'my_app:chats' %}" class="btn btn-outline-info btn-block">Trimite</a>
             </form>
             {% else %}
-            <form method="POST" class="form-group" action="">
+            <form method="POST" action="" class="form-group">
                 {% csrf_token %}
-                <input type="text" name="post" id="post1" class="form-control" value="" hidden>
-                <div class="row">
-                    <div class="col-lg-6 col-md-4 col-sm-6">
-                        <label for="nume">Nume:</label>
-                        <input type="text" placeholder="Numele tau" class="form-control" autocomplete="off" name="nume" required>
-                    </div>
-                    <div class="col-lg-6 col-md-4 col-sm-6">
-                        <label for="prenume">Prenume:</label>
-                        <input type="text" placeholder="Prenumele tau" class="form-control" autocomplete="off" name="prenume" required>
-                    </div>
-                </div>
-                <br>
                 <label for="mesaj">Mesaj:</label>
-                <textarea class="form-control" name="comment" placeholder="Mesajul tau..." rows="10" required></textarea>
+                <textarea class="form-control" placeholder="Trimite un mesaj vanzatorului..." rows="10" cols="8" required></textarea>
                 <br>
-                <input type="submit" class="btn btn-outline-info btn-block" value="Trimite" disabled>
+                <a href="{% url 'my_app:pag_anunturi_postate_adult' %}" class="btn btn-outline-info btn-block">Trimite</a>
             </form>
             {% endif %}
         </div>

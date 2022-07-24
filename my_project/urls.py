@@ -139,19 +139,4 @@ urlpatterns = [
     url(r'^vaslui1/$', views.judet_vaslui_adult, name="judet_vaslui_adult"),
     url(r'^vrancea1/$', views.judet_vrancea_adult, name="judet_vrancea_adult"),
 
-    ##############CHAT##############
-
-    path('conversatii_adult_m/', views.conversatii_adult_m, name='conversatii_adult_m'),
-    path('<str:room>/', views.room, name='room_m'),
-    path('checkview', views.checkview, name='checkview'),
-    path('send', views.send, name='send'),
-    path('getMessages/<str:room>/', views.getMessages, name='getMessages'),
-
-    url(r'^conversatii_adult_v/$', views.lobby, name="lobby"),
-    url(r'^room_video/$', views.room_video, name="room_video"),
-    url(r'^get_token/$', views.getToken),
-    url(r'^create_member/$', views.createMember),
-    url(r'^get_member/$', views.getMember),
-    url(r'^delete_member/$', views.deleteMember),
-
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

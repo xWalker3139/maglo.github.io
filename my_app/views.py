@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import TIPUL_AFACERII, Adult, Copil, AnuntAdult, AnuntCopil, AjutorSiContact, CATEGORIE_COPIL, MesajCopil, JUDETE, MesajAdult, CATEGORIE_ADULT, SUBCATEGORIE_ADULT, Afacere, Serviciu, MesajAfaceri, MesajServiciu, Room, Message, RoomMember, CommentAdult, Mesaj_Copil
-from .forms import AdultForm, Adult_ReForm, Copil_ReForm, CopilForm, AnuntAdultForm, AnuntCopilForm, AjutorSiContactForm, MesajAdultForm, MesajCopilForm, AfacereForm, ServiciuForm, MesajAfaceriForm, MesajServiciuForm, CommentAdultForm
+from .models import TIPUL_AFACERII, Adult, Copil, AnuntAdult, AnuntCopil, AjutorSiContact, CATEGORIE_COPIL, MesajCopil, JUDETE, CATEGORIE_ADULT, SUBCATEGORIE_ADULT, Afacere, Serviciu, MesajAfaceri, MesajServiciu, Mesaj_Copil
+from .forms import AdultForm, Adult_ReForm, Copil_ReForm, CopilForm, AnuntAdultForm, AnuntCopilForm, AjutorSiContactForm, MesajCopilForm, AfacereForm, ServiciuForm, MesajAfaceriForm, MesajServiciuForm
 from django.views.generic import View
 from django.http import Http404, HttpResponseRedirect, HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
@@ -1318,14 +1318,6 @@ def pag_anunturi_postate_adult(request, pk):
     favorit_id = False
     if anunt.favorit.filter(id=request.user.id).exists():
         favorit_id = True
-    if request.method == "POST":
-        post = AnuntAdult.objects.get(id=pk)
-        nume = request.POST.get("nume")
-        prenume = request.POST.get("prenume")
-        comment = request.POST.get("comment")
-        new_model = CommentAdult(post=post, nume=nume, prenume=prenume, comment=comment)
-        new_model.save()
-        return render(request, "my_app/pag_anunturi_postate_adult.html", {'new_model':new_model, 'date_posted':date_posted, 'model':model, 'favorit_id':favorit_id, 'anunt':anunt})
     context = {
         'date_posted':date_posted,
         'model':model,
@@ -1333,32 +1325,6 @@ def pag_anunturi_postate_adult(request, pk):
         'favorit_id':favorit_id,
     }
     return render(request, "my_app/pag_anunturi_postate_adult.html", context)
-
-def chat_adult(request):
-    date_posted = datetime.datetime.now().year
-    model = CommentAdult.objects.all()
-    context = {
-        'model':model,
-        'date_posted':date_posted,
-    }
-    return render(request, "my_app/chat_adult.html", context)
-
-def pag_chat_adult(request, pk):
-    date_posted = datetime.datetime.now().year
-    model = CommentAdult.objects.get(id=pk)
-    new_model = CommentAdult.objects.all()
-    if request.method == "POST":
-        comment = request.POST.get("comment")
-        new_model = CommentAdult(comment=comment)
-        new_model.save()
-    context = {
-        'date_posted':date_posted,
-        'model':model,
-        'new_model':new_model,
-    }
-    return render(request, "my_app/pag_chat_adult.html", context)
-
-
 
 def cautare_anunt(request):
     model = AnuntAdult.objects.all()
@@ -3173,103 +3139,5 @@ def pag_servicii(request, pk):
         'form':form,
     }
     return render(request, "my_app/pag_servicii.html", context)
-
-#################CHAT################
-
-def conversatii_adult_m(request):
-    date_posted = datetime.datetime.now().year
-    context = {
-        'date_posted':date_posted
-    }
-    return render(request, "my_app/conversatii_adult_m.html", context)
-
-def room(request, room):
-    username = request.GET.get('username')
-    room_details = Room.objects.get(name_room=room)
-    return render(request, 'my_app/room_m.html', {
-        'username': username,
-        'room': room,
-        'room_details': room_details
-    })
-
-def checkview(request):
-    room = request.POST.get('room_name')
-    username = request.POST.get('username')
-
-    if Room.objects.filter(name_room=room).exists():
-        return redirect('/'+room+'/?username='+username)
-    else:
-        new_room = Room.objects.create(name_room=room)
-        new_room.save()
-        return redirect('/'+room+'/?username='+username)
-
-def send(request):
-    message = request.POST['message']
-    username = request.POST['username']
-    room_id = request.POST['room_id']
-
-    new_message = Message.objects.create(value=message, user=username, room=room_id)
-    new_message.save()
-    return HttpResponse('Message sent successfully')
-
-def getMessages(request, room):
-    room_detail = Room.objects.get(name_room=room)
-
-    messages = Message.objects.filter(room=room_detail.id)
-    return JsonResponse({"messages":list(messages.values())})
-
-def getToken(request):
-    appId = "6d5386bc336e46b49dd2afc9bd3aa4a4"
-    appCertificate = "d74d8f50f5c449f5b3fadbe70200b086"
-    channelName = request.GET.get('channel')
-    uid = random.randint(1, 230)
-    expirationTimeInSeconds = 3600
-    currentTimeStamp = int(time.time())
-    privilegeExpiredTs = currentTimeStamp + expirationTimeInSeconds
-    role = 1
-
-    token = RtcTokenBuilder.buildTokenWithUid(appId, appCertificate, channelName, uid, role, privilegeExpiredTs)
-
-    return JsonResponse({'token': token, 'uid': uid}, safe=False)
-
-def lobby(request):
-    return render(request, "my_app/conversatii_adult_v.html")
-
-def room_video(request):
-    return render(request, "my_app/room_video.html")
-
-@csrf_exempt
-def createMember(request):
-    data = json.loads(request.body)
-    member, created = RoomMember.objects.get_or_create(
-        name=data['name'],
-        uid=data['UID'],
-        room_name=data['room_name']
-    )
-
-    return JsonResponse({'name':data['name']}, safe=False)
-
-
-def getMember(request):
-    uid = request.GET.get('UID')
-    room_name = request.GET.get('room_name')
-
-    member = RoomMember.objects.get(
-        uid=uid,
-        room_name=room_name,
-    )
-    name = member.name
-    return JsonResponse({'name':member.name}, safe=False)
-
-@csrf_exempt
-def deleteMember(request):
-    data = json.loads(request.body)
-    member = RoomMember.objects.get(
-        name=data['name'],
-        uid=data['UID'],
-        room_name=data['room_name']
-    )
-    member.delete()
-    return JsonResponse('Member deleted', safe=False)
 
 # Create your views here.

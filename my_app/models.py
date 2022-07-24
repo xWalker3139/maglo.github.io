@@ -294,33 +294,6 @@ class MesajServiciu(models.Model):
     def __str__(self):
         return self.nume
 
-class Room(models.Model):
-    name_room = models.CharField(max_length=1000)
-    
-class Message(models.Model):
-    value = models.CharField(max_length=1000000)
-    date = models.DateTimeField(default=datetime.now, blank=True)
-    user = models.CharField(max_length=1000000)
-    room = models.CharField(max_length=1000000)
-
-class RoomMember(models.Model):
-    name = models.CharField(max_length=200)
-    uid = models.CharField(max_length=1000)
-    room_name = models.CharField(max_length=200)
-    insession = models.BooleanField(default=True)
-
-    def __str__(self):
-        return self.name
-
-class CommentAdult(models.Model):
-    post = models.ForeignKey(AnuntAdult, on_delete=models.CASCADE)
-    nume = models.CharField(max_length=264, null=True, blank=False)
-    prenume = models.CharField(max_length=264, null=True, blank=False)
-    comment = models.TextField(max_length=100000, null=True, blank=False)
-
-    def __str__(self):
-        return self.nume
-
 class Mesaj_Copil(models.Model):
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sender')
     receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='receiver')

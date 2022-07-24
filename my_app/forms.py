@@ -1,5 +1,5 @@
 from django import forms
-from .models import Adult, Copil, AnuntAdult, AnuntCopil, AjutorSiContact, MesajCopil, MesajAdult, Afacere, Serviciu, MesajAfaceri, MesajServiciu, CommentAdult
+from .models import Adult, Copil, AnuntAdult, AnuntCopil, AjutorSiContact, MesajCopil, MesajAdult, Afacere, Serviciu, MesajAfaceri, MesajServiciu
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -147,14 +147,3 @@ class MesajServiciuForm(forms.ModelForm):
             'mesaj':forms.Textarea(attrs={'class':'form-control', 'placeholder':'Mesaj', 'name':'mesaj6'}),
         }
 
-
-class CommentAdultForm(forms.ModelForm):
-    class Meta:
-        model = CommentAdult
-        fields = ('post', 'nume', 'prenume', 'comment')
-        widgets = {
-            'post':forms.TextInput(attrs={'class':'form-control', 'type':'hidden', 'value':'', 'id':'post1'}),
-            'nume':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Nume'}),
-            'prenume':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Prenume'}),
-            'comment':forms.Textarea(attrs={'class':'form-control', 'placeholder':'Mesajul tau...'}),
-        }
