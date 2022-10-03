@@ -133,7 +133,7 @@ class Adult(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     nume = models.CharField(max_length=264, null=True, blank=False)
     email = models.EmailField(null=True, blank=False)
-    profile_pic = models.ImageField(null=True, blank=False, default="user2.png")
+    profile_pic = models.ImageField(null=True, blank=False, default="profile_pic.png")
 
     def __str__(self):
         return self.nume
@@ -142,7 +142,7 @@ class Copil(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     nume = models.CharField(max_length=264, null=True, blank=False)
     email = models.EmailField(null=True, blank=False)
-    profile_pic = models.ImageField(null=True, blank=True, default="user2.png")
+    profile_pic = models.ImageField(null=True, blank=True, default="profile_pic.png")
 
     def __str__(self):
         return self.nume
