@@ -215,11 +215,85 @@
           padding-bottom: 14px;
           padding-top: 14px;
         }
+        .banner2{
+          width: 100%;
+          height: 90vh;
+          background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url('https://images.unsplash.com/photo-1657664072470-99b02c2143f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8OHx8cGVvcGxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60');
+          background-position: center;
+          background-size: cover;
+        }
+        .header4{
+          font-family: 'Montserrat', sans-serif;
+          font-weight: bolder;
+          font-size: 52px;
+          color: #fff;
+        }
+        .param4{
+          font-family: 'Montserrat', sans-serif;
+          font-weight: bolder;
+          font-size: 17px;
+          color: #fff;
+        }
+        #jumbotron2{
+          font-family: 'Montserrat', sans-serif;
+          font-weight: bolder;
+          margin-top: 11rem;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          background-color: #fff;
+        }
+        #button11{
+          font-family: 'Montserrat', sans-serif;
+          font-weight: bolder;
+          text-align: center;
+          width: 100%;
+          background-color: #28a6fa;
+          color: #fff;
+          border-color: #28a6fa;
+          border-radius: 20px;
+          padding-top: 12px;
+          padding-bottom: 12px;
+          margin-top: 22px;
+          transition: 0.3 ease-in-out;
+        }
+        #button11:hover{
+          background-color: #1090e6;
+        }
+        #card1{
+          font-family: 'Montserrat', sans-serif;
+          font-weight: bolder;
+          transition: 0.3 ease-in-out;
+          width: 21rem;
+          margin: 10px;
+        }
+        #card1:hover{
+          box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+        }
+        .header5{
+          font-family: 'Montserrat', sans-serif;
+          font-weight: bolder;
+          font-size: 42px;
+          text-align: center;
+          margin-top: 3rem;
+        }
+        @media (max-width: 900px){
+          .banner2{
+            width: 100%;
+            height: 100%;
+          }
+          #jumbotron2{
+            margin-top: 4rem;
+          }
+          #card1{
+            width: 100%;
+          }
+        }
     </style>
 </head>
 <!-- 06ff00 -->
 <!-- ffe400 -->
-<body>
+<body style="background-color: aliceblue;">
     <nav class="navbar navbar-expand-md navbar-light sticky-top" id="navbar">
         <!-- Brand -->
       
@@ -248,210 +322,212 @@
           </ul>
         </div>
     </nav>
-    {% block body_block %}
-    <div class="banner">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 col-md-4 col-sm-6">
-              <h1 style="margin-top: 15rem;color: black;font-size: 60px;font-family: 'Montserrat', sans-serif;"><strong>Esti adult sau</strong></h1>
-              <h1 style="color: black;font-size: 60px;font-family: 'Montserrat', sans-serif;"><strong>esti copil?</strong></h1>
-              <br>
-              <p style="font-family: 'Montserrat', sans-serif;color: aliceblue;font-size: 22px;color: black;">
-                <strong>Copil,parinte sau bunic,
-                  <br>
-                  pe Maglo faci un schimb rapid!</strong>
-              </p>
-              <div class="row">
-                <div class="col-lg-6 col-md-4 col-sm-6">
-                  <a href="#" class="btn btn-secondary btn-lg btn-block" style="margin-top: 20px;margin-bottom: 30px;">
-                    <div class="row">
-                      <div class="col-lg-2 col-md-4 col-sm-6">
-                        <i class="fab fa-apple" id="icon1"></i>
-                      </div>
-                      <div class="col-lg-8 col-md-4 col-sm-6">
-                        <p style="margin: 0;">valabil si pe</p>
-                        <p style="margin: 0;">App Store</p>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-lg-6 col-md-4 col-sm-6">
-                  <a href="#" class="btn btn-primary btn-lg btn-block" style="margin-top: 20px;margin-bottom: 30px;">
-                    <div class="row">
-                      <div class="col-lg-2 col-md-4 col-sm-6">
-                        <i class="fab fa-google-play" id="icon1"></i>
-                      </div>
-                      <div class="col-lg-8 col-md-4 col-sm-6">
-                        <p style="margin: 0;">valabil si pe</p>
-                        <p style="margin: 0;padding-left: 10px;">Magazin Play</p>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-4 col-sm-6">
-              <!-- <img src="{% static 'images/imagine.jpeg' %}" id="image1"> -->
-              <img src="http://shtheme.org/demosd/snowlake/wp-content/uploads/2020/07/concept23@2x-1.png" id="image1">
-            </div>
-          </div>
-        </div>
-        <img src="https://shtheme.org/demosd/snowlake/wp-content/uploads/2020/07/rocket1-1.png" style="width: 100%;">
-        <div class="toast" data-autohide="false" style="max-width: 100%;" data-dismiss="toast">
-          <div class="jumbotron fixed-bottom" style="margin-bottom: 0;">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-10 col-md-4 col-sm-6">
-                  <p style="font-family: 'Montserrat', sans-serif;font-weight: bolder;font-size: 24px;">Noua ne pasa ca datele tale sa fie confidentiale</p>
-                  <br>
-                  <p style="font-family: 'Montserrat', sans-serif;font-weight: bolder;font-size: 15px;">
-                    Autoritatea are ca principal obiectiv apărarea drepturilor şi libertăţilor fundamentale ale persoanelor fizice, în special a dreptului la viaţă intimă, familială şi privată în legătură cu prelucrarea datelor cu caracter personal şi libera circulaţie a acestor date. Acest drept are un conţinut complex, de mare importanţă pentru libertatea şi personalitatea cetăţeanului.Legalitatea prelucrărilor de date cu caracter personal care cad sub incidenţa Regulamentului și a legislației de transpunere a Directivei este monitorizată şi controlată de Autoritatea de supraveghere.
-                  </p>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                  <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" style="margin-top: 20px;margin-bottom: 40px;">Accept &times;</button>
-                </div>
-              </div>
-            </div>
-            <br>
-          </div>
-        </div>
-    </div>
-    <div class="container">
-        <!-- <div class="bg">
-            <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6" id="col1">
-                    <div class="new_bg">
-                        <i class="far fa-clock"></i>
-                    </div>
-                    <p id="p1" style="margin-bottom: 0;"><strong>Salveaza-ti timpul</strong></p>
-                    <p id="p1" style="margin-top: 0;margin-left: 50px;"><strong>si banii</strong></p>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="new_bg">
-                        <i class="fas fa-key"></i>
-                    </div>
-                    <p id="p1"><strong>Complet securizat</strong></p>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="new_bg">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <p id="p1" style="margin-bottom: 0;margin-left: 20px;"><strong>Comunicare</strong></p>
-                    <p id="p1" style="margin-left: 40px;margin-top: 0;"><strong>globala</strong></p>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="new_bg">
-                        <i style="position: relative;left: 32%;" class="far fa-eye"></i>
-                    </div>
-                    <p id="p1"><strong>Viziunea noastra</strong></p>
-                </div>
-            </div>
-        </div> -->
-        <div class="my_bg2">
-          <h1 class="my_header">Beneficii</h1>
-          <hr id="hr1">
-        </div>
+    <div class="banner2">
+      <div class="container">
         <div class="row">
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="card" id="card3">
-              <i class="far fa-clock" id="my_icon1"></i>
-              <p class="my_header2" style="font-size: 20px;">Salveaza-ti timpul si banii</p>
-              <p class="param1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, fugiat</p>
-            </div>
+          <div class="col-lg-6 col-md-4 col-sm-6">
+            <p class="header4" style="margin-top: 13rem;margin-bottom: 0;">Esti adult sau</p>
+            <p class="header4">esti copil?</p>
+            <p class="param4">Pe Maglo te bucuri mereu de libertatea de a alege.</p>
+            <p class="param4">Toate anunturile noastre sunt gratuite!</p>
           </div>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="card" id="card3">
-              <i class="fas fa-key" id="my_icon1"></i>
-              <p class="my_header2">Complet securizat</p>
-              <p class="param1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, fugiat</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="card" id="card3">
-              <i class="fas fa-globe" id="my_icon1"></i>
-              <p class="my_header2">Comunicare globala</p>
-              <p class="param1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, fugiat</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="card" id="card3">
-              <i class="fas fa-headphones" id="my_icon1"></i>
-              <p class="my_header2">Support</p>
-              <p class="param1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, fugiat</p>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-lg-5 col-md-4 col-sm-6">
-                <img src="https://preview.codeless.co/specular/default/wp-content/uploads/2014/05/wall-460x275.jpg" style="width: 100%; height: 40vh;">
-            </div>
-            <div class="col-lg-7 col-md-4 col-sm-6">
-                <h2 style="font-family: 'Montserrat', sans-serif;margin-bottom: 30px;margin-top: 13px;"><strong>Noi ajutam afaceri ambitoase pentru atingerea succesului</strong></h2>
-                <p style="font-family: 'Montserrat', sans-serif;font-size: 20px;">Internetul iti ofera puterea de a targeta orice potential client din lume. Poti gasi acesti clienti din orice tara.</p>
-            </div>
-        </div>
-    </div>
-    <div class="jumbotron" style="background-color: #28a6fa;margin-top: 30px;padding-top: 45px;padding-bottom: 45px;margin-bottom: 70px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9 col-md-4 col-sm-6">
-                    <h3 style="font-family: 'Montserrat', sans-serif;color: #fff;"><strong>Scaleaza-ti afacerea folosind tehnologia noastra</strong></h3>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6" style="margin-top: 13px;">
-                    <a class="button1" href="{% url 'my_app:afaceri_servicii' %}"><strong>Vezi mai multe</strong></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-7 col-md-4 col-sm-6">
-                <h2 style="font-family: 'Montserrat', sans-serif;margin-bottom: 40px;"><strong>Disponibil pentru orice device</strong></h2>
-                <p style="font-family: 'Montserrat', sans-serif;margin-bottom: 20px;font-size: 18px;">Cu Maglo esti mereu aproape de ceea ce cauti.
-                    Fie ca folosesti smartphone-ul,tableta sau laptop-ul,experienta de utilizare este la fel de simpla.</p>
-            </div>
-            <div class="col-lg-5 col-md-4 col-sm-6">
-                <img src="https://www.swaytheme.com/static/wp-content/uploads/sites/3/2020/08/seo-agency2.png" style="width: 100%;height: 40vh;">
-            </div>
-        </div>
-    </div>
-    <hr style="margin-top: 80px;margin-bottom: 80px;">
-    <div class="new_banner">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 col-md-4 col-sm-6">
-              <img src="https://www.swaytheme.com/static/wp-content/uploads/sites/3/2020/08/seo-agency3.png" id="image2">
-            </div>
-            <div class="col-lg-6 col-md-4 col-sm-6">
-              <h2><strong>Vă economisim timpul și banii</strong></h2>
-              <p style="padding-top: 30px;padding-bottom: 30px;font-size: 18px;">De asemenea, oamenii iubesc aplicația noastră pentru aceste funcții minunate și eficiente care oferă utilizatorului o libertate completă.</p>
-              <span>
+          <div class="col-lg-6 col-md-4 col-sm-6">
+            <div class="jumbotron" id="jumbotron2">
+              <form class="form-group" method="POST" action="">
+                {% csrf_token %}
+                <label for="categorii" style="margin-top: 12px;">Categorii:</label>
+                <select class="form-control" name="cautat">
+                  <option selected disabled>------------</option>
+                  <option selected disabled><strong>Copii</strong></option>
+                  <option selected disabled>------------</option>
+                  <option>Carti</option>
+                  <option>Jucării</option>
+                  <option>Haine</option>
+                  <option>Articole sportive</option>
+                  <option>Schimburi</option>
+                  <option selected disabled>------------</option>
+                  <option selected disabled><strong>Adulti</strong></option>
+                  <option selected disabled>------------</option>
+                  <option>Auto, moto si ambarcatiuni</option>
+                  <option>Piese auto</option>
+                  <option>Agro si Industrie</option>
+                  <option>Imobiliare</option>
+                  <option>Moda si frumusete</option>
+                  <option>Electronice si Electrocasnice</option>
+                  <option>Animale de companie</option>
+                  <option>Locuri de munca</option>
+                  <option>Sport, timp liber si Hobby</option>
+                  <option>Mici intrepinzatori autohtoni</option>
+                  <option selected disabled>------------</option>
+                  <option selected disabled><strong>Afaceri</strong></option>
+                  <option selected disabled>------------</option>
+                  <option>Cabinet medical</option>
+                  <option>Cabinet psihologic</option>
+                  <option>Cafenea</option>
+                  <option>Cofetarie</option>
+                  <option>Constructii</option>
+                  <option>Frizerii</option>
+                  <option>Hotel</option>
+                  <option>Fast-Food-uri</option>
+                  <option>Restaurant</option>
+                  <option>Saloane de coafura</option>
+                  <option>Service Auto</option>
+                  <option selected disabled>------------</option>
+                  <option selected disabled><strong>Servicii</strong></option>
+                  <option selected disabled>------------</option>
+                  <option>Contabilitate</option>
+                  <option>Consultanta</option>
+                  <option>Digital Marketing</option>
+                  <option>Grafic si Design</option>
+                  <option>Meditatii</option>
+                  <option>Programare si tehnologie</option>
+                  <option>Video si animatii</option>
+                </select>
+                <label for="judet" style="margin-top: 12px;">Judet:</label>
+                <select class="form-control">
+                  <option selected disabled>------------</option>
+                  <option>Alba</option>
+                  <option>Arad</option>
+                  <option>Arges</option>
+                  <option>Bacau</option>
+                  <option>Bihor</option>
+                  <option>Bistrita-Nasaud</option>
+                  <option>Botosani</option>
+                  <option>Braila</option>
+                  <option>Brasov</option>
+                  <option>Buzau</option>
+                  <option>Calarasi</option>
+                  <option>Caras-Severin</option>
+                  <option>Cluj</option>
+                  <option>Constanta</option>
+                  <option>Covasna</option>
+                  <option>Dambovita</option>
+                  <option>Dolj</option>
+                  <option>Galati</option>
+                  <option>Giurgiu</option>
+                  <option>Gorj</option>
+                  <option>Harghita</option>
+                  <option>Hunedoara</option>
+                  <option>Ialomita</option>
+                  <option>Iasi</option>
+                  <option>Ilfov</option>
+                  <option>Maramures</option>
+                  <option>Mehedinti</option>
+                  <option>Mures</option>
+                  <option>Neamt</option>
+                  <option>Olt</option>
+                  <option>Prahova</option>
+                  <option>Salaj</option>
+                  <option>Satu Mare</option>
+                  <option>Sibiu</option>
+                  <option>Suceava</option>
+                  <option>Teleorman</option>
+                  <option>Timis</option>
+                  <option>Tulcea</option>
+                  <option>Valcea</option>
+                  <option>Vaslui</option>
+                  <option>Vrancea</option>
+                </select>
                 <div class="row">
-                  <div class="col-lg-1 col-md-4 col-sm-6">
-                    <i class="far fa-gem" style="font-size: 22px;color: #28a6fa;"></i>
+                  <div class="col-lg-6 col-md-4 col-sm-6">
+                    <label for="minim" style="margin-top: 12px;">Pret:</label>
+                    <input type="number" class="form-control" placeholder="De la" required>
                   </div>
-                  <div class="col-lg-8 col-md-4 col-sm-6">
-                    <p style="font-size: 22px;margin-bottom: 12px;"><strong>Flexibilitatea de care ai nevoie</strong></p>
+                  <div class="col-lg-6 col-md-4 col-sm-6">
+                    <input type="number" class="form-control" style="margin-top: 42px;" placeholder="Pana la" required >
                   </div>
-                </div>
-                <p style="padding-top: 0;padding-left: 40px;font-size: 18px;">Sarcinile de lucru grele sunt dăunătoare și avem grijă de el, astfel încât să nu fie nevoie să o faceți.</p>
-                <br>
-                <div class="row">
-                  <div class="col-lg-1 col-md-4 col-sm-6">
-                    <i class="far fa-money-bill-alt" style="font-size: 22px;color: #28a6fa;"></i>
-                  </div>
-                  <div class="col-lg-8 col-md-4 col-sm-6">
-                    <p style="font-size: 22px;"><strong>Salveaza-ti banii</strong></p>
-                  </div>
-                </div>
-                <p style="padding-left: 40px;padding-top: 0;font-size: 18px;">Ajutându-vă să vă automatizați plățile, vă ajutăm să economisiți timp prețios.</p>
-              </span>
+                </div>  
+                <button type="submit" id="button11">Cauta acum</button>
+              </form>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="banner3">
+      <div class="container">
+        <p class="header5">Anunturi postate</p>
+        <hr style="margin-left: 420px;margin-right: 420px;">
+        <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 1rem;margin-bottom: 1rem;">Anunturi adulti: {{ model1.count }}</h2>
+        <br>
+        <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+        {% for i in model1|slice:":6" %}
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="card" id="card1">
+              <img class="card-img-top" src="{{ i.imagine.url }}" style="width: 100%;height: 30vh;">
+              <div class="card-body">
+                <h4 class="card-title">{{i.numele_anuntului}}</h4>
+                <hr>
+                <p class="card-text">Categorie: {{i.categorie_adult}}</p>
+                <p class="card-text">Judet: {{i.localizare}}</p>
+                <a href="{% url 'my_app:pag_anunturi_postate' pk=i.pk %}" class="btn btn-primary">Vezi detalii</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        <br>
+        <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 1rem;margin-bottom: 1rem;">Anunturi copii: {{ model2.count }}</h2>
+        <br>
+        <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+        {% for i in model2|slice:":6" %}
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="card" id="card1">
+              <img class="card-img-top" src="{{ i.imagine.url }}" style="width: 100%;height: 30vh;">
+              <div class="card-body">
+                <h4 class="card-title">{{i.numele_anuntului}}</h4>
+                <hr>
+                <p class="card-text">Categorie: {{i.categorie_copil}}</p>
+                <p class="card-text">Judet: {{i.localizare}}</p>
+                <a href="{% url 'my_app:pag_anunturi_postate' pk=i.pk %}" class="btn btn-primary">Vezi detalii</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 1rem;margin-bottom: 1rem;">Anunturi copii: {{ model3.count }}</h2>
+        <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+        {% for i in model3|slice:":6" %}
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="card" id="card1">
+              <img class="card-img-top" src="{{ i.imagine.url }}" style="width: 100%;height: 30vh;">
+              <div class="card-body">
+                <h4 class="card-title">{{i.numele_firmei}}</h4>
+                <hr>
+                <p class="card-text">Categorie: {{i.tipul_afacerii}}</p>
+                <p class="card-text">Judet: {{i.judet}}</p>
+                <a href="{% url 'my_app:pag_anunturi_postate' pk=i.pk %}" class="btn btn-primary">Vezi detalii</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 1rem;margin-bottom: 1rem;">Anunturi servicii: {{ model4.count }}</h2>
+        <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+        {% for i in model4|slice:":6" %}
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="card" id="card1">
+              <img class="card-img-top" src="{{ i.imagine.url }}" style="width: 100%;height: 30vh;">
+              <div class="card-body">
+                <h4 class="card-title">{{i.numele_serviciului}}</h4>
+                <hr>
+                <p class="card-text">Categorie: {{i.tipul_serviciului}}</p>
+                <p class="card-text">Judet: {{i.judet}}</p>
+                <a href="{% url 'my_app:pag_anunturi_postate' pk=i.pk %}" class="btn btn-primary">Vezi detalii</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        </div>
+        </div>
+      </div>
+    </div>
+    </div>
     <div class="jumbotron" style="background-color: #1F1D36;margin-bottom: 0px;margin-top: 70px;">
         <div class="container">
           <div class="row">
@@ -469,9 +545,9 @@
               <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Date de contact</h2>
               <br>
               <p id="anchor1">E-mail:</p>
-              <p id="anchor1">Date firma:</p>
-              <p id="anchor1">CUI:</p>
-              <p id="anchor1">Registrul comertului:</p>
+              <p id="anchor1">Date firma: PANAIT EURO S.R.L.</p>
+              <p id="anchor1">CUI: 46549431</p>
+              <p id="anchor1">Registrul comertului: J11/526/27.07.2022</p>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6">
               <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Urmareste-ne</h2>
@@ -488,7 +564,6 @@
             <p style="font-size: 22px;color: #fff;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
         </div>
     </div>
-    {% endblock %}
     <script>
       $(document).ready(function(){
         $('.toast').toast('show');

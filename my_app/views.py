@@ -29,7 +29,23 @@ import time
 class BaseView(View):
     def get(self, request):
         date_posted = datetime.datetime.now().year
-        return render(request, "my_app/base.html", {'date_posted':date_posted})
+        model1 = AnuntAdult.objects.all()
+        model2 = AnuntCopil.objects.all()
+        model3 = Afacere.objects.all()
+        model4 = Serviciu.objects.all()
+        context = {
+            'date_posted':date_posted,
+            'model1':model1,
+            'model2':model2,
+            'model3':model3,
+            'model4':model4,
+            'range':range(0, 3),
+        }
+        if request.method == "POST":
+            cautat = request.POST['cautat']
+            lookup = (Q(localizare__icontains = cautat) and Q(categorie_adult__icontains = cautat))
+            return render(request, "my_app/base.html", context)
+        return render(request, "my_app/base.html", context)
 
 class TermeniConditii(View):
     def get(self, request):
