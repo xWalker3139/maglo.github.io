@@ -25,27 +25,36 @@ import time
 ###############BAZA#####################
 ########################################
 
+def base(request):
+    date_posted = datetime.datetime.now().year
+    model1 = AnuntAdult.objects.all()
+    model2 = AnuntCopil.objects.all()
+    model3 = Afacere.objects.all()
+    model4 = Serviciu.objects.all()
+    if request.method == "POST":
+        cautat = request.POST['cautat']
+        lookup = (Q(localizare__icontains = cautat) and Q(categorie_adult__icontains = cautat))
+        model_cautat = AnuntAdult.objects.filter(lookup)
+        return render(request, "my_app/base.html", {'date_posted':date_posted, 'model1':model1, 'model2':model2, 'model3':model3, 'model4':model4, 'model_cautat':model_cautat})
+    else:
+        return render(request, "my_app/base.html", {'date_posted':date_posted, 'model1':model1, 'model2':model2, 'model3':model3, 'model4':model4})
 
-class BaseView(View):
-    def get(self, request):
-        date_posted = datetime.datetime.now().year
-        model1 = AnuntAdult.objects.all()
-        model2 = AnuntCopil.objects.all()
-        model3 = Afacere.objects.all()
-        model4 = Serviciu.objects.all()
-        context = {
-            'date_posted':date_posted,
-            'model1':model1,
-            'model2':model2,
-            'model3':model3,
-            'model4':model4,
-            'range':range(0, 3),
-        }
-        if request.method == "POST":
-            cautat = request.POST['cautat']
-            lookup = (Q(localizare__icontains = cautat) and Q(categorie_adult__icontains = cautat))
-            return render(request, "my_app/base.html", context)
-        return render(request, "my_app/base.html", context)
+def cautare_acasa(request):
+    date_posted = datetime.datetime.now()
+    if request.method == "POST":
+        cautat = request.POST['cautat']
+        lookup = (Q(localizare__icontains = cautat) and Q(categorie_adult__icontains = cautat) and Q(numele_anuntului__icontains = cautat))
+        lookup2 = (Q(localizare__icontains = cautat) and Q(categorie_copil__icontains = cautat) and Q(numele_anuntului__icontains = cautat))
+        lookup3 = (Q(judet__icontains = cautat) and Q(tipul_afacerii__icontains = cautat) and Q(numele_firmei__icontains = cautat))
+        lookup4 = (Q(judet__icontains = cautat) and Q(tipul_serviciului__icontains = cautat) and Q(numele_serviciului__icontains = cautat))
+        model_cautat = AnuntAdult.objects.filter(lookup)
+        model_cautat2 = AnuntCopil.objects.filter(lookup2)
+        model_cautat3 = Afacere.objects.filter(lookup3)
+        model_cautat4 = Serviciu.objects.filter(lookup4)
+        return render(request, "my_app/cautare_acasa.html", {'date_posted':date_posted, 'model_cautat':model_cautat, 'cautat':cautat, 'model_cautat2':model_cautat2, 'model_cautat3':model_cautat3, 'model_cautat4':model_cautat4})
+    else:
+        return render(request, "my_app/cautare_acasa.html", {'date_posted':date_posted})
+
 
 class TermeniConditii(View):
     def get(self, request):

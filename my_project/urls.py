@@ -25,7 +25,8 @@ from django.urls import path
 
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url(r'^acasa/$', views.BaseView.as_view(), name="acasa"),
+    url(r'^acasa/$', views.base, name="acasa"),
+    url(r'^cautare_anunt', views.cautare_acasa, name="cautare_acasa"),
     url(r'^my_app/', include("my_app.urls")),
     url(r'^anunturi_postate_copil/$', views.anunturi_postate_copil, name="anunturi_postate_copil"),
     url(r'^deconectare_copil/$', views.deconectare_copil, name="deconectare_copil"),
