@@ -115,7 +115,6 @@
                   <li data-target="#demo" data-slide-to="2"></li>
                   <li data-target="#demo" data-slide-to="3"></li>
                   <li data-target="#demo" data-slide-to="4"></li>
-                  <li data-target="#demo" data-slide-to="5"></li>
                 </ul>
               
                 <!-- The slideshow -->
@@ -124,19 +123,24 @@
                     <img src="{{ data.imagine.url }}" style="height: 50vh;">
                   </div>
                   <div class="carousel-item">
+                    {% if data.imagine2 %}
                     <img src="{{ data.imagine2.url }}" style="height: 50vh;">
+                    {% endif %}
                   </div>
                   <div class="carousel-item">
+                    {% if data.imagine3 %}
                     <img src="{{ data.imagine3.url }}" style="height: 50vh;">
+                    {% endif %}
                   </div>
                   <div class="carousel-item">
+                    {% if data.imagine4 %}
                     <img src="{{ data.imagine4.url }}" style="height: 50vh;">
+                    {% endif %}
                   </div>
                   <div class="carousel-item">
+                    {% if data.imagine5 %}
                     <img src="{{ data.imagine5.url }}" style="height: 50vh;">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="{{ data.imagine6.url }}" style="height: 50vh;">
+                    {% endif %}
                   </div>
                 </div>
                 <a class="carousel-control-prev" href="#demo" data-slide="prev">
@@ -179,12 +183,12 @@
             {% endfor %}
             <br>
             {% if user.is_authenticated %}
-            <form method="POST" action="" class="form-group">
+            <form method="POST" action="{% url 'my_app:chats' %}" class="form-group">
                 {% csrf_token %}
                 <label for="mesaj">Mesaj:</label>
                 <textarea class="form-control" placeholder="Trimite un mesaj vanzatorului..." rows="10" cols="8" required></textarea>
                 <br>
-                <a href="{% url 'my_app:chats' %}" class="btn btn-outline-info btn-block">Trimite</a>
+                <input type="submit" class="btn btn-outline-info btn-block" value="Trimite mesaj">
             </form>
             {% else %}
             <form method="POST" action="" class="form-group">
@@ -206,7 +210,7 @@
                         <div class="card-text">Email: {{i.email}}</div>
                     {% endfor %}
                     <br>
-                    <a href="#mesaj" class="btn btn-outline-success btn-block" style="margin-bottom: 10px;">Trimite mesaj</a>
+                    <a href="{% url 'my_app:chats' %}" class="btn btn-outline-success btn-block" style="margin-bottom: 10px;">Trimite mesaj</a>
                     <form method="POST" action="{% url 'my_app:adauga_anunturi_favorite_d' anunt.pk %}">
                         {% csrf_token %}
                         {% if user.is_authenticated %}
@@ -241,10 +245,10 @@
         <div class="col-lg-4 col-md-4 col-sm-6">
           <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Date de contact</h2>
           <br>
-          <p id="anchor1">E-mail:</p>
-          <p id="anchor1">Date firma:</p>
-          <p id="anchor1">CUI:</p>
-          <p id="anchor1">Registrul comertului:</p>
+          <p id="anchor1">E-mail: panaiteuroconcept@gmail.com</p>
+          <p id="anchor1">Date firma: PANAIT EURO CONCEPT S.R.L.</p>
+          <p id="anchor1">CUI: 46549431</p>
+          <p id="anchor1">Registrul comertului: J11/526/27.07.2022</p>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-6">
           <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Urmareste-ne</h2>

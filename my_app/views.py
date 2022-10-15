@@ -311,10 +311,9 @@ def posteaza_anunt_copil(request):
         imagine3 = request.FILES.get("imagine3")
         imagine4 = request.FILES.get("imagine4")
         imagine5 = request.FILES.get("imagine5")
-        imagine6 = request.FILES.get("imagine6")
         localizare = request.POST.get("localizare")
         model = AnuntCopil(titlul=titlul,numele_anuntului=numele_anuntului, descriere=descriere, categorie_copil=categorie_copil, telefon=telefon, email=email, pret=pret, imagine=imagine, localizare=localizare, moneda=moneda, 
-                            imagine2=imagine2, imagine3=imagine3, imagine4=imagine4, imagine5=imagine5, imagine6=imagine6)
+                            imagine2=imagine2, imagine3=imagine3, imagine4=imagine4, imagine5=imagine5)
         model.save()
     context = {
         'date_posted':date_posted,
@@ -1285,7 +1284,6 @@ def posteaza_anunt_adult(request, pk):
         imagine3 = request.FILES.get("imagine3")
         imagine4 = request.FILES.get("imagine4")
         imagine5 = request.FILES.get("imagine5")
-        imagine6 = request.FILES.get("imagine6")
         localizare = request.POST.get("localizare")
         ########Autoturisme########
         caroserie = request.POST.get("caroserie")
@@ -1296,6 +1294,8 @@ def posteaza_anunt_adult(request, pk):
         marca = request.POST.get("marca")
         rulaj = request.POST.get("rulaj")
         stare = request.POST.get("stare")
+        model = request.POST.get("model")
+        nr_usi = request.POST.get("nr_usi")
         #########Imobiliare########
         numar_de_camere = request.POST.get("numar_de_camere")
         compartimentare = request.POST.get("compartimentare")
@@ -1314,11 +1314,11 @@ def posteaza_anunt_adult(request, pk):
         program_flexibil = request.POST.get("program_flexibil")
         model = AnuntAdult(user=user, titlul=titlul,numele_anuntului=numele_anuntului, descriere=descriere, categorie_adult=categorie_adult, subcategorie_adult=subcategorie_adult, telefon=telefon, email=email, pret=pret, moneda=moneda,
                             caroserie=caroserie, 
-                            capacitate_motor=capacitate_motor,combustibil=combustibil,culoare=culoare,cutie_de_viteze=cutie_de_viteze, marca=marca,rulaj=rulaj,stare=stare,
+                            capacitate_motor=capacitate_motor,combustibil=combustibil,culoare=culoare,cutie_de_viteze=cutie_de_viteze, marca=marca,rulaj=rulaj,stare=stare, model=model, nr_usi=nr_usi,
                             numar_de_camere=numar_de_camere, compartimentare=compartimentare,suprafata_utila=suprafata_utila,an_de_constructie=an_de_constructie,etaj=etaj,teren=teren,
                             marime=marime,
                             tip_job=tip_job,tip_contract=tip_contract,nivelul_de_studii=nivelul_de_studii,nivelul_de_experienta=nivelul_de_experienta,mobilitatea_postului=mobilitatea_postului,program_flexibil=program_flexibil,
-                            imagine=imagine, localizare=localizare, imagine2=imagine2, imagine3=imagine3, imagine4=imagine4, imagine5=imagine5, imagine6=imagine6)
+                            imagine=imagine, localizare=localizare, imagine2=imagine2, imagine3=imagine3, imagine4=imagine4, imagine5=imagine5)
         model.save()
     context = {
         'date_posted':date_posted,

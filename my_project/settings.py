@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'my_app',
     'agora_token_builder',
     'rest_framework',
+    'social_django',
+    'sslserver',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +58,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'my_project.urls'
@@ -71,6 +75,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends', # added
+                'social_django.context_processors.login_redirect', # added
             ],
         },
     },
@@ -111,6 +118,8 @@ PASSWORD_HASHERS = [
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTHENTICATION_BACKENDS = (
+    'social_core.backends.facebook.FacebookOAuth2',
+
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -169,8 +178,25 @@ LOGIN_URL = '/acasa'
 LOGOUT_URL = '/acasa'
 LOGIN_REDIRECT_URL = '/acasa'
 
-SOCIAL_AUTH_FACEBOOK_KEY = '228529095898753'  # App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = 'dd5ae1b00c984232fcd65d3c4ca6e4ed'  # App Secret
+#####################################
+###############FACEBOOK##############
+#####################################
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1406767039851537'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '165671fbc0b12cfb0f3fafca2f011c09'  # App Secret
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+  'fields': 'id, name, email, picture.type(large), link'
+}
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
+    ('name', 'name'),
+    ('email', 'email'),
+    ('picture', 'picture'),
+    ('link', 'profile_url'),
+]
+
+#####################################
 
 SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = '7806bwig6y9xcu'
 SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = 'wVjnK0g5z4cIIkfL'

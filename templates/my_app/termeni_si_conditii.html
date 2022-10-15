@@ -133,34 +133,40 @@
         </div>
     </div>
 </div>
-<div class="jumbotron" style="background-color: #334257;margin-bottom: 0px;">
+<div class="jumbotron" style="background-color: #1F1D36;margin-bottom: 0px;">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <h3 style="color: #BBBFCA;">Informatii</h3>
-                <br>
-                <a href="{% url 'ajutor_si_contact' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Ajutor si Contact</a>
-                <a href="{% url 'politica_confi' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de confidentialitate</a>
-                <a href="{% url 'politica_cookie' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Politica de Cookie-uri</a>
-                <a href="{% url 'termeni_si_conditii' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Termeni si Conditii</a>
-                <a href="{% url 'securitate' %}" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">Protejeaza-te pe Maglo</a>
-                <a href="https://anpc.ro/" style="display:block;text-decoration: none;color: aliceblue;padding-bottom: 10px;">ANPC</a>
-            </div>
-            <br>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <h3 style="color: #BBBFCA;">Date de contact</h3>
-                <br>
-                <p style="display:block;text-decoration: none;color: aliceblue;">Email: </p>
-                <p style="display:block;text-decoration: none;color: aliceblue;">Date firma: </p>
-                <p style="display:block;text-decoration: none;color: aliceblue;">CUI: </p>
-                <p style="display:block;text-decoration: none;color: aliceblue;">Registrul comertului: </p>
-            </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6">
+          <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Informatii</h2>
+          <br>
+          <a href="{% url 'ajutor_si_contact' %}" id="anchor1">Ajutor si contact</a>
+          <a href="{% url 'politica_confi' %}" id="anchor1">Politica de confidentialitate</a>
+          <a href="{% url 'politica_cookie' %}" id="anchor1">Politica de cookie-uri</a>
+          <a href="{% url 'termeni_si_conditii' %}" id="anchor1">Termeni si conditii</a>
+          <a href="{% url 'securitate' %}" id="anchor1">Protejeaza-te pe Maglo</a>
+          <a href="https://anpc.ro/" id="anchor1">ANPC</a>
         </div>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+          <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Date de contact</h2>
+          <br>
+          <p id="anchor1">E-mail: panaiteuroconcept@gmail.com</p>
+          <p id="anchor1">Date firma: PANAIT EURO CONCEPT S.R.L.</p>
+          <p id="anchor1">CUI: 46549431</p>
+          <p id="anchor1">Registrul comertului: J11/526/27.07.2022</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+          <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Urmareste-ne</h2>
+          <br>
+          <a href="" id="anchor1"><i class="fab fa-facebook"></i> Facebook</a>
+          <a href="" id="anchor1"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="" id="anchor1"><i class="fab fa-linkedin"></i> Linked-In</a>
+        </div>
+      </div>
     </div>
 </div>
-<div class="jumbotron" style="background-color: #151515;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;">
+<div class="jumbotron" style="background-color: #2d2b4b;margin-bottom: 0px;padding-top: 30px;padding-bottom: 30px;font-family: 'Montserrat', sans-serif;font-weight: bolder;">
     <div class="container">
-        <p style="font-size: 20px;font-family: Arial, Helvetica, sans-serif;color: aliceblue;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
+        <p style="font-size: 22px;color: #fff;text-align: center;">© Copyright {{date_posted}} - Maglo - Toate drepturile rezervate</p>
     </div>
 </div>
 {% endblock %}

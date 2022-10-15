@@ -161,7 +161,6 @@ class AnuntCopil(models.Model):
     imagine3 = models.ImageField(null=True, blank=True, upload_to="images/")
     imagine4 = models.ImageField(null=True, blank=True, upload_to="images/")
     imagine5 = models.ImageField(null=True, blank=True, upload_to="images/")
-    imagine6 = models.ImageField(null=True, blank=True, upload_to="images/")
     favorite = models.ManyToManyField(User, related_name="favorite", blank=True)
     localizare = models.CharField(max_length=264, choices=JUDETE)
 
@@ -184,7 +183,6 @@ class AnuntAdult(models.Model):
     imagine3 = models.ImageField(null=True, blank=False, upload_to='images/')
     imagine4 = models.ImageField(null=True, blank=False, upload_to='images/')
     imagine5 = models.ImageField(null=True, blank=False, upload_to='images/')
-    imagine6 = models.ImageField(null=True, blank=False, upload_to='images/')
     subcategorie_adult = models.CharField(max_length=264, null=True,blank=False)
     favorit = models.ManyToManyField(User, related_name="favorit", blank=True)
     localizare = models.CharField(max_length=264, choices=JUDETE)
@@ -197,6 +195,8 @@ class AnuntAdult(models.Model):
     marca = models.CharField(max_length=264, null=True)
     rulaj = models.CharField(max_length=264, null=True)
     stare = models.CharField(max_length=264, null=True)
+    model = models.CharField(max_length=264, null=True)
+    nr_usi = models.CharField(max_length=264, null=True)
     ##########Imobiliare########
     numar_de_camere = models.CharField(max_length=264, null=True)
     compartimentare = models.CharField(max_length=264, null=True)

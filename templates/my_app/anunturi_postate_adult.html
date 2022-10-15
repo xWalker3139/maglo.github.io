@@ -223,6 +223,9 @@
         #anchor1:hover{
           color: grey;
         }
+        .row::-webkit-scrollbar{
+            width: 0;
+        }
 </style>
 {% endblock %}
 </head>
@@ -231,7 +234,7 @@
         <div class="container">
             <a class="nav-link" href="{% url 'acasa' %}" style="color: #fff;font-size: 26px;">Maglo</a>
             <!-- <img src="{% static 'images/logo_m.jpeg' %}" style="width:100%;height: 56px;border-radius: 100%;"> -->
-            <button type="button" data-target="#navbarMenu" data-toggle="collapse" class="navbar-toggler">
+            <button type="button" data-target="#navbarMenu" data-toggle="collapse" class="navbar-toggler" style="background-color: #015dc7;">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarMenu">
@@ -300,20 +303,21 @@
         <div class="container">
             <h1 style="text-align: center; margin-bottom: 40px;font-family: 'Montserrat', sans-serif;"><strong>Categorii principale</strong></h1>
             <br>
-            <div class="row">
-                <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="my_wrapper">
+            <div class="row" style="flex-wrap: nowrap;display: flex;overflow-x: auto;">
+                <div class="col-lg-2">
                     <a href="{% url 'my_app:auto_adult' %}" id="a1">
                         <img src="https://media.istockphoto.com/photos/generic-modern-suv-car-in-concrete-garage-picture-id1307086567?b=1&k=20&m=1307086567&s=170667a&w=0&h=NjcM6LIOkmfhyqH-zrbFU7pHCPxIABvNhWaOElm_P-E=" id="img1">
                         <p style="font-size: 18px;padding-top: 10px;text-align: center;">Auto, moto si ambarcatiuni</p>
                     </a>
                 </div>
-                <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="col-lg-2">
                     <a href="{% url 'my_app:piese_auto' %}" id="a1">
                         <img src="https://images.unsplash.com/photo-1582020410793-531b809cc5e9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3RlZXJpbmclMjB3aGVlbHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" id="img1">
                         <p style="font-size: 18px;padding-top: 10px;text-align: center;">Piese Auto</p>
                     </a>
                 </div>
-                <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="col-lg-2">
                     <a href="{% url 'my_app:agro_si_industrie' %}" id="a1">
                         <img src="https://media.istockphoto.com/photos/every-farm-needs-a-tractor-picture-id884499468?b=1&k=20&m=884499468&s=170667a&w=0&h=iwLbUihLumiU5y25euZ0AZ6DLtOFwQieawugpM5vxgA=" id="img1">
                         <p style="font-size: 18px;padding-top: 10px;text-align: center;">Agro si Industrie</p>
@@ -338,7 +342,8 @@
                     </a>
                 </div>
             </div>
-            <div class="row" style="margin-top: 40px;">
+            </div>
+            <div class="row" style="margin-top: 40px;flex-wrap: nowrap;display: flex;overflow-x: auto;">
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <a href="{% url 'my_app:afaceri_servicii' %}" id="a1">
                         <img src="https://media.istockphoto.com/photos/quality-control-certification-checked-guarantee-of-standard-picture-id1282804749?b=1&k=20&m=1282804749&s=170667a&w=0&h=pxajgIoOB8XGjTPHwWAsnVS3PCoUZWxBwCYBdpqCVk8=" id="img1">
@@ -1207,7 +1212,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                   <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Date de contact</h2>
                   <br>
-                  <p id="anchor1">E-mail:</p>
+                  <p id="anchor1">E-mail: panaiteuroconcept@gmail.com</p>
                   <p id="anchor1">Date firma: PANAIT EURO CONCEPT S.R.L.</p>
               <p id="anchor1">CUI: 46549431</p>
               <p id="anchor1">Registrul comertului: J11/526/27.07.2022</p>

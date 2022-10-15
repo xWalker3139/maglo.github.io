@@ -51,7 +51,7 @@
         animation: FadeIn 2s;
     }
     #imagine3{
-        width: 150px;
+        width: 300px;
         height: 100px;
         padding-top: 20px;
         margin-left: 40px;
@@ -153,7 +153,7 @@
                     </div>
                     <div class="form-group">
                         <label for="descriere">Descriere:</label>
-                        <textarea placeholder="Descrierea anuntului" class="form-control" minlength="80" name="descriere" rows="10" required></textarea>
+                        <textarea placeholder="Descrierea anuntului" class="form-control" minlength="50" name="descriere" rows="10" required></textarea>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
                     </div>
@@ -252,55 +252,1698 @@
                                 </div>
                                 <div class="col-lg-6 col-md-4 col-sm-6">
                                     <label for="marca">Marca</label>
-                                    <select class="form-control" name="marca" required>
+                                    <select class="form-control" name="marca" id="mynewbox99" required>
                                         <option selected disabled>----------</option>
-                                        <option>Alfa Romeo</option>
-                                        <option>Aro</option>
-                                        <option>Aston Martin</option>
-                                        <option>Audi</option>
-                                        <option>Bentley</option>
-                                        <option>BMW</option>
-                                        <option>Bugatti</option>
-                                        <option>Cadillac</option>
-                                        <option>Chevrolet</option>
-                                        <option>Citroen</option>
-                                        <option>Dacia</option>
-                                        <option>Dodge</option>
-                                        <option>Ferrari</option>
-                                        <option>Fiat</option>
-                                        <option>Ford</option>
-                                        <option>Honda</option>
-                                        <option>Hyundai</option>
-                                        <option>Jaguar</option>
-                                        <option>Jeep</option>
-                                        <option>Kia</option>
-                                        <option>Lamborghini</option>
-                                        <option>Land Rover</option>
-                                        <option>Lexus</option>
-                                        <option>Masserati</option>
-                                        <option>Maybach</option>
-                                        <option>Mazda</option>
-                                        <option>McLaren</option>
-                                        <option>Mercedes-Benz</option>
-                                        <option>Mini</option>
-                                        <option>Mitsubishi</option>
-                                        <option>Nissan</option>
-                                        <option>Opel</option>
-                                        <option>Peugeot</option>
-                                        <option>Porsche</option>
-                                        <option>Renault</option>
-                                        <option>Rolls-Royce</option>
-                                        <option>Rover</option>
-                                        <option>Seat</option>
-                                        <option>Skoda</option>
-                                        <option>Smart</option>
-                                        <option>Skoda</option>
-                                        <option>Tesla</option>
-                                        <option>Toyota</option>
-                                        <option>Volkswagen</option>
-                                        <option>Volvo</option>
+                                        <option id="AlfaRomeo">Alfa Romeo</option>
+                                        <option id="Aro">Aro</option>
+                                        <option id="AstonMartin">Aston Martin</option>
+                                        <option id="Audi">Audi</option>
+                                        <option id="Bentley">Bentley</option>
+                                        <option id="BMW">BMW</option>
+                                        <option id="Bugatti">Bugatti</option>
+                                        <option id="Cadillac">Cadillac</option>
+                                        <option id="Chevrolet">Chevrolet</option>
+                                        <option id="Citroen">Citroen</option>
+                                        <option id="Dacia">Dacia</option>
+                                        <option id="Dodge">Dodge</option>
+                                        <option id="Ferrari">Ferrari</option>
+                                        <option id="Fiat">Fiat</option>
+                                        <option id="Ford">Ford</option>
+                                        <option id="Honda">Honda</option>
+                                        <option id="Hyundai">Hyundai</option>
+                                        <option id="Jaguar">Jaguar</option>
+                                        <option id="Jeep">Jeep</option>
+                                        <option id="Kia">Kia</option>
+                                        <option id="Lamborghini">Lamborghini</option>
+                                        <option id="LandRover">Land Rover</option>
+                                        <option id="Lexus">Lexus</option>
+                                        <option id="Masserati">Masserati</option>
+                                        <option id="Maybach">Maybach</option>
+                                        <option id="Mazda">Mazda</option>
+                                        <option id="McLaren">McLaren</option>
+                                        <option id="Mercedes-Benz">Mercedes-Benz</option>
+                                        <option id="Mini">Mini</option>
+                                        <option id="Mitsubishi">Mitsubishi</option>
+                                        <option id="Nissan">Nissan</option>
+                                        <option id="Opel">Opel</option>
+                                        <option id="Peugeot">Peugeot</option>
+                                        <option id="Porsche">Porsche</option>
+                                        <option id="Renault">Renault</option>
+                                        <option id="RollsRoyce">Rolls-Royce</option>
+                                        <option id="Rover">Rover</option>
+                                        <option id="Seat">Seat</option>
+                                        <option id="Skoda">Skoda</option>
+                                        <option id="Smart">Smart</option>
+                                        <option id="Tesla">Tesla</option>
+                                        <option id="Toyota">Toyota</option>
+                                        <option id="Volkswagen">Volkswagen</option>
+                                        <option id="Volvo">Volvo</option>
                                         <option>Alta marca</option>
                                     </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="AlfaRomeo mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>4C</option>
+                                            <option>33</option>
+                                            <option>75</option>
+                                            <option>90</option>
+                                            <option>145</option>
+                                            <option>146</option>
+                                            <option>147</option>
+                                            <option>155</option>
+                                            <option>156</option>
+                                            <option>159</option>
+                                            <option>Alfasud</option>
+                                            <option>Alfetta</option>
+                                            <option>Brera</option>
+                                            <option>Crosswagon</option>
+                                            <option>GT</option>
+                                            <option>GTV</option>
+                                            <option>Stevio</option>
+                                            <option>Sprint</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="AlfaRomeo mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Aro mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>Seria 10</option>
+                                            <option>Seria 240</option>
+                                            <option>Seria IMS</option>
+                                            <option>Spartana</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Aro mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="AstonMartin mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model">
+                                            <option selected disabled>----------</option>
+                                            <option>AMV8</option>
+                                            <option>Bulldog</option>
+                                            <option>Cygnet</option>
+                                            <option>DB4</option>
+                                            <option>DB5</option>
+                                            <option>DB6</option>
+                                            <option>DB7</option>
+                                            <option>DB9</option>
+                                            <option>DB11</option>
+                                            <option>DBS</option>
+                                            <option>DBX</option>
+                                            <option>Lagonda</option>
+                                            <option>One-77</option>
+                                            <option>V8 Vantage</option>
+                                            <option>V12 Vantage</option>
+                                            <option>Virage</option>
+                                            <option>Zagado</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="AstonMartin mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Audi mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>80</option>
+                                            <option>90</option>
+                                            <option>100</option>
+                                            <option>200</option>
+                                            <option>A1</option>
+                                            <option>A2</option>
+                                            <option>A3</option>
+                                            <option>A4</option>
+                                            <option>A4 Allroad</option>
+                                            <option>A5</option>
+                                            <option>A6</option>
+                                            <option>A6 Allroad</option>
+                                            <option>A7</option>
+                                            <option>A8</option>
+                                            <option>Cabriolet</option>
+                                            <option>Coupe</option>
+                                            <option>Q2</option>
+                                            <option>Q3</option>
+                                            <option>Q4</option>
+                                            <option>Q5</option>
+                                            <option>Q6</option>
+                                            <option>Q7</option>
+                                            <option>Q8</option>
+                                            <option>Quattro</option>
+                                            <option>R8</option>
+                                            <option>RS2</option>
+                                            <option>RS3</option>
+                                            <option>RS4</option>
+                                            <option>RS5</option>
+                                            <option>RS6</option>
+                                            <option>RS7</option>
+                                            <option>S1</option>
+                                            <option>S2</option>
+                                            <option>S3</option>
+                                            <option>S4</option>
+                                            <option>S5</option>
+                                            <option>S6</option>
+                                            <option>S7</option>
+                                            <option>S8</option>
+                                            <option>TT</option>
+                                            <option>TT RS</option>
+                                            <option>TT S</option>
+                                            <option>V8</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Audi mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Bentley mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>Arnage</option>
+                                            <option>Azure</option>
+                                            <option>Bentayga</option>
+                                            <option>Brooklands</option>
+                                            <option>Continental</option>
+                                            <option>Eight</option>
+                                            <option>Flyng Spur</option>
+                                            <option>Mulsanne</option>
+                                            <option>Turbo</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Bentley mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="BMW mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>ALPINA</option>
+                                            <option>i3</option>
+                                            <option>i8</option>
+                                            <option>Seria 1</option>
+                                            <option>Seria 2</option>
+                                            <option>Seria 3</option>
+                                            <option>Seria 4</option>
+                                            <option>Seria 5</option>
+                                            <option>Seria 6</option>
+                                            <option>Seria 7</option>
+                                            <option>Seria 8</option>
+                                            <option>M1</option>
+                                            <option>M2</option>
+                                            <option>M3</option>
+                                            <option>M4</option>
+                                            <option>M5</option>
+                                            <option>M6</option>
+                                            <option>M7</option>
+                                            <option>M8</option>
+                                            <option>X1</option>
+                                            <option>X2</option>
+                                            <option>X3</option>
+                                            <option>X4</option>
+                                            <option>X5</option>
+                                            <option>X6</option>
+                                            <option>X7</option>
+                                            <option>Z1</option>
+                                            <option>Z3</option>
+                                            <option>Z4</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="BMW mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Bugatti mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>Chiron</option>
+                                            <option>EB 110</option>
+                                            <option>Veyron</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Bugatti mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Cadillac mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>Allante</option>
+                                            <option>ATS</option>
+                                            <option>BLS</option>
+                                            <option>Brougham</option>
+                                            <option>Cimarron</option>
+                                            <option>CT6</option>
+                                            <option>CTS</option>
+                                            <option>ATS</option>
+                                            <option>DTS</option>
+                                            <option>Eldorado</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Cadillac mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Chevrolet mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>2500</option>
+                                            <option>Alero</option>
+                                            <option>Astro</option>
+                                            <option>Avalanche</option>
+                                            <option>Aveo</option>
+                                            <option>Beretta</option>
+                                            <option>Blazer</option>
+                                            <option>Camaro</option>
+                                            <option>Carpice</option>
+                                            <option>Captiva</option>
+                                            <option>Colorado</option>
+                                            <option>Corsica</option>
+                                            <option>El Camino</option>
+                                            <option>Evanda</option>
+                                            <option>Orlando</option>
+                                            <option>Tacuma</option>
+                                            <option>Spectrum</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Chevrolet mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Citroen mynewbox99" style="margin-top: 10px;">
+                                    <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>2 CV</option>
+                                            <option>AX</option>
+                                            <option>Axel</option>
+                                            <option>Berlingo</option>
+                                            <option>BX</option>
+                                            <option>C1</option>
+                                            <option>C2</option>
+                                            <option>C3</option>
+                                            <option>C3 Picasso</option>
+                                            <option>C4</option>
+                                            <option>C5</option>
+                                            <option>C6</option>
+                                            <option>C8</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Citroen mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Dacia mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>1100</option>
+                                            <option>1300</option>
+                                            <option>1310</option>
+                                            <option>1400</option>
+                                            <option>1410</option>
+                                            <option>Dokker</option>
+                                            <option>Duster</option>
+                                            <option>Lodgy</option>
+                                            <option>Logan</option>
+                                            <option>Logan Stepway</option>
+                                            <option>Logan Van</option>
+                                            <option>Nova</option>
+                                            <option>Pick Up</option>
+                                            <option>Sandero</option>
+                                            <option>Sandero Stepway</option>
+                                            <option>Solenza</option>
+                                            <option>Supernova</option>
+                                            <option>Spring</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Dacia mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Dodge mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>Avenger</option>
+                                            <option>Caliber</option>
+                                            <option>Caravan</option>
+                                            <option>Challenger</option>
+                                            <option>Charger</option>
+                                            <option>Dakota</option>
+                                            <option>Daytona</option>
+                                            <option>Diplomat</option>
+                                            <option>Monaco</option>
+                                            <option>Neon</option>
+                                            <option>Nitro</option>
+                                            <option>Spirit</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Dodge mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Ferrari mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>308</option>
+                                            <option>328</option>
+                                            <option>348</option>
+                                            <option>360</option>
+                                            <option>365</option>
+                                            <option>400</option>
+                                            <option>412</option>
+                                            <option>456</option>
+                                            <option>488 Spider</option>
+                                            <option>512</option>
+                                            <option>550</option>
+                                            <option>575</option>
+                                            <option>599</option>
+                                            <option>612</option>
+                                            <option>812</option>
+                                            <option>California</option>
+                                            <option>Roma</option>
+                                            <option>Portofino</option>
+                                            <option>F8</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Ferrari mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Fiat mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>124</option>
+                                            <option>125p</option>
+                                            <option>126</option>
+                                            <option>127</option>
+                                            <option>128</option>
+                                            <option>129</option>
+                                            <option>130</option>
+                                            <option>131</option>
+                                            <option>132</option>
+                                            <option>500</option>
+                                            <option>500L</option>
+                                            <option>500X</option>
+                                            <option>600</option>
+                                            <option>850</option>
+                                            <option>Albea</option>
+                                            <option>Balcheta</option>
+                                            <option>Brava</option>
+                                            <option>Bravo</option>
+                                            <option>Coupe</option>
+                                            <option>Croma</option>
+                                            <option>Dino</option>
+                                            <option>Ducato</option>
+                                            <option>Fiorino</option>
+                                            <option>Grande Punto</option>
+                                            <option>Idea</option>
+                                            <option>Panda</option>
+                                            <option>Punto</option>
+                                            <option>Regata</option>
+                                            <option>Scudo</option>
+                                            <option>Siena</option>
+                                            <option>Altul</option>
+                                        </select>
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Fiat mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Ford mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>Aerostar</option>
+                                            <option>Aspire</option>
+                                            <option>B-MAX</option>
+                                            <option>Bronco</option>
+                                            <option>C-MAX</option>
+                                            <option>Capri</option>
+                                            <option>Countor</option>
+                                            <option>Cougar</option>
+                                            <option>Crown</option>
+                                            <option>Econoline</option>
+                                            <option>Econovan</option>
+                                            <option>EcoSport</option>
+                                            <option>EDGE</option>
+                                            <option>Escort</option>
+                                            <option>Falcon</option>
+                                            <option>Festiva</option>
+                                            <option>Fiesta</option>
+                                            <option>Focus</option>
+                                            <option>Focus C-MAX</option>
+                                            <option>Freestar</option>
+                                            <option>Freestyle</option>
+                                            <option>Galaxy</option>
+                                            <option>Granada</option>
+                                            <option>GT</option>
+                                            <option>Kuga</option>
+                                            <option>Mavero</option>
+                                            <option>Mondeo</option>
+                                            <option>Mustang</option>
+                                            <option>Mustang Mach-E</option>
+                                            <option>Puma</option>
+                                            <option>Ranger</option>
+                                            <option>Taunus</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Ford mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Honda mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>Accord</option>
+                                            <option>Aerodeck</option>
+                                            <option>City</option>
+                                            <option>Civic</option>
+                                            <option>Concerto</option>
+                                            <option>CRX</option>
+                                            <option>Honda e</option>
+                                            <option>Insight</option>
+                                            <option>Integra</option>
+                                            <option>Jazz</option>
+                                            <option>Legend</option>
+                                            <option>Logo</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Honda mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Hyundai mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>Accent</option>
+                                            <option>Atos</option>
+                                            <option>Avante</option>
+                                            <option>Azera</option>
+                                            <option>Bayon</option>
+                                            <option>Coupe</option>
+                                            <option>Elantra</option>
+                                            <option>Excel</option>
+                                            <option>Galloper</option>
+                                            <option>Genesis</option>
+                                            <option>Getz</option>
+                                            <option>Grandeur</option>
+                                            <option>i10</option>
+                                            <option>i20</option>
+                                            <option>i25</option>
+                                            <option>i30</option>
+                                            <option>i40</option>
+                                            <option>Ioniq</option>
+                                            <option>ix20</option>
+                                            <option>ix35</option>
+                                            <option>ix55</option>
+                                            <option>Kona</option>
+                                            <option>Lantra</option>
+                                            <option>Laviat</option>
+                                            <option>Matrix</option>
+                                            <option>Pony</option>
+                                            <option>S-Coupe</option>
+                                            <option>Sante Fe</option>
+                                            <option>Traje</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Hyundai mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Jaguar mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>Daimler</option>
+                                            <option>E-Pace</option>
+                                            <option>E-Type</option>
+                                            <option>F-Pace</option>
+                                            <option>F-Type</option>
+                                            <option>I-Pace</option>
+                                            <option>S-Type</option>
+                                            <option>X-Type</option>
+                                            <option>XE</option>
+                                            <option>XF</option>
+                                            <option>XJ</option>
+                                            <option>XJS</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Jaguar mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Jeep mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>Cherokee</option>
+                                            <option>CJ</option>
+                                            <option>Comanche</option>
+                                            <option>Commander</option>
+                                            <option>Compass</option>
+                                            <option>Gladiator</option>
+                                            <option>Liberty</option>
+                                            <option>Patriot</option>
+                                            <option>Renegade</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Jeep mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Lamborghini mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>Aventador</option>
+                                            <option>Countach</option>
+                                            <option>Diablo</option>
+                                            <option>Espada</option>
+                                            <option>Gallardo</option>
+                                            <option>Huracan</option>
+                                            <option>Jalpa</option>
+                                            <option>LM</option>
+                                            <option>Miura</option>
+                                            <option>Reventon</option>
+                                            <option>Urus</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Lamborghini mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="LandRover mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>Defender</option>
+                                            <option>Discovery</option>
+                                            <option>Discovery Sport</option>
+                                            <option>Freelander</option>
+                                            <option>Range Rover</option>
+                                            <option>Range Rover Evoque</option>
+                                            <option>Range Rover Sport</option>
+                                            <option>Range Rover Velar</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="LandRover mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Lexus mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>CT</option>
+                                            <option>LFA</option>
+                                            <option>Seria ES</option>
+                                            <option>Seria GS</option>
+                                            <option>Seria GX</option>
+                                            <option>Seria IS</option>
+                                            <option>Seria LS</option>
+                                            <option>Seria LX</option>
+                                            <option>Seria NX</option>
+                                            <option>Seria RC</option>
+                                            <option>Seria CX</option>
+                                            <option>Seria RX</option>
+                                            <option>Seria Rc</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Lexus mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Masserati mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>222</option>
+                                            <option>224</option>
+                                            <option>228</option>
+                                            <option>418</option>
+                                            <option>420</option>
+                                            <option>422</option>
+                                            <option>424</option>
+                                            <option>430</option>
+                                            <option>3200</option>
+                                            <option>4200</option>
+                                            <option>Biturbo</option>
+                                            <option>Coupe</option>
+                                            <option>Ghibli</option>
+                                            <option>GranCabio</option>
+                                            <option>Gransport</option>
+                                            <option>GranTurismo</option>
+                                            <option>Indy</option>
+                                            <option>Karif</option>
+                                            <option>Levante</option>
+                                            <option>Quattroporte</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Masserati mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Maybach mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>57</option>
+                                            <option>62</option>
+                                            <option>S 500</option>
+                                            <option>S 560</option>
+                                            <option>S 560 4Matic</option>
+                                            <option>S 680 4Matic</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Maybach mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Mazda mynewbox99" style="margin-top: 10px;">
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>121</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>323</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                            <option>626</option>
+                                            <option>929</option>
+                                            <option>Bongo</option>
+                                            <option>BT-50</option>
+                                            <option>CX-3</option>
+                                            <option>CX-30</option>
+                                            <option>CX-60</option>
+                                            <option>CX-5</option>
+                                            <option>CX-7</option>
+                                            <option>CX-9</option>
+                                            <option>Demio</option>
+                                            <option>Millenia</option>
+                                            <option>MPV</option>
+                                            <option>MX-3</option>
+                                            <option>MX-30</option>
+                                            <option>MX-5</option>
+                                            <option>MX-6</option>
+                                            <option>Premagy</option>
+                                            <option>Protege</option>
+                                            <option>RX-6</option>
+                                            <option>RX-7</option>
+                                            <option>RX-8</option>
+                                            <option>Seria B</option>
+                                            <option>Seria E</option>
+                                            <option>Tribute</option>
+                                            <option>Xedos</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Mazda mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="McLaren mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>12C</option>
+                                            <option>540C</option>
+                                            <option>570GT</option>
+                                            <option>570S</option>
+                                            <option>600LT</option>
+                                            <option>620R</option>
+                                            <option>625C</option>
+                                            <option>650C</option>
+                                            <option>675LT</option>
+                                            <option>570S</option>
+                                            <option>765LT</option>
+                                            <option>Elva</option>
+                                            <option>F1</option>
+                                            <option>GT</option>
+                                            <option>P1</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="McLaren mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Mercedes-Benz mynewbox99" style="margin-top: 10px;">
+                                        <select class="form-control" name="model" required>
+                                            <label for="model">Model:</label>
+                                            <option selected disabled>----------</option>
+                                            <option>AMG</option>
+                                            <option>AMG GT S</option>
+                                            <option>CE</option>
+                                            <option>Citan</option>
+                                            <option>Clasa A</option>
+                                            <option>Clasa B</option>
+                                            <option>Clasa C</option>
+                                            <option>Clasa CL</option>
+                                            <option>Clasa CLA</option>
+                                            <option>Clasa CLC</option>
+                                            <option>Clasa CLK</option>
+                                            <option>Clasa CLS</option>
+                                            <option>Clasa E</option>
+                                            <option>Clasa G</option>
+                                            <option>Clasa GL</option>
+                                            <option>Clasa GLA</option>
+                                            <option>Clasa GLA</option>
+                                            <option>Clasa GLB</option>
+                                            <option>Clasa GLC</option>
+                                            <option>Clasa GLE</option>
+                                            <option>GLE Coupe</option>
+                                            <option>Clasa GLK</option>
+                                            <option>Clasa GLS</option>
+                                            <option>Clasa ML</option>
+                                            <option>Clasa R</option>
+                                            <option>Clasa S</option>
+                                            <option>Clasa SL</option>
+                                            <option>Clasa SLK</option>
+                                            <option>Clasa X</option>
+                                            <option>EQA</option>
+                                            <option>EQB</option>
+                                            <option>EQC</option>
+                                            <option>EQS</option>
+                                            <option>EQV</option>
+                                            <option>MB 100</option>
+                                            <option>Monarch</option>
+                                            <option>SLR</option>
+                                            <option>SLS</option>
+                                            <option>Sprinter</option>
+                                            <option>Seria 190</option>
+                                            <option>Seria 200</option>
+                                            <option>Seria 300</option>
+                                            <option>V</option>
+                                            <option>Vaneo</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Mercedes-Benz mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Mini mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>Clubman</option>
+                                            <option>Cooper</option>
+                                            <option>Cooper S</option>
+                                            <option>Countryman</option>
+                                            <option>One</option>
+                                            <option>Parceman</option>
+                                            <option>Roadster</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Mini mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Mitsubishi mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>3000 GT</option>
+                                            <option>ASX</option>
+                                            <option>Canter</option>
+                                            <option>Carisma</option>
+                                            <option>Colt</option>
+                                            <option>Cordia</option>
+                                            <option>Cosmos</option>
+                                            <option>Diamante</option>
+                                            <option>Eclipse</option>
+                                            <option>Endeavor</option>
+                                            <option>FTO</option>
+                                            <option>Galant</option>
+                                            <option>Galloper</option>
+                                            <option>Grandis</option>
+                                            <option>L-200</option>
+                                            <option>L-300</option>
+                                            <option>L-400</option>
+                                            <option>Lancer</option>
+                                            <option>Montero</option>
+                                            <option>Mirage</option>
+                                            <option>Outlander</option>
+                                            <option>Pajero</option>
+                                            <option>Pajero Pinin</option>
+                                            <option>Santamo</option>
+                                            <option>Sapporo</option>
+                                            <option>Sigma</option>
+                                            <option>Space Gear</option>
+                                            <option>Space Runner</option>
+                                            <option>Space Star</option>
+                                            <option>Starion</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Mitsubishi mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Nissan mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>100 NX</option>
+                                            <option>200 SX</option>
+                                            <option>100 NX</option>
+                                            <option>240 SX</option>
+                                            <option>280 ZX</option>
+                                            <option>300 ZX</option>
+                                            <option>350 Z</option>
+                                            <option>370 Z</option>
+                                            <option>Almera</option>
+                                            <option>Almera Tino</option>
+                                            <option>Altima</option>
+                                            <option>Armada</option>
+                                            <option>Bluebird</option>
+                                            <option>Cherry</option>
+                                            <option>Cube</option>
+                                            <option>Evalia</option>
+                                            <option>Frontier</option>
+                                            <option>GT-R</option>
+                                            <option>Interstar</option>
+                                            <option>Juke</option>
+                                            <option>King Cab</option>
+                                            <option>Kubistar</option>
+                                            <option>Laurel</option>
+                                            <option>Maxima</option>
+                                            <option>Micra</option>
+                                            <option>Murano</option>
+                                            <option>Navara</option>
+                                            <option>New Micra</option>
+                                            <option>Note</option>
+                                            <option>NP300 Pickup</option>
+                                            <option>NV200</option>
+                                            <option>Pathfinder</option>
+                                            <option>Xterra</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Nissan mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Opel mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>Adam</option>
+                                            <option>Agila</option>
+                                            <option>Ampera</option>
+                                            <option>Antara</option>
+                                            <option>Arena</option>
+                                            <option>Ascona</option>
+                                            <option>Astra</option>
+                                            <option>Calibra</option>
+                                            <option>Campa</option>
+                                            <option>Combo</option>
+                                            <option>Corsa</option>
+                                            <option>Crossland</option>
+                                            <option>Diplomat</option>
+                                            <option>Frontera</option>
+                                            <option>GT</option>
+                                            <option>Insiginia</option>
+                                            <option>Kadett</option>
+                                            <option>Manta</option>
+                                            <option>Monza</option>
+                                            <option>Nova</option>
+                                            <option>Omega</option>
+                                            <option>Senator</option>
+                                            <option>Signum</option>
+                                            <option>Vectra</option>
+                                            <option>Vivaro</option>
+                                            <option>Zafira</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Opel mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Peugeot mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>104</option>
+                                            <option>106</option>
+                                            <option>107</option>
+                                            <option>108</option>
+                                            <option>204</option>
+                                            <option>205</option>
+                                            <option>206</option>
+                                            <option>207</option>
+                                            <option>208</option>
+                                            <option>301</option>
+                                            <option>304</option>
+                                            <option>305</option>
+                                            <option>306</option>
+                                            <option>307</option>
+                                            <option>308</option>
+                                            <option>309</option>
+                                            <option>395</option>
+                                            <option>404</option>
+                                            <option>405</option>
+                                            <option>406</option>
+                                            <option>407</option>
+                                            <option>504</option>
+                                            <option>505</option>
+                                            <option>508</option>
+                                            <option>604</option>
+                                            <option>605</option>
+                                            <option>607</option>
+                                            <option>806</option>
+                                            <option>807</option>
+                                            <option>1007</option>
+                                            <option>2008</option>
+                                            <option>3008</option>
+                                            <option>4007</option>
+                                            <option>4008</option>
+                                            <option>5008</option>
+                                            <option>Bipper</option>
+                                            <option>Boxer</option>
+                                            <option>Expert</option>
+                                            <option>iON</option>
+                                            <option>Partner</option>
+                                            <option>Rifter</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Peugeot mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Porsche mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>356</option>
+                                            <option>911</option>
+                                            <option>912</option>
+                                            <option>914</option>
+                                            <option>924</option>
+                                            <option>928</option>
+                                            <option>944</option>
+                                            <option>959</option>
+                                            <option>962</option>
+                                            <option>968</option>
+                                            <option>Boxster</option>
+                                            <option>Carrera GT</option>
+                                            <option>Cayenne</option>
+                                            <option>Cayman</option>
+                                            <option>Macan</option>
+                                            <option>Panamera</option>
+                                            <option>Taycan</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Porsche mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Renault mynewbox99" style="margin-top: 10px;">
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>8</option>
+                                            <option>9</option>
+                                            <option>10</option>
+                                            <option>11</option>
+                                            <option>12</option>
+                                            <option>14</option>
+                                            <option>16</option>
+                                            <option>18</option>
+                                            <option>19</option>
+                                            <option>20</option>
+                                            <option>21</option>
+                                            <option>25</option>
+                                            <option>30</option>
+                                            <option>Alaskan</option>
+                                            <option>Arkana</option>
+                                            <option>Avantime</option>
+                                            <option>Captur</option>
+                                            <option>Clio</option>
+                                            <option>Espace</option>
+                                            <option>Fluente</option>
+                                            <option>Fuego</option>
+                                            <option>Grand Espace</option>
+                                            <option>Grand Scenic</option>
+                                            <option>Kadjar</option>
+                                            <option>Kangoo</option>
+                                            <option>Koleos</option>
+                                            <option>Laguna</option>
+                                            <option>Latitude</option>
+                                            <option>Master</option>
+                                            <option>Megane</option>
+                                            <option>Modus</option>
+                                            <option>Safrane</option>
+                                            <option>Scenic</option>
+                                            <option>Symbol</option>
+                                            <option>Talisman</option>
+                                            <option>Trafic</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Renault mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="RollsRoyce mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>Corniche</option>
+                                            <option>Cullinan</option>
+                                            <option>Dawn</option>
+                                            <option>Flying Spur</option>
+                                            <option>Ghost</option>
+                                            <option>Park Ward</option>
+                                            <option>Phantom</option>
+                                            <option>Silver Cloud</option>
+                                            <option>Silver Down</option>
+                                            <option>Silver Seraph</option>
+                                            <option>Silver Shadow</option>
+                                            <option>Silver Spirit</option>
+                                            <option>Silver Spur</option>
+                                            <option>Touring Limousine</option>
+                                            <option>Wraith</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="RollsRoyce mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Rover mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>25</option>
+                                            <option>45</option>
+                                            <option>75</option>
+                                            <option>100</option>
+                                            <option>200</option>
+                                            <option>400</option>
+                                            <option>600</option>
+                                            <option>800</option>
+                                            <option>City Rover</option>
+                                            <option>Metro</option>
+                                            <option>Montego</option>
+                                            <option>SD</option>
+                                            <option>Streetwise</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Rover mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Seat mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>Alhambra</option>
+                                            <option>Altea</option>
+                                            <option>Altea XL</option>
+                                            <option>Arosa</option>
+                                            <option>Arona</option>
+                                            <option>Ateca</option>
+                                            <option>Cordoba</option>
+                                            <option>Exeo</option>
+                                            <option>Ibiza</option>
+                                            <option>Inca</option>
+                                            <option>Leon</option>
+                                            <option>Malaga</option>
+                                            <option>Marlbella</option>
+                                            <option>Ronda</option>
+                                            <option>Tarraco</option>
+                                            <option>Terra</option>
+                                            <option>Toledo</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Seat mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Skoda mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>100</option>
+                                            <option>105</option>
+                                            <option>120</option>
+                                            <option>130</option>
+                                            <option>135</option>
+                                            <option>Citigo</option>
+                                            <option>Fabia</option>
+                                            <option>Favorit</option>
+                                            <option>Felicia</option>
+                                            <option>Forman</option>
+                                            <option>Kamiq</option>
+                                            <option>Karoq</option>
+                                            <option>Octavia</option>
+                                            <option>RAPID</option>
+                                            <option>Scala</option>
+                                            <option>Superb</option>
+                                            <option>Yeti</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Skoda mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Smart mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>Crossblade</option>
+                                            <option>Forfour</option>
+                                            <option>Fortwo</option>
+                                            <option>Roadster</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Smart mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Tesla mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>Model S</option>
+                                            <option>Model 3</option>
+                                            <option>Model X</option>
+                                            <option>Model Y</option>
+                                            <option>Roadster</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Tesla mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Toyota mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>4-Runner</option>
+                                            <option>Alphard</option>
+                                            <option>Auris</option>
+                                            <option>Avalon</option>
+                                            <option>Avensis</option>
+                                            <option>Aygo</option>
+                                            <option>Camry</option>
+                                            <option>Carina</option>
+                                            <option>Celica</option>
+                                            <option>Corolla</option>
+                                            <option>Crown</option>
+                                            <option>Dyna</option>
+                                            <option>GT86</option>
+                                            <option>Land Cruiser</option>
+                                            <option>Matrix</option>
+                                            <option>Paseo</option>
+                                            <option>Picnic</option>
+                                            <option>Previa</option>
+                                            <option>Prius</option>
+                                            <option>Proace</option>
+                                            <option>Sienna</option>
+                                            <option>Supra</option>
+                                            <option>Verso</option>
+                                            <option>Yaris</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Toyota mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Volkswagen mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model:</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>181</option>
+                                            <option>Amarok</option>
+                                            <option>Arteon</option>
+                                            <option>Atlas</option>
+                                            <option>Beetle</option>
+                                            <option>Bora</option>
+                                            <option>Buggy</option>
+                                            <option>Caddy</option>
+                                            <option>California</option>
+                                            <option>Caravelle</option>
+                                            <option>Corrado</option>
+                                            <option>Golf</option>
+                                            <option>Golf Plus</option>
+                                            <option>Golf Sportsvan</option>
+                                            <option>Jetta</option>
+                                            <option>Kafer</option>
+                                            <option>Lupo</option>
+                                            <option>Multivan</option>
+                                            <option>Passat</option>
+                                            <option>Polo</option>
+                                            <option>Taigo</option>
+                                            <option>Tiguan</option>
+                                            <option>Sharan</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Volkswagen mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Volvo mynewbox99" style="margin-top: 10px;">
+                                        <label for="model">Model</label>
+                                        <select class="form-control" name="model" required>
+                                            <option selected disabled>----------</option>
+                                            <option>240</option>
+                                            <option>244</option>
+                                            <option>245</option>
+                                            <option>262</option>
+                                            <option>264</option>
+                                            <option>340</option>
+                                            <option>360</option>
+                                            <option>440</option>
+                                            <option>460</option>
+                                            <option>480</option>
+                                            <option>740</option>
+                                            <option>744</option>
+                                            <option>745</option>
+                                            <option>760</option>
+                                            <option>780</option>
+                                            <option>850</option>
+                                            <option>855</option>
+                                            <option>940</option>
+                                            <option>944</option>
+                                            <option>960</option>
+                                            <option>965</option>
+                                            <option>Amazon</option>
+                                            <option>Polar</option>
+                                            <option>S40</option>
+                                            <option>S60</option>
+                                            <option>S70</option>
+                                            <option>S80</option>
+                                            <option>S90</option>
+                                            <option>V40</option>
+                                            <option>V50</option>
+                                            <option>V60</option>
+                                            <option>V70</option>
+                                            <option>V90</option>
+                                            <option>Altul</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="Volvo mynewbox99" style="margin-top: 10px;">
+                                        <label for="usi">Numarul de usi:</label>
+                                        <input type="text" class="form-control" placeholder="Numarul de usi" name="nr_usi" />
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 12px;">
@@ -746,8 +2389,8 @@
                             <label for="subcategorie">Subcategorie:</label>
                             <select class="form-control" name="subcategorie_adult" id="mybox4">
                                 <option selected disabled>----------</option>
-                                <option id="Apartament, de vanzare">Apartamente de vanzare</option>
-                                <option id="Apartamente, de inchiriat">Apartamente de inchiriat</option>
+                                <option id="Apartament, garsoniere de vanzare">Apartamente - Garsoniere de vanzare</option>
+                                <option id="Apartamente, garsoniere de inchiriat">Apartamente - Garsoniere de inchiriat</option>
                                 <option id="Birouri">Birouri</option>
                                 <option id="Case,Vile de vanzare">Case/Vile de vanzare</option>
                                 <option id="Case2,Vile de inchiriat">Case/Vile de inchiriat</option>
@@ -2772,59 +4415,12 @@
                             <label for="subcategorie">Subcategorie</label>
                             <select class="form-control" name="subcategorie_adult" id="mybox11">
                                 <option selected disabled>----------</option>
+                                <option id="Ea">Ea cauta partener</option>
+                                <option id="El">El cauta partenera</option>
                                 <option id="Escorte">Escorte</option>
-                                <option id="Saloane, masaj">Saloane masaj</option>
+                                <option id="Intalniri">Intalniri</option>
+                                <option id="Saloane, masaj">Masaj erotic</option>
                             </select>
-                        </div>
-                        <div class="Escorte mybox11" style="margin-top: 12px;">
-                            <label for="pret">Vând</label>
-                                <select class="form-control" id="selectare41">
-                                    <option selected disabled>----------</option>
-                                    <option id="vinde">Vând</option>
-                                </select>
-                                <div class="vinde newbox" style="margin-top: 10px;">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-4 col-sm-6">
-                                            <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
-                                            <div class="valid-feedback">Valid.</div>
-                                            <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-4 col-sm-6">
-                                            <label for="moneda">Moneda:</label>
-                                            <select class="form-control" name="moneda">
-                                                <option selected disabled>----------</option>
-                                                <option>Lei</option>
-                                                <option>Euro</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <div class="Saloane mybox11" style="margin-top: 12px;">
-                            <label for="pret">Vând</label>
-                                <select class="form-control" id="selectare42">
-                                    <option selected disabled>----------</option>
-                                    <option id="vinde">Vând</option>
-                                </select>
-                                <div class="vinde newbox" style="margin-top: 10px;">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-4 col-sm-6">
-                                            <label for="pret">Pret:</label>
-                                            <input type="number" placeholder="Pret" class="form-control" name="pret">
-                                            <div class="valid-feedback">Valid.</div>
-                                            <div class="invalid-feedback">Va rugam sa completati acest spatiu</div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-4 col-sm-6">
-                                            <label for="moneda">Moneda:</label>
-                                            <select class="form-control" name="moneda">
-                                                <option selected disabled>----------</option>
-                                                <option>Lei</option>
-                                                <option>Euro</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -2898,34 +4494,28 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-6">
                                 <div class="bg">
-                                    <input type="file"id="imagine3" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine2" required>
+                                    <input type="file"id="imagine3" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine2">
                                     <i class="fas fa-camera"></i>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-6">
                                 <div class="bg">
-                                    <input type="file"id="imagine3" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine3" required>
+                                    <input type="file"id="imagine3" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine3">
                                     <i class="fas fa-camera"></i>
                                 </div>
                             </div>
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-6 col-md-4 col-sm-6">
                                 <div class="bg">
-                                    <input type="file"id="imagine3" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine4" required>
+                                    <input type="file"id="imagine3" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine4">
                                     <i class="fas fa-camera"></i>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-6 col-md-4 col-sm-6">
                                 <div class="bg">
-                                    <input type="file"id="imagine3" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine5" required>
-                                    <i class="fas fa-camera"></i>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="bg">
-                                    <input type="file" id="imagine3" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine6" required>
+                                    <input type="file"id="imagine3" accept="image/heic, image/png, image/jpeg, image/webp" name="imagine5">
                                     <i class="fas fa-camera"></i>
                                 </div>
                             </div>
@@ -2956,7 +4546,7 @@
         <div class="col-lg-4 col-md-4 col-sm-6">
           <h2 style="font-family: 'Montserrat', sans-serif;font-weight: bolder;color: #fff;">Date de contact</h2>
           <br>
-          <p id="anchor1">E-mail:</p>
+          <p id="anchor1">E-mail: panaiteuroconcept@gmail.com</p>
           <p id="anchor1">Date firma: PANAIT EURO CONCEPT S.R.L.</p>
               <p id="anchor1">CUI: 46549431</p>
               <p id="anchor1">Registrul comertului: J11/526/27.07.2022</p>
@@ -2984,6 +4574,19 @@
     };
     var my_name = "{{ user.id }}";
     document.getElementsByName('user').value = my_name;
+    $(document).ready(function(){
+        $("#mynewbox99").change(function(){
+            $(this).find("option:selected").each(function(){
+                var optionValue = $(this).attr("id");
+                if(optionValue){
+                    $(".mynewbox99").not("." + optionValue).hide();
+                    $("." + optionValue).show();
+                } else{
+                    $(".mynewbox99").hide();
+                }
+            });
+        }).change();
+    })
     $(document).ready(function(){
         $("#mybox4").change(function(){
             $(this).find("option:selected").each(function(){
